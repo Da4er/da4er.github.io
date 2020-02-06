@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>实战_爬取中国天气网 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="目标将中国天气网所有城市的最低气温爬取下来，将最低气温的前十名可视化显示出来。这个爬虫比较简单没有做反爬处理，所以对于获取html代码比较简单，关键在于如何解析得到的html代码。  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import requestsfr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实战_爬取中国天气网">
+<meta property="og:url" content="http://yoursite.com/2020/02/05/%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="目标将中国天气网所有城市的最低气温爬取下来，将最低气温的前十名可视化显示出来。这个爬虫比较简单没有做反爬处理，所以对于获取html代码比较简单，关键在于如何解析得到的html代码。  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import requestsfr">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/02/05/%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/05/%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/2.png">
+<meta property="article:published_time" content="2020-02-05T10:52:26.000Z">
+<meta property="article:modified_time" content="2020-02-05T10:57:13.105Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/05/%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-实战-爬取中国天气网" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/05/%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/" class="article-date">
+  <time datetime="2020-02-05T10:52:26.000Z" itemprop="datePublished">2020-02-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      实战_爬取中国天气网
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>将中国天气网所有城市的最低气温爬取下来，将最低气温的前十名可视化显示出来。<br><strong>这个爬虫比较简单没有做反爬处理，所以对于获取html代码比较简单，关键在于如何解析得到的html代码。</strong></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">from pyecharts.charts.bar import Bar</span><br><span class="line">ALL_DATA&#x3D;[]</span><br><span class="line">def parse_page(url):</span><br><span class="line">    headers&#x3D;&#123;</span><br><span class="line">        &quot;User-Agent&quot;:&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;71.0.3578.98 Safari&#x2F;537.36&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    resp&#x3D;requests.get(url,headers&#x3D;headers)</span><br><span class="line">    #print(resp.text)</span><br><span class="line">    text&#x3D;resp.content.decode(&quot;utf-8&quot;)</span><br><span class="line">    # print(text)</span><br><span class="line">    #这里使用的解析器是html5lib，因为在使用常用的lxml解析器容错率不好，港澳台天气这个页面html书写不规范，从而无法正常爬取。</span><br><span class="line">    #pip install html5lib</span><br><span class="line">    soup&#x3D;BeautifulSoup(text,&quot;html5lib&quot;)</span><br><span class="line">    divs&#x3D;soup.find(&quot;div&quot;,class_&#x3D;&quot;conMidtab&quot;) #获取第一个div标签</span><br><span class="line">    tables&#x3D;divs.find_all(&quot;table&quot;)</span><br><span class="line">    for table in tables:</span><br><span class="line">        trs&#x3D;table.find_all(&quot;tr&quot;)[2:]</span><br><span class="line">        for index,tr in enumerate(trs):</span><br><span class="line">            # print(tr)</span><br><span class="line">            # print(&quot;&#x3D;&quot;*30)</span><br><span class="line">            tds&#x3D;tr.find_all(&quot;td&quot;)</span><br><span class="line">            if(index&#x3D;&#x3D;0):</span><br><span class="line">                city_td&#x3D;tds[1]</span><br><span class="line">            else:</span><br><span class="line">                city_td&#x3D;tds[0]</span><br><span class="line">            city&#x3D;list(city_td.stripped_strings)[0]</span><br><span class="line">            # print(city)</span><br><span class="line">            temp_td&#x3D;tds[-2]</span><br><span class="line">            temp&#x3D;list(temp_td.stripped_strings)[0]</span><br><span class="line">            # print(&#123;&#39;city&#39;:city,&#39;temp&#39;:temp&#125;)</span><br><span class="line">            data&#x3D;&#123;&#39;city&#39;:city,&#39;temp&#39;:int(temp)&#125;</span><br><span class="line">            ALL_DATA.append(data)</span><br><span class="line">def spider():</span><br><span class="line">    base_url&#x3D;&quot;http:&#x2F;&#x2F;www.weather.com.cn&#x2F;textFC&#x2F;&#123;&#125;.shtml&quot;</span><br><span class="line">    params&#x3D;[&quot;hb&quot;,&quot;db&quot;,&quot;hd&quot;,&quot;hz&quot;,&quot;hn&quot;,&quot;xb&quot;,&quot;xn&quot;,&quot;gat&quot;]</span><br><span class="line">    for param in params:</span><br><span class="line">        url&#x3D;base_url.format(param)</span><br><span class="line">        parse_page(url)</span><br><span class="line">    ALL_DATA.sort(key&#x3D;lambda x:x[&#39;temp&#39;])</span><br><span class="line">    # print(ALL_DATA)</span><br><span class="line">    data&#x3D;ALL_DATA[0:10]</span><br><span class="line">    cicties&#x3D;list(map(lambda x:x[&#39;city&#39;],data))</span><br><span class="line">    temps&#x3D;list(map(lambda x:x[&#39;temp&#39;],data))</span><br><span class="line">    chart&#x3D;Bar(&quot;中国天气排行榜&quot;)</span><br><span class="line">    chart.add(&quot;&quot;,cicties,temps)</span><br><span class="line">    chart.render(&#39;temp.html&#39;)</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h4><p>这里使用的是beautifulsoup库，用的解析器是html5lib；因为在爬取港澳台地区的天气时，这个页面的html代码写的不规范。如果我们使用常用的lxml解析器的话会无法正常爬取。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install html5lib</span><br></pre></td></tr></table></figure>
+<p><img src="%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/1.png" alt="实战-爬取中国天气网"><br><strong>这里是这段代码比较重要的部分，通过sort函数对得到的数据进行排序，’key=’参数指定按什么关键字排序。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALL_DATA.sort(key&#x3D;lambda x:x[&#39;temp&#39;])</span><br></pre></td></tr></table></figure>
+<p>这里是按照字典中的temp参数进行排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cicties&#x3D;list(map(lambda x:x[&#39;city&#39;],data))</span><br><span class="line">temps&#x3D;list(map(lambda x:x[&#39;temp&#39;],data))</span><br></pre></td></tr></table></figure>
+<p>这段代码是通过lambda和map()将城市和对应的最低温度形成单个的列表</p>
+<hr>
+<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p><strong>效果如图：</strong></p>
+<p><img src="%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/2.png" alt="实战-爬取中国天气网"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/05/%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/" data-id="ck6ahyx2s000g7sd51p4f1wy4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/05/2-5-SWPU2019-%E4%BC%9F%E5%A4%A7%E7%9A%84%E4%BE%A6%E6%8E%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2.5 [SWPU2019]伟大的侦探
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/05/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98-%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E7%88%AC%E8%99%AB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">爬虫实战_电影天堂爬虫</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/02/06/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/06/%E8%B8%A9%E5%9D%91%E7%BB%8F%E9%AA%8C-coding%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D-2020-2.6/">踩坑经验_coding自定义域名(2020-2.6)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/06/2-6-buuctf-misc-%E4%BB%8E%E5%A8%83%E5%A8%83%E6%8A%93%E8%B5%B7/">2.6 buuctf_misc_从娃娃抓起</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/06/2-6-SWPU2019-Network/">2.6 [SWPU2019]Network</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/06/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/">2.6 [极客大挑战 2019]PHP</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
