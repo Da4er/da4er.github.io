@@ -118,7 +118,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Suche" href="javascript:;">
+                <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -143,7 +143,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 minutes lesen (Über 2217 Worte)
+                    15 minutes read (About 2217 words)
                 </span>
                 
                 
@@ -156,7 +156,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>sqlmap是sql注入中使用的神器，也是渗透测试人员必须掌握的工具。因为最近在学习sql注入的专题，所以写下笔记来记录学习。<br><img src data-echo="SQLMAP使用手册/1.jpg" alt></p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>sqlmap是sql注入中使用的神器，也是渗透测试人员必须掌握的工具。因为最近在学习sql注入的专题，所以写下笔记来记录学习。<br><img src="/2019/11/24/SQLMAP%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/1.jpg" alt></p>
 <h2 id="sqlmap使用"><a href="#sqlmap使用" class="headerlink" title="sqlmap使用"></a>sqlmap使用</h2><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-h, --help 显示基本帮助信息</span><br><span class="line">-hh 显示高级帮助信息</span><br><span class="line">--version 显示程序版本号</span><br><span class="line">-v VERBOSE  赘言级别：0-6(默认 1)</span><br></pre></td></tr></table></figure>
 <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-d DIRECT 直接连接到数据库</span><br><span class="line">-u URL, --url&#x3D;URL 目标URL(e.g. &quot;www.target.com&#x2F;vuln.php?id&#x3D;1&quot;)</span><br><span class="line">-l LOGFILE 从Burp 或 WebScarab 日志中解析目标</span><br><span class="line">-m BULKFILE 在给定的文本文件中读取多个扫描目标</span><br><span class="line">-g GOOGLEDORK  将Google dork 结果作为目标URL</span><br><span class="line">-r REQUESTFILE  从文件中读取HTTP 请求</span><br><span class="line">-c CONFIGFILE 从INI 配置文件中读取配置选项</span><br></pre></td></tr></table></figure>
 <h3 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">--data&#x3D;DATA 通过POST 方法提交的数据字符串</span><br><span class="line">--param-del&#x3D;PDEL 用于分割参数值的字符</span><br><span class="line">--cookie&#x3D;COOKIE HTTP Cookie 头</span><br><span class="line">--cookie-del&#x3D;CDEL 用于分割cookie 值的字符</span><br><span class="line">--load-cookies&#x3D;L.. 包含cookies 的Netscape&#x2F;wget 格式文件</span><br><span class="line">--drop-set-cookie 忽略响应中的Set-Cookie 头</span><br><span class="line">--user-agent&#x3D;AGENT  HTTP User-Agent 头</span><br><span class="line">--random-agent 使用随机选择的HTTP User-Agent 头</span><br><span class="line">--host&#x3D;HOST HTTP Host 头</span><br><span class="line">--referer&#x3D;REFERER HTTP Referer 头</span><br><span class="line">--headers&#x3D;HEADERS Extra 头(e.g. &quot;Accept-Language: fr\nETag: 123&quot;)</span><br><span class="line">--auth-type&#x3D;AUTH.. HTTP 认证方式(Basic, Digest, NTLM 或 PKI)</span><br><span class="line">--auth-cred&#x3D;AUTH.. HTTP 认证证书(name:password)</span><br><span class="line">--auth-private&#x3D;A.. HTTP 认证PEM 私钥文件</span><br><span class="line">--proxy&#x3D;PROXY 使用代理连接目标URL</span><br><span class="line">--proxy-cred&#x3D;PRO.. 代理认证证书(name:password)</span><br><span class="line">--proxy-file&#x3D;PRO.. 从文件读取代理列表</span><br><span class="line">--ignore-proxy 接受系统默认代理设置</span><br><span class="line">--tor 使用Tor 匿名网络</span><br><span class="line">--tor-port&#x3D;TORPORT 设置默认以外的Tor 代理端口</span><br><span class="line">--tor-type&#x3D;TORTYPE 设置 Tor 代理方式(HTTP( 默认), SOCKS4 或SOCKS5)</span><br><span class="line">--check-tor 检查Tor 是否正确使用</span><br><span class="line">--delay&#x3D;DELAY 每个HTTP 请求之间延迟的秒数</span><br><span class="line">--timeout&#x3D;TIMEOUT 认定连接超时的秒数(默认 30)</span><br><span class="line">--retries&#x3D;RETRIES 超时重试的次数(默认 3)</span><br><span class="line">--randomize&#x3D;RPARAM 随机改变给定参数的值</span><br><span class="line">--safe-url&#x3D;SAFURL 设置一个安全链接供系统经常访问</span><br><span class="line">--safe-freq&#x3D;SAFREQ 设置一个安全连接供系统在两次测试之间访问</span><br><span class="line">--skip-urlencode 不对攻击载荷数据进行URL 编码</span><br><span class="line">--force-ssl   强制使用SSL&#x2F;HTTPS</span><br><span class="line">--hpp 使用HTTP 参数污染</span><br><span class="line">--eval&#x3D;EVALCODE 供提交请求之前评估参数的 Python 代码(e.g. &quot;import hashlib;id2&#x3D;hashlib.md5(id).hexdigest()&quot;)</span><br></pre></td></tr></table></figure>
@@ -186,7 +186,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit</h3>
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
         <div class="buttons is-centered">
             
                 
@@ -248,7 +248,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Kommentare</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <div id="comment-container"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
@@ -322,7 +322,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategorien
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -347,7 +347,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Folgen</a>
+                Follow</a>
         </div>
         
         
@@ -416,7 +416,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategorien
+                Categories
             </h3>
             <ul class="menu-list">
             
@@ -433,7 +433,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Letzte Einträge
+            Recent
         </h3>
         
         <article class="media">
@@ -538,7 +538,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archive
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -596,7 +596,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Letzte Einträge
+            Recent
         </h3>
         
         <article class="media">
@@ -701,7 +701,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archive
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -765,8 +765,6 @@
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 
-				<br>
-                <span class="post-count">28k</span> Words in Total
                 </p>
             </div>
             <div class="level-end">
@@ -802,36 +800,6 @@
             </div>
         </div>
     </div>
-	
-        <!-- 不蒜子统计 -->
-        <span id="busuanzi_container_site_pv">
-                本站总访问量<span id="busuanzi_value_site_pv"></span>次
-        </span>
-        <span class="post-meta-divider">|</span>
-        <span id="busuanzi_container_site_uv" style='display:none'>
-                本站访客数<span id="busuanzi_value_site_uv"></span>人
-        </span>
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  
-  <br>
-  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-            <script>
-                var now = new Date(); 
-                function createtime() { 
-                    var grt= new Date("11/27/2019 17:49:00");//此处修改你的建站时间或者网站上线时间 
-                    now.setTime(now.getTime()+250); 
-                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
-                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
-                } 
-            setInterval("createtime()",250);
-            </script>
-
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
@@ -912,7 +880,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -936,7 +904,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -949,10 +917,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Seiten',
-                CATEGORIES: 'Kategorien',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
-                UNTITLED: '(Unbenannt)',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

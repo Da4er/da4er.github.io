@@ -118,7 +118,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Suche" href="javascript:;">
+                <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -143,7 +143,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 minutes lesen (Über 885 Worte)
+                    6 minutes read (About 885 words)
                 </span>
                 
                 
@@ -156,10 +156,20 @@
             
         </h1>
         <div class="content">
-            <h2 id="一-zvuldrill靶场搭建"><a href="#一-zvuldrill靶场搭建" class="headerlink" title="一.zvuldrill靶场搭建"></a>一.zvuldrill靶场搭建</h2><p>靶场地址:<a href="https://github.com/710leo/ZVulDrill">https://github.com/710leo/ZVulDrill</a><br>按照上面的要求需要创建一个名为zvuldrill的数据库，在将sys文件夹下的zvuldrill.sql导入到新建数据库中。<br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/1.png" alt><br>创建完成之后，在浏览器打开:<a href="http://127.0.0.1/ZVulDrill/">http://127.0.0.1/ZVulDrill/</a>  即可访问<br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/2.png" alt></p>
-<h2 id="二-后台登录功能万能密码绕过"><a href="#二-后台登录功能万能密码绕过" class="headerlink" title="二.后台登录功能万能密码绕过"></a>二.后台登录功能万能密码绕过</h2><p>采用正向审计的方法，即先找到用户的可控输入位置，在定位到危险函数。<br>首先用rips代码审计工具进行scan，找到用户可控输入<br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/3.png" alt><br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/4.png" alt><br>找到用户可控输入$_POST[pass]，发现它存在于logCheck.php中，用seay代码审计工具打开<br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/5.png" alt><br>所以我们可以直接构造万能密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#39; or 1 or &#39;1</span><br><span class="line">&#39; or 1 #</span><br><span class="line">&#39; or 1 --</span><br></pre></td></tr></table></figure><br>直接不用输入密码就可以绕过检测机制<br>我们来验证一下<br>用Navicat数据库工具打开本地的数据库<br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/6.png" alt><br>将logCheck.php中的改造一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM admin WHERE admin_name &#x3D; &#39;admin&#39; or &#39;1&#39;AND admin_pass &#x3D; SHA(&#39;$pass&#39;)</span><br></pre></td></tr></table></figure><br>复制到数据库命令行中<br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/7.png" alt><br>登录网站:<a href="http://127.0.0.1/ZVulDrill/admin/login.php">http://127.0.0.1/ZVulDrill/admin/login.php</a><br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/8.png" alt><br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/9.png" alt><br>根据seay自带的mysql检测工具可以看到，我们进行的数据库操作<br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/10.png" alt></p>
-<h2 id="三-前台搜索功能sql注入"><a href="#三-前台搜索功能sql注入" class="headerlink" title="三.前台搜索功能sql注入"></a>三.前台搜索功能sql注入</h2><p>继续看rips扫描的结果，发现有个$_GET[search]参数用户可控<br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/11.png" alt><br>用seay审计工具打开<br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/12.png" alt><br>发现用户传入的search参数，没有进行任何过滤就直接加入了sql语句中，这容易造成搜索型sql注入。<br>验证，打开数据库命令行，先查看数据库有几列<br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/13.png" alt><br>用order by语句，发现为5时会报错，4时显示正常，所以这个数据库的列是4。<br>所以我们打开admin的数据表，查看对应的列名。<br>可以用union select联合查询语句构造payload，直接爆出管理员的密码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM comment WHERE comment_text LIKE &#39;%%&#39; union select admin_id,admin_name,admin_pass,4 from admin;</span><br></pre></td></tr></table></figure><br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/14.png" alt><br>用过构造sql注入语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1%&#39; union select 1,2,admin_pass,4 from admin#</span><br></pre></td></tr></table></figure><br>在网页中尝试 发现可以爆出管理员的密码<br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/15.png" alt></p>
-<p>在这个搜索页面中不光有sql注入漏洞，xss也同样存在，因为这个页面对用户输入的没有进行过滤。<br>构造xss payload:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&#x2F;xss&#x2F;)&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure><br>完成弹框<br><img src data-echo="代码审计初试-对zvuldrill漏洞靶场的代码审计-一/16.png" alt></p>
+            <h2 id="一-zvuldrill靶场搭建"><a href="#一-zvuldrill靶场搭建" class="headerlink" title="一.zvuldrill靶场搭建"></a>一.zvuldrill靶场搭建</h2><p>靶场地址:<a href="https://github.com/710leo/ZVulDrill">https://github.com/710leo/ZVulDrill</a><br>按照上面的要求需要创建一个名为zvuldrill的数据库，在将sys文件夹下的zvuldrill.sql导入到新建数据库中。<br><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/1.png" alt><br>创建完成之后，在浏览器打开:<a href="http://127.0.0.1/ZVulDrill/">http://127.0.0.1/ZVulDrill/</a>  即可访问<br><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/2.png" alt></p>
+<h2 id="二-后台登录功能万能密码绕过"><a href="#二-后台登录功能万能密码绕过" class="headerlink" title="二.后台登录功能万能密码绕过"></a>二.后台登录功能万能密码绕过</h2><p>采用正向审计的方法，即先找到用户的可控输入位置，在定位到危险函数。<br>首先用rips代码审计工具进行scan，找到用户可控输入<br><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/3.png" alt><br><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/4.png" alt><br>找到用户可控输入$_POST[pass]，发现它存在于logCheck.php中，用seay代码审计工具打开<br><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/5.png" alt><br>所以我们可以直接构造万能密码 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#39; or 1 or &#39;1</span><br><span class="line">&#39; or 1 #</span><br><span class="line">&#39; or 1 --</span><br></pre></td></tr></table></figure>
+<p>直接不用输入密码就可以绕过检测机制<br>我们来验证一下<br>用Navicat数据库工具打开本地的数据库<br><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/6.png" alt><br>将logCheck.php中的改造一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM admin WHERE admin_name &#x3D; &#39;admin&#39; or &#39;1&#39;AND admin_pass &#x3D; SHA(&#39;$pass&#39;)</span><br></pre></td></tr></table></figure>
+<p>复制到数据库命令行中<br><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/7.png" alt><br>登录网站:<a href="http://127.0.0.1/ZVulDrill/admin/login.php">http://127.0.0.1/ZVulDrill/admin/login.php</a><br><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/8.png" alt><br><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/9.png" alt><br>根据seay自带的mysql检测工具可以看到，我们进行的数据库操作<br><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/10.png" alt></p>
+<h2 id="三-前台搜索功能sql注入"><a href="#三-前台搜索功能sql注入" class="headerlink" title="三.前台搜索功能sql注入"></a>三.前台搜索功能sql注入</h2><p>继续看rips扫描的结果，发现有个$_GET[search]参数用户可控<br><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/11.png" alt><br>用seay审计工具打开<br><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/12.png" alt><br>发现用户传入的search参数，没有进行任何过滤就直接加入了sql语句中，这容易造成搜索型sql注入。<br>验证，打开数据库命令行，先查看数据库有几列<br><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/13.png" alt><br>用order by语句，发现为5时会报错，4时显示正常，所以这个数据库的列是4。<br>所以我们打开admin的数据表，查看对应的列名。<br>可以用union select联合查询语句构造payload，直接爆出管理员的密码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM comment WHERE comment_text LIKE &#39;%%&#39; union select admin_id,admin_name,admin_pass,4 from admin;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/14.png" alt><br>用过构造sql注入语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1%&#39; union select 1,2,admin_pass,4 from admin#</span><br></pre></td></tr></table></figure>
+<p>在网页中尝试 发现可以爆出管理员的密码<br><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/15.png" alt></p>
+<p>在这个搜索页面中不光有sql注入漏洞，xss也同样存在，因为这个页面对用户输入的没有进行过滤。<br>构造xss payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&#x2F;xss&#x2F;)&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>完成弹框<br><img src="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/16.png" alt></p>
 
         </div>
         
@@ -172,7 +182,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit</h3>
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
         <div class="buttons is-centered">
             
                 
@@ -234,7 +244,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Kommentare</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <div id="comment-container"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
@@ -308,7 +318,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategorien
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -333,7 +343,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Folgen</a>
+                Follow</a>
         </div>
         
         
@@ -402,7 +412,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategorien
+                Categories
             </h3>
             <ul class="menu-list">
             
@@ -419,7 +429,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Letzte Einträge
+            Recent
         </h3>
         
         <article class="media">
@@ -524,7 +534,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archive
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -582,7 +592,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Letzte Einträge
+            Recent
         </h3>
         
         <article class="media">
@@ -687,7 +697,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archive
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -751,8 +761,6 @@
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 
-				<br>
-                <span class="post-count">28k</span> Words in Total
                 </p>
             </div>
             <div class="level-end">
@@ -788,36 +796,6 @@
             </div>
         </div>
     </div>
-	
-        <!-- 不蒜子统计 -->
-        <span id="busuanzi_container_site_pv">
-                本站总访问量<span id="busuanzi_value_site_pv"></span>次
-        </span>
-        <span class="post-meta-divider">|</span>
-        <span id="busuanzi_container_site_uv" style='display:none'>
-                本站访客数<span id="busuanzi_value_site_uv"></span>人
-        </span>
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  
-  <br>
-  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-            <script>
-                var now = new Date(); 
-                function createtime() { 
-                    var grt= new Date("11/27/2019 17:49:00");//此处修改你的建站时间或者网站上线时间 
-                    now.setTime(now.getTime()+250); 
-                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
-                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
-                } 
-            setInterval("createtime()",250);
-            </script>
-
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
@@ -898,7 +876,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -922,7 +900,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -935,10 +913,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Seiten',
-                CATEGORIES: 'Kategorien',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
-                UNTITLED: '(Unbenannt)',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

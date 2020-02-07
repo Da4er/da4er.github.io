@@ -116,7 +116,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Suche" href="javascript:;">
+                <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -142,7 +142,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute lesen (Über 123 Worte)
+                    a minute read (About 123 words)
                 </span>
                 
                 
@@ -157,12 +157,16 @@
         <div class="content">
             <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
         </div>
@@ -192,7 +196,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds lesen (Über 110 Worte)
+                    a few seconds read (About 110 words)
                 </span>
                 
                 
@@ -205,7 +209,7 @@
             
         </h1>
         <div class="content">
-            <p><strong>根据题目提示：</strong><br><img src data-echo="2-6-buuctf-misc-从娃娃抓起/2.png" alt="2-6-buuctf-misc-从娃娃抓起"><br>编码是两个汉字编码，试了好多编码形式，找到了两个：中文电码和五笔编码。<br><img src data-echo="2-6-buuctf-misc-从娃娃抓起/3.png" alt="2-6-buuctf-misc-从娃娃抓起"><br><a href="https://dianma.51240.com/">中文电码在线解码</a><br><strong>五笔编码现在还没有找到好的网站去解，只能一个一个对照emmmmmm</strong></p>
+            <p><strong>根据题目提示：</strong><br><img src="/2020/02/06/2-6-buuctf-misc-%E4%BB%8E%E5%A8%83%E5%A8%83%E6%8A%93%E8%B5%B7/2.png" alt="2-6-buuctf-misc-从娃娃抓起"><br>编码是两个汉字编码，试了好多编码形式，找到了两个：中文电码和五笔编码。<br><img src="/2020/02/06/2-6-buuctf-misc-%E4%BB%8E%E5%A8%83%E5%A8%83%E6%8A%93%E8%B5%B7/3.png" alt="2-6-buuctf-misc-从娃娃抓起"><br><a href="https://dianma.51240.com/">中文电码在线解码</a><br><strong>五笔编码现在还没有找到好的网站去解，只能一个一个对照emmmmmm</strong></p>
 
         </div>
         
@@ -234,7 +238,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute lesen (Über 181 Worte)
+                    a minute read (About 181 words)
                 </span>
                 
                 
@@ -249,7 +253,11 @@
         <div class="content">
             <p><strong>题目是一个txt文件，里面只有4个数字：63，127，191，255。虽然题目提示network，但是看了wp知道是ttl隐写。</strong></p>
 <hr>
-<p><strong>将每个数字转化成8位二进制</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">63 00111111 </span><br><span class="line">127 01111111 </span><br><span class="line">191 10111111 </span><br><span class="line">255 11111111</span><br></pre></td></tr></table></figure><br>每一个 TTL 只有前两位隐藏数据，每四个为一组，隐藏一个字节。<br>附上脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import binascii</span><br><span class="line">with open(&#39;attachment.txt&#39;,&#39;r&#39;) as fp:</span><br><span class="line">    a&#x3D;fp.readlines()</span><br><span class="line">    p&#x3D;[]</span><br><span class="line">    for x in range(len(a)):</span><br><span class="line">       p.append(int(a[x])) </span><br><span class="line">    s&#x3D;&#39;&#39;</span><br><span class="line">    for i in p:</span><br><span class="line">        if(i&#x3D;&#x3D;63):</span><br><span class="line">            b&#x3D;&#39;00&#39;</span><br><span class="line">        elif(i&#x3D;&#x3D;127):</span><br><span class="line">            b&#x3D;&#39;01&#39;</span><br><span class="line">        elif(i&#x3D;&#x3D;191):</span><br><span class="line">            b&#x3D;&#39;10&#39;</span><br><span class="line">        else:</span><br><span class="line">            b&#x3D;&#39;11&#39;</span><br><span class="line">        s +&#x3D;b</span><br><span class="line"># print(s)</span><br><span class="line">flag &#x3D; &#39;&#39;</span><br><span class="line">for i in range(0,len(s),8):</span><br><span class="line">    flag +&#x3D; chr(int(s[i:i+8],2))</span><br><span class="line">flag &#x3D; binascii.unhexlify(flag)</span><br><span class="line">wp &#x3D; open(&#39;ans.zip&#39;,&#39;wb&#39;)</span><br><span class="line">wp.write(flag)</span><br><span class="line">wp.close()</span><br></pre></td></tr></table></figure><br><strong>转换成一个压缩包，有密码是伪加密，修改完得到flag。</strong></p>
+<p><strong>将每个数字转化成8位二进制</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">63 00111111 </span><br><span class="line">127 01111111 </span><br><span class="line">191 10111111 </span><br><span class="line">255 11111111</span><br></pre></td></tr></table></figure>
+<p>每一个 TTL 只有前两位隐藏数据，每四个为一组，隐藏一个字节。<br>附上脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import binascii</span><br><span class="line">with open(&#39;attachment.txt&#39;,&#39;r&#39;) as fp:</span><br><span class="line">    a&#x3D;fp.readlines()</span><br><span class="line">    p&#x3D;[]</span><br><span class="line">    for x in range(len(a)):</span><br><span class="line">       p.append(int(a[x])) </span><br><span class="line">    s&#x3D;&#39;&#39;</span><br><span class="line">    for i in p:</span><br><span class="line">        if(i&#x3D;&#x3D;63):</span><br><span class="line">            b&#x3D;&#39;00&#39;</span><br><span class="line">        elif(i&#x3D;&#x3D;127):</span><br><span class="line">            b&#x3D;&#39;01&#39;</span><br><span class="line">        elif(i&#x3D;&#x3D;191):</span><br><span class="line">            b&#x3D;&#39;10&#39;</span><br><span class="line">        else:</span><br><span class="line">            b&#x3D;&#39;11&#39;</span><br><span class="line">        s +&#x3D;b</span><br><span class="line"># print(s)</span><br><span class="line">flag &#x3D; &#39;&#39;</span><br><span class="line">for i in range(0,len(s),8):</span><br><span class="line">    flag +&#x3D; chr(int(s[i:i+8],2))</span><br><span class="line">flag &#x3D; binascii.unhexlify(flag)</span><br><span class="line">wp &#x3D; open(&#39;ans.zip&#39;,&#39;wb&#39;)</span><br><span class="line">wp.write(flag)</span><br><span class="line">wp.close()</span><br></pre></td></tr></table></figure>
+<p><strong>转换成一个压缩包，有密码是伪加密，修改完得到flag。</strong></p>
 
         </div>
         
@@ -278,7 +286,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes lesen (Über 398 Worte)
+                    3 minutes read (About 398 words)
                 </span>
                 
                 
@@ -291,7 +299,15 @@
             
         </h1>
         <div class="content">
-            <p><strong>根据题目提示：题目有源码备份，下载得到<a href="http://www.zip。">www.zip。</a></strong><br><img src data-echo="2-6-极客大挑战-2019-PHP/3.png" alt="2-6-极客大挑战-2019-PHP"><br><strong>有三个php文件</strong><br>class.php<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Name&#123;</span><br><span class="line">    private $username &#x3D; &#39;nonono&#39;;</span><br><span class="line">    private $password &#x3D; &#39;yesyes&#39;;</span><br><span class="line"></span><br><span class="line">    public function __construct($username,$password)&#123;</span><br><span class="line">        $this-&gt;username &#x3D; $username;</span><br><span class="line">        $this-&gt;password &#x3D; $password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __wakeup()&#123;</span><br><span class="line">        $this-&gt;username &#x3D; &#39;guest&#39;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct()&#123;</span><br><span class="line">        if ($this-&gt;password !&#x3D; 100) &#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;NO!!!hacker!!!&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You name is: &quot;;</span><br><span class="line">            echo $this-&gt;username;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You password is: &quot;;</span><br><span class="line">            echo $this-&gt;password;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            die();</span><br><span class="line">        &#125;</span><br><span class="line">        if ($this-&gt;username &#x3D;&#x3D;&#x3D; &#39;admin&#39;) &#123;</span><br><span class="line">            global $flag;</span><br><span class="line">            echo $flag;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;hello my friend~~&lt;&#x2F;br&gt;sorry i can&#39;t give you the flag!&quot;;</span><br><span class="line">            die();</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>index.php<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    include &#39;class.php&#39;;</span><br><span class="line">    $select &#x3D; $_GET[&#39;select&#39;];</span><br><span class="line">    $res&#x3D;unserialize(@$select);</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure><br>flag.php<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$flag &#x3D; &#39;Syc&#123;dog_dog_dog_dog&#125;&#39;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><br>通过分析知：$select进行反序列化。<br>关键在class.php中的_destruct()魔法函数。<br>对于序列化问题有调用魔法函数顺序的问题：<br><img src data-echo="2-6-极客大挑战-2019-PHP/4.png" alt="2-6-极客大挑战-2019-PHP"><br><img src data-echo="2-6-极客大挑战-2019-PHP/5.png" alt="2-6-极客大挑战-2019-PHP"><br>对于题目需要将username=admin，password=100，但是会先执行_wakeup函数将username=guest，所以这道题目关键在于如何绕过_wakeup函数。<br><strong>知识点：如何绕过_wakeup</strong><br><img src data-echo="2-6-极客大挑战-2019-PHP/6.png" alt="2-6-极客大挑战-2019-PHP"><br>测试php：<br><img src data-echo="2-6-极客大挑战-2019-PHP/1.png" alt="2-6-极客大挑战-2019-PHP"><br>形成payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">?select&#x3D;O:4:&quot;Name&quot;:3:&#123;s:14:&quot;%00Name%00username&quot;;s:5:&quot;admin&quot;;s:14:&quot;%00Name%00password&quot;;i:100;&#125;</span><br></pre></td></tr></table></figure><br>这个payload绕过__wakeup()函数，使username不被覆盖，加上%00是因为username和password都是私有变量，变量中的类名前后会有空白符，而复制的时候会丢失。<br>得到flag<br><img src data-echo="2-6-极客大挑战-2019-PHP/2.png" alt="2-6-极客大挑战-2019-PHP"></p>
+            <p><strong>根据题目提示：题目有源码备份，下载得到<a href="http://www.zip。">www.zip。</a></strong><br><img src="/2020/02/06/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/3.png" alt="2-6-极客大挑战-2019-PHP"><br><strong>有三个php文件</strong><br>class.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Name&#123;</span><br><span class="line">    private $username &#x3D; &#39;nonono&#39;;</span><br><span class="line">    private $password &#x3D; &#39;yesyes&#39;;</span><br><span class="line"></span><br><span class="line">    public function __construct($username,$password)&#123;</span><br><span class="line">        $this-&gt;username &#x3D; $username;</span><br><span class="line">        $this-&gt;password &#x3D; $password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __wakeup()&#123;</span><br><span class="line">        $this-&gt;username &#x3D; &#39;guest&#39;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct()&#123;</span><br><span class="line">        if ($this-&gt;password !&#x3D; 100) &#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;NO!!!hacker!!!&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You name is: &quot;;</span><br><span class="line">            echo $this-&gt;username;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You password is: &quot;;</span><br><span class="line">            echo $this-&gt;password;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            die();</span><br><span class="line">        &#125;</span><br><span class="line">        if ($this-&gt;username &#x3D;&#x3D;&#x3D; &#39;admin&#39;) &#123;</span><br><span class="line">            global $flag;</span><br><span class="line">            echo $flag;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;hello my friend~~&lt;&#x2F;br&gt;sorry i can&#39;t give you the flag!&quot;;</span><br><span class="line">            die();</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>index.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    include &#39;class.php&#39;;</span><br><span class="line">    $select &#x3D; $_GET[&#39;select&#39;];</span><br><span class="line">    $res&#x3D;unserialize(@$select);</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure>
+<p>flag.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$flag &#x3D; &#39;Syc&#123;dog_dog_dog_dog&#125;&#39;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>通过分析知：$select进行反序列化。<br>关键在class.php中的_destruct()魔法函数。<br>对于序列化问题有调用魔法函数顺序的问题：<br><img src="/2020/02/06/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/4.png" alt="2-6-极客大挑战-2019-PHP"><br><img src="/2020/02/06/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/5.png" alt="2-6-极客大挑战-2019-PHP"><br>对于题目需要将username=admin，password=100，但是会先执行_wakeup函数将username=guest，所以这道题目关键在于如何绕过_wakeup函数。<br><strong>知识点：如何绕过_wakeup</strong><br><img src="/2020/02/06/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/6.png" alt="2-6-极客大挑战-2019-PHP"><br>测试php：<br><img src="/2020/02/06/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/1.png" alt="2-6-极客大挑战-2019-PHP"><br>形成payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">?select&#x3D;O:4:&quot;Name&quot;:3:&#123;s:14:&quot;%00Name%00username&quot;;s:5:&quot;admin&quot;;s:14:&quot;%00Name%00password&quot;;i:100;&#125;</span><br></pre></td></tr></table></figure>
+<p>这个payload绕过__wakeup()函数，使username不被覆盖，加上%00是因为username和password都是私有变量，变量中的类名前后会有空白符，而复制的时候会丢失。<br>得到flag<br><img src="/2020/02/06/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/2.png" alt="2-6-极客大挑战-2019-PHP"></p>
 <p>参考博客：<br><a href="https://www.jianshu.com/p/bfe00fd583df">https://www.jianshu.com/p/bfe00fd583df</a></p>
 
         </div>
@@ -321,7 +337,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes lesen (Über 256 Worte)
+                    2 minutes read (About 256 words)
                 </span>
                 
                 
@@ -334,7 +350,9 @@
             
         </h1>
         <div class="content">
-            <p><strong>flag2.php，flag3.php都有密码：flag3.php提示密码是六位数，爆破得到密码。</strong><br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/1.png" alt="2-6-SWPU2019-你有没有好好看网课"><br><strong>查看flag.docx</strong><br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/5.png" alt="2-6-SWPU2019-你有没有好好看网课"><br>看了别的师傅的wp，这个docx提示查看mp4对应帧数:<strong>00:00:05:20；00:00:07:11</strong><br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/2.png" alt="2-6-SWPU2019-你有没有好好看网课"><br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/3.png" alt="2-6-SWPU2019-你有没有好好看网课"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">..... ..&#x2F;... .&#x2F;... .&#x2F;... ..&#x2F;dXBfdXBfdXA&#x3D;</span><br></pre></td></tr></table></figure><br>后面一段是base64编码，前面的一段一开始以为是摩斯编码，但是看了wp知道了是敲击码。<br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/4.png" alt="2-6-SWPU2019-你有没有好好看网课"><br>解的flag2.zip密码：<strong>wllmup_up_up</strong><br><strong>flag2.zip下是一张图片，将这张图片用winhex打开，在最下面得到flag。</strong><br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/6.png" alt="2-6-SWPU2019-你有没有好好看网课"></p>
+            <p><strong>flag2.php，flag3.php都有密码：flag3.php提示密码是六位数，爆破得到密码。</strong><br><img src="/2020/02/06/2-6-SWPU2019-%E4%BD%A0%E6%9C%89%E6%B2%A1%E6%9C%89%E5%A5%BD%E5%A5%BD%E7%9C%8B%E7%BD%91%E8%AF%BE/1.png" alt="2-6-SWPU2019-你有没有好好看网课"><br><strong>查看flag.docx</strong><br><img src="/2020/02/06/2-6-SWPU2019-%E4%BD%A0%E6%9C%89%E6%B2%A1%E6%9C%89%E5%A5%BD%E5%A5%BD%E7%9C%8B%E7%BD%91%E8%AF%BE/5.png" alt="2-6-SWPU2019-你有没有好好看网课"><br>看了别的师傅的wp，这个docx提示查看mp4对应帧数:<strong>00:00:05:20；00:00:07:11</strong><br><img src="/2020/02/06/2-6-SWPU2019-%E4%BD%A0%E6%9C%89%E6%B2%A1%E6%9C%89%E5%A5%BD%E5%A5%BD%E7%9C%8B%E7%BD%91%E8%AF%BE/2.png" alt="2-6-SWPU2019-你有没有好好看网课"><br><img src="/2020/02/06/2-6-SWPU2019-%E4%BD%A0%E6%9C%89%E6%B2%A1%E6%9C%89%E5%A5%BD%E5%A5%BD%E7%9C%8B%E7%BD%91%E8%AF%BE/3.png" alt="2-6-SWPU2019-你有没有好好看网课"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">..... ..&#x2F;... .&#x2F;... .&#x2F;... ..&#x2F;dXBfdXBfdXA&#x3D;</span><br></pre></td></tr></table></figure>
+<p>后面一段是base64编码，前面的一段一开始以为是摩斯编码，但是看了wp知道了是敲击码。<br><img src="/2020/02/06/2-6-SWPU2019-%E4%BD%A0%E6%9C%89%E6%B2%A1%E6%9C%89%E5%A5%BD%E5%A5%BD%E7%9C%8B%E7%BD%91%E8%AF%BE/4.png" alt="2-6-SWPU2019-你有没有好好看网课"><br>解的flag2.zip密码：<strong>wllmup_up_up</strong><br><strong>flag2.zip下是一张图片，将这张图片用winhex打开，在最下面得到flag。</strong><br><img src="/2020/02/06/2-6-SWPU2019-%E4%BD%A0%E6%9C%89%E6%B2%A1%E6%9C%89%E5%A5%BD%E5%A5%BD%E7%9C%8B%E7%BD%91%E8%AF%BE/6.png" alt="2-6-SWPU2019-你有没有好好看网课"></p>
 
         </div>
         
@@ -363,7 +381,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes lesen (Über 243 Worte)
+                    2 minutes read (About 243 words)
                 </span>
                 
                 
@@ -376,8 +394,12 @@
             
         </h1>
         <div class="content">
-            <h2 id="Havefun"><a href="#Havefun" class="headerlink" title="Havefun"></a>Havefun</h2><p><strong>查看源代码</strong><br><img src data-echo="2-5-极客大挑战-2019-Havefun-Secret-File/1.png" alt="2-5-极客大挑战-2019-Havefun-Secret-File"><br><strong>直接传参cat=dog,得到flag.</strong><br><img src data-echo="2-5-极客大挑战-2019-Havefun-Secret-File/2.png" alt="2-5-极客大挑战-2019-Havefun-Secret-File"></p>
-<h2 id="Secret-File"><a href="#Secret-File" class="headerlink" title="Secret File"></a>Secret File</h2><p><strong>通过查看源代码知道这个题目有三个文件:Archive_room.php action.php end.php</strong><br>在这里通过访问：Archive_room.php会直接跳转到end.php，没有经过action.php。<br><strong>访问action.php抓包查看，得到第四个文件secr3t.php 。</strong><br><img src data-echo="2-5-极客大挑战-2019-Havefun-Secret-File/3.png" alt="2-5-极客大挑战-2019-Havefun-Secret-File"><br>访问secr3t.php 得到源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">    error_reporting(0);</span><br><span class="line">    $file&#x3D;$_GET[&#39;file&#39;];</span><br><span class="line">    if(strstr($file,&quot;..&#x2F;&quot;)||stristr($file, &quot;tp&quot;)||stristr($file,&quot;input&quot;)||stristr($file,&quot;data&quot;))&#123;</span><br><span class="line">        echo &quot;Oh no!&quot;;</span><br><span class="line">        exit();</span><br><span class="line">    &#125;</span><br><span class="line">    include($file); &#x2F;&#x2F;flag放在了flag.php里?&gt;</span><br></pre></td></tr></table></figure><br><strong>通过分析这段代码没有过滤php伪协议：我们可以使用file来读取flag。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php</span><br></pre></td></tr></table></figure><br>得到flag：<br><img src data-echo="2-5-极客大挑战-2019-Havefun-Secret-File/4.png" alt="2-5-极客大挑战-2019-Havefun-Secret-File"></p>
+            <h2 id="Havefun"><a href="#Havefun" class="headerlink" title="Havefun"></a>Havefun</h2><p><strong>查看源代码</strong><br><img src="/2020/02/05/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Havefun-Secret-File/1.png" alt="2-5-极客大挑战-2019-Havefun-Secret-File"><br><strong>直接传参cat=dog,得到flag.</strong><br><img src="/2020/02/05/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Havefun-Secret-File/2.png" alt="2-5-极客大挑战-2019-Havefun-Secret-File"></p>
+<h2 id="Secret-File"><a href="#Secret-File" class="headerlink" title="Secret File"></a>Secret File</h2><p><strong>通过查看源代码知道这个题目有三个文件:Archive_room.php action.php end.php</strong><br>在这里通过访问：Archive_room.php会直接跳转到end.php，没有经过action.php。<br><strong>访问action.php抓包查看，得到第四个文件secr3t.php 。</strong><br><img src="/2020/02/05/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Havefun-Secret-File/3.png" alt="2-5-极客大挑战-2019-Havefun-Secret-File"><br>访问secr3t.php 得到源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">    error_reporting(0);</span><br><span class="line">    $file&#x3D;$_GET[&#39;file&#39;];</span><br><span class="line">    if(strstr($file,&quot;..&#x2F;&quot;)||stristr($file, &quot;tp&quot;)||stristr($file,&quot;input&quot;)||stristr($file,&quot;data&quot;))&#123;</span><br><span class="line">        echo &quot;Oh no!&quot;;</span><br><span class="line">        exit();</span><br><span class="line">    &#125;</span><br><span class="line">    include($file); &#x2F;&#x2F;flag放在了flag.php里?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>通过分析这段代码没有过滤php伪协议：我们可以使用file来读取flag。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php</span><br></pre></td></tr></table></figure>
+<p>得到flag：<br><img src="/2020/02/05/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Havefun-Secret-File/4.png" alt="2-5-极客大挑战-2019-Havefun-Secret-File"></p>
 
         </div>
         
@@ -406,7 +428,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds lesen (Über 98 Worte)
+                    a few seconds read (About 98 words)
                 </span>
                 
                 
@@ -419,9 +441,11 @@
             
         </h1>
         <div class="content">
-            <p><strong>对题目进行简单的分析：单引号闭合；开启了错误提示。想到报错注入，但是报错注入没检测无法利用。</strong><br><img src data-echo="2-5-极客大挑战-2019-EasySQL/1.png" alt="2-5-极客大挑战-2019-EasySQL"><br><img src data-echo="2-5-极客大挑战-2019-EasySQL/2.png" alt="2-5-极客大挑战-2019-EasySQL"></p>
+            <p><strong>对题目进行简单的分析：单引号闭合；开启了错误提示。想到报错注入，但是报错注入没检测无法利用。</strong><br><img src="/2020/02/05/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL/1.png" alt="2-5-极客大挑战-2019-EasySQL"><br><img src="/2020/02/05/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL/2.png" alt="2-5-极客大挑战-2019-EasySQL"></p>
 <hr>
-<p><strong>尝试一下万能密码</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39; or &#39;1&#x3D;1</span><br></pre></td></tr></table></figure><br>得到flag<br><img src data-echo="2-5-极客大挑战-2019-EasySQL/3.png" alt="2-5-极客大挑战-2019-EasySQL"></p>
+<p><strong>尝试一下万能密码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39; or &#39;1&#x3D;1</span><br></pre></td></tr></table></figure>
+<p>得到flag<br><img src="/2020/02/05/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL/3.png" alt="2-5-极客大挑战-2019-EasySQL"></p>
 
         </div>
         
@@ -450,7 +474,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute lesen (Über 115 Worte)
+                    a minute read (About 115 words)
                 </span>
                 
                 
@@ -463,7 +487,7 @@
             
         </h1>
         <div class="content">
-            <p><strong>打开压缩包，文件有密码，密码在txt里</strong><br><img src data-echo="2-5-SWPU2019-伟大的侦探/1.png" alt="2-5-SWPU2019-伟大的侦探"><br><strong>010Editor打开，转化成EBDIC编码得到密码</strong><br><img src data-echo="2-5-SWPU2019-伟大的侦探/2.png" alt="2-5-SWPU2019-伟大的侦探"><br><strong>打开文件发现是一堆小人，百度可知这是福尔摩斯小人编码</strong><br><img src data-echo="2-5-SWPU2019-伟大的侦探/3.png" alt="2-5-SWPU2019-伟大的侦探"><br><img src data-echo="2-5-SWPU2019-伟大的侦探/4.png" alt="2-5-SWPU2019-伟大的侦探"><br><strong>解码得到flag:iloveholmesandwllm</strong></p>
+            <p><strong>打开压缩包，文件有密码，密码在txt里</strong><br><img src="/2020/02/05/2-5-SWPU2019-%E4%BC%9F%E5%A4%A7%E7%9A%84%E4%BE%A6%E6%8E%A2/1.png" alt="2-5-SWPU2019-伟大的侦探"><br><strong>010Editor打开，转化成EBDIC编码得到密码</strong><br><img src="/2020/02/05/2-5-SWPU2019-%E4%BC%9F%E5%A4%A7%E7%9A%84%E4%BE%A6%E6%8E%A2/2.png" alt="2-5-SWPU2019-伟大的侦探"><br><strong>打开文件发现是一堆小人，百度可知这是福尔摩斯小人编码</strong><br><img src="/2020/02/05/2-5-SWPU2019-%E4%BC%9F%E5%A4%A7%E7%9A%84%E4%BE%A6%E6%8E%A2/3.png" alt="2-5-SWPU2019-伟大的侦探"><br><img src="/2020/02/05/2-5-SWPU2019-%E4%BC%9F%E5%A4%A7%E7%9A%84%E4%BE%A6%E6%8E%A2/4.png" alt="2-5-SWPU2019-伟大的侦探"><br><strong>解码得到flag:iloveholmesandwllm</strong></p>
 
         </div>
         
@@ -492,7 +516,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes lesen (Über 596 Worte)
+                    4 minutes read (About 596 words)
                 </span>
                 
                 
@@ -508,13 +532,18 @@
             <h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>将中国天气网所有城市的最低气温爬取下来，将最低气温的前十名可视化显示出来。<br><strong>这个爬虫比较简单没有做反爬处理，所以对于获取html代码比较简单，关键在于如何解析得到的html代码。</strong></p>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">from pyecharts.charts.bar import Bar</span><br><span class="line">ALL_DATA&#x3D;[]</span><br><span class="line">def parse_page(url):</span><br><span class="line">    headers&#x3D;&#123;</span><br><span class="line">        &quot;User-Agent&quot;:&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;71.0.3578.98 Safari&#x2F;537.36&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    resp&#x3D;requests.get(url,headers&#x3D;headers)</span><br><span class="line">    #print(resp.text)</span><br><span class="line">    text&#x3D;resp.content.decode(&quot;utf-8&quot;)</span><br><span class="line">    # print(text)</span><br><span class="line">    #这里使用的解析器是html5lib，因为在使用常用的lxml解析器容错率不好，港澳台天气这个页面html书写不规范，从而无法正常爬取。</span><br><span class="line">    #pip install html5lib</span><br><span class="line">    soup&#x3D;BeautifulSoup(text,&quot;html5lib&quot;)</span><br><span class="line">    divs&#x3D;soup.find(&quot;div&quot;,class_&#x3D;&quot;conMidtab&quot;) #获取第一个div标签</span><br><span class="line">    tables&#x3D;divs.find_all(&quot;table&quot;)</span><br><span class="line">    for table in tables:</span><br><span class="line">        trs&#x3D;table.find_all(&quot;tr&quot;)[2:]</span><br><span class="line">        for index,tr in enumerate(trs):</span><br><span class="line">            # print(tr)</span><br><span class="line">            # print(&quot;&#x3D;&quot;*30)</span><br><span class="line">            tds&#x3D;tr.find_all(&quot;td&quot;)</span><br><span class="line">            if(index&#x3D;&#x3D;0):</span><br><span class="line">                city_td&#x3D;tds[1]</span><br><span class="line">            else:</span><br><span class="line">                city_td&#x3D;tds[0]</span><br><span class="line">            city&#x3D;list(city_td.stripped_strings)[0]</span><br><span class="line">            # print(city)</span><br><span class="line">            temp_td&#x3D;tds[-2]</span><br><span class="line">            temp&#x3D;list(temp_td.stripped_strings)[0]</span><br><span class="line">            # print(&#123;&#39;city&#39;:city,&#39;temp&#39;:temp&#125;)</span><br><span class="line">            data&#x3D;&#123;&#39;city&#39;:city,&#39;temp&#39;:int(temp)&#125;</span><br><span class="line">            ALL_DATA.append(data)</span><br><span class="line">def spider():</span><br><span class="line">    base_url&#x3D;&quot;http:&#x2F;&#x2F;www.weather.com.cn&#x2F;textFC&#x2F;&#123;&#125;.shtml&quot;</span><br><span class="line">    params&#x3D;[&quot;hb&quot;,&quot;db&quot;,&quot;hd&quot;,&quot;hz&quot;,&quot;hn&quot;,&quot;xb&quot;,&quot;xn&quot;,&quot;gat&quot;]</span><br><span class="line">    for param in params:</span><br><span class="line">        url&#x3D;base_url.format(param)</span><br><span class="line">        parse_page(url)</span><br><span class="line">    ALL_DATA.sort(key&#x3D;lambda x:x[&#39;temp&#39;])</span><br><span class="line">    # print(ALL_DATA)</span><br><span class="line">    data&#x3D;ALL_DATA[0:10]</span><br><span class="line">    cicties&#x3D;list(map(lambda x:x[&#39;city&#39;],data))</span><br><span class="line">    temps&#x3D;list(map(lambda x:x[&#39;temp&#39;],data))</span><br><span class="line">    chart&#x3D;Bar(&quot;中国天气排行榜&quot;)</span><br><span class="line">    chart.add(&quot;&quot;,cicties,temps)</span><br><span class="line">    chart.render(&#39;temp.html&#39;)</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure>
+
 <hr>
-<h4 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h4><p>这里使用的是beautifulsoup库，用的解析器是html5lib；因为在爬取港澳台地区的天气时，这个页面的html代码写的不规范。如果我们使用常用的lxml解析器的话会无法正常爬取。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install html5lib</span><br></pre></td></tr></table></figure><br><img src data-echo="实战-爬取中国天气网/1.png" alt="实战-爬取中国天气网"><br><strong>这里是这段代码比较重要的部分，通过sort函数对得到的数据进行排序，’key=’参数指定按什么关键字排序。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALL_DATA.sort(key&#x3D;lambda x:x[&#39;temp&#39;])</span><br></pre></td></tr></table></figure><br>这里是按照字典中的temp参数进行排序</p>
+<h4 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h4><p>这里使用的是beautifulsoup库，用的解析器是html5lib；因为在爬取港澳台地区的天气时，这个页面的html代码写的不规范。如果我们使用常用的lxml解析器的话会无法正常爬取。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install html5lib</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/02/05/%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/1.png" alt="实战-爬取中国天气网"><br><strong>这里是这段代码比较重要的部分，通过sort函数对得到的数据进行排序，’key=’参数指定按什么关键字排序。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALL_DATA.sort(key&#x3D;lambda x:x[&#39;temp&#39;])</span><br></pre></td></tr></table></figure>
+<p>这里是按照字典中的temp参数进行排序</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cicties&#x3D;list(map(lambda x:x[&#39;city&#39;],data))</span><br><span class="line">temps&#x3D;list(map(lambda x:x[&#39;temp&#39;],data))</span><br></pre></td></tr></table></figure>
 <p>这段代码是通过lambda和map()将城市和对应的最低温度形成单个的列表</p>
 <hr>
 <h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p><strong>效果如图：</strong></p>
-<p><img src data-echo="实战-爬取中国天气网/2.png" alt="实战-爬取中国天气网"></p>
+<p><img src="/2020/02/05/%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/2.png" alt="实战-爬取中国天气网"></p>
 
         </div>
         
@@ -543,7 +572,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes lesen (Über 808 Worte)
+                    5 minutes read (About 808 words)
                 </span>
                 
                 
@@ -560,13 +589,15 @@
 <hr>
 <p><strong>这个实战是爬取电影天堂热门电影前七页。分为三步：1.获取每个页面的电影详细页；2.解析每个电影详细页；3.将第一步和第二步结合，爬取前七页。</strong></p>
 <hr>
-<p>具体代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from lxml import etree</span><br><span class="line">BASE_DOMAIN&#x3D;&quot;https:&#x2F;&#x2F;www.dytt8.net&quot;</span><br><span class="line">HEADERS&#x3D;&#123;</span><br><span class="line">    &quot;User-Agent&quot;:&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;71.0.3578.98 Safari&#x2F;537.36&quot;</span><br><span class="line">&#125;</span><br><span class="line">def get_detail_url(url):</span><br><span class="line">    resp &#x3D; requests.get(url, headers&#x3D;HEADERS)</span><br><span class="line">    text &#x3D; resp.text</span><br><span class="line">    # print(text)</span><br><span class="line">    html &#x3D; etree.HTML(text)</span><br><span class="line">    detail_urls &#x3D; html.xpath(&quot;&#x2F;&#x2F;ul&#x2F;&#x2F;table[@class&#x3D;&#39;tbspan&#39;]&#x2F;&#x2F;a&#x2F;@href&quot;)</span><br><span class="line">    # def abc(url1):</span><br><span class="line">    #     return BASE_DOMAIN+url1</span><br><span class="line">    # index&#x3D;0</span><br><span class="line">    # for detail_url in detail_urls:</span><br><span class="line">    #         detail_url &#x3D; abc(detail_url)</span><br><span class="line">    #         detail_urls[index]&#x3D;detail_url</span><br><span class="line">    #         index &#x3D;index+1</span><br><span class="line">    detail_urls&#x3D;map(lambda url:BASE_DOMAIN+url,detail_urls)</span><br><span class="line">    return detail_urls</span><br><span class="line">def parse_detail_page(url):</span><br><span class="line">    resp&#x3D;requests.get(url,headers&#x3D;HEADERS)</span><br><span class="line">    text&#x3D;resp.content.decode(&quot;gbk&quot;)</span><br><span class="line">    movie&#x3D;&#123;&#125;</span><br><span class="line">    #print(text)</span><br><span class="line">    html&#x3D;etree.HTML(text)</span><br><span class="line">    #电影名称</span><br><span class="line">    title&#x3D;html.xpath(&quot;&#x2F;&#x2F;div[@class&#x3D;&#39;title_all&#39;]&#x2F;&#x2F;font[@color&#x3D;&#39;#07519a&#39;]&#x2F;&#x2F;text()&quot;)[0]</span><br><span class="line">    movie[&#39;title&#39;]&#x3D;title</span><br><span class="line">    #电影海报</span><br><span class="line">    img&#x3D;html.xpath(&quot;&#x2F;&#x2F;div[@id&#x3D;&#39;Zoom&#39;]&#x2F;&#x2F;img&#x2F;@src&quot;)</span><br><span class="line">    cover&#x3D;img</span><br><span class="line">    movie[&#39;cover&#39;]&#x3D;cover</span><br><span class="line">    #div下所有文本</span><br><span class="line">    infos&#x3D;html.xpath(&quot;&#x2F;&#x2F;div[@id&#x3D;&#39;Zoom&#39;]&#x2F;&#x2F;text()&quot;)</span><br><span class="line">    for index,info in enumerate(infos):</span><br><span class="line">        def page_info(info,rules):</span><br><span class="line">            info&#x3D;info.replace(rules,&quot;&quot;).strip()</span><br><span class="line">            return info</span><br><span class="line">        if info.startswith(&quot;◎年　　代&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎年　　代&quot;)</span><br><span class="line">            movie[&#39;year&#39;]&#x3D;info</span><br><span class="line">        elif info.startswith(&quot;◎产　　地&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎产　　地&quot;)</span><br><span class="line">            movie[&#39;country&#39;]&#x3D;info</span><br><span class="line">        elif info.startswith(&quot;◎类　　别&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎类　　别&quot;)</span><br><span class="line">            movie[&#39;类别&#39;]&#x3D;info</span><br><span class="line">        elif info.startswith(&quot;◎豆瓣评分&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎豆瓣评分&quot;)</span><br><span class="line">            movie[&#39;豆瓣评分&#39;]&#x3D;info</span><br><span class="line">        elif info.startswith(&quot;◎导　　演&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎导　　演&quot;)</span><br><span class="line">            dirctors&#x3D;[info]</span><br><span class="line">            for x in range(index+1,len(infos)):</span><br><span class="line">                dirctor&#x3D;infos[x].strip()</span><br><span class="line">                if dirctor.startswith(&quot;◎编　　剧&quot;):</span><br><span class="line">                    break</span><br><span class="line">                dirctors.append(dirctor)</span><br><span class="line">            movie[&#39;导演&#39;]&#x3D;dirctors</span><br><span class="line">        elif info.startswith(&quot;◎编　　剧&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎编　　剧&quot;)</span><br><span class="line">            movie[&quot;编剧&quot;]&#x3D;info</span><br><span class="line">        elif info.startswith(&quot;◎主　　演&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎主　　演&quot;)</span><br><span class="line">            actors&#x3D;[info]</span><br><span class="line">            for x in range(index+1,len(infos)):</span><br><span class="line">                actor&#x3D;infos[x].strip()</span><br><span class="line">                if(actor.startswith(&quot;◎标　　签&quot;)):</span><br><span class="line">                    break</span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[&#39;actors&#39;]&#x3D;actors</span><br><span class="line">        elif info.startswith(&quot;◎简　　介&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎简　　介&quot;)</span><br><span class="line">            for x in range(index+1,len(infos)):</span><br><span class="line">                detail&#x3D;infos[x].strip()</span><br><span class="line">                if(detail.startswith(&quot;◎获奖情况&quot;)):</span><br><span class="line">                    break</span><br><span class="line">                movie[&#39;detail&#39;]&#x3D;detail</span><br><span class="line">    download_url&#x3D;html.xpath(&quot;&#x2F;&#x2F;td[@bgcolor&#x3D;&#39;#fdfddf&#39;]&#x2F;&#x2F;a&#x2F;text()&quot;)</span><br><span class="line">    movie[&#39;download_url&#39;]&#x3D;download_url</span><br><span class="line">    return movie</span><br><span class="line">def spider():</span><br><span class="line">    #爬取前7页</span><br><span class="line">    base_url&#x3D;&quot;https:&#x2F;&#x2F;www.dytt8.net&#x2F;html&#x2F;gndy&#x2F;dyzz&#x2F;list_23_&#123;&#125;.html&quot;</span><br><span class="line">    movies&#x3D;[]</span><br><span class="line">    for x in range(1,8):</span><br><span class="line">        #第一个循环获取每个页面</span><br><span class="line">        url&#x3D;base_url.format(x)</span><br><span class="line">        detail_urls&#x3D;get_detail_url(url)</span><br><span class="line">        for detail_url in detail_urls:</span><br><span class="line">            #第二个循环获取每个网页电影的详细页</span><br><span class="line">            movie&#x3D;parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">        print(movies)</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure></p>
+<p>具体代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from lxml import etree</span><br><span class="line">BASE_DOMAIN&#x3D;&quot;https:&#x2F;&#x2F;www.dytt8.net&quot;</span><br><span class="line">HEADERS&#x3D;&#123;</span><br><span class="line">    &quot;User-Agent&quot;:&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;71.0.3578.98 Safari&#x2F;537.36&quot;</span><br><span class="line">&#125;</span><br><span class="line">def get_detail_url(url):</span><br><span class="line">    resp &#x3D; requests.get(url, headers&#x3D;HEADERS)</span><br><span class="line">    text &#x3D; resp.text</span><br><span class="line">    # print(text)</span><br><span class="line">    html &#x3D; etree.HTML(text)</span><br><span class="line">    detail_urls &#x3D; html.xpath(&quot;&#x2F;&#x2F;ul&#x2F;&#x2F;table[@class&#x3D;&#39;tbspan&#39;]&#x2F;&#x2F;a&#x2F;@href&quot;)</span><br><span class="line">    # def abc(url1):</span><br><span class="line">    #     return BASE_DOMAIN+url1</span><br><span class="line">    # index&#x3D;0</span><br><span class="line">    # for detail_url in detail_urls:</span><br><span class="line">    #         detail_url &#x3D; abc(detail_url)</span><br><span class="line">    #         detail_urls[index]&#x3D;detail_url</span><br><span class="line">    #         index &#x3D;index+1</span><br><span class="line">    detail_urls&#x3D;map(lambda url:BASE_DOMAIN+url,detail_urls)</span><br><span class="line">    return detail_urls</span><br><span class="line">def parse_detail_page(url):</span><br><span class="line">    resp&#x3D;requests.get(url,headers&#x3D;HEADERS)</span><br><span class="line">    text&#x3D;resp.content.decode(&quot;gbk&quot;)</span><br><span class="line">    movie&#x3D;&#123;&#125;</span><br><span class="line">    #print(text)</span><br><span class="line">    html&#x3D;etree.HTML(text)</span><br><span class="line">    #电影名称</span><br><span class="line">    title&#x3D;html.xpath(&quot;&#x2F;&#x2F;div[@class&#x3D;&#39;title_all&#39;]&#x2F;&#x2F;font[@color&#x3D;&#39;#07519a&#39;]&#x2F;&#x2F;text()&quot;)[0]</span><br><span class="line">    movie[&#39;title&#39;]&#x3D;title</span><br><span class="line">    #电影海报</span><br><span class="line">    img&#x3D;html.xpath(&quot;&#x2F;&#x2F;div[@id&#x3D;&#39;Zoom&#39;]&#x2F;&#x2F;img&#x2F;@src&quot;)</span><br><span class="line">    cover&#x3D;img</span><br><span class="line">    movie[&#39;cover&#39;]&#x3D;cover</span><br><span class="line">    #div下所有文本</span><br><span class="line">    infos&#x3D;html.xpath(&quot;&#x2F;&#x2F;div[@id&#x3D;&#39;Zoom&#39;]&#x2F;&#x2F;text()&quot;)</span><br><span class="line">    for index,info in enumerate(infos):</span><br><span class="line">        def page_info(info,rules):</span><br><span class="line">            info&#x3D;info.replace(rules,&quot;&quot;).strip()</span><br><span class="line">            return info</span><br><span class="line">        if info.startswith(&quot;◎年　　代&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎年　　代&quot;)</span><br><span class="line">            movie[&#39;year&#39;]&#x3D;info</span><br><span class="line">        elif info.startswith(&quot;◎产　　地&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎产　　地&quot;)</span><br><span class="line">            movie[&#39;country&#39;]&#x3D;info</span><br><span class="line">        elif info.startswith(&quot;◎类　　别&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎类　　别&quot;)</span><br><span class="line">            movie[&#39;类别&#39;]&#x3D;info</span><br><span class="line">        elif info.startswith(&quot;◎豆瓣评分&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎豆瓣评分&quot;)</span><br><span class="line">            movie[&#39;豆瓣评分&#39;]&#x3D;info</span><br><span class="line">        elif info.startswith(&quot;◎导　　演&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎导　　演&quot;)</span><br><span class="line">            dirctors&#x3D;[info]</span><br><span class="line">            for x in range(index+1,len(infos)):</span><br><span class="line">                dirctor&#x3D;infos[x].strip()</span><br><span class="line">                if dirctor.startswith(&quot;◎编　　剧&quot;):</span><br><span class="line">                    break</span><br><span class="line">                dirctors.append(dirctor)</span><br><span class="line">            movie[&#39;导演&#39;]&#x3D;dirctors</span><br><span class="line">        elif info.startswith(&quot;◎编　　剧&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎编　　剧&quot;)</span><br><span class="line">            movie[&quot;编剧&quot;]&#x3D;info</span><br><span class="line">        elif info.startswith(&quot;◎主　　演&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎主　　演&quot;)</span><br><span class="line">            actors&#x3D;[info]</span><br><span class="line">            for x in range(index+1,len(infos)):</span><br><span class="line">                actor&#x3D;infos[x].strip()</span><br><span class="line">                if(actor.startswith(&quot;◎标　　签&quot;)):</span><br><span class="line">                    break</span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[&#39;actors&#39;]&#x3D;actors</span><br><span class="line">        elif info.startswith(&quot;◎简　　介&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎简　　介&quot;)</span><br><span class="line">            for x in range(index+1,len(infos)):</span><br><span class="line">                detail&#x3D;infos[x].strip()</span><br><span class="line">                if(detail.startswith(&quot;◎获奖情况&quot;)):</span><br><span class="line">                    break</span><br><span class="line">                movie[&#39;detail&#39;]&#x3D;detail</span><br><span class="line">    download_url&#x3D;html.xpath(&quot;&#x2F;&#x2F;td[@bgcolor&#x3D;&#39;#fdfddf&#39;]&#x2F;&#x2F;a&#x2F;text()&quot;)</span><br><span class="line">    movie[&#39;download_url&#39;]&#x3D;download_url</span><br><span class="line">    return movie</span><br><span class="line">def spider():</span><br><span class="line">    #爬取前7页</span><br><span class="line">    base_url&#x3D;&quot;https:&#x2F;&#x2F;www.dytt8.net&#x2F;html&#x2F;gndy&#x2F;dyzz&#x2F;list_23_&#123;&#125;.html&quot;</span><br><span class="line">    movies&#x3D;[]</span><br><span class="line">    for x in range(1,8):</span><br><span class="line">        #第一个循环获取每个页面</span><br><span class="line">        url&#x3D;base_url.format(x)</span><br><span class="line">        detail_urls&#x3D;get_detail_url(url)</span><br><span class="line">        for detail_url in detail_urls:</span><br><span class="line">            #第二个循环获取每个网页电影的详细页</span><br><span class="line">            movie&#x3D;parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">        print(movies)</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure>
+
 <hr>
-<h5 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h5><p><strong>获取每个网页的电影详细页：</strong><br><img src data-echo="爬虫实战-电影天堂爬虫/1.png" alt="爬虫实战-电影天堂爬虫"></p>
+<h5 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h5><p><strong>获取每个网页的电影详细页：</strong><br><img src="/2020/02/05/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98-%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E7%88%AC%E8%99%AB/1.png" alt="爬虫实战-电影天堂爬虫"></p>
 <hr>
-<h5 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h5><p><strong>解析电影详细页：</strong><br><img src data-echo="爬虫实战-电影天堂爬虫/2.png" alt="爬虫实战-电影天堂爬虫"><br><img src data-echo="爬虫实战-电影天堂爬虫/3.png" alt="爬虫实战-电影天堂爬虫"></p>
+<h5 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h5><p><strong>解析电影详细页：</strong><br><img src="/2020/02/05/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98-%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E7%88%AC%E8%99%AB/2.png" alt="爬虫实战-电影天堂爬虫"><br><img src="/2020/02/05/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98-%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E7%88%AC%E8%99%AB/3.png" alt="爬虫实战-电影天堂爬虫"></p>
 <hr>
-<h5 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h5><p><strong>爬取前七页：</strong><br><img src data-echo="爬虫实战-电影天堂爬虫/4.png" alt="爬虫实战-电影天堂爬虫"></p>
+<h5 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h5><p><strong>爬取前七页：</strong><br><img src="/2020/02/05/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98-%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E7%88%AC%E8%99%AB/4.png" alt="爬虫实战-电影天堂爬虫"></p>
 
         </div>
         
@@ -587,10 +618,10 @@
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/page/0/">Zurück</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/0/">Previous</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/2/">Weiter</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/2/">Next</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -654,7 +685,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategorien
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -679,7 +710,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Folgen</a>
+                Follow</a>
         </div>
         
         
@@ -748,7 +779,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategorien
+                Categories
             </h3>
             <ul class="menu-list">
             
@@ -765,7 +796,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Letzte Einträge
+            Recent
         </h3>
         
         <article class="media">
@@ -870,7 +901,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archive
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -928,7 +959,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Letzte Einträge
+            Recent
         </h3>
         
         <article class="media">
@@ -1033,7 +1064,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archive
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1097,8 +1128,6 @@
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 
-				<br>
-                <span class="post-count">28k</span> Words in Total
                 </p>
             </div>
             <div class="level-end">
@@ -1134,36 +1163,6 @@
             </div>
         </div>
     </div>
-	
-        <!-- 不蒜子统计 -->
-        <span id="busuanzi_container_site_pv">
-                本站总访问量<span id="busuanzi_value_site_pv"></span>次
-        </span>
-        <span class="post-meta-divider">|</span>
-        <span id="busuanzi_container_site_uv" style='display:none'>
-                本站访客数<span id="busuanzi_value_site_uv"></span>人
-        </span>
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  
-  <br>
-  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-            <script>
-                var now = new Date(); 
-                function createtime() { 
-                    var grt= new Date("11/27/2019 17:49:00");//此处修改你的建站时间或者网站上线时间 
-                    now.setTime(now.getTime()+250); 
-                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
-                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
-                } 
-            setInterval("createtime()",250);
-            </script>
-
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
@@ -1244,7 +1243,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1268,7 +1267,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1281,10 +1280,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Seiten',
-                CATEGORIES: 'Kategorien',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
-                UNTITLED: '(Unbenannt)',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };
