@@ -1,0 +1,8 @@
+User-agent: * Allow: /
+Allow: /archives/
+Disallow: /tags/
+Disallow: /categories/
+
+
+Sitemap: https://da4er.top/sitemap.xml
+Sitemap: https://da4er.top/baidusitemap.xml
