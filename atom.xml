@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://da4er.top/"/>
-  <updated>2020-02-07T07:51:57.592Z</updated>
+  <updated>2020-02-07T08:53:38.157Z</updated>
   <id>https://da4er.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2.7 [GXYCTF2019]佛系青年</title>
+    <link href="https://da4er.top/2-7-GXYCTF2019-%E4%BD%9B%E7%B3%BB%E9%9D%92%E5%B9%B4.html"/>
+    <id>https://da4er.top/2-7-GXYCTF2019-%E4%BD%9B%E7%B3%BB%E9%9D%92%E5%B9%B4.html</id>
+    <published>2020-02-07T08:51:35.000Z</published>
+    <updated>2020-02-07T08:53:38.157Z</updated>
+    
+    <content type="html"><![CDATA[<p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>下载压缩包解压有密码，binwalk分离出来两个压缩包。</strong><br><img src data-echo="2-7-GXYCTF2019-佛系青年/1.png" alt="2-7-GXYCTF2019-佛系青年"><br><strong>会直接把fo.txt分离出来。</strong><br><img src data-echo="2-7-GXYCTF2019-佛系青年/2.png" alt="2-7-GXYCTF2019-佛系青年"><br><strong>打开是’与佛论禅’密码，在线网站解密一下。</strong><br><img src data-echo="2-7-GXYCTF2019-佛系青年/3.png" alt="2-7-GXYCTF2019-佛系青年"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/bai.js&quot;&gt;&lt;/script&gt;&lt;br&gt;&lt;strong&gt;下载压缩包解压有密码，binwalk分离出来两个压缩包。&lt;/strong&gt;&lt;br&gt;&lt;img src data-echo=&quot;2-7
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="https://da4er.top/categories/CTF/"/>
+    
+    
+      <category term="CTF" scheme="https://da4er.top/tags/CTF/"/>
+    
+  </entry>
   
   <entry>
     <title>2.6 buuctf_misc_从娃娃抓起</title>
