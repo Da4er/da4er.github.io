@@ -1,670 +1,987 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
-  <meta charset="utf-8">
-  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
-  
-  
-  
-  
-  <title>CSS基本学习(一) | Da4er&#39;s Blogs</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="比赛打完了，开始学习学校的课程了，以此记录学习. 一.CSS基本语法选择器{属性1:属性值1;属性2:属性值2;….}每条CSS包括两部分组成:选择器和一条或多条属性声明。每条属性声明由一个属性和一个值组成。属性和值之间用冒号，多条属性之间用分号。将多条属性放到一个花括号中。 1234567891011121314151617&lt;!DOCTYPE html&gt;&lt;html&gt;&amp;lt">
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>CSS基本学习(一) - Da4er&#39;s Blogs</title>
+
+
+    <meta name="description" content="比赛打完了，开始学习学校的课程了，以此记录学习. 一.CSS基本语法选择器{属性1:属性值1;属性2:属性值2;….}每条CSS包括两部分组成:选择器和一条或多条属性声明。每条属性声明由一个属性和一个值组成。属性和值之间用冒号，多条属性之间用分号。将多条属性放到一个花括号中。1234567891011121314151617&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS基本学习(一)">
 <meta property="og:url" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/index.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="比赛打完了，开始学习学校的课程了，以此记录学习. 一.CSS基本语法选择器{属性1:属性值1;属性2:属性值2;….}每条CSS包括两部分组成:选择器和一条或多条属性声明。每条属性声明由一个属性和一个值组成。属性和值之间用冒号，多条属性之间用分号。将多条属性放到一个花括号中。 1234567891011121314151617&lt;!DOCTYPE html&gt;&lt;html&gt;&amp;lt">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/1.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/2.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/3.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/4.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/5.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/6.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/7.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/8.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/9.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/10.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/11.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/12.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/13.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/14.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/15.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/16.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/17.png">
-<meta property="og:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/18.png">
+<meta property="og:description" content="比赛打完了，开始学习学校的课程了，以此记录学习. 一.CSS基本语法选择器{属性1:属性值1;属性2:属性值2;….}每条CSS包括两部分组成:选择器和一条或多条属性声明。每条属性声明由一个属性和一个值组成。属性和值之间用冒号，多条属性之间用分号。将多条属性放到一个花括号中。1234567891011121314151617&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;">
+<meta property="og:image" content="https://da4er.top/images/og_image.png">
 <meta property="article:published_time" content="2019-11-09T09:19:32.000Z">
 <meta property="article:modified_time" content="2019-11-09T09:34:17.136Z">
 <meta property="article:author" content="Da4er&#39;s">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/1.png">
-  
-  
-    <link rel="icon" href="/img/3.jpg">
-  
-  
-  
-<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+<meta name="twitter:image" content="https://da4er.top/images/og_image.png">
 
-  
-  
+
+
+
+
+<link rel="alternative" href="/atom.xml" title="CSS基本学习(一)" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/3.jpg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
 <link rel="stylesheet" href="/css/style.css">
-
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
-  
-      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  
-  <!-- 加载特效 -->
-    <script src="/js/pace.js"></script>
-    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
-  <script>
-      var yiliaConfig = {
-          fancybox: true,
-          animate: true,
-          isHome: false,
-          isPost: true,
-          isArchive: false,
-          isTag: false,
-          isCategory: false,
-          open_in_new: true
-      }
-  </script>
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Da4er's Blogs" type="application/atom+xml">
 </head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-        <a href="/" class="profilepic">
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
             
-            <img lazy-src="/img/2.jpg" class="js-avatar">
+                <img src="/images/gen.svg" alt="CSS基本学习(一)" height="28">
             
-        </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/">Da4er&#39;s</a></h1>
-        </hgroup>
-        
-        <p class="header-subtitle">代码审计</p>
-        
-        
-            <form>
-                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
-            </form>
-            <div id="local-search-result"></div>
-        
-        
-            <script type="text/javascript">
-                (function() {
-                    'use strict';
-                    function getMatchData(keyword, data) {
-                        var matchData = [];
-                        for(var i =0;i<data.length;i++){
-                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
-                                matchData.push(data[i])
-                        }
-                        return matchData;
-                    }
-                    var $input = $('#local-search-input');
-                    var $resultContent = $('#local-search-result');
-                    $input.keyup(function(){
-                        $.ajax({
-                            url: '/search.json',
-                            dataType: "json",
-                            success: function( json ) {
-                                var str='<ul class=\"search-result-list\">';                
-                                var keyword = $input.val().trim().toLowerCase();
-                                $resultContent.innerHTML = "";
-                                if ($input.val().trim().length <= 0) {
-                                    $resultContent.empty();
-                                    $('#switch-area').show();
-                                    return;
-                                }
-                                var results = getMatchData(keyword, json);
-                                if(results.length === 0){
-                                    $resultContent.empty();
-                                    $('#switch-area').show();
-                                    return;
-                                } 
-                                for(var i =0; i<results.length; i++){
-                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
-                                }
-                                str += "</ul>";
-                                $resultContent.empty();
-                                $resultContent.append(str);
-                                $('#switch-area').hide();
-                            }
-                        });
-                    });
-                })();
-            </script>
-        
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">全部文章</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于我</a>
+                
             </div>
-        
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a  href="/archives/">所有文章</a></li>
-                        
-                            <li><a  href="/categories/CTF/">CTF</a></li>
-                        
-                            <li><a  href="/categories/web">Web安全&amp;代码审计</a></li>
-                        
-                            <li><a  href="/categories/python">Python</a></li>
-                        
-                            <li><a  href="/categories/algorithm">算法学习</a></li>
-                        
-                            <li><a  href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fl github"  target="_blank" href="https://github.com/Da4er" title="github">github</a>
-                            
-                        </ul>
-                    </nav>
-                </section>
+            
+            <div class="navbar-end">
                 
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Da4er">
                         
-                    </div>
-                </section>
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
                 
                 
                 
-                
-                <section class="switch-part switch-part3">
-                
-                    <div id="js-aboutme">CTF# Web安全&amp;代码审计#</div>
-                </section>
+                <a class="navbar-item search" title="Suche" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
                 
             </div>
         </div>
-    </header>
-</div>
-
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Da4er&#39;s</a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                
-                    <img lazy-src="/img/2.jpg" class="js-avatar">
-                
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">Da4er&#39;s</a></h1>
-            </hgroup>
-            
-            <p class="header-subtitle">代码审计</p>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/categories/CTF/">CTF</a></li>
-                
-                    <li><a href="/categories/web">Web安全&amp;代码审计</a></li>
-                
-                    <li><a href="/categories/python">Python</a></li>
-                
-                    <li><a href="/categories/algorithm">算法学习</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                <div class="social">
-                    
-                        <a class="github" target="_blank" href="https://github.com/Da4er" title="github">github</a>
-                    
-                </div>
-            </nav>
-        </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-CSS基本学习-一" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/" class="article-date">
-      <time datetime="2019-11-09T09:19:32.000Z" itemprop="datePublished">2019-11-09</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
     
-    
-      <header class="article-header">
+    <div class="card-content article ">
         
-  
-    <h1 class="article-title" itemprop="name">
-      CSS基本学习(一)
-    </h1>
-  
-
-
-      </header>
-      
-      <div class="article-info article-info-post">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-09T09:19:32.000Z">2019-11-09</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    27 minutes lesen (Über 4087 Worte)
+                </span>
+                
+                
+            </div>
+        </div>
         
-
-        
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><strong>比赛打完了，开始学习学校的课程了，以此记录学习.</strong></p>
-<h2 id="一-CSS基本语法"><a href="#一-CSS基本语法" class="headerlink" title="一.CSS基本语法"></a>一.CSS基本语法</h2><p>选择器{属性1:属性值1;属性2:属性值2;….}<br>每条CSS包括两部分组成:选择器和一条或多条属性声明。每条属性声明由一个属性和一个值组成。<br>属性和值之间用冒号，多条属性之间用分号。将多条属性放到一个花括号中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;   &#x2F;*使用内联css*&#x2F;</span><br><span class="line">		p&#123;</span><br><span class="line">			text-align: center;</span><br><span class="line">			color: blue;</span><br><span class="line">			font-family: &quot;Comic Sans MS&quot;,arial,黑体;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;使用css定义网页段落水平对齐方式，文体颜色和字体&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/1.png" alt><br>注意:在定义css属性值时，如果时多个单词组成要加引号，单个单词不需要加引号.</p>
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                CSS基本学习(一)
+            
+        </h1>
+        <div class="content">
+            <p><strong>比赛打完了，开始学习学校的课程了，以此记录学习.</strong></p>
+<h2 id="一-CSS基本语法"><a href="#一-CSS基本语法" class="headerlink" title="一.CSS基本语法"></a>一.CSS基本语法</h2><p>选择器{属性1:属性值1;属性2:属性值2;….}<br>每条CSS包括两部分组成:选择器和一条或多条属性声明。每条属性声明由一个属性和一个值组成。<br>属性和值之间用冒号，多条属性之间用分号。将多条属性放到一个花括号中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;   &#x2F;*使用内联css*&#x2F;</span><br><span class="line">		p&#123;</span><br><span class="line">			text-align: center;</span><br><span class="line">			color: blue;</span><br><span class="line">			font-family: &quot;Comic Sans MS&quot;,arial,黑体;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;使用css定义网页段落水平对齐方式，文体颜色和字体&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><br><img src data-echo="CSS基本学习-一/1.png" alt><br>注意:在定义css属性值时，如果时多个单词组成要加引号，单个单词不需要加引号.</p>
 <h2 id="二-CSS基本选择器"><a href="#二-CSS基本选择器" class="headerlink" title="二.CSS基本选择器"></a>二.CSS基本选择器</h2><p>CSS选择器包括俩种基本选择器和复合选择器，基本选择器主要包括元素选择器，类选择器，id选择器，伪类选择器，伪元素选择器；复合选择器是通过基本选择器进行组合构成的。</p>
-<h3 id="1-元素选择器"><a href="#1-元素选择器" class="headerlink" title="1.元素选择器"></a>1.元素选择器</h3><p>基本语法：html元素名{属性1：属性值1；属性2：属性值2；…..}<br>元素选择器对指定的html元素全部显示效果。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;   &#x2F;*使用内联css*&#x2F;</span><br><span class="line">		p&#123;</span><br><span class="line">			text-align: center;</span><br><span class="line">			color: blue;</span><br><span class="line">			font-family: &quot;Comic Sans MS&quot;,arial,黑体;</span><br><span class="line">		&#125;</span><br><span class="line">		h1&#123;</span><br><span class="line">			text-align: center;</span><br><span class="line">			color: red;</span><br><span class="line">		&#125;</span><br><span class="line">		h2&#123;</span><br><span class="line">			text-align: center;</span><br><span class="line">			color: green;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;使用css定义网页段落水平对齐方式，文体颜色和字体&lt;&#x2F;p&gt;</span><br><span class="line">&lt;h1&gt;css对h1定义颜色&lt;&#x2F;h1&gt;</span><br><span class="line">&lt;h2&gt;css对h2定义颜色&lt;&#x2F;h2&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/2.png" alt></p>
-<h3 id="2-类选择器"><a href="#2-类选择器" class="headerlink" title="2.类选择器"></a>2.类选择器</h3><p>元素选择器是对页面中的所有相同元素的统一格式，但如果需要对相同元素的某一个元素做特殊效果，我们就需要类选择器或者id选择器。<br>基本语法：.类选择器{属性1：属性值1；属性2：属性值2；}<br>语法说明：类选择器第一个字符不能使用数字，类选择器名前的”.”是类选择器的标识，不能省略，类选择器区分大小写。<br>应用类选择器样式的元素中添加”class”属性，且将其值设置为类选择器名。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	  .txt1&#123;</span><br><span class="line">	  	color: blue;</span><br><span class="line">	  	font-size: 26px;</span><br><span class="line">	  	font-style: 黑体;</span><br><span class="line">	  &#125;</span><br><span class="line">	  .txt2&#123;</span><br><span class="line">	  	color: red;</span><br><span class="line">	  	font-style: italic;</span><br><span class="line">	  	font-size:30px;</span><br><span class="line">	  &#125;</span><br><span class="line">	&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p class&#x3D;&quot;txt1&quot;&gt;使用txt1类选择器显示效果&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p class&#x3D;&quot;txt2&quot;&gt;使用txt2类选择器显示效果&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/3.png" alt><br>需要注意的是类选择器的优先级高于元素选择器，所有对一个元素即使用元素选择器，又使用类选择器，最后显示的效果是类选择器定义的效果。</p>
-<h3 id="3-ID选择器"><a href="#3-ID选择器" class="headerlink" title="3.ID选择器"></a>3.ID选择器</h3><p>ID选择器和类选择器一样，都是对页面相同元素特定的一个元素进行特殊效果处理。<br>基本语法：#ID选择器名{属性1：属性值1；属性2：属性值2；…..}<br>在应用ID选择器时，在元素添加id属性，属性值为id选择器名。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	  #txt1&#123;</span><br><span class="line">	  	color: blue;</span><br><span class="line">	  	font-size: 26px;</span><br><span class="line">	  	font-style: 黑体;</span><br><span class="line">	  &#125;</span><br><span class="line">	  #txt2&#123;</span><br><span class="line">	  	color: red;</span><br><span class="line">	  	font-style: italic;</span><br><span class="line">	  	font-size:30px;</span><br><span class="line">	  &#125;</span><br><span class="line">	&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p id&#x3D;&quot;txt1&quot;&gt;使用txt1类选择器显示效果&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p id&#x3D;&quot;txt2&quot;&gt;使用txt2类选择器显示效果&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/4.png" alt><br>id选择器优先级同样优先元素选择器</p>
-<h3 id="4-通用选择器"><a href="#4-通用选择器" class="headerlink" title="4.通用选择器"></a>4.通用选择器</h3><p>通用选择器用通配符”*” 表示，它可以选择文档中所有元素。主要用于重置文档元素默认样式，一般用来重置文档元素的内外边距。<br>基本语法:*{属性1：属性值1；属性2：属性值2；}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*&#123;margin:0px;</span><br><span class="line">  padding:0px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-元素选择器"><a href="#1-元素选择器" class="headerlink" title="1.元素选择器"></a>1.元素选择器</h3><p>基本语法：html元素名{属性1：属性值1；属性2：属性值2；…..}<br>元素选择器对指定的html元素全部显示效果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;   &#x2F;*使用内联css*&#x2F;</span><br><span class="line">		p&#123;</span><br><span class="line">			text-align: center;</span><br><span class="line">			color: blue;</span><br><span class="line">			font-family: &quot;Comic Sans MS&quot;,arial,黑体;</span><br><span class="line">		&#125;</span><br><span class="line">		h1&#123;</span><br><span class="line">			text-align: center;</span><br><span class="line">			color: red;</span><br><span class="line">		&#125;</span><br><span class="line">		h2&#123;</span><br><span class="line">			text-align: center;</span><br><span class="line">			color: green;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;使用css定义网页段落水平对齐方式，文体颜色和字体&lt;&#x2F;p&gt;</span><br><span class="line">&lt;h1&gt;css对h1定义颜色&lt;&#x2F;h1&gt;</span><br><span class="line">&lt;h2&gt;css对h2定义颜色&lt;&#x2F;h2&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><br><img src data-echo="CSS基本学习-一/2.png" alt></p>
+<h3 id="2-类选择器"><a href="#2-类选择器" class="headerlink" title="2.类选择器"></a>2.类选择器</h3><p>元素选择器是对页面中的所有相同元素的统一格式，但如果需要对相同元素的某一个元素做特殊效果，我们就需要类选择器或者id选择器。<br>基本语法：.类选择器{属性1：属性值1；属性2：属性值2；}<br>语法说明：类选择器第一个字符不能使用数字，类选择器名前的”.”是类选择器的标识，不能省略，类选择器区分大小写。<br>应用类选择器样式的元素中添加”class”属性，且将其值设置为类选择器名。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	  .txt1&#123;</span><br><span class="line">	  	color: blue;</span><br><span class="line">	  	font-size: 26px;</span><br><span class="line">	  	font-style: 黑体;</span><br><span class="line">	  &#125;</span><br><span class="line">	  .txt2&#123;</span><br><span class="line">	  	color: red;</span><br><span class="line">	  	font-style: italic;</span><br><span class="line">	  	font-size:30px;</span><br><span class="line">	  &#125;</span><br><span class="line">	&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p class&#x3D;&quot;txt1&quot;&gt;使用txt1类选择器显示效果&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p class&#x3D;&quot;txt2&quot;&gt;使用txt2类选择器显示效果&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><br><img src data-echo="CSS基本学习-一/3.png" alt><br>需要注意的是类选择器的优先级高于元素选择器，所有对一个元素即使用元素选择器，又使用类选择器，最后显示的效果是类选择器定义的效果。</p>
+<h3 id="3-ID选择器"><a href="#3-ID选择器" class="headerlink" title="3.ID选择器"></a>3.ID选择器</h3><p>ID选择器和类选择器一样，都是对页面相同元素特定的一个元素进行特殊效果处理。<br>基本语法：#ID选择器名{属性1：属性值1；属性2：属性值2；…..}<br>在应用ID选择器时，在元素添加id属性，属性值为id选择器名。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	  #txt1&#123;</span><br><span class="line">	  	color: blue;</span><br><span class="line">	  	font-size: 26px;</span><br><span class="line">	  	font-style: 黑体;</span><br><span class="line">	  &#125;</span><br><span class="line">	  #txt2&#123;</span><br><span class="line">	  	color: red;</span><br><span class="line">	  	font-style: italic;</span><br><span class="line">	  	font-size:30px;</span><br><span class="line">	  &#125;</span><br><span class="line">	&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p id&#x3D;&quot;txt1&quot;&gt;使用txt1类选择器显示效果&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p id&#x3D;&quot;txt2&quot;&gt;使用txt2类选择器显示效果&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><br><img src data-echo="CSS基本学习-一/4.png" alt><br>id选择器优先级同样优先元素选择器</p>
+<h3 id="4-通用选择器"><a href="#4-通用选择器" class="headerlink" title="4.通用选择器"></a>4.通用选择器</h3><p>通用选择器用通配符”<em>“ 表示，它可以选择文档中所有元素。主要用于重置文档元素默认样式，一般用来重置文档元素的内外边距。<br>基本语法:</em>{属性1：属性值1；属性2：属性值2；}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*&#123;margin:0px;</span><br><span class="line">  padding:0px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="5-伪类选择器"><a href="#5-伪类选择器" class="headerlink" title="5.伪类选择器"></a>5.伪类选择器</h3><p>CSS伪类用于向某些选择器添加特殊效果，伪类一开始用来表示一些元素的动态效果，典型的就是链接的各个状态。<br>基本语法：选择器名:伪类{属性1：属性值1；属性2：属性值2；…..}<br>语法说明：选择器可以是任意类型的选择器，当选择器是类选择器时，可以在类选择器名前加上元素名，即将选择器名写成：元素名.类选择器名，比如：a.second:link<br>伪类类型：<br>:active //将样式添加到被激活的元素<br>:hover //当鼠标悬浮在元素上方时，向元素添加样式<br>:link   //将样式添加到未被访问过的链接<br>:visited //将样式添加到已被访问过的链接<br>:first-child  //将样式添加到元素的第一个子元素<br>:lang //向带有指定lang属性的元素添加样式</p>
 <h4 id="1-对链接定义显示效果"><a href="#1-对链接定义显示效果" class="headerlink" title="(1).对链接定义显示效果"></a>(1).对链接定义显示效果</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	 a:link&#123;</span><br><span class="line">	 	color: blue;</span><br><span class="line">	 &#125;</span><br><span class="line">	 a:visited&#123;</span><br><span class="line">	 	color: red;</span><br><span class="line">	 &#125;</span><br><span class="line">	 a:hover&#123;</span><br><span class="line">	 	color: green;</span><br><span class="line">	 &#125;</span><br><span class="line">	 a.second:link&#123;</span><br><span class="line">	 	color: #00f;</span><br><span class="line">	 	font-size: 26px;</span><br><span class="line">	 &#125;</span><br><span class="line">	 a.second:visited&#123;</span><br><span class="line">	 	color: #f00;</span><br><span class="line">	 	font-size: 26px;</span><br><span class="line">	 &#125;</span><br><span class="line">	 a.second:hover&#123;</span><br><span class="line">	 	color:#0f0;</span><br><span class="line">	 	font-size: 26px;</span><br><span class="line">	 &#125;</span><br><span class="line">	&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;www.baidu.com&quot;&gt;超链接1&lt;&#x2F;a&gt;</span><br><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;da4er.top&quot; class&#x3D;&quot;second&quot;&gt;超链接2&lt;&#x2F;a&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/5.png" alt></p>
+<p><img src data-echo="CSS基本学习-一/5.png" alt></p>
 <h4 id="2-元素选择器使用伪类"><a href="#2-元素选择器使用伪类" class="headerlink" title="(2).元素选择器使用伪类"></a>(2).元素选择器使用伪类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	input:focus&#123;</span><br><span class="line">		background-color: yellow;</span><br><span class="line">	&#125;</span><br><span class="line">	&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form action&#x3D;&quot;#&quot; method&#x3D;&quot;post&quot;&gt;</span><br><span class="line">	用户名:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot; &#x2F;&gt;&lt;br &#x2F;&gt;</span><br><span class="line">	密码:&lt;input type&#x3D;&quot;password&quot; name&#x3D;&quot;psw&quot; &#x2F;&gt;&lt;br &#x2F;&gt;</span><br><span class="line">	&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;1&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/6.png" alt></p>
+<p><img src data-echo="CSS基本学习-一/6.png" alt></p>
 <h4 id="3-使用伪类设置元素的第一个子元素的样式"><a href="#3-使用伪类设置元素的第一个子元素的样式" class="headerlink" title="(3).使用伪类设置元素的第一个子元素的样式"></a>(3).使用伪类设置元素的第一个子元素的样式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	p:first-child&#123;</span><br><span class="line">		font-size: 33px;</span><br><span class="line">	&#125;</span><br><span class="line">	li:first-child&#123;</span><br><span class="line">		color: red;</span><br><span class="line">	&#125;</span><br><span class="line">	&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;段落1，其顶层元素是boby&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p&gt;段落2，其顶层元素是boby&lt;&#x2F;p&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">	&lt;p&gt;段落1，其顶层元素是div&lt;&#x2F;p&gt;</span><br><span class="line">	&lt;p&gt;段落2，其顶层元素是div&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;ol&gt;</span><br><span class="line">	&lt;li&gt;有序列表项1，其顶层元素是ol&lt;&#x2F;li&gt;</span><br><span class="line">	&lt;li&gt;有序列表项2，其顶层元素是ol&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ol&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/7.png" alt></p>
+<p><img src data-echo="CSS基本学习-一/7.png" alt></p>
 <h4 id="4-伪类设置带有lang属性的元素"><a href="#4-伪类设置带有lang属性的元素" class="headerlink" title="(4).伪类设置带有lang属性的元素"></a>(4).伪类设置带有lang属性的元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	q:lang(no)&#123;</span><br><span class="line">		font-size: 33px;</span><br><span class="line">	&#125;</span><br><span class="line">	&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;&lt;q lang&#x3D;&#39;no&#39;&gt;11111&lt;&#x2F;q&gt;&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p&gt;&lt;q&gt;11111&lt;&#x2F;q&gt;&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/8.png" alt></p>
-<h3 id="6-伪元素选择器"><a href="#6-伪元素选择器" class="headerlink" title="6.伪元素选择器"></a>6.伪元素选择器</h3><p>CSS伪元素用于将特殊的效果添加到某些选择器。<br>基本语法：选择器名：伪元素{属性1：属性值1；属性2：属性值2；….}<br>语法说明：和伪类选择器一样，为了限定某类元素，也可以在类选择器名前加上元素名。所以选择器名写成：元素名.类选择器名。在CSS3中，为了区分两者，规定伪类用一个冒号来表示，伪元素用两个冒号表示。<br>伪元素类型：<br>:first-letter //向文本的第一个字符添加特殊样式<br>:firs-line  //向文件的首行添加特殊样式<br>:before //在元素之前添加内容<br>:after //在元素之后添加内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	p:first-line&#123;</span><br><span class="line">		font-size: 26px;</span><br><span class="line">		font-style: italic;</span><br><span class="line">		text-decoration: underline;</span><br><span class="line">	&#125;</span><br><span class="line">	p:first-letter&#123;</span><br><span class="line">		font-size: 50px;</span><br><span class="line">	&#125;</span><br><span class="line">	p:before&#123;</span><br><span class="line">		content: url(1.jpg);</span><br><span class="line">	&#125;</span><br><span class="line">	p:after&#123;</span><br><span class="line">		content: url(1.jpg);</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;https:&#x2F;&#x2F;da4er.top&lt;br&gt;</span><br><span class="line">https:&#x2F;&#x2F;da4er.top&lt;br&gt;</span><br><span class="line">&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/9.png" alt></p>
+<p><img src data-echo="CSS基本学习-一/8.png" alt></p>
+<h3 id="6-伪元素选择器"><a href="#6-伪元素选择器" class="headerlink" title="6.伪元素选择器"></a>6.伪元素选择器</h3><p>CSS伪元素用于将特殊的效果添加到某些选择器。<br>基本语法：选择器名：伪元素{属性1：属性值1；属性2：属性值2；….}<br>语法说明：和伪类选择器一样，为了限定某类元素，也可以在类选择器名前加上元素名。所以选择器名写成：元素名.类选择器名。在CSS3中，为了区分两者，规定伪类用一个冒号来表示，伪元素用两个冒号表示。<br>伪元素类型：<br>:first-letter //向文本的第一个字符添加特殊样式<br>:firs-line  //向文件的首行添加特殊样式<br>:before //在元素之前添加内容<br>:after //在元素之后添加内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	p:first-line&#123;</span><br><span class="line">		font-size: 26px;</span><br><span class="line">		font-style: italic;</span><br><span class="line">		text-decoration: underline;</span><br><span class="line">	&#125;</span><br><span class="line">	p:first-letter&#123;</span><br><span class="line">		font-size: 50px;</span><br><span class="line">	&#125;</span><br><span class="line">	p:before&#123;</span><br><span class="line">		content: url(1.jpg);</span><br><span class="line">	&#125;</span><br><span class="line">	p:after&#123;</span><br><span class="line">		content: url(1.jpg);</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;https:&#x2F;&#x2F;da4er.top&lt;br&gt;</span><br><span class="line">https:&#x2F;&#x2F;da4er.top&lt;br&gt;</span><br><span class="line">&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><br><img src data-echo="CSS基本学习-一/9.png" alt></p>
 <h2 id="三-CSS复合选择器"><a href="#三-CSS复合选择器" class="headerlink" title="三.CSS复合选择器"></a>三.CSS复合选择器</h2><p>复合选择器是通过基本选择器进行组合构成的，常用的复合选择器有：交集选择器，并集选择器，属性选择器，后代选择器，子元素选择器和相邻元素选择器等。</p>
-<h3 id="1-交集选择器"><a href="#1-交集选择器" class="headerlink" title="1.交集选择器"></a>1.交集选择器</h3><p>交集选择器由俩个选择器构成，第一个选择器必须是元素选择器，第二个选择器是类选择器或者id选择器。<br>交集选择器的作用范围将选中同时满足前后俩个选择器定义的元素，也就是要求前者定义的元素，同时必须是指定了后者的类别或者id。该元素的样式是：第一个选择器，第二个选择器，交集选择器层叠的效果。<br>基本语法：元素选择器.类选择器|#ID选择器{属性1：属性值1；属性2：属性值2；….}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	div&#123;</span><br><span class="line">		border-style: solid;</span><br><span class="line">		border-width: 10px;</span><br><span class="line">		border-color: blue;</span><br><span class="line">		margin: 20px;</span><br><span class="line">	&#125;</span><br><span class="line">	.al&#123;</span><br><span class="line">		font-style: italic;</span><br><span class="line">		background: #33ffcc;</span><br><span class="line">	&#125;</span><br><span class="line">	div.al&#123;</span><br><span class="line">		border-color: red;</span><br><span class="line">		background: #999999;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div&gt;元素选择器的效果&lt;&#x2F;div&gt;</span><br><span class="line">&lt;div class&#x3D;&quot;.al&quot;&gt;交集选择器的效果&lt;&#x2F;div&gt;</span><br><span class="line">&lt;p class&#x3D;&quot;.al&quot;&gt;类选择器的效果&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/10.png" alt></p>
-<h3 id="2-并集选择器"><a href="#2-并集选择器" class="headerlink" title="2.并集选择器"></a>2.并集选择器</h3><p>并集选择器又叫分组选择器，对不同选择器进行同种效果的展示，极大地减少了css代码量<br>基本语法：选择器1，选择器2，选择器3,…..{属性1：属性值1；属性2，属性值2；…..}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	div&#123;</span><br><span class="line">		border-style: solid;</span><br><span class="line">		border-width: 10px;</span><br><span class="line">		border-color: blue;</span><br><span class="line">	&#125;</span><br><span class="line">	h1,h2,div&#123;</span><br><span class="line">		background: #999999;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;Da4er&lt;&#x2F;h1&gt;&lt;br&gt;</span><br><span class="line">&lt;h2&gt;Da4er&lt;&#x2F;h2&gt;&lt;br&gt;</span><br><span class="line">&lt;div&gt;Da4er&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/11.png" alt></p>
-<h3 id="3-属性选择器"><a href="#3-属性选择器" class="headerlink" title="3.属性选择器"></a>3.属性选择器</h3><p>根据元素的属性及属性值来选择元素，此时用到的选择器称为属性选择器。<br>基本语法：[属性选择器1][属性选择器2]{属性1：属性值1；属性2：属性值2；…..}<br>元素选择器[属性选择器1][属性选择器2]{属性1：属性值1；属性2：属性值2；…..}<br>属性选择器格式：<br>1.[属性]  用于选取带有指定属性的元素<br>2.[属性=值]  用于选取带有指定属性和值的元素<br>3.[属性|=值]  用于选取属性值以指定开头的元素，注意该值必须是一个完整的单词或带有”-“作为连接符连接后续内容的字符串。<br>4.[属性^=值]  用于选取属性值以指定值开头的元素<br>5.[属性$=值]  用于选取属性值以指定值结尾的元素<br>6.[属性*=值]  用于选取属性值中包含指定值的元素<br>7.[属性~=值] 用于选取属性值中包含指定值的元素，注意该值必须是一个完整的单词</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	[title]&#123;</span><br><span class="line">		color: red;</span><br><span class="line">	&#125;</span><br><span class="line">	img[alt]&#123;</span><br><span class="line">		border:30px #ff0000 solid;</span><br><span class="line">	&#125;</span><br><span class="line">	p[align&#x3D;&quot;center&quot;]&#123;</span><br><span class="line">		color: blue;</span><br><span class="line">		font-weight: bolder;</span><br><span class="line">	&#125;</span><br><span class="line">	a[title][href]&#123;</span><br><span class="line">		color: green;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p title&#x3D;&quot;1&quot;&gt;Da4er&lt;&#x2F;p&gt;&lt;br&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;center&quot;&gt;Da4er&lt;&#x2F;p&gt;&lt;br&gt;</span><br><span class="line">&lt;img src&#x3D;&quot;1.jpg&quot; alt&#x3D;&quot;dog&quot;&gt;&lt;br&gt;</span><br><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;da4er.top&quot; title&#x3D;&quot;blogs&quot;&gt;blogs&lt;&#x2F;a&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/12.png" alt></p>
-<h3 id="4-后代选择器"><a href="#4-后代选择器" class="headerlink" title="4.后代选择器"></a>4.后代选择器</h3><p>又称包含选择器，用于选择指定元素的所有后代元素。<br>基本语法：选择器1 选择器2 选择器3….{属性1：属性值1；属性2：属性值2；….}<br>后代选择器按从右到左的顺序读选择器的方式，例如 div h1 表示h1作为div的后代，也可以表示为<br>div后代元素的任意h2元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	  div&#123;</span><br><span class="line">	  	margin: 20px;</span><br><span class="line">	  	line-height: 36px;</span><br><span class="line">	  &#125;</span><br><span class="line">	  div.s&#123;</span><br><span class="line">	  	float: left;</span><br><span class="line">	  	padding-right: 10px;</span><br><span class="line">	  	border-right: #ccc 1px solid; </span><br><span class="line">	  &#125;</span><br><span class="line">	  div.m&#123;</span><br><span class="line">	  	float: left;</span><br><span class="line">	  &#125;</span><br><span class="line">	  div.s a:link&#123;</span><br><span class="line">	  	color: #000;</span><br><span class="line">	  	text-decoration: none;</span><br><span class="line">	  &#125;</span><br><span class="line">	  div.m a:link&#123;</span><br><span class="line">	  	color: #00f;</span><br><span class="line">	  &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class&#x3D;&#39;s&#39;&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;#&quot;&gt;Da4er&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;#&quot;&gt;Da4er&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;div class&#x3D;&#39;m&#39;&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;#&quot;&gt;Da4er&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;#&quot;&gt;Da4er&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/13.png" alt></p>
-<h3 id="5-子元素选择器"><a href="#5-子元素选择器" class="headerlink" title="5.子元素选择器"></a>5.子元素选择器</h3><p>基本语法：选择器1&gt;选择器2{属性1：属性值1；属性2：属性值2；…..}<br>选择器1&gt;选择器2 表示选择器1子元素的所有选择器2元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	h3&gt;span&#123;</span><br><span class="line">		color: red;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">	&lt;h3&gt;&lt;span&gt;Da4er&lt;&#x2F;span&gt;&lt;&#x2F;h3&gt;</span><br><span class="line">	&lt;h3&gt;Da4er&lt;&#x2F;h3&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/14.png" alt></p>
-<h3 id="6-相邻兄弟选择器"><a href="#6-相邻兄弟选择器" class="headerlink" title="6.相邻兄弟选择器"></a>6.相邻兄弟选择器</h3><p>选择紧接在另一个元素的元素，而且二者有相同的父类<br>基本语法：选择器1+选择器2{属性1：属性值1；属性2：属性值2；….}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	h1+p&#123;</span><br><span class="line">		color: red;</span><br><span class="line">		font-weight: bold;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	p+p&#123;</span><br><span class="line">		color: blue;</span><br><span class="line">		font-weight: bold;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;h1&gt;Da4er&lt;&#x2F;h1&gt;</span><br><span class="line">&lt;p&gt;Da4er&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p&gt;Da4er&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p&gt;Da4er&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/15.png" alt></p>
+<h3 id="1-交集选择器"><a href="#1-交集选择器" class="headerlink" title="1.交集选择器"></a>1.交集选择器</h3><p>交集选择器由俩个选择器构成，第一个选择器必须是元素选择器，第二个选择器是类选择器或者id选择器。<br>交集选择器的作用范围将选中同时满足前后俩个选择器定义的元素，也就是要求前者定义的元素，同时必须是指定了后者的类别或者id。该元素的样式是：第一个选择器，第二个选择器，交集选择器层叠的效果。<br>基本语法：元素选择器.类选择器|#ID选择器{属性1：属性值1；属性2：属性值2；….}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	div&#123;</span><br><span class="line">		border-style: solid;</span><br><span class="line">		border-width: 10px;</span><br><span class="line">		border-color: blue;</span><br><span class="line">		margin: 20px;</span><br><span class="line">	&#125;</span><br><span class="line">	.al&#123;</span><br><span class="line">		font-style: italic;</span><br><span class="line">		background: #33ffcc;</span><br><span class="line">	&#125;</span><br><span class="line">	div.al&#123;</span><br><span class="line">		border-color: red;</span><br><span class="line">		background: #999999;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div&gt;元素选择器的效果&lt;&#x2F;div&gt;</span><br><span class="line">&lt;div class&#x3D;&quot;.al&quot;&gt;交集选择器的效果&lt;&#x2F;div&gt;</span><br><span class="line">&lt;p class&#x3D;&quot;.al&quot;&gt;类选择器的效果&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><br><img src data-echo="CSS基本学习-一/10.png" alt></p>
+<h3 id="2-并集选择器"><a href="#2-并集选择器" class="headerlink" title="2.并集选择器"></a>2.并集选择器</h3><p>并集选择器又叫分组选择器，对不同选择器进行同种效果的展示，极大地减少了css代码量<br>基本语法：选择器1，选择器2，选择器3,…..{属性1：属性值1；属性2，属性值2；…..}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	div&#123;</span><br><span class="line">		border-style: solid;</span><br><span class="line">		border-width: 10px;</span><br><span class="line">		border-color: blue;</span><br><span class="line">	&#125;</span><br><span class="line">	h1,h2,div&#123;</span><br><span class="line">		background: #999999;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;Da4er&lt;&#x2F;h1&gt;&lt;br&gt;</span><br><span class="line">&lt;h2&gt;Da4er&lt;&#x2F;h2&gt;&lt;br&gt;</span><br><span class="line">&lt;div&gt;Da4er&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><br><img src data-echo="CSS基本学习-一/11.png" alt></p>
+<h3 id="3-属性选择器"><a href="#3-属性选择器" class="headerlink" title="3.属性选择器"></a>3.属性选择器</h3><p>根据元素的属性及属性值来选择元素，此时用到的选择器称为属性选择器。<br>基本语法：[属性选择器1][属性选择器2]{属性1：属性值1；属性2：属性值2；…..}<br>元素选择器[属性选择器1][属性选择器2]{属性1：属性值1；属性2：属性值2；…..}<br>属性选择器格式：<br>1.[属性]  用于选取带有指定属性的元素<br>2.[属性=值]  用于选取带有指定属性和值的元素<br>3.[属性|=值]  用于选取属性值以指定开头的元素，注意该值必须是一个完整的单词或带有”-“作为连接符连接后续内容的字符串。<br>4.[属性^=值]  用于选取属性值以指定值开头的元素<br>5.[属性$=值]  用于选取属性值以指定值结尾的元素<br>6.[属性*=值]  用于选取属性值中包含指定值的元素<br>7.[属性~=值] 用于选取属性值中包含指定值的元素，注意该值必须是一个完整的单词<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	[title]&#123;</span><br><span class="line">		color: red;</span><br><span class="line">	&#125;</span><br><span class="line">	img[alt]&#123;</span><br><span class="line">		border:30px #ff0000 solid;</span><br><span class="line">	&#125;</span><br><span class="line">	p[align&#x3D;&quot;center&quot;]&#123;</span><br><span class="line">		color: blue;</span><br><span class="line">		font-weight: bolder;</span><br><span class="line">	&#125;</span><br><span class="line">	a[title][href]&#123;</span><br><span class="line">		color: green;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p title&#x3D;&quot;1&quot;&gt;Da4er&lt;&#x2F;p&gt;&lt;br&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;center&quot;&gt;Da4er&lt;&#x2F;p&gt;&lt;br&gt;</span><br><span class="line">&lt;img src&#x3D;&quot;1.jpg&quot; alt&#x3D;&quot;dog&quot;&gt;&lt;br&gt;</span><br><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;da4er.top&quot; title&#x3D;&quot;blogs&quot;&gt;blogs&lt;&#x2F;a&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><br><img src data-echo="CSS基本学习-一/12.png" alt></p>
+<h3 id="4-后代选择器"><a href="#4-后代选择器" class="headerlink" title="4.后代选择器"></a>4.后代选择器</h3><p>又称包含选择器，用于选择指定元素的所有后代元素。<br>基本语法：选择器1 选择器2 选择器3….{属性1：属性值1；属性2：属性值2；….}<br>后代选择器按从右到左的顺序读选择器的方式，例如 div h1 表示h1作为div的后代，也可以表示为<br>div后代元素的任意h2元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	  div&#123;</span><br><span class="line">	  	margin: 20px;</span><br><span class="line">	  	line-height: 36px;</span><br><span class="line">	  &#125;</span><br><span class="line">	  div.s&#123;</span><br><span class="line">	  	float: left;</span><br><span class="line">	  	padding-right: 10px;</span><br><span class="line">	  	border-right: #ccc 1px solid; </span><br><span class="line">	  &#125;</span><br><span class="line">	  div.m&#123;</span><br><span class="line">	  	float: left;</span><br><span class="line">	  &#125;</span><br><span class="line">	  div.s a:link&#123;</span><br><span class="line">	  	color: #000;</span><br><span class="line">	  	text-decoration: none;</span><br><span class="line">	  &#125;</span><br><span class="line">	  div.m a:link&#123;</span><br><span class="line">	  	color: #00f;</span><br><span class="line">	  &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class&#x3D;&#39;s&#39;&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;#&quot;&gt;Da4er&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;#&quot;&gt;Da4er&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;div class&#x3D;&#39;m&#39;&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;#&quot;&gt;Da4er&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;#&quot;&gt;Da4er&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><br><img src data-echo="CSS基本学习-一/13.png" alt></p>
+<h3 id="5-子元素选择器"><a href="#5-子元素选择器" class="headerlink" title="5.子元素选择器"></a>5.子元素选择器</h3><p>基本语法：选择器1&gt;选择器2{属性1：属性值1；属性2：属性值2；…..}<br>选择器1&gt;选择器2 表示选择器1子元素的所有选择器2元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	h3&gt;span&#123;</span><br><span class="line">		color: red;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">	&lt;h3&gt;&lt;span&gt;Da4er&lt;&#x2F;span&gt;&lt;&#x2F;h3&gt;</span><br><span class="line">	&lt;h3&gt;Da4er&lt;&#x2F;h3&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><br><img src data-echo="CSS基本学习-一/14.png" alt></p>
+<h3 id="6-相邻兄弟选择器"><a href="#6-相邻兄弟选择器" class="headerlink" title="6.相邻兄弟选择器"></a>6.相邻兄弟选择器</h3><p>选择紧接在另一个元素的元素，而且二者有相同的父类<br>基本语法：选择器1+选择器2{属性1：属性值1；属性2：属性值2；….}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	h1+p&#123;</span><br><span class="line">		color: red;</span><br><span class="line">		font-weight: bold;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	p+p&#123;</span><br><span class="line">		color: blue;</span><br><span class="line">		font-weight: bold;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;h1&gt;Da4er&lt;&#x2F;h1&gt;</span><br><span class="line">&lt;p&gt;Da4er&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p&gt;Da4er&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p&gt;Da4er&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><br><img src data-echo="CSS基本学习-一/15.png" alt></p>
 <h2 id="四-CSS常用属性"><a href="#四-CSS常用属性" class="headerlink" title="四.CSS常用属性"></a>四.CSS常用属性</h2><h3 id="1-文本属性"><a href="#1-文本属性" class="headerlink" title="1.文本属性"></a>1.文本属性</h3><p>定义文本外观，修改文本的颜色，行高，对齐方式，字符间距，段首缩进位置等属性以及修饰文本等功能。<br>常用文本属性：</p>
 <p>| 文本属性 |属性值  |描述  |</p>
-<p>| color |命名颜色，十六进制，RGB  |文本颜色  |<br>| text-indent |length(常用单位px)  |文字的首行缩进距离  |<br>| line-height |length(常用单位px)  | 定义行高 |<br>| text-decoration |underline，overline，line-through，none|下划线，上划线，删除线，无任何修饰  |<br>| text-align |left，center，right，justify  |左对齐，居中对齐，右对齐，两端对齐  |<br>| text-transform |none，uppercase，lowercase，capitalize  |默认值，将文本中的字母转换大写，转换为小写，每个单词首字母大写，空白会被浏览器忽略  |<br>| white-space|normal，pre，nowrap，pre-wrap，pre-line，inherit  |默认值(空白被浏览器忽略)，空白被浏览器保留，文本不换行(直到遇到<br>)，保留空白符序列，合并空白符序列，继承white-space  |<br>| word-spacing |length  |设置汉字或单词之间的空格的宽度  |</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	#text1&#123;</span><br><span class="line">		color: #03f;</span><br><span class="line">		letter-spacing: 6px;</span><br><span class="line">		line-height: 37px;</span><br><span class="line">		text-decoration: underline;</span><br><span class="line">		text-indent: 2em;</span><br><span class="line">	&#125;</span><br><span class="line">	#text2&#123;</span><br><span class="line">		text-align: center;</span><br><span class="line">		white-space: pre-wrap;</span><br><span class="line">		text-transform: lowercase;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;p id&#x3D;&quot;text1&quot;&gt;Da4er&lt;&#x2F;p&gt;</span><br><span class="line">	&lt;p id&#x3D;&quot;text2&quot;&gt;Da4er&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/16.png" alt></p>
+<p>| color |命名颜色，十六进制，RGB  |文本颜色  |<br>| text-indent |length(常用单位px)  |文字的首行缩进距离  |<br>| line-height |length(常用单位px)  | 定义行高 |<br>| text-decoration |underline，overline，line-through，none|下划线，上划线，删除线，无任何修饰  |<br>| text-align |left，center，right，justify  |左对齐，居中对齐，右对齐，两端对齐  |<br>| text-transform |none，uppercase，lowercase，capitalize  |默认值，将文本中的字母转换大写，转换为小写，每个单词首字母大写，空白会被浏览器忽略  |<br>| white-space|normal，pre，nowrap，pre-wrap，pre-line，inherit  |默认值(空白被浏览器忽略)，空白被浏览器保留，文本不换行(直到遇到<br>)，保留空白符序列，合并空白符序列，继承white-space  |<br>| word-spacing |length  |设置汉字或单词之间的空格的宽度  |<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	#text1&#123;</span><br><span class="line">		color: #03f;</span><br><span class="line">		letter-spacing: 6px;</span><br><span class="line">		line-height: 37px;</span><br><span class="line">		text-decoration: underline;</span><br><span class="line">		text-indent: 2em;</span><br><span class="line">	&#125;</span><br><span class="line">	#text2&#123;</span><br><span class="line">		text-align: center;</span><br><span class="line">		white-space: pre-wrap;</span><br><span class="line">		text-transform: lowercase;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;p id&#x3D;&quot;text1&quot;&gt;Da4er&lt;&#x2F;p&gt;</span><br><span class="line">	&lt;p id&#x3D;&quot;text2&quot;&gt;Da4er&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><br><img src data-echo="CSS基本学习-一/16.png" alt></p>
 <h3 id="2-字体属性"><a href="#2-字体属性" class="headerlink" title="2.字体属性"></a>2.字体属性</h3><p>| 属性 |属性值  |描述  |</p>
-<p>| font |除了font之外的其他字体属性值  |把所有针对字体的属性设置放在一个声明中  |<br>| font-size |xx-small，smaller，larger，length，%  |绝对字体尺寸(默认值为medium)，相对字体尺寸(设置比父元素更小的尺寸)，相对字体尺寸(设置比父元素更大的尺寸)，设置字体大小为基于父元素的一个百分数  |<br>|font-family  |宋体，黑体  |设置字体族，优先级按字体族顺序从大到小  |<br>| font-weight |normal，lighter，bold，bolder |设置字体常规格式显示，设置字体加细，设置字体加粗，设置字体特粗  |<br>| font-style |normal，italic，oblique  |字体常规格式显示，字体斜体显示，字体斜体显示  |</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	p&#123;</span><br><span class="line">		font-family: &quot;楷体&quot;,&quot;宋体&quot;;</span><br><span class="line">		font-size: 5em;</span><br><span class="line">		font-weight: 500;</span><br><span class="line">		font-style: italic;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;Da4er&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/17.png" alt></p>
+<p>| font |除了font之外的其他字体属性值  |把所有针对字体的属性设置放在一个声明中  |<br>| font-size |xx-small，smaller，larger，length，%  |绝对字体尺寸(默认值为medium)，相对字体尺寸(设置比父元素更小的尺寸)，相对字体尺寸(设置比父元素更大的尺寸)，设置字体大小为基于父元素的一个百分数  |<br>|font-family  |宋体，黑体  |设置字体族，优先级按字体族顺序从大到小  |<br>| font-weight |normal，lighter，bold，bolder |设置字体常规格式显示，设置字体加细，设置字体加粗，设置字体特粗  |<br>| font-style |normal，italic，oblique  |字体常规格式显示，字体斜体显示，字体斜体显示  |<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	p&#123;</span><br><span class="line">		font-family: &quot;楷体&quot;,&quot;宋体&quot;;</span><br><span class="line">		font-size: 5em;</span><br><span class="line">		font-weight: 500;</span><br><span class="line">		font-style: italic;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;Da4er&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><br><img src data-echo="CSS基本学习-一/17.png" alt></p>
 <h3 id="3-背景属性"><a href="#3-背景属性" class="headerlink" title="3.背景属性"></a>3.背景属性</h3><p>| 属性 |属性值  |描述  |</p>
-<p>| background | 除background之外的任何的背景属性值 |将背景属性设置在一个声明中  |<br>| background-color |颜色值  |设置元素的背景颜色  |<br>| background-image |url(image_file_path)  |设置元素的背景图像  |<br>| background-position |left，right，center，top，bottom  |背景图像左，右，中，上，下对齐  |<br>|background-attachment  |scroll，fixed，inherit  |设置背景图像是固定亦随着页面滚动，默认是滚动  |</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	body&#123;</span><br><span class="line">		background-image: url(1.jpg);</span><br><span class="line">		background-attachment: fixed;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;Da4er&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/18.png" alt></p>
+<p>| background | 除background之外的任何的背景属性值 |将背景属性设置在一个声明中  |<br>| background-color |颜色值  |设置元素的背景颜色  |<br>| background-image |url(image_file_path)  |设置元素的背景图像  |<br>| background-position |left，right，center，top，bottom  |背景图像左，右，中，上，下对齐  |<br>|background-attachment  |scroll，fixed，inherit  |设置背景图像是固定亦随着页面滚动，默认是滚动  |<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;使用CSS布局网页段落样式&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; </span><br><span class="line">	  &#x2F;*使用内联css*&#x2F;</span><br><span class="line">	body&#123;</span><br><span class="line">		background-image: url(1.jpg);</span><br><span class="line">		background-attachment: fixed;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;Da4er&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><br><img src data-echo="CSS基本学习-一/18.png" alt></p>
 <h3 id="4-列表属性"><a href="#4-列表属性" class="headerlink" title="4.列表属性"></a>4.列表属性</h3><p>| 属性 |属性值  |描述  |</p>
 <p>|list-style  |其他任意的列表属性值  |用于把所有用于列表的属性设置于一个声明中  |<br>| list-style-image |image_url  |将图片设置为列表项前导符  |<br>| list-style-type |disc，circle，square，decimal，lower-roman，upper-roman，lower-alpha，upper-alpha，none  |列表项前添加实点圆点，空心圆点，实心方块，普通的阿拉伯数字，小写罗马数字，大写罗马数字，小写英文字母，大写英文字母，不添加任何项目符号或编号  |</p>
 <h2 id="五-html文档中应用CSS"><a href="#五-html文档中应用CSS" class="headerlink" title="五.html文档中应用CSS"></a>五.html文档中应用CSS</h2><h3 id="1-行内式"><a href="#1-行内式" class="headerlink" title="1.行内式"></a>1.行内式</h3><p>基本语法：&lt;标签名 style=”属性1：属性值1；属性2：属性值2；….”&gt;</p>
-<h3 id="2-内嵌式"><a href="#2-内嵌式" class="headerlink" title="2.内嵌式"></a>2.内嵌式</h3><p>基本语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; CSS样式 &lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="3-链接式"><a href="#3-链接式" class="headerlink" title="3.链接式"></a>3.链接式</h3><p>基本语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;type&#x2F;css&quot; href&#x3D;&quot;css文件&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="4-导入式"><a href="#4-导入式" class="headerlink" title="4.导入式"></a>4.导入式</h3><p>基本语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; @import url(&quot;CSS样式文件名&quot;)；&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-内嵌式"><a href="#2-内嵌式" class="headerlink" title="2.内嵌式"></a>2.内嵌式</h3><p>基本语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; CSS样式 &lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-链接式"><a href="#3-链接式" class="headerlink" title="3.链接式"></a>3.链接式</h3><p>基本语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;type&#x2F;css&quot; href&#x3D;&quot;css文件&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-导入式"><a href="#4-导入式" class="headerlink" title="4.导入式"></a>4.导入式</h3><p>基本语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt; @import url(&quot;CSS样式文件名&quot;)；&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure></p>
 <h2 id="六-CSS的冲突与解决"><a href="#六-CSS的冲突与解决" class="headerlink" title="六.CSS的冲突与解决"></a>六.CSS的冲突与解决</h2><p>当文件中有多个css对同一个元素进行不同格式设置，会出现css的冲突。<br>解决原则:(1)优先级原则  (2)最近原则  (3)同一个属性的样式定义<br>优先级的规定为:行内式样式&gt;内嵌式样式|链接外部样式   行内式样式的优先级最高   内嵌式样式和链接外部样式的优先级由它们出现的位置决定，谁出现在后面，谁的优先级就高。<br>ID选择器的优先级最高。</p>
 
-      
-    </div>
-    
-  </div>
-  
-    
-    <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/">CSS基本学习(一)</a></p>
-        <p><span>文章作者:</span><a  href="/" title="访问 Da4er&#39;s 的个人博客">Da4er&#39;s</a></p>
-        <p><span>发布时间:</span>2019年11月09日 - 17时19分</p>
-        <p><span>最后更新:</span>2019年11月09日 - 17时34分</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/" title="CSS基本学习(一)">https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://da4er.top/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/　　作者: Da4er&#39;s" title=""></span>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
-
-
-
-<nav id="article-nav">
-  
-    <a  href="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          代码审计初试-对zvuldrill漏洞靶场的代码审计(一)
-        
-      </div>
-    </a>
-  
-  
-    <a  href="/2019/11/08/Python-Pillow%E5%BA%93%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Python Pillow库学习</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-
-  
-</article>
-
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-CSS基本语法"><span class="toc-number">1.</span> <span class="toc-text">一.CSS基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-CSS基本选择器"><span class="toc-number">2.</span> <span class="toc-text">二.CSS基本选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-元素选择器"><span class="toc-number">2.1.</span> <span class="toc-text">1.元素选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-类选择器"><span class="toc-number">2.2.</span> <span class="toc-text">2.类选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ID选择器"><span class="toc-number">2.3.</span> <span class="toc-text">3.ID选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-通用选择器"><span class="toc-number">2.4.</span> <span class="toc-text">4.通用选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-伪类选择器"><span class="toc-number">2.5.</span> <span class="toc-text">5.伪类选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-对链接定义显示效果"><span class="toc-number">2.5.1.</span> <span class="toc-text">(1).对链接定义显示效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-元素选择器使用伪类"><span class="toc-number">2.5.2.</span> <span class="toc-text">(2).元素选择器使用伪类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-使用伪类设置元素的第一个子元素的样式"><span class="toc-number">2.5.3.</span> <span class="toc-text">(3).使用伪类设置元素的第一个子元素的样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-伪类设置带有lang属性的元素"><span class="toc-number">2.5.4.</span> <span class="toc-text">(4).伪类设置带有lang属性的元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-伪元素选择器"><span class="toc-number">2.6.</span> <span class="toc-text">6.伪元素选择器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-CSS复合选择器"><span class="toc-number">3.</span> <span class="toc-text">三.CSS复合选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-交集选择器"><span class="toc-number">3.1.</span> <span class="toc-text">1.交集选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-并集选择器"><span class="toc-number">3.2.</span> <span class="toc-text">2.并集选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-属性选择器"><span class="toc-number">3.3.</span> <span class="toc-text">3.属性选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-后代选择器"><span class="toc-number">3.4.</span> <span class="toc-text">4.后代选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-子元素选择器"><span class="toc-number">3.5.</span> <span class="toc-text">5.子元素选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-相邻兄弟选择器"><span class="toc-number">3.6.</span> <span class="toc-text">6.相邻兄弟选择器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-CSS常用属性"><span class="toc-number">4.</span> <span class="toc-text">四.CSS常用属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-文本属性"><span class="toc-number">4.1.</span> <span class="toc-text">1.文本属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-字体属性"><span class="toc-number">4.2.</span> <span class="toc-text">2.字体属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-背景属性"><span class="toc-number">4.3.</span> <span class="toc-text">3.背景属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-列表属性"><span class="toc-number">4.4.</span> <span class="toc-text">4.列表属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-html文档中应用CSS"><span class="toc-number">5.</span> <span class="toc-text">五.html文档中应用CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-行内式"><span class="toc-number">5.1.</span> <span class="toc-text">1.行内式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-内嵌式"><span class="toc-number">5.2.</span> <span class="toc-text">2.内嵌式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-链接式"><span class="toc-number">5.3.</span> <span class="toc-text">3.链接式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-导入式"><span class="toc-number">5.4.</span> <span class="toc-text">4.导入式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六-CSS的冲突与解决"><span class="toc-number">6.</span> <span class="toc-text">六.CSS的冲突与解决</span></a></li></ol>
-</div>
-<style>
-    .left-col .switch-btn {
-        display: none;
-    }
-    .left-col .switch-area {
-        display: none;
-    }
-</style>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-            $(".switch-btn, .switch-area").fadeOut(300);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-            $(".switch-btn, .switch-area").fadeIn(500);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-        $(".switch-btn, .switch-area").show();
-    }
-</script>
-
-
-
-
-<div class="bdsharebuttonbox">
-	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
-	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
-</div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-
-
-
-    
-        <section class="changyan" id="comments">
-  <!--<div id="uyan_frame"></div>-->
-  <div id="SOHUCS"></div>
-  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
-  <script type="text/javascript">
-    window.changyan.api.config({
-      appid: 'xxxx',
-      conf: 'xxxxxxxxx'
-    });
-  </script>
-</section>
-    
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a  href="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/" title="上一篇: 代码审计初试-对zvuldrill漏洞靶场的代码审计(一)">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-        
-            <a  href="/2019/11/08/Python-Pillow%E5%BA%93%E5%AD%A6%E4%B9%A0/" title="下一篇: Python Pillow库学习">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/02/06/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/06/2-6-buuctf-misc-%E4%BB%8E%E5%A8%83%E5%A8%83%E6%8A%93%E8%B5%B7/">2.6 buuctf_misc_从娃娃抓起</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/06/2-6-SWPU2019-Network/">2.6 [SWPU2019]Network</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/06/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/">2.6 [极客大挑战 2019]PHP</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/06/2-6-SWPU2019-%E4%BD%A0%E6%9C%89%E6%B2%A1%E6%9C%89%E5%A5%BD%E5%A5%BD%E7%9C%8B%E7%BD%91%E8%AF%BE/">2-6 [SWPU2019]你有没有好好看网课?</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Havefun-Secret-File/">2.5 [极客大挑战 2019]Havefun&Secret File</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL/">2.5 [极客大挑战 2019]EasySQL</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/2-5-SWPU2019-%E4%BC%9F%E5%A4%A7%E7%9A%84%E4%BE%A6%E6%8E%A2/">2.5 [SWPU2019]伟大的侦探</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/">实战_爬取中国天气网</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98-%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E7%88%AC%E8%99%AB/">爬虫实战_电影天堂爬虫</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/2-5-SWPU2019-%E6%88%91%E6%9C%89%E4%B8%80%E5%8F%AA%E9%A9%AC%E9%87%8C%E5%A5%A5/">2.5 [SWPU2019]我有一只马里奥</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/2-5-SWPU2019-%E7%A5%9E%E5%A5%87%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81/">2.5 [SWPU2019]神奇的二维码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/2-5-SUCTF-2019-EasyWeb/">2.5 [SUCTF 2019]EasyWeb</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/24/SQLMAP%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">SQLMAP使用手册</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/23/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/">Mysql注入详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/21/nc%E8%AF%A6%E8%A7%A3/">nc详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/">代码审计初试-对zvuldrill漏洞靶场的代码审计(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/09/CSS%E5%9F%BA%E6%9C%AC%E5%AD%A6%E4%B9%A0-%E4%B8%80/">CSS基本学习(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/08/Python-Pillow%E5%BA%93%E5%AD%A6%E4%B9%A0/">Python Pillow库学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E9%9D%B6%E5%9C%BA%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0/">文件上传靶场通关笔记</a></li></ul>
-    
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-    <script>
-        $(".post-list").addClass("toc-article");
-        // $(".post-list-item a").attr("target","_blank");
-        $("#post-nav-button > a:nth-child(2)").click(function() {
-            $(".fa-bars, .fa-times").toggle();
-            $(".post-list").toggle(300);
-            if ($(".toc").length > 0) {
-                $("#toc, #tocButton").toggle(200, function() {
-                    if ($(".switch-area").is(":visible")) {
-                        $("#toc, .switch-btn, .switch-area").toggle();
-                        $("#tocButton").attr("value", valueHide);
-                        }
-                    })
-            }
-            else {
-                $(".switch-btn, .switch-area").fadeToggle(300);
-            }
-        })
-    </script>
-
-
-
-
-    <script>
-        
-    </script>
-
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                &copy; 2020 Da4er&#39;s
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
-            </div>
         </div>
         
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >极客到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>, </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
+        
         
     </div>
-</footer>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<a class="button is-danger donate" href="https://da4er.top" target="_blank" rel="noopener">
+    <span class="icon is-small">
+        <i class="fab fa-patreon"></i>
+    </span>
+    <span>Patreon</span>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/11/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">代码审计初试-对zvuldrill漏洞靶场的代码审计(一)</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/08/Python-Pillow%E5%BA%93%E5%AD%A6%E4%B9%A0/">
+                <span class="level-item">Python Pillow库学习</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Kommentare</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'e685bf7f989693436509',
+        clientSecret: '2ca85f7f7e94bd18f9b27569cb342bbd9864eecc',
+        id: '2458d4bf6297d289315bee524bb55eb2',
+        repo: 'da4er',
+        owner: 'Da4er',
+        admin: "Da4er",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
 
     </div>
-    
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-
-<script src="/js/main.js"></script>
-
-
-    <script>
-        $(document).ready(function() {
-            var backgroundnum = 1;
-            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-        })
-    </script>
-
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'xxxxx', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
-
-
-	<script>
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
-	  var s = document.getElementsByTagName("script")[0]; 
-	  s.parentNode.insertBefore(hm, s);
-	})();
-	</script>
-
-
-
-<div class="scroll" id="scroll">
-    <a href="#"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
 </div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/3.jpg" alt="Da4er&#39;s">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Da4er&#39;s
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        web安全&amp;代码审计
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>山东济南</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            20
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Kategorien
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            0
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            0
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
+                Folgen</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/Da4er">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://www.cnblogs.com/wangtanzhi/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">叹之师傅&#39;s blogs</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.cnblogs.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Kategorien
+            </h3>
+            <ul class="menu-list">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Letzte Einträge
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T08:38:29.217Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/2-6-buuctf-misc-%E4%BB%8E%E5%A8%83%E5%A8%83%E6%8A%93%E8%B5%B7/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2.6 buuctf_misc_从娃娃抓起">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T04:37:40.000Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/2-6-buuctf-misc-%E4%BB%8E%E5%A8%83%E5%A8%83%E6%8A%93%E8%B5%B7/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2.6 buuctf_misc_从娃娃抓起</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/2-6-SWPU2019-Network/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2.6 [SWPU2019]Network">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T03:52:51.000Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/2-6-SWPU2019-Network/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2.6 [SWPU2019]Network</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2.6 [极客大挑战 2019]PHP">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T03:06:11.000Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2.6 [极客大挑战 2019]PHP</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/2-6-SWPU2019-%E4%BD%A0%E6%9C%89%E6%B2%A1%E6%9C%89%E5%A5%BD%E5%A5%BD%E7%9C%8B%E7%BD%91%E8%AF%BE/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2-6 [SWPU2019]你有没有好好看网课?">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-05T16:04:21.000Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/2-6-SWPU2019-%E4%BD%A0%E6%9C%89%E6%B2%A1%E6%9C%89%E5%A5%BD%E5%A5%BD%E7%9C%8B%E7%BD%91%E8%AF%BE/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2-6 [SWPU2019]你有没有好好看网课?</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archive
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Letzte Einträge
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T08:38:29.217Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/2-6-buuctf-misc-%E4%BB%8E%E5%A8%83%E5%A8%83%E6%8A%93%E8%B5%B7/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2.6 buuctf_misc_从娃娃抓起">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T04:37:40.000Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/2-6-buuctf-misc-%E4%BB%8E%E5%A8%83%E5%A8%83%E6%8A%93%E8%B5%B7/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2.6 buuctf_misc_从娃娃抓起</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/2-6-SWPU2019-Network/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2.6 [SWPU2019]Network">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T03:52:51.000Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/2-6-SWPU2019-Network/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2.6 [SWPU2019]Network</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2.6 [极客大挑战 2019]PHP">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T03:06:11.000Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2.6 [极客大挑战 2019]PHP</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/2-6-SWPU2019-%E4%BD%A0%E6%9C%89%E6%B2%A1%E6%9C%89%E5%A5%BD%E5%A5%BD%E7%9C%8B%E7%BD%91%E8%AF%BE/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2-6 [SWPU2019]你有没有好好看网课?">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-05T16:04:21.000Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/2-6-SWPU2019-%E4%BD%A0%E6%9C%89%E6%B2%A1%E6%9C%89%E5%A5%BD%E5%A5%BD%E7%9C%8B%E7%BD%91%E8%AF%BE/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2-6 [SWPU2019]你有没有好好看网课?</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archive
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/gen.svg" alt="CSS基本学习(一)" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Da4er&#39;s&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+				<br>
+                <span class="post-count">28k</span> Words in Total
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Da4er">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+	
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  <br>
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("11/27/2019 17:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+            setInterval("createtime()",250);
+            </script>
+
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
 <script>
-    $(document).ready(function() {
-        if ($("#comments").length < 1) {
-            $("#scroll > a:nth-child(2)").hide();
-        };
-    })
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://da4er.top',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
 </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
 
-  <script language="javascript">
-    $(function() {
-        $("a[title]").each(function() {
-            var a = $(this);
-            var title = a.attr('title');
-            if (title == undefined || title == "") return;
-            a.data('title', title).removeAttr('title').hover(
-            function() {
-                var offset = a.offset();
-                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
-                    top: offset.top - a.outerHeight() - 15,
-                    left: offset.left + a.outerWidth()/2 + 1
-                }).fadeIn(function() {
-                    var pop = $(this);
-                    setTimeout(function() {
-                        pop.remove();
-                    }, pop.text().length * 800);
-                });
-            }, function() {
-                $("#anchortitlecontainer").remove();
-            });
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
         });
     });
 </script>
 
 
-  </div>
-</body>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
+                TAGS: 'Tags',
+                UNTITLED: '(Unbenannt)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
