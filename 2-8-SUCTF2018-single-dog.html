@@ -81,15 +81,22 @@
 
 
 
-<meta name="description" content="学而专，专而精。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Da4er&#39;s Blogs">
-<meta property="og:url" content="https://da4er.top/archives/2020/page/2/index.html">
+<meta name="description" content="拿到题目是张图片，binwalk分离出一个txt打开txt文件发现是aaencode加密到这里我遇到的坑出来了，对aaencode解密可以使用控制台解密，但是解密出来的是然后又看了这道题，把所有的jpg隐写的方法都试了一遍还是没有flag。最后其实就是aaencode解密，以前遇到的是直接alert()出来flag，但是这个题不一样，需要找到在线网站解密。aaencode解密网址用这个网站解码出来">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2.8 [SUCTF2018]single dog">
+<meta property="og:url" content="https://da4er.top/2-8-SUCTF2018-single-dog.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="学而专，专而精。">
+<meta property="og:description" content="拿到题目是张图片，binwalk分离出一个txt打开txt文件发现是aaencode加密到这里我遇到的坑出来了，对aaencode解密可以使用控制台解密，但是解密出来的是然后又看了这道题，把所有的jpg隐写的方法都试了一遍还是没有flag。最后其实就是aaencode解密，以前遇到的是直接alert()出来flag，但是这个题不一样，需要找到在线网站解密。aaencode解密网址用这个网站解码出来">
+<meta property="og:image" content="https://da4er.top/2-8-SUCTF2018-single-dog/1.png">
+<meta property="og:image" content="https://da4er.top/2-8-SUCTF2018-single-dog/2.png">
+<meta property="og:image" content="https://da4er.top/2-8-SUCTF2018-single-dog/3.png">
+<meta property="og:image" content="https://da4er.top/2-8-SUCTF2018-single-dog/4.png">
+<meta property="article:published_time" content="2020-02-08T12:43:27.000Z">
+<meta property="article:modified_time" content="2020-02-08T12:44:44.110Z">
 <meta property="article:author" content="Da4er&#39;s">
-<meta property="article:tag" content="Web安全 代码审计">
+<meta property="article:tag" content="Da4er">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://da4er.top/2-8-SUCTF2018-single-dog/1.png">
 
 
 
@@ -119,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://da4er.top/archives/2020/page/2/"/>
+  <link rel="canonical" href="https://da4er.top/2-8-SUCTF2018-single-dog.html"/>
 
 
 
 
 
-  <title>归档 | Da4er's Blogs</title>
+  <title>2.8 [SUCTF2018]single dog | Da4er's Blogs</title>
   
 
 
@@ -144,7 +151,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,410 +245,215 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://da4er.top/2-8-SUCTF2018-single-dog.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Da4er's">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/3.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Da4er's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h2 class="post-title" itemprop="name headline">2.8 [SUCTF2018]single dog</h2>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-08T20:43:27+08:00">
+                2020-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 27 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2020">2020</h2>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
+             <span id="/2-8-SUCTF2018-single-dog.html" class="leancloud_visitors" data-flag-title="2.8 [SUCTF2018]single dog">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2-6-SWPU2019-Network.html" itemprop="url">
+          
+
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">2.6 [SWPU2019]Network</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  138
+                </span>
               
-            </a>
-        
-      </h3>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-06T11:52:51+08:00"
-              content="2020-02-06" >
-          02-06
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP.html" itemprop="url">
-              
-                <span itemprop="name">2.6 [极客大挑战 2019]PHP</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-06T11:06:11+08:00"
-              content="2020-02-06" >
-          02-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2-6-SWPU2019-%E4%BD%A0%E6%9C%89%E6%B2%A1%E6%9C%89%E5%A5%BD%E5%A5%BD%E7%9C%8B%E7%BD%91%E8%AF%BE.html" itemprop="url">
-              
-                <span itemprop="name">2-6 [SWPU2019]你有没有好好看网课?</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-06T00:04:21+08:00"
-              content="2020-02-06" >
-          02-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>拿到题目是张图片，binwalk分离出一个txt</strong><br><img src="/2-8-SUCTF2018-single-dog/1.png" class title="Da4er"><br>打开txt文件发现是aaencode加密<br><img src="/2-8-SUCTF2018-single-dog/2.png" class title="Da4er"><br>到这里我遇到的坑出来了，对aaencode解密可以使用控制台解密，但是解密出来的是<br><img src="/2-8-SUCTF2018-single-dog/3.png" class title="Da4er"><br>然后又看了这道题，把所有的jpg隐写的方法都试了一遍还是没有flag。<br>最后其实就是aaencode解密，以前遇到的是直接alert()出来flag，但是这个题不一样，需要找到在线网站解密。<br><a href="https://www.qtool.net/decode" target="_blank" rel="noopener">aaencode解密网址</a><br>用这个网站解码出来：<br><img src="/2-8-SUCTF2018-single-dog/4.png" class title="Da4er"><br>得到flag。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Havefun-Secret-File.html" itemprop="url">
-              
-                <span itemprop="name">2.5 [极客大挑战 2019]Havefun&Secret File</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-05T22:43:55+08:00"
-              content="2020-02-05" >
-          02-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL.html" itemprop="url">
-              
-                <span itemprop="name">2.5 [极客大挑战 2019]EasySQL</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-05T22:23:34+08:00"
-              content="2020-02-05" >
-          02-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2-5-SWPU2019-%E4%BC%9F%E5%A4%A7%E7%9A%84%E4%BE%A6%E6%8E%A2.html" itemprop="url">
-              
-                <span itemprop="name">2.5 [SWPU2019]伟大的侦探</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-05T19:20:21+08:00"
-              content="2020-02-05" >
-          02-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91.html" itemprop="url">
-              
-                <span itemprop="name">实战_爬取中国天气网</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-05T18:52:26+08:00"
-              content="2020-02-05" >
-          02-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98-%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E7%88%AC%E8%99%AB.html" itemprop="url">
-              
-                <span itemprop="name">爬虫实战_电影天堂爬虫</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-05T13:23:21+08:00"
-              content="2020-02-05" >
-          02-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2-5-SWPU2019-%E6%88%91%E6%9C%89%E4%B8%80%E5%8F%AA%E9%A9%AC%E9%87%8C%E5%A5%A5.html" itemprop="url">
-              
-                <span itemprop="name">2.5 [SWPU2019]我有一只马里奥</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-05T13:13:09+08:00"
-              content="2020-02-05" >
-          02-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2-5-SWPU2019-%E7%A5%9E%E5%A5%87%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81.html" itemprop="url">
-              
-                <span itemprop="name">2.5 [SWPU2019]神奇的二维码</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-05T13:01:58+08:00"
-              content="2020-02-05" >
-          02-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2-7-SUCTF-2019-Game.html" rel="next" title="2.7 [SUCTF 2019]Game">
+                <i class="fa fa-chevron-left"></i> 2.7 [SUCTF 2019]Game
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2-8-SUCTF2018-followme.html" rel="prev" title="2.8 [SUCTF2018]followme">
+                2.8 [SUCTF2018]followme <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2020/"><i class="fa fa-hand-o-left" aria-label="accessibility.prev_page"></i></a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span>
-  </nav>
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -649,6 +461,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80ODUyMy8yNTAxNw=="></div>
+    </div>
+
+  
+  
+
 
         </div>
         
@@ -931,6 +752,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -959,6 +784,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
