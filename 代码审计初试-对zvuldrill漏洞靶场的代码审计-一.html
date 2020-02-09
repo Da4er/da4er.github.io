@@ -81,12 +81,12 @@
 
 
 
-<meta name="description" content="一.zvuldrill靶场搭建靶场地址:https:&#x2F;&#x2F;github.com&#x2F;710leo&#x2F;ZVulDrill按照上面的要求需要创建一个名为zvuldrill的数据库，在将sys文件夹下的zvuldrill.sql导入到新建数据库中。  创建完成之后，在浏览器打开:http:&#x2F;&#x2F;127.0.0.1&#x2F;ZVulDrill&#x2F;  即可访问  二.后台登录功能万能密码绕过采用正向审计的方法，即先找到用户的可">
+<meta name="description" content="一.zvuldrill靶场搭建靶场地址:https:&#x2F;&#x2F;github.com&#x2F;710leo&#x2F;ZVulDrill按照上面的要求需要创建一个名为zvuldrill的数据库，在将sys文件夹下的zvuldrill.sql导入到新建数据库中。创建完成之后，在浏览器打开:http:&#x2F;&#x2F;127.0.0.1&#x2F;ZVulDrill&#x2F;  即可访问 二.后台登录功能万能密码绕过采用正向审计的方法，即先找到用户的可控输入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代码审计初试-对zvuldrill漏洞靶场的代码审计(一)">
 <meta property="og:url" content="https://da4er.top/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="一.zvuldrill靶场搭建靶场地址:https:&#x2F;&#x2F;github.com&#x2F;710leo&#x2F;ZVulDrill按照上面的要求需要创建一个名为zvuldrill的数据库，在将sys文件夹下的zvuldrill.sql导入到新建数据库中。  创建完成之后，在浏览器打开:http:&#x2F;&#x2F;127.0.0.1&#x2F;ZVulDrill&#x2F;  即可访问  二.后台登录功能万能密码绕过采用正向审计的方法，即先找到用户的可">
+<meta property="og:description" content="一.zvuldrill靶场搭建靶场地址:https:&#x2F;&#x2F;github.com&#x2F;710leo&#x2F;ZVulDrill按照上面的要求需要创建一个名为zvuldrill的数据库，在将sys文件夹下的zvuldrill.sql导入到新建数据库中。创建完成之后，在浏览器打开:http:&#x2F;&#x2F;127.0.0.1&#x2F;ZVulDrill&#x2F;  即可访问 二.后台登录功能万能密码绕过采用正向审计的方法，即先找到用户的可控输入">
 <meta property="og:image" content="https://da4er.top/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/1.png">
 <meta property="og:image" content="https://da4er.top/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/2.png">
 <meta property="og:image" content="https://da4er.top/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/3.png">
@@ -364,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  588
+                  582
                 </span>
               
 
@@ -401,46 +401,10 @@
       
 
       
-        <h2 id="一-zvuldrill靶场搭建"><a href="#一-zvuldrill靶场搭建" class="headerlink" title="一.zvuldrill靶场搭建"></a>一.zvuldrill靶场搭建</h2><p>靶场地址:<a href="https://github.com/710leo/ZVulDrill" target="_blank" rel="noopener">https://github.com/710leo/ZVulDrill</a><br>按照上面的要求需要创建一个名为zvuldrill的数据库，在将sys文件夹下的zvuldrill.sql导入到新建数据库中。</p>
-<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/1.png" class title="This is an test image">
-<p>创建完成之后，在浏览器打开:<a href="http://127.0.0.1/ZVulDrill/" target="_blank" rel="noopener">http://127.0.0.1/ZVulDrill/</a>  即可访问</p>
-<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/2.png" class title="This is an test image">
-<h2 id="二-后台登录功能万能密码绕过"><a href="#二-后台登录功能万能密码绕过" class="headerlink" title="二.后台登录功能万能密码绕过"></a>二.后台登录功能万能密码绕过</h2><p>采用正向审计的方法，即先找到用户的可控输入位置，在定位到危险函数。<br>首先用rips代码审计工具进行scan，找到用户可控输入</p>
-<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/3.png" class title="This is an test image">
-<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/4.png" class title="This is an test image">
-<p>找到用户可控输入$_POST[pass]，发现它存在于logCheck.php中，用seay代码审计工具打开</p>
-<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/5.png" class title="This is an test image">
-<p>所以我们可以直接构造万能密码 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#39; or 1 or &#39;1</span><br><span class="line">&#39; or 1 #</span><br><span class="line">&#39; or 1 --</span><br></pre></td></tr></table></figure>
-<p>直接不用输入密码就可以绕过检测机制<br>我们来验证一下<br>用Navicat数据库工具打开本地的数据库</p>
-<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/6.png" class title="This is an test image">
-<p>将logCheck.php中的改造一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM admin WHERE admin_name &#x3D; &#39;admin&#39; or &#39;1&#39;AND admin_pass &#x3D; SHA(&#39;$pass&#39;)</span><br></pre></td></tr></table></figure>
-<p>复制到数据库命令行中</p>
-<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/7.png" class title="This is an test image">
-<p>登录网站:<a href="http://127.0.0.1/ZVulDrill/admin/login.php" target="_blank" rel="noopener">http://127.0.0.1/ZVulDrill/admin/login.php</a></p>
-<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/8.png" class title="This is an test image">
-<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/9.png" class title="This is an test image">
-<p>根据seay自带的mysql检测工具可以看到，我们进行的数据库操作</p>
-
-<h2 id="三-前台搜索功能sql注入"><a href="#三-前台搜索功能sql注入" class="headerlink" title="三.前台搜索功能sql注入"></a>三.前台搜索功能sql注入</h2><p>继续看rips扫描的结果，发现有个$_GET[search]参数用户可控</p>
-<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/1.png" class title="This is an test image">
-<p>用seay审计工具打开</p>
-<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/2.png" class title="This is an test image">
-<p>发现用户传入的search参数，没有进行任何过滤就直接加入了sql语句中，这容易造成搜索型sql注入。<br>验证，打开数据库命令行，先查看数据库有几列</p>
-<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/3.png" class title="This is an test image">
-<p>用order by语句，发现为5时会报错，4时显示正常，所以这个数据库的列是4。<br>所以我们打开admin的数据表，查看对应的列名。<br>可以用union select联合查询语句构造payload，直接爆出管理员的密码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM comment WHERE comment_text LIKE &#39;%%&#39; union select admin_id,admin_name,admin_pass,4 from admin;</span><br></pre></td></tr></table></figure>
-<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/4.png" class title="This is an test image">
-<p>用过构造sql注入语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1%&#39; union select 1,2,admin_pass,4 from admin#</span><br></pre></td></tr></table></figure>
-<p>在网页中尝试 发现可以爆出管理员的密码</p>
-<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/5.png" class title="This is an test image">
-
-<p>在这个搜索页面中不光有sql注入漏洞，xss也同样存在，因为这个页面对用户输入的没有进行过滤。<br>构造xss payload:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&#x2F;xss&#x2F;)&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p>完成弹框</p>
-<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/6.png" class title="This is an test image">
+        <h2 id="一-zvuldrill靶场搭建"><a href="#一-zvuldrill靶场搭建" class="headerlink" title="一.zvuldrill靶场搭建"></a>一.zvuldrill靶场搭建</h2><p>靶场地址:<a href="https://github.com/710leo/ZVulDrill" target="_blank" rel="noopener">https://github.com/710leo/ZVulDrill</a><br>按照上面的要求需要创建一个名为zvuldrill的数据库，在将sys文件夹下的zvuldrill.sql导入到新建数据库中。<br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/1.png" class title="This is an test image"><br>创建完成之后，在浏览器打开:<a href="http://127.0.0.1/ZVulDrill/" target="_blank" rel="noopener">http://127.0.0.1/ZVulDrill/</a>  即可访问<br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/2.png" class title="This is an test image"></p>
+<h2 id="二-后台登录功能万能密码绕过"><a href="#二-后台登录功能万能密码绕过" class="headerlink" title="二.后台登录功能万能密码绕过"></a>二.后台登录功能万能密码绕过</h2><p>采用正向审计的方法，即先找到用户的可控输入位置，在定位到危险函数。<br>首先用rips代码审计工具进行scan，找到用户可控输入<br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/3.png" class title="This is an test image"><br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/4.png" class title="This is an test image"><br>找到用户可控输入$_POST[pass]，发现它存在于logCheck.php中，用seay代码审计工具打开<br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/5.png" class title="This is an test image"><br>所以我们可以直接构造万能密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#39; or 1 or &#39;1</span><br><span class="line">&#39; or 1 #</span><br><span class="line">&#39; or 1 --</span><br></pre></td></tr></table></figure><br>直接不用输入密码就可以绕过检测机制<br>我们来验证一下<br>用Navicat数据库工具打开本地的数据库<br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/6.png" class title="This is an test image"><br>将logCheck.php中的改造一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM admin WHERE admin_name &#x3D; &#39;admin&#39; or &#39;1&#39;AND admin_pass &#x3D; SHA(&#39;$pass&#39;)</span><br></pre></td></tr></table></figure><br>复制到数据库命令行中<br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/7.png" class title="This is an test image"><br>登录网站:<a href="http://127.0.0.1/ZVulDrill/admin/login.php" target="_blank" rel="noopener">http://127.0.0.1/ZVulDrill/admin/login.php</a><br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/8.png" class title="This is an test image"><br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/9.png" class title="This is an test image"><br>根据seay自带的mysql检测工具可以看到，我们进行的数据库操作<br></p>
+<h2 id="三-前台搜索功能sql注入"><a href="#三-前台搜索功能sql注入" class="headerlink" title="三.前台搜索功能sql注入"></a>三.前台搜索功能sql注入</h2><p>继续看rips扫描的结果，发现有个$_GET[search]参数用户可控<br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/1.png" class title="This is an test image"><br>用seay审计工具打开<br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/2.png" class title="This is an test image"><br>发现用户传入的search参数，没有进行任何过滤就直接加入了sql语句中，这容易造成搜索型sql注入。<br>验证，打开数据库命令行，先查看数据库有几列<br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/3.png" class title="This is an test image"><br>用order by语句，发现为5时会报错，4时显示正常，所以这个数据库的列是4。<br>所以我们打开admin的数据表，查看对应的列名。<br>可以用union select联合查询语句构造payload，直接爆出管理员的密码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM comment WHERE comment_text LIKE &#39;%%&#39; union select admin_id,admin_name,admin_pass,4 from admin;</span><br></pre></td></tr></table></figure><br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/4.png" class title="This is an test image"><br>用过构造sql注入语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1%&#39; union select 1,2,admin_pass,4 from admin#</span><br></pre></td></tr></table></figure><br>在网页中尝试 发现可以爆出管理员的密码<br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/5.png" class title="This is an test image"></p>
+<p>在这个搜索页面中不光有sql注入漏洞，xss也同样存在，因为这个页面对用户输入的没有进行过滤。<br>构造xss payload:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&#x2F;xss&#x2F;)&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure><br>完成弹框<br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80/6.png" class title="This is an test image"></p>
 
       
     </div>
@@ -569,7 +533,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -702,7 +666,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">28k</span>
+    <span title="Site words total count">28.2k</span>
   
 </div>
 
@@ -712,7 +676,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共28k字</span>
+  <span class="post-count">博客全站共28.2k字</span>
 </div>
 
 
