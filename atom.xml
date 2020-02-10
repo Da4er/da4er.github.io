@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://da4er.top/"/>
-  <updated>2020-02-10T03:04:32.344Z</updated>
+  <updated>2020-02-10T04:34:21.668Z</updated>
   <id>https://da4er.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2.10 [ACTF2020 新生赛]Include&amp;BackupFile&amp;Exec&amp;Upload</title>
+    <link href="https://da4er.top/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload.html"/>
+    <id>https://da4er.top/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload.html</id>
+    <published>2020-02-10T04:32:46.000Z</published>
+    <updated>2020-02-10T04:34:21.668Z</updated>
+    
+    <content type="html"><![CDATA[<p><script type="text/javascript" src="/js/src/bai.js"></script></p><h3 id="Inlcude"><a href="#Inlcude" class="headerlink" title="Inlcude"></a>Inlcude</h3><p><strong>点进去tips发现是file=flag.php，想到php伪协议读取</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php</span><br></pre></td></tr></table></figure><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/1.png" class title="Da4er"><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/2.png" class title="Da4er"><br><strong>base64解码后得到flag</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/3.png" class title="Da4er"></p><hr><h3 id="BackupFile"><a href="#BackupFile" class="headerlink" title="BackupFile"></a>BackupFile</h3><p><strong>根据题目提示找到备份文件：index.php.bak</strong><br><strong>开始审计这段代码</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/4.png" class title="Da4er"><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/5.png" class title="Da4er"><br>发现用了is_numeric函数，但是php版本是7.3，无法使用数组绕过<br>接着看发现是弱类型比较(==)，并且 <strong>$str在==后面</strong> ，所以整个逻辑就很清楚了。<br>首先传个参数key，检测key是否为数字，然后用intval函数取得key的整数部分，在把str变量和key比较，<strong>这里逻辑要清楚是str变量和key比较，所以str在比较前转换成数字’123’。</strong><br>所以直接让key=123即可<br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/6.png" class title="Da4er"></p><hr><h3 id="Exec"><a href="#Exec" class="headerlink" title="Exec"></a>Exec</h3><p><strong>打开网页发现是命令执行（SSRF）</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/7.png" class title="Da4er"><br><strong>并且没有过滤||等关键字</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/8.png" class title="Da4er"><br><strong>直接查看根目录下面的文件</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/9.png" class title="Da4er"><br><strong>看到有个flag文件，cat出来</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/10.png" class title="Da4er"></p><hr><h3 id="Upload"><a href="#Upload" class="headerlink" title="Upload"></a>Upload</h3><p><strong>首先上传一个txt发现当点击submit时会返回chekfile页面</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/11.png" class title="Da4er"><br><strong>将这个js代码删除，再上传。通过试了很多上传方法，发现用大小写绕过，点号绕过，空格绕过但是都不解析。上传.htaccess文件被过滤。但是phtml文件没有被过滤，上传这个文件</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/12.png" class title="Da4er"><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/13.png" class title="Da4er"><br>成功解析<br>连接小马，得到flag。<br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/14.png" class title="Da4er"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/bai.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Inlcude&quot;&gt;&lt;a href=&quot;#Inlcude&quot; class=&quot;headerlink&quot; title=&quot;Inlcude&quot;&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="https://da4er.top/categories/CTF/"/>
+    
+    
+      <category term="CTF" scheme="https://da4er.top/tags/CTF/"/>
+    
+  </entry>
   
   <entry>
     <title>2.10 BUUCTF Misc_间谍启示录</title>
@@ -502,32 +529,6 @@
       
       
         &lt;h2 id=&quot;Havefun&quot;&gt;&lt;a href=&quot;#Havefun&quot; class=&quot;headerlink&quot; title=&quot;Havefun&quot;&gt;&lt;/a&gt;Havefun&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;查看源代码&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;/2-5-%E6%9E%81
-      
-    
-    </summary>
-    
-    
-      <category term="CTF" scheme="https://da4er.top/categories/CTF/"/>
-    
-    
-      <category term="CTF" scheme="https://da4er.top/tags/CTF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2.5 [极客大挑战 2019]EasySQL</title>
-    <link href="https://da4er.top/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL.html"/>
-    <id>https://da4er.top/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL.html</id>
-    <published>2020-02-05T14:23:34.000Z</published>
-    <updated>2020-02-07T12:09:51.364Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>对题目进行简单的分析：单引号闭合；开启了错误提示。想到报错注入，但是报错注入没检测无法利用。</strong><br><img src="/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL/1.png" class title="This is an test image"><br><img src="/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL/2.png" class title="This is an test image"></p><hr><p><strong>尝试一下万能密码</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39; or &#39;1&#x3D;1</span><br></pre></td></tr></table></figure><br>得到flag<br><img src="/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL/3.png" class title="This is an test image"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;对题目进行简单的分析：单引号闭合；开启了错误提示。想到报错注入，但是报错注入没检测无法利用。&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;/2-5-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Easy
       
     
     </summary>
