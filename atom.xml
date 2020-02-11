@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://da4er.top/"/>
-  <updated>2020-02-11T07:13:17.960Z</updated>
+  <updated>2020-02-11T11:23:59.656Z</updated>
   <id>https://da4er.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>文件泄露漏洞解析</title>
+    <link href="https://da4er.top/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90.html"/>
+    <id>https://da4er.top/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90.html</id>
+    <published>2020-02-11T11:21:32.000Z</published>
+    <updated>2020-02-11T11:23:59.656Z</updated>
+    
+    <content type="html"><![CDATA[<p><script type="text/javascript" src="/js/src/bai.js"></script></p><h4 id="一-漏洞形成"><a href="#一-漏洞形成" class="headerlink" title="一. 漏洞形成"></a>一. 漏洞形成</h4><p>源码泄露漏洞的形成原因很简单就是因为一些备份文件或者可以恢复源码的文件放在了外网中，用户可以访问，只要用户找到了这些文件的位置，就可以运用工具进行源码恢复。</p><hr><h3 id="二-源码泄露漏洞分类"><a href="#二-源码泄露漏洞分类" class="headerlink" title="二.源码泄露漏洞分类"></a>二.源码泄露漏洞分类</h3><h4 id="1-git-hg文件泄露"><a href="#1-git-hg文件泄露" class="headerlink" title="1. .git/.hg文件泄露"></a>1. .git/.hg文件泄露</h4><p>.git/.hg在执行init初始化目录的时候会创建一个.git/.hg目录，包含了所有的git/hg存储何种操作对象。在管理员发布代码的时候，没有把.git/.hg目录删除，而是直接发布到了服务器目录中，那么我们就可以用这个文件进行恢复源码操作。<br>发现方法：通过目录扫描工具进行扫描，如果发现.git/.hg目录说明有该漏洞。<br>下图是用dirsearch扫描.git漏洞：<br><img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/1.png" class title="Da4er"><br>dirsearch用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 dirsearch.py -u url -e *</span><br></pre></td></tr></table></figure><br>扫描到了.git目录，使用githack工具进行源码恢复：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 githack.py https:&#x2F;&#x2F;www.example.com&#x2F;.git&#x2F;</span><br></pre></td></tr></table></figure><br><img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/2.png" class title="Da4er"><br>也可以使用dvcs-ripper工具：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-git.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.git&#x2F;</span><br></pre></td></tr></table></figure><br>这样就可以将源码恢复了。 例题：BUUCTF [BJDCTF2020]Mark loves cat<br>对于.hg也是一样，都是先通过目录扫描工具，然后使用对应的工具进行源码恢复工作。<br>使用dvcs-ripper工具，用法为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-hg.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.hg&#x2F;</span><br></pre></td></tr></table></figure></p><hr><h4 id="2-DS-Store文件泄漏"><a href="#2-DS-Store文件泄漏" class="headerlink" title="2.DS_Store文件泄漏"></a>2.DS_Store文件泄漏</h4><p>形成原因：管理员没有把.ds_store文件删除。<br>扫描到漏洞利用目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.example.com&#x2F;.ds_store</span><br></pre></td></tr></table></figure><br>使用dsstoreexp工具进行恢复：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python ds_store_exp.py http:&#x2F;&#x2F;www.example.com&#x2F;.DS_Store</span><br></pre></td></tr></table></figure><br>先用dirsearch扫描目录发现.DS_Store文件：<br><img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/3.png" class title="Da4er"><br>再使用ds_store_exp工具恢复源码：<br><img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/4.png" class title="Da4er"><br>例题：Bugku web sql注入2</p><hr><h4 id="3-文件备份泄露"><a href="#3-文件备份泄露" class="headerlink" title="3.文件备份泄露"></a>3.文件备份泄露</h4><p>这个漏洞是网站进行升级或者因为某种原因，管理员没有删除备份文件且备份文件没有设置权限，可以被下载下来。<br><strong>例如：’.rar’,’.zip’,’.tar’,’.tar.bz2’,’.sql’,’.7z’,’.bak’,’.txt’,’.swp’,’index.php.bak’等</strong><br>可以使用dirsearch扫描或者SourceLeakHacker都可以。<br><img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/5.png" class title="Da4er"><br><img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/6.png" class title="Da4er"><br>扫描完下载下来就可以了。<br>例题：bugku 备份是个好习惯；buuctf [ACTF2020 新生赛]BackupFile</p><hr><h4 id="4-SVN导致文件泄露"><a href="#4-SVN导致文件泄露" class="headerlink" title="4.SVN导致文件泄露"></a>4.SVN导致文件泄露</h4><p>在SVN管理的过程中，会自动生成一个.svn的文件夹，包含了源代码信息，而如果管理员直接复制代码文件到Web服务器上，使得.svn文件同样暴露在外网环境下而没有清理。<br>同样使用扫描工具可以扫到，使用dvcs-ripper工具恢复<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-svn.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.svn&#x2F;</span><br></pre></td></tr></table></figure><br>例题：SVN信息泄露漏洞分析(第1题)——墨者学院在线靶场</p><hr><h4 id="5-CVS泄漏"><a href="#5-CVS泄漏" class="headerlink" title="5.CVS泄漏"></a>5.CVS泄漏</h4><p>漏洞利用点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;url&#x2F;CVS&#x2F;Root 返回根信息</span><br><span class="line">http:&#x2F;&#x2F;url&#x2F;CVS&#x2F;Entries 返回所有文件的结构</span><br></pre></td></tr></table></figure><br>取回源码命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bk clone http:&#x2F;&#x2F;url&#x2F;name dir</span><br></pre></td></tr></table></figure><br>这个命令的意思就是把远端一个名为name的repo clone到本地名为dir的目录下。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查看所有的改变的命令，转到download的目录：bk changes</span><br></pre></td></tr></table></figure><hr><h4 id="6-Bazaar-bzr"><a href="#6-Bazaar-bzr" class="headerlink" title="6.Bazaar/bzr"></a>6.Bazaar/bzr</h4><p>工具：dvcs-ripper<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-bzr.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.bzr&#x2F;</span><br></pre></td></tr></table></figure></p><hr><h4 id="7-WEB-INF-web-xml泄露"><a href="#7-WEB-INF-web-xml泄露" class="headerlink" title="7.WEB-INF/web.xml泄露"></a>7.WEB-INF/web.xml泄露</h4><p>WEB-INF是Java的WEB应用的安全目录。如果想在页面中直接访问其中的文件，必须通过web.xml文件对要访问的文件进行相应映射才能访问。<br>漏洞成因：<br>通常一些web应用我们会使用多个web服务器搭配使用，解决其中的一个web服务器的性能缺陷以及做均衡负载的优点和完成一些分层结构的安全策略等。在使用这种架构的时候，由于对静态资源的目录或文件的映射配置不当，可能会引发一些的安全问题，导致web.xml等文件能够被读取。<br>漏洞检测以及利用方法：<br>通过找到web.xml文件，推断class文件的路径，最后直接class文件，在通过反编译class文件，得到网站源码。一般情况，jsp引擎默认都是禁止访问WEB-INF目录的，Nginx 配合Tomcat做均衡负载或集群等情况时，问题原因其实很简单，Nginx不会去考虑配置其他类型引擎（Nginx不是jsp引擎）导致的安全问题而引入到自身的安全规范中来（这样耦合性太高了），修改Nginx配置文件禁止访问WEB-INF目录就好了： location ~ ^/WEB-INF/* { deny all; } 或者return 404; 或者其他<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WEB-INF&#x2F;web.xml : Web应用程序配置文件, 描述了servlet和其他的应用组件配置及命名规则. WEB-INF&#x2F;database.properties : 数据库配置文件 </span><br><span class="line">WEB-INF&#x2F;classes&#x2F; : 一般用来存放Java类文件(.class) </span><br><span class="line">WEB-INF&#x2F;lib&#x2F; : 用来存放打包好的库(.jar) </span><br><span class="line">WEB-INF&#x2F;src&#x2F; : 用来放源代码(.asp和.php等)</span><br></pre></td></tr></table></figure><br>例题：<a href="https://www.secpulse.com/archives/71113.html" target="_blank" rel="noopener">DDCTF 2018 Web Writeup</a></p><hr><p>参考博客：<br><a href="https://www.cnblogs.com/CH42e/p/11978444.html" target="_blank" rel="noopener">1</a><br><a href="https://www.secpulse.com/archives/55286.html" target="_blank" rel="noopener">2</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/bai.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;h4 id=&quot;一-漏洞形成&quot;&gt;&lt;a href=&quot;#一-漏洞形成&quot; class=&quot;headerlink&quot; title=&quot;一. 漏洞形成&quot;&gt;&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="Web安全&amp;渗透测试" scheme="https://da4er.top/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="Web安全&amp;渗透测试" scheme="https://da4er.top/tags/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>2.11 [BJDCTF2020]Easy MD5&amp;Mark loves cat</title>
@@ -501,32 +528,6 @@
       
       
         &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/bai.js&quot;&gt;&lt;/script&gt;&lt;br&gt;&lt;strong&gt;下载压缩包解压有密码，binwalk分离出来两个压缩包。&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;/2-7-GXYCTF20
-      
-    
-    </summary>
-    
-    
-      <category term="CTF" scheme="https://da4er.top/categories/CTF/"/>
-    
-    
-      <category term="CTF" scheme="https://da4er.top/tags/CTF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2.6 buuctf_misc_从娃娃抓起</title>
-    <link href="https://da4er.top/2-6-buuctf-misc-%E4%BB%8E%E5%A8%83%E5%A8%83%E6%8A%93%E8%B5%B7.html"/>
-    <id>https://da4er.top/2-6-buuctf-misc-%E4%BB%8E%E5%A8%83%E5%A8%83%E6%8A%93%E8%B5%B7.html</id>
-    <published>2020-02-06T04:37:40.000Z</published>
-    <updated>2020-02-07T07:51:57.592Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>根据题目提示：</strong><br><img src data-echo="2-6-buuctf-misc-从娃娃抓起/2.png" alt="2-6-buuctf-misc-从娃娃抓起"><br>编码是两个汉字编码，试了好多编码形式，找到了两个：中文电码和五笔编码。<br><img src data-echo="2-6-buuctf-misc-从娃娃抓起/3.png" alt="2-6-buuctf-misc-从娃娃抓起"><br><a href="https://dianma.51240.com/" target="_blank" rel="noopener">中文电码在线解码</a><br><strong>五笔编码现在还没有找到好的网站去解，只能一个一个对照emmmmmm</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;根据题目提示：&lt;/strong&gt;&lt;br&gt;&lt;img src data-echo=&quot;2-6-buuctf-misc-从娃娃抓起/2.png&quot; alt=&quot;2-6-buuctf-misc-从娃娃抓起&quot;&gt;&lt;br&gt;编码是两个汉字编码，试了好多编码形式，找到了两个：中文电
       
     
     </summary>
