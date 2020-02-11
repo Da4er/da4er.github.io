@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://da4er.top/"/>
-  <updated>2020-02-11T03:36:26.791Z</updated>
+  <updated>2020-02-11T04:47:00.686Z</updated>
   <id>https://da4er.top/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2.11 [GUET-CTF2019]soul sipse</title>
+    <link href="https://da4er.top/2-11-GUET-CTF2019-soul-sipse.html"/>
+    <id>https://da4er.top/2-11-GUET-CTF2019-soul-sipse.html</id>
+    <published>2020-02-11T04:46:04.000Z</published>
+    <updated>2020-02-11T04:47:00.686Z</updated>
+    
+    <content type="html"><![CDATA[<p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>用Audacity打开在频谱图发现：</strong><br><img src="/2-11-GUET-CTF2019-soul-sipse/6.png" class title="Da4er"><br><strong>再用steghide将隐藏的文件找出来</strong><br><img src="/2-11-GUET-CTF2019-soul-sipse/7.png" class title="Da4er"><br><img src="/2-11-GUET-CTF2019-soul-sipse/8.png" class title="Da4er"><br><strong>最后unicode解码一下</strong><br><img src="/2-11-GUET-CTF2019-soul-sipse/9.png" class title="Da4er"><br><strong>得到flag{5304}</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/bai.js&quot;&gt;&lt;/script&gt;&lt;br&gt;&lt;strong&gt;用Audacity打开在频谱图发现：&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;/2-11-GUET-CTF2019-soul
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="https://da4er.top/categories/CTF/"/>
+    
+    
+      <category term="CTF" scheme="https://da4er.top/tags/CTF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2.11 [GUET-CTF2019]虚假的压缩包</title>
+    <link href="https://da4er.top/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85.html"/>
+    <id>https://da4er.top/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85.html</id>
+    <published>2020-02-11T04:44:09.000Z</published>
+    <updated>2020-02-11T04:45:22.647Z</updated>
+    
+    <content type="html"><![CDATA[<p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>首先拿到题目，有一个虚假的压缩包和真实的压缩包</strong><br><strong>很明显虚假的压缩包是伪加密</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/1.png" class title="Da4er"><br><strong>打开压缩包后发现是解rsa</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/2.png" class title="Da4er"><br><strong>有n，e，c是个简单的rsa，直接脚本一把梭</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import libnum</span><br><span class="line">from Crypto.Util.number import long_to_bytes</span><br><span class="line"></span><br><span class="line">c &#x3D; 26</span><br><span class="line">n &#x3D; 33</span><br><span class="line">e &#x3D; 0x3</span><br><span class="line">q &#x3D; 11</span><br><span class="line">p &#x3D; 13</span><br><span class="line"></span><br><span class="line">d &#x3D; libnum.invmod(e, (p - 1) * (q - 1))</span><br><span class="line">m &#x3D; pow(c, d, n)</span><br><span class="line">print &quot;m的值为:&quot;</span><br><span class="line">print m</span><br><span class="line">#print long_to_bytes(m)</span><br></pre></td></tr></table></figure><br><strong>得到m为5，可是提示密码不对，这里有个脑洞要加上key.txt前面的”答案是”才是正确的密码，所以真实的压缩包密码为:答案是5。</strong><br><strong>解压后通过修改图片高度</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/3.png" class title="Da4er"><br><strong>发现一个将另一个文件的所以和5进行异或</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;flag&quot;,&quot;r&quot;) as fp:</span><br><span class="line">    r&#x3D;fp.read()</span><br><span class="line">    with open(&quot;xor.txt&quot;,&quot;w&quot;) as fp1:</span><br><span class="line">        for i in r:</span><br><span class="line">            tmp&#x3D;int(i,16)^5</span><br><span class="line">            fp1.write(hex(tmp)[2:])</span><br></pre></td></tr></table></figure><br><strong>得到的是以”504b0304”开头的，将他放到winhex里进行转换acii</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/4.png" class title="Da4er"><br><strong>看到是word类型的压缩包，这里的一个知识点：word本身就是个压缩包。所以把zip后缀改成doc，再将字体颜色换成深色，得到flag。</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/5.png" class title="Da4er"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/bai.js&quot;&gt;&lt;/script&gt;&lt;br&gt;&lt;strong&gt;首先拿到题目，有一个虚假的压缩包和真实的压缩包&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;很明显虚假的压缩包是伪加密&lt;/stron
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="https://da4er.top/categories/CTF/"/>
+    
+    
+      <category term="CTF" scheme="https://da4er.top/tags/CTF/"/>
+    
+  </entry>
   
   <entry>
     <title>2.11 [GUET-CTF2019]zips</title>
@@ -477,58 +529,6 @@
         &lt;p&gt;&lt;strong&gt;题目是一个txt文件，里面只有4个数字：63，127，191，255。虽然题目提示network，但是看了wp知道是ttl隐写。&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;将每个数字转化成8位二进制&lt;/strong&gt;&lt;br&gt;&lt;figure c
-      
-    
-    </summary>
-    
-    
-      <category term="CTF" scheme="https://da4er.top/categories/CTF/"/>
-    
-    
-      <category term="CTF" scheme="https://da4er.top/tags/CTF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2.6 [极客大挑战 2019]PHP</title>
-    <link href="https://da4er.top/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP.html"/>
-    <id>https://da4er.top/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP.html</id>
-    <published>2020-02-06T03:06:11.000Z</published>
-    <updated>2020-02-07T12:10:21.236Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>根据题目提示：题目有源码备份，下载得到<a href="http://www.zip。" target="_blank" rel="noopener">www.zip。</a></strong><br><img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/3.png" class title="This is an test image"><br><strong>有三个php文件</strong><br>class.php<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Name&#123;</span><br><span class="line">    private $username &#x3D; &#39;nonono&#39;;</span><br><span class="line">    private $password &#x3D; &#39;yesyes&#39;;</span><br><span class="line"></span><br><span class="line">    public function __construct($username,$password)&#123;</span><br><span class="line">        $this-&gt;username &#x3D; $username;</span><br><span class="line">        $this-&gt;password &#x3D; $password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __wakeup()&#123;</span><br><span class="line">        $this-&gt;username &#x3D; &#39;guest&#39;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct()&#123;</span><br><span class="line">        if ($this-&gt;password !&#x3D; 100) &#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;NO!!!hacker!!!&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You name is: &quot;;</span><br><span class="line">            echo $this-&gt;username;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You password is: &quot;;</span><br><span class="line">            echo $this-&gt;password;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            die();</span><br><span class="line">        &#125;</span><br><span class="line">        if ($this-&gt;username &#x3D;&#x3D;&#x3D; &#39;admin&#39;) &#123;</span><br><span class="line">            global $flag;</span><br><span class="line">            echo $flag;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;hello my friend~~&lt;&#x2F;br&gt;sorry i can&#39;t give you the flag!&quot;;</span><br><span class="line">            die();</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>index.php<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    include &#39;class.php&#39;;</span><br><span class="line">    $select &#x3D; $_GET[&#39;select&#39;];</span><br><span class="line">    $res&#x3D;unserialize(@$select);</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure><br>flag.php<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$flag &#x3D; &#39;Syc&#123;dog_dog_dog_dog&#125;&#39;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><br>通过分析知：$select进行反序列化。<br>关键在class.php中的_destruct()魔法函数。<br>对于序列化问题有调用魔法函数顺序的问题：<br><img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/4.png" class title="This is an test image"><br><img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/5.png" class title="This is an test image"><br>对于题目需要将username=admin，password=100，但是会先执行_wakeup函数将username=guest，所以这道题目关键在于如何绕过_wakeup函数。<br><strong>知识点：如何绕过_wakeup</strong><br><img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/6.png" class title="This is an test image"><br>测试php：<br><img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/1.png" class title="This is an test image"><br>形成payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">?select&#x3D;O:4:&quot;Name&quot;:3:&#123;s:14:&quot;%00Name%00username&quot;;s:5:&quot;admin&quot;;s:14:&quot;%00Name%00password&quot;;i:100;&#125;</span><br></pre></td></tr></table></figure><br>这个payload绕过__wakeup()函数，使username不被覆盖，加上%00是因为username和password都是私有变量，变量中的类名前后会有空白符，而复制的时候会丢失。<br>得到flag<br><img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/2.png" class title="This is an test image"></p><p>参考博客：<br><a href="https://www.jianshu.com/p/bfe00fd583df" target="_blank" rel="noopener">https://www.jianshu.com/p/bfe00fd583df</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;根据题目提示：题目有源码备份，下载得到&lt;a href=&quot;http://www.zip。&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;www.zip。&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;/2-6-%E6%9E%81%E5%
-      
-    
-    </summary>
-    
-    
-      <category term="CTF" scheme="https://da4er.top/categories/CTF/"/>
-    
-    
-      <category term="CTF" scheme="https://da4er.top/tags/CTF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2-6 [SWPU2019]你有没有好好看网课?</title>
-    <link href="https://da4er.top/2-6-SWPU2019-%E4%BD%A0%E6%9C%89%E6%B2%A1%E6%9C%89%E5%A5%BD%E5%A5%BD%E7%9C%8B%E7%BD%91%E8%AF%BE.html"/>
-    <id>https://da4er.top/2-6-SWPU2019-%E4%BD%A0%E6%9C%89%E6%B2%A1%E6%9C%89%E5%A5%BD%E5%A5%BD%E7%9C%8B%E7%BD%91%E8%AF%BE.html</id>
-    <published>2020-02-05T16:04:21.000Z</published>
-    <updated>2020-02-07T07:52:03.208Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>flag2.php，flag3.php都有密码：flag3.php提示密码是六位数，爆破得到密码。</strong><br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/1.png" alt="2-6-SWPU2019-你有没有好好看网课"><br><strong>查看flag.docx</strong><br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/5.png" alt="2-6-SWPU2019-你有没有好好看网课"><br>看了别的师傅的wp，这个docx提示查看mp4对应帧数:<strong>00:00:05:20；00:00:07:11</strong><br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/2.png" alt="2-6-SWPU2019-你有没有好好看网课"><br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/3.png" alt="2-6-SWPU2019-你有没有好好看网课"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">..... ..&#x2F;... .&#x2F;... .&#x2F;... ..&#x2F;dXBfdXBfdXA&#x3D;</span><br></pre></td></tr></table></figure><br>后面一段是base64编码，前面的一段一开始以为是摩斯编码，但是看了wp知道了是敲击码。<br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/4.png" alt="2-6-SWPU2019-你有没有好好看网课"><br>解的flag2.zip密码：<strong>wllmup_up_up</strong><br><strong>flag2.zip下是一张图片，将这张图片用winhex打开，在最下面得到flag。</strong><br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/6.png" alt="2-6-SWPU2019-你有没有好好看网课"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;flag2.php，flag3.php都有密码：flag3.php提示密码是六位数，爆破得到密码。&lt;/strong&gt;&lt;br&gt;&lt;img src data-echo=&quot;2-6-SWPU2019-你有没有好好看网课/1.png&quot; alt=&quot;2-6-SWPU2019
       
     
     </summary>
