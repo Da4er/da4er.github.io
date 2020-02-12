@@ -253,6 +253,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://da4er.top/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Da4er's">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/3.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Da4er's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip.html" itemprop="url">2.12 [BJDCTF2020]EasySearch&The mystery of ip</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-12T16:18:45+08:00">
+                2020-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip.html" class="leancloud_visitors" data-flag-title="2.12 [BJDCTF2020]EasySearch&The mystery of ip">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  437
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+<h3 id="EasySearch"><a href="#EasySearch" class="headerlink" title="EasySearch"></a>EasySearch</h3><p>打开题目先随便输入，发现会弹框。在扫描一下目录，发现.swp备份文件。<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/1.png" class title="Da4er"><br>打开index.php.swp页面：<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/2.png" class title="Da4er"><br>阅读这段源码：<strong>首先是随机获取文件名的一个函数，最关键的是让password前6个字符的md5加密值等于6d0bc1，然后会在public目录下创建一个shtml文件，再将post传参的username字段写入这个shtml文件中。</strong><br>首先写个脚本让password前6个字符的md5值等于6d0bc1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line"></span><br><span class="line">a&#x3D; &quot;0123456789&quot;</span><br><span class="line">for o in a:</span><br><span class="line">    for p in a:</span><br><span class="line">        for q in a:</span><br><span class="line">            for r in a:</span><br><span class="line">                for s in a:</span><br><span class="line">                    for t in a:</span><br><span class="line">                        for u in a:</span><br><span class="line">                            b &#x3D; str(o)+str(p)+str(q)+str(r)+str(s)+str(t)+str(u)</span><br><span class="line">                            md5 &#x3D; hashlib.md5(b.encode(&#39;utf-8&#39;)).hexdigest()</span><br><span class="line">                            if ((md5[0:6])&#x3D;&#x3D;&#39;6d0bc1&#39;):</span><br><span class="line">                                print b</span><br></pre></td></tr></table></figure><br>可以爆破出很多，我拿<strong>2020666来进行传参。</strong><br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/3.png" class title="Da4er"><br>成功利用，然后就是访问这个新建的shtml文件了，<strong>抓包发现在响应包中有这个文件的路径</strong>：<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/4.png" class title="Da4er"><br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/5.png" class title="Da4er"><br>到这利用了SSI注入漏洞，所以我们可以在username变量中传入ssi语句来远程执行系统命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--#exec cmd&#x3D;&quot;命令&quot;--&gt;</span><br></pre></td></tr></table></figure><br>首先ls一下当前目录：<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/6.png" class title="Da4er"><br>发现成功利用，没有进行任何过滤。<br>然后我们在ls一下上一级目录：<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/7.png" class title="Da4er"><br>发现了 <strong>‘flag_990c66bf85a09c664f0b6741840499b2’</strong> 文件，最后我们把这个文件cat出来，遍得到flag。<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/8.png" class title="Da4er"></p>
+<hr>
+<h3 id="The-mystery-of-ip"><a href="#The-mystery-of-ip" class="headerlink" title="The mystery of ip"></a>The mystery of ip</h3><p>这道题我在做的时候试了好多方法，虽然扫描目录的时候发现了.ds_store文件但是没有权限。这个思路行不通，最后还是看了别的师傅的博客，原来是X-Forwarded-For参数可控，使用的是ssti模板注入2333….<br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For:&#123;&#123;system(&#39;cat .&#x2F;flag&#39;)&#125;&#125;</span><br></pre></td></tr></table></figure><br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/9.png" class title="Da4er"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://da4er.top/PHP%E4%B8%AD%E7%9A%84md5-%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87%E6%80%BB%E7%BB%93.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -349,7 +536,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  539
+                  538
                 </span>
               
 
@@ -388,21 +575,13 @@
       
         
           
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<h3 id="一-前言"><a href="#一-前言" class="headerlink" title="一.前言"></a>一.前言</h3><p>本篇文章记录一下在做ctf题时遇到到的md5()绕过方法。主要分为:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">md5(key,true)；</span><br><span class="line">md5()&#x3D;&#x3D;md5()；</span><br><span class="line">md5()&#x3D;&#x3D;&#x3D;md5()；</span><br><span class="line">(string)key1!&#x3D;&#x3D;(string)key2&amp;&amp;md5(key1)&#x3D;&#x3D;&#x3D;md5(key2)</span><br></pre></td></tr></table></figure>
-<p>绕过思路。</p>
+            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+<h3 id="一-前言"><a href="#一-前言" class="headerlink" title="一.前言"></a>一.前言</h3><p>本篇文章记录一下在做ctf题时遇到到的md5()绕过方法。主要分为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">md5(key,true)；</span><br><span class="line">md5()&#x3D;&#x3D;md5()；</span><br><span class="line">md5()&#x3D;&#x3D;&#x3D;md5()；</span><br><span class="line">(string)key1!&#x3D;&#x3D;(string)key2&amp;&amp;md5(key1)&#x3D;&#x3D;&#x3D;md5(key2)</span><br></pre></td></tr></table></figure><br>绕过思路。</p>
 <hr>
-<h3 id="二-具体方法"><a href="#二-具体方法" class="headerlink" title="二.具体方法"></a>二.具体方法</h3><h4 id="1-MD5-key-true"><a href="#1-MD5-key-true" class="headerlink" title="1. MD5(key,true)"></a>1. MD5(key,true)</h4><p>默认md5第二个参数是false。<br>FALSE - 默认 32 字符十六进制数<br>TRUE -  原始 16 字符二进制格式<br>所以当我们传入一些特殊字符后会在浏览器中显示一些关键字，从而实现绕过。<br>两个特殊的字符：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ffifdyop</span><br><span class="line">129581926211651571912466741651878684928</span><br><span class="line">ffifdyop：T0Do#&#39;or&#39;8</span><br><span class="line">129581926211651571912466741651878684928：&#39;or&#39;6]!r,b。</span><br></pre></td></tr></table></figure>
-<p>一般传入ffifdyop即可绕过。</p>
-<h4 id="2-md5-md5"><a href="#2-md5-md5" class="headerlink" title="2.md5()==md5()"></a>2.md5()==md5()</h4><p>这个主要用到弱类型比较，以科学计数法0e开头的，在比较时会自动转换成0从而绕过比较。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1184209335a</span><br><span class="line">0e072485820392773389523109082030</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s532378020a</span><br><span class="line">0e220463095855511507588041205815</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br></pre></td></tr></table></figure>
-<p>以上就是一些常用的绕过参数，随便找两个传进去就可以绕过。</p>
+<h3 id="二-具体方法"><a href="#二-具体方法" class="headerlink" title="二.具体方法"></a>二.具体方法</h3><h4 id="1-MD5-key-true"><a href="#1-MD5-key-true" class="headerlink" title="1. MD5(key,true)"></a>1. MD5(key,true)</h4><p>默认md5第二个参数是false。<br>FALSE - 默认 32 字符十六进制数<br>TRUE -  原始 16 字符二进制格式<br>所以当我们传入一些特殊字符后会在浏览器中显示一些关键字，从而实现绕过。<br>两个特殊的字符：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ffifdyop</span><br><span class="line">129581926211651571912466741651878684928</span><br><span class="line">ffifdyop：T0Do#&#39;or&#39;8</span><br><span class="line">129581926211651571912466741651878684928：&#39;or&#39;6]!r,b。</span><br></pre></td></tr></table></figure><br>一般传入ffifdyop即可绕过。</p>
+<h4 id="2-md5-md5"><a href="#2-md5-md5" class="headerlink" title="2.md5()==md5()"></a>2.md5()==md5()</h4><p>这个主要用到弱类型比较，以科学计数法0e开头的，在比较时会自动转换成0从而绕过比较。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1184209335a</span><br><span class="line">0e072485820392773389523109082030</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s532378020a</span><br><span class="line">0e220463095855511507588041205815</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br></pre></td></tr></table></figure><br>以上就是一些常用的绕过参数，随便找两个传进去就可以绕过。</p>
 <h4 id="3-md5-md5"><a href="#3-md5-md5" class="headerlink" title="3.md5()===md5()"></a>3.md5()===md5()</h4><p>===强制类型比较，当比较时会比较类型和大小，所以用第二种绕过不了。<br>但是我们可以用数组绕过，当我们传入不符合规定的参数时：md5([1])==md5([2])==error，即error==error从而绕过。</p>
-<h4 id="4-string-key1-string-key2-amp-amp-md5-key1-md5-key2"><a href="#4-string-key1-string-key2-amp-amp-md5-key1-md5-key2" class="headerlink" title="4.(string)key1!==(string)key2&amp;&amp;md5(key1)===md5(key2)"></a>4.(string)key1!==(string)key2&amp;&amp;md5(key1)===md5(key2)</h4><p>这个在比较时强制类型转换成string类型，所以第三种就不可以了。<br>但是这个要求我们传入md5相同但是字符串不相同的两个参数，其实这样的情况是存在的。<br>两条payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Param1&#x3D;%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%00%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%55%5d%83%60%fb%5f%07%fe%a2</span><br><span class="line">Param2&#x3D;%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%02%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%d5%5d%83%60%fb%5f%07%fe%a2</span><br></pre></td></tr></table></figure>
-<p>上面的payload就可以绕过，当然还有很多这样的字符串。<br>注意一下的是在post传参时要urlencode一下。</p>
+<h4 id="4-string-key1-string-key2-amp-amp-md5-key1-md5-key2"><a href="#4-string-key1-string-key2-amp-amp-md5-key1-md5-key2" class="headerlink" title="4.(string)key1!==(string)key2&amp;&amp;md5(key1)===md5(key2)"></a>4.(string)key1!==(string)key2&amp;&amp;md5(key1)===md5(key2)</h4><p>这个在比较时强制类型转换成string类型，所以第三种就不可以了。<br>但是这个要求我们传入md5相同但是字符串不相同的两个参数，其实这样的情况是存在的。<br>两条payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Param1&#x3D;%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%00%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%55%5d%83%60%fb%5f%07%fe%a2</span><br><span class="line">Param2&#x3D;%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%02%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%d5%5d%83%60%fb%5f%07%fe%a2</span><br></pre></td></tr></table></figure><br>上面的payload就可以绕过，当然还有很多这样的字符串。<br>注意一下的是在post传参时要urlencode一下。</p>
 
           
         
@@ -586,56 +765,23 @@
       
         
           
-            <script type="text/javascript" src="/js/src/bai.js"></script>
+            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
 <h4 id="一-漏洞形成"><a href="#一-漏洞形成" class="headerlink" title="一. 漏洞形成"></a>一. 漏洞形成</h4><p>源码泄露漏洞的形成原因很简单就是因为一些备份文件或者可以恢复源码的文件放在了外网中，用户可以访问，只要用户找到了这些文件的位置，就可以运用工具进行源码恢复。</p>
 <hr>
-<h3 id="二-源码泄露漏洞分类"><a href="#二-源码泄露漏洞分类" class="headerlink" title="二.源码泄露漏洞分类"></a>二.源码泄露漏洞分类</h3><h4 id="1-git-hg文件泄露"><a href="#1-git-hg文件泄露" class="headerlink" title="1. .git/.hg文件泄露"></a>1. .git/.hg文件泄露</h4><p>.git/.hg在执行init初始化目录的时候会创建一个.git/.hg目录，包含了所有的git/hg存储何种操作对象。在管理员发布代码的时候，没有把.git/.hg目录删除，而是直接发布到了服务器目录中，那么我们就可以用这个文件进行恢复源码操作。<br>发现方法：通过目录扫描工具进行扫描，如果发现.git/.hg目录说明有该漏洞。<br>下图是用dirsearch扫描.git漏洞：</p>
-<img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/1.png" class title="Da4er">
-<p>dirsearch用法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 dirsearch.py -u url -e *</span><br></pre></td></tr></table></figure>
-<p>扫描到了.git目录，使用githack工具进行源码恢复：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 githack.py https:&#x2F;&#x2F;www.example.com&#x2F;.git&#x2F;</span><br></pre></td></tr></table></figure>
-<img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/2.png" class title="Da4er">
-<p>也可以使用dvcs-ripper工具：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-git.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.git&#x2F;</span><br></pre></td></tr></table></figure>
-<p>这样就可以将源码恢复了。 例题：BUUCTF [BJDCTF2020]Mark loves cat<br>对于.hg也是一样，都是先通过目录扫描工具，然后使用对应的工具进行源码恢复工作。<br>使用dvcs-ripper工具，用法为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-hg.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.hg&#x2F;</span><br></pre></td></tr></table></figure>
-
+<h3 id="二-源码泄露漏洞分类"><a href="#二-源码泄露漏洞分类" class="headerlink" title="二.源码泄露漏洞分类"></a>二.源码泄露漏洞分类</h3><h4 id="1-git-hg文件泄露"><a href="#1-git-hg文件泄露" class="headerlink" title="1. .git/.hg文件泄露"></a>1. .git/.hg文件泄露</h4><p>.git/.hg在执行init初始化目录的时候会创建一个.git/.hg目录，包含了所有的git/hg存储何种操作对象。在管理员发布代码的时候，没有把.git/.hg目录删除，而是直接发布到了服务器目录中，那么我们就可以用这个文件进行恢复源码操作。<br>发现方法：通过目录扫描工具进行扫描，如果发现.git/.hg目录说明有该漏洞。<br>下图是用dirsearch扫描.git漏洞：<br><img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/1.png" class title="Da4er"><br>dirsearch用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 dirsearch.py -u url -e *</span><br></pre></td></tr></table></figure><br>扫描到了.git目录，使用githack工具进行源码恢复：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 githack.py https:&#x2F;&#x2F;www.example.com&#x2F;.git&#x2F;</span><br></pre></td></tr></table></figure><br><img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/2.png" class title="Da4er"><br>也可以使用dvcs-ripper工具：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-git.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.git&#x2F;</span><br></pre></td></tr></table></figure><br>这样就可以将源码恢复了。 例题：BUUCTF [BJDCTF2020]Mark loves cat<br>对于.hg也是一样，都是先通过目录扫描工具，然后使用对应的工具进行源码恢复工作。<br>使用dvcs-ripper工具，用法为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-hg.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.hg&#x2F;</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h4 id="2-DS-Store文件泄漏"><a href="#2-DS-Store文件泄漏" class="headerlink" title="2.DS_Store文件泄漏"></a>2.DS_Store文件泄漏</h4><p>形成原因：管理员没有把.ds_store文件删除。<br>扫描到漏洞利用目录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.example.com&#x2F;.ds_store</span><br></pre></td></tr></table></figure>
-<p>使用dsstoreexp工具进行恢复：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python ds_store_exp.py http:&#x2F;&#x2F;www.example.com&#x2F;.DS_Store</span><br></pre></td></tr></table></figure>
-<p>先用dirsearch扫描目录发现.DS_Store文件：</p>
-<img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/3.png" class title="Da4er">
-<p>再使用ds_store_exp工具恢复源码：</p>
-<img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/4.png" class title="Da4er">
-<p>例题：Bugku web sql注入2</p>
+<h4 id="2-DS-Store文件泄漏"><a href="#2-DS-Store文件泄漏" class="headerlink" title="2.DS_Store文件泄漏"></a>2.DS_Store文件泄漏</h4><p>形成原因：管理员没有把.ds_store文件删除。<br>扫描到漏洞利用目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.example.com&#x2F;.ds_store</span><br></pre></td></tr></table></figure><br>使用dsstoreexp工具进行恢复：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python ds_store_exp.py http:&#x2F;&#x2F;www.example.com&#x2F;.DS_Store</span><br></pre></td></tr></table></figure><br>先用dirsearch扫描目录发现.DS_Store文件：<br><img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/3.png" class title="Da4er"><br>再使用ds_store_exp工具恢复源码：<br><img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/4.png" class title="Da4er"><br>例题：Bugku web sql注入2</p>
 <hr>
-<h4 id="3-文件备份泄露"><a href="#3-文件备份泄露" class="headerlink" title="3.文件备份泄露"></a>3.文件备份泄露</h4><p>这个漏洞是网站进行升级或者因为某种原因，管理员没有删除备份文件且备份文件没有设置权限，可以被下载下来。<br><strong>例如：’.rar’,’.zip’,’.tar’,’.tar.bz2’,’.sql’,’.7z’,’.bak’,’.txt’,’.swp’,’index.php.bak’等</strong><br>可以使用dirsearch扫描或者SourceLeakHacker都可以。</p>
-<img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/5.png" class title="Da4er">
-<img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/6.png" class title="Da4er">
-<p>扫描完下载下来就可以了。<br>例题：bugku 备份是个好习惯；buuctf [ACTF2020 新生赛]BackupFile</p>
+<h4 id="3-文件备份泄露"><a href="#3-文件备份泄露" class="headerlink" title="3.文件备份泄露"></a>3.文件备份泄露</h4><p>这个漏洞是网站进行升级或者因为某种原因，管理员没有删除备份文件且备份文件没有设置权限，可以被下载下来。<br><strong>例如：’.rar’,’.zip’,’.tar’,’.tar.bz2’,’.sql’,’.7z’,’.bak’,’.txt’,’.swp’,’index.php.bak’等</strong><br>可以使用dirsearch扫描或者SourceLeakHacker都可以。<br><img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/5.png" class title="Da4er"><br><img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/6.png" class title="Da4er"><br>扫描完下载下来就可以了。<br>例题：bugku 备份是个好习惯；buuctf [ACTF2020 新生赛]BackupFile</p>
 <hr>
-<h4 id="4-SVN导致文件泄露"><a href="#4-SVN导致文件泄露" class="headerlink" title="4.SVN导致文件泄露"></a>4.SVN导致文件泄露</h4><p>在SVN管理的过程中，会自动生成一个.svn的文件夹，包含了源代码信息，而如果管理员直接复制代码文件到Web服务器上，使得.svn文件同样暴露在外网环境下而没有清理。<br>同样使用扫描工具可以扫到，使用dvcs-ripper工具恢复</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-svn.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.svn&#x2F;</span><br></pre></td></tr></table></figure>
-<p>例题：SVN信息泄露漏洞分析(第1题)——墨者学院在线靶场</p>
+<h4 id="4-SVN导致文件泄露"><a href="#4-SVN导致文件泄露" class="headerlink" title="4.SVN导致文件泄露"></a>4.SVN导致文件泄露</h4><p>在SVN管理的过程中，会自动生成一个.svn的文件夹，包含了源代码信息，而如果管理员直接复制代码文件到Web服务器上，使得.svn文件同样暴露在外网环境下而没有清理。<br>同样使用扫描工具可以扫到，使用dvcs-ripper工具恢复<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-svn.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.svn&#x2F;</span><br></pre></td></tr></table></figure><br>例题：SVN信息泄露漏洞分析(第1题)——墨者学院在线靶场</p>
 <hr>
-<h4 id="5-CVS泄漏"><a href="#5-CVS泄漏" class="headerlink" title="5.CVS泄漏"></a>5.CVS泄漏</h4><p>漏洞利用点：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;url&#x2F;CVS&#x2F;Root 返回根信息</span><br><span class="line">http:&#x2F;&#x2F;url&#x2F;CVS&#x2F;Entries 返回所有文件的结构</span><br></pre></td></tr></table></figure>
-<p>取回源码命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bk clone http:&#x2F;&#x2F;url&#x2F;name dir</span><br></pre></td></tr></table></figure>
-<p>这个命令的意思就是把远端一个名为name的repo clone到本地名为dir的目录下。</p>
+<h4 id="5-CVS泄漏"><a href="#5-CVS泄漏" class="headerlink" title="5.CVS泄漏"></a>5.CVS泄漏</h4><p>漏洞利用点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;url&#x2F;CVS&#x2F;Root 返回根信息</span><br><span class="line">http:&#x2F;&#x2F;url&#x2F;CVS&#x2F;Entries 返回所有文件的结构</span><br></pre></td></tr></table></figure><br>取回源码命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bk clone http:&#x2F;&#x2F;url&#x2F;name dir</span><br></pre></td></tr></table></figure><br>这个命令的意思就是把远端一个名为name的repo clone到本地名为dir的目录下。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查看所有的改变的命令，转到download的目录：bk changes</span><br></pre></td></tr></table></figure>
-
 <hr>
-<h4 id="6-Bazaar-bzr"><a href="#6-Bazaar-bzr" class="headerlink" title="6.Bazaar/bzr"></a>6.Bazaar/bzr</h4><p>工具：dvcs-ripper</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-bzr.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.bzr&#x2F;</span><br></pre></td></tr></table></figure>
-
+<h4 id="6-Bazaar-bzr"><a href="#6-Bazaar-bzr" class="headerlink" title="6.Bazaar/bzr"></a>6.Bazaar/bzr</h4><p>工具：dvcs-ripper<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-bzr.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.bzr&#x2F;</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h4 id="7-WEB-INF-web-xml泄露"><a href="#7-WEB-INF-web-xml泄露" class="headerlink" title="7.WEB-INF/web.xml泄露"></a>7.WEB-INF/web.xml泄露</h4><p>WEB-INF是Java的WEB应用的安全目录。如果想在页面中直接访问其中的文件，必须通过web.xml文件对要访问的文件进行相应映射才能访问。<br>漏洞成因：<br>通常一些web应用我们会使用多个web服务器搭配使用，解决其中的一个web服务器的性能缺陷以及做均衡负载的优点和完成一些分层结构的安全策略等。在使用这种架构的时候，由于对静态资源的目录或文件的映射配置不当，可能会引发一些的安全问题，导致web.xml等文件能够被读取。<br>漏洞检测以及利用方法：<br>通过找到web.xml文件，推断class文件的路径，最后直接class文件，在通过反编译class文件，得到网站源码。一般情况，jsp引擎默认都是禁止访问WEB-INF目录的，Nginx 配合Tomcat做均衡负载或集群等情况时，问题原因其实很简单，Nginx不会去考虑配置其他类型引擎（Nginx不是jsp引擎）导致的安全问题而引入到自身的安全规范中来（这样耦合性太高了），修改Nginx配置文件禁止访问WEB-INF目录就好了： location ~ ^/WEB-INF/* { deny all; } 或者return 404; 或者其他</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WEB-INF&#x2F;web.xml : Web应用程序配置文件, 描述了servlet和其他的应用组件配置及命名规则. WEB-INF&#x2F;database.properties : 数据库配置文件 </span><br><span class="line">WEB-INF&#x2F;classes&#x2F; : 一般用来存放Java类文件(.class) </span><br><span class="line">WEB-INF&#x2F;lib&#x2F; : 用来存放打包好的库(.jar) </span><br><span class="line">WEB-INF&#x2F;src&#x2F; : 用来放源代码(.asp和.php等)</span><br></pre></td></tr></table></figure>
-<p>例题：<a href="https://www.secpulse.com/archives/71113.html" target="_blank" rel="noopener">DDCTF 2018 Web Writeup</a></p>
+<h4 id="7-WEB-INF-web-xml泄露"><a href="#7-WEB-INF-web-xml泄露" class="headerlink" title="7.WEB-INF/web.xml泄露"></a>7.WEB-INF/web.xml泄露</h4><p>WEB-INF是Java的WEB应用的安全目录。如果想在页面中直接访问其中的文件，必须通过web.xml文件对要访问的文件进行相应映射才能访问。<br>漏洞成因：<br>通常一些web应用我们会使用多个web服务器搭配使用，解决其中的一个web服务器的性能缺陷以及做均衡负载的优点和完成一些分层结构的安全策略等。在使用这种架构的时候，由于对静态资源的目录或文件的映射配置不当，可能会引发一些的安全问题，导致web.xml等文件能够被读取。<br>漏洞检测以及利用方法：<br>通过找到web.xml文件，推断class文件的路径，最后直接class文件，在通过反编译class文件，得到网站源码。一般情况，jsp引擎默认都是禁止访问WEB-INF目录的，Nginx 配合Tomcat做均衡负载或集群等情况时，问题原因其实很简单，Nginx不会去考虑配置其他类型引擎（Nginx不是jsp引擎）导致的安全问题而引入到自身的安全规范中来（这样耦合性太高了），修改Nginx配置文件禁止访问WEB-INF目录就好了： location ~ ^/WEB-INF/* { deny all; } 或者return 404; 或者其他<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WEB-INF&#x2F;web.xml : Web应用程序配置文件, 描述了servlet和其他的应用组件配置及命名规则. WEB-INF&#x2F;database.properties : 数据库配置文件 </span><br><span class="line">WEB-INF&#x2F;classes&#x2F; : 一般用来存放Java类文件(.class) </span><br><span class="line">WEB-INF&#x2F;lib&#x2F; : 用来存放打包好的库(.jar) </span><br><span class="line">WEB-INF&#x2F;src&#x2F; : 用来放源代码(.asp和.php等)</span><br></pre></td></tr></table></figure><br>例题：<a href="https://www.secpulse.com/archives/71113.html" target="_blank" rel="noopener">DDCTF 2018 Web Writeup</a></p>
 <hr>
 <p>参考博客：<br><a href="https://www.cnblogs.com/CH42e/p/11978444.html" target="_blank" rel="noopener">1</a><br><a href="https://www.secpulse.com/archives/55286.html" target="_blank" rel="noopener">2</a></p>
 
@@ -782,7 +928,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  351
+                  350
                 </span>
               
 
@@ -821,29 +967,9 @@
       
         
           
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>首先打开页面，在输入框随便输入发现没有跳转，f12查看后台文件中发现hint</strong></p>
-<img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/1.png" class title="Da4er">
-<p><strong>md5($pass,true)第二个参数默认是false<br>FALSE - 默认 32 字符十六进制数<br>TRUE -  原始 16 字符二进制格式。<br>所以当输入特殊字符串时在经md5加密后可能出现注入语句。<br>在上网百度后发现两个特殊字符：’ffifdyop’，’129581926211651571912466741651878684928’。<br>ffifdyop：T0Do#’or’8<br>129581926211651571912466741651878684928：’or’6]!r,b。<br>所以直接输入ffifdyop，转到第二页面。</strong></p>
-<img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/2.png" class title="Da4er">
-<img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/3.png" class title="Da4er">
-<p><strong>查看源代码后发现是md5弱类型比较。下面给出的字符串随便找两个传参即可：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">找md5以oe开头的</span><br><span class="line">常用的md5：</span><br><span class="line">QNKCDZO</span><br><span class="line">0e830400451993494058024219903391</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1184209335a</span><br><span class="line">0e072485820392773389523109082030</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s532378020a</span><br><span class="line">0e220463095855511507588041205815</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br></pre></td></tr></table></figure>
-<p><strong>传参后跳转最后一个页面：</strong></p>
-<img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/4.png" class title="Da4er">
-<p><strong>发现是===完全等于，可以利用[]数组绕过，利用error=error原理，得到flag。</strong></p>
-<img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/5.png" class title="Da4er">
-
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>首先打开页面，在输入框随便输入发现没有跳转，f12查看后台文件中发现hint</strong><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/1.png" class title="Da4er"><br><strong>md5($pass,true)第二个参数默认是false<br>FALSE - 默认 32 字符十六进制数<br>TRUE -  原始 16 字符二进制格式。<br>所以当输入特殊字符串时在经md5加密后可能出现注入语句。<br>在上网百度后发现两个特殊字符：’ffifdyop’，’129581926211651571912466741651878684928’。<br>ffifdyop：T0Do#’or’8<br>129581926211651571912466741651878684928：’or’6]!r,b。<br>所以直接输入ffifdyop，转到第二页面。</strong><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/2.png" class title="Da4er"><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/3.png" class title="Da4er"><br><strong>查看源代码后发现是md5弱类型比较。下面给出的字符串随便找两个传参即可：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">找md5以oe开头的</span><br><span class="line">常用的md5：</span><br><span class="line">QNKCDZO</span><br><span class="line">0e830400451993494058024219903391</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1184209335a</span><br><span class="line">0e072485820392773389523109082030</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s532378020a</span><br><span class="line">0e220463095855511507588041205815</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br></pre></td></tr></table></figure><br><strong>传参后跳转最后一个页面：</strong><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/4.png" class title="Da4er"><br><strong>发现是===完全等于，可以利用[]数组绕过，利用error=error原理，得到flag。</strong><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/5.png" class title="Da4er"></p>
 <hr>
-<p><strong>打开网站随便看看，发现没有什么特别，用dirsearch扫描一下，发现/.git目录，用githack获取一下源码。</strong></p>
-<img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/6.png" class title="Da4er">
-<img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/7.png" class title="Da4er">
-<p><strong>分析得到的源码：</strong></p>
-<img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/8.png" class title="Da4er">
-<img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/9.png" class title="Da4er">
-<p><strong>看到使用的$$会导致变量覆盖漏洞，看一下代码逻辑：forsearch一下post传参的参数键名和值：如果传入$flag=flag，则会导致$$flag=$flag；同理get参数：传入yds=flag，则会导致$yds=$flag，所以yds的值就是flag变量的值。在没有设置flag参数的时候会直接exit出yds的值。</strong><br>根据上面的逻辑可以直接构造：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get传参：?yds&#x3D;flag</span><br></pre></td></tr></table></figure>
-<img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/10.png" class title="Da4er">
+<p><strong>打开网站随便看看，发现没有什么特别，用dirsearch扫描一下，发现/.git目录，用githack获取一下源码。</strong><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/6.png" class title="Da4er"><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/7.png" class title="Da4er"><br><strong>分析得到的源码：</strong><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/8.png" class title="Da4er"><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/9.png" class title="Da4er"><br><strong>看到使用的$$会导致变量覆盖漏洞，看一下代码逻辑：forsearch一下post传参的参数键名和值：如果传入$flag=flag，则会导致$$flag=$flag；同理get参数：传入yds=flag，则会导致$yds=$flag，所以yds的值就是flag变量的值。在没有设置flag参数的时候会直接exit出yds的值。</strong><br>根据上面的逻辑可以直接构造：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get传参：?yds&#x3D;flag</span><br></pre></td></tr></table></figure><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/10.png" class title="Da4er"></p>
 
           
         
@@ -988,7 +1114,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  33
+                  31
                 </span>
               
 
@@ -1027,15 +1153,7 @@
       
         
           
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>用Audacity打开在频谱图发现：</strong></p>
-<img src="/2-11-GUET-CTF2019-soul-sipse/6.png" class title="Da4er">
-<p><strong>再用steghide将隐藏的文件找出来</strong></p>
-<img src="/2-11-GUET-CTF2019-soul-sipse/7.png" class title="Da4er">
-<img src="/2-11-GUET-CTF2019-soul-sipse/8.png" class title="Da4er">
-<p><strong>最后unicode解码一下</strong></p>
-<img src="/2-11-GUET-CTF2019-soul-sipse/9.png" class title="Da4er">
-<p><strong>得到flag{5304}</strong></p>
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>用Audacity打开在频谱图发现：</strong><br><img src="/2-11-GUET-CTF2019-soul-sipse/6.png" class title="Da4er"><br><strong>再用steghide将隐藏的文件找出来</strong><br><img src="/2-11-GUET-CTF2019-soul-sipse/7.png" class title="Da4er"><br><img src="/2-11-GUET-CTF2019-soul-sipse/8.png" class title="Da4er"><br><strong>最后unicode解码一下</strong><br><img src="/2-11-GUET-CTF2019-soul-sipse/9.png" class title="Da4er"><br><strong>得到flag{5304}</strong></p>
 
           
         
@@ -1180,7 +1298,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  293
+                  290
                 </span>
               
 
@@ -1219,21 +1337,8 @@
       
         
           
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>首先拿到题目，有一个虚假的压缩包和真实的压缩包</strong><br><strong>很明显虚假的压缩包是伪加密</strong></p>
-<img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/1.png" class title="Da4er">
-<p><strong>打开压缩包后发现是解rsa</strong></p>
-<img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/2.png" class title="Da4er">
-<p><strong>有n，e，c是个简单的rsa，直接脚本一把梭</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import libnum</span><br><span class="line">from Crypto.Util.number import long_to_bytes</span><br><span class="line"></span><br><span class="line">c &#x3D; 26</span><br><span class="line">n &#x3D; 33</span><br><span class="line">e &#x3D; 0x3</span><br><span class="line">q &#x3D; 11</span><br><span class="line">p &#x3D; 13</span><br><span class="line"></span><br><span class="line">d &#x3D; libnum.invmod(e, (p - 1) * (q - 1))</span><br><span class="line">m &#x3D; pow(c, d, n)</span><br><span class="line">print &quot;m的值为:&quot;</span><br><span class="line">print m</span><br><span class="line">#print long_to_bytes(m)</span><br></pre></td></tr></table></figure>
-<p><strong>得到m为5，可是提示密码不对，这里有个脑洞要加上key.txt前面的”答案是”才是正确的密码，所以真实的压缩包密码为:答案是5。</strong><br><strong>解压后通过修改图片高度</strong></p>
-<img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/3.png" class title="Da4er">
-<p><strong>发现一个将另一个文件的所以和5进行异或</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;flag&quot;,&quot;r&quot;) as fp:</span><br><span class="line">    r&#x3D;fp.read()</span><br><span class="line">    with open(&quot;xor.txt&quot;,&quot;w&quot;) as fp1:</span><br><span class="line">        for i in r:</span><br><span class="line">            tmp&#x3D;int(i,16)^5</span><br><span class="line">            fp1.write(hex(tmp)[2:])</span><br></pre></td></tr></table></figure>
-<p><strong>得到的是以”504b0304”开头的，将他放到winhex里进行转换acii</strong></p>
-<img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/4.png" class title="Da4er">
-<p><strong>看到是word类型的压缩包，这里的一个知识点：word本身就是个压缩包。所以把zip后缀改成doc，再将字体颜色换成深色，得到flag。</strong></p>
-<img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/5.png" class title="Da4er">
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>首先拿到题目，有一个虚假的压缩包和真实的压缩包</strong><br><strong>很明显虚假的压缩包是伪加密</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/1.png" class title="Da4er"><br><strong>打开压缩包后发现是解rsa</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/2.png" class title="Da4er"><br><strong>有n，e，c是个简单的rsa，直接脚本一把梭</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import libnum</span><br><span class="line">from Crypto.Util.number import long_to_bytes</span><br><span class="line"></span><br><span class="line">c &#x3D; 26</span><br><span class="line">n &#x3D; 33</span><br><span class="line">e &#x3D; 0x3</span><br><span class="line">q &#x3D; 11</span><br><span class="line">p &#x3D; 13</span><br><span class="line"></span><br><span class="line">d &#x3D; libnum.invmod(e, (p - 1) * (q - 1))</span><br><span class="line">m &#x3D; pow(c, d, n)</span><br><span class="line">print &quot;m的值为:&quot;</span><br><span class="line">print m</span><br><span class="line">#print long_to_bytes(m)</span><br></pre></td></tr></table></figure><br><strong>得到m为5，可是提示密码不对，这里有个脑洞要加上key.txt前面的”答案是”才是正确的密码，所以真实的压缩包密码为:答案是5。</strong><br><strong>解压后通过修改图片高度</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/3.png" class title="Da4er"><br><strong>发现一个将另一个文件的所以和5进行异或</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;flag&quot;,&quot;r&quot;) as fp:</span><br><span class="line">    r&#x3D;fp.read()</span><br><span class="line">    with open(&quot;xor.txt&quot;,&quot;w&quot;) as fp1:</span><br><span class="line">        for i in r:</span><br><span class="line">            tmp&#x3D;int(i,16)^5</span><br><span class="line">            fp1.write(hex(tmp)[2:])</span><br></pre></td></tr></table></figure><br><strong>得到的是以”504b0304”开头的，将他放到winhex里进行转换acii</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/4.png" class title="Da4er"><br><strong>看到是word类型的压缩包，这里的一个知识点：word本身就是个压缩包。所以把zip后缀改成doc，再将字体颜色换成深色，得到flag。</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/5.png" class title="Da4er"></p>
+
           
         
       
@@ -1377,7 +1482,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  110
+                  108
                 </span>
               
 
@@ -1416,15 +1521,7 @@
       
         
           
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>这道题用到了压缩包：暴力破解，伪加密，掩码攻击等知识点</strong><br><strong>第一步先用暴力破解把222.zip密码找出来</strong></p>
-<img src="/2-11-GUET-CTF2019-zips/1.png" class title="Da4er">
-<p><strong>第二步看到一个111.zip，里面有个flag.zip和setup.sh，先把flag.zip提出来，再用伪加密把111.zip打开</strong></p>
-<img src="/2-11-GUET-CTF2019-zips/2.png" class title="Da4er">
-<p><strong>第三步setup.sh的python代码运行查看，发现flag.zip密码规律:15????????.??</strong></p>
-<img src="/2-11-GUET-CTF2019-zips/3.png" class title="Da4er">
-<p><strong>最后使用掩码攻击的方式得到flag</strong></p>
-<img src="/2-11-GUET-CTF2019-zips/4.png" class title="Da4er">
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>这道题用到了压缩包：暴力破解，伪加密，掩码攻击等知识点</strong><br><strong>第一步先用暴力破解把222.zip密码找出来</strong><br><img src="/2-11-GUET-CTF2019-zips/1.png" class title="Da4er"><br><strong>第二步看到一个111.zip，里面有个flag.zip和setup.sh，先把flag.zip提出来，再用伪加密把111.zip打开</strong><br><img src="/2-11-GUET-CTF2019-zips/2.png" class title="Da4er"><br><strong>第三步setup.sh的python代码运行查看，发现flag.zip密码规律:15????????.??</strong><br><img src="/2-11-GUET-CTF2019-zips/3.png" class title="Da4er"><br><strong>最后使用掩码攻击的方式得到flag</strong><br><img src="/2-11-GUET-CTF2019-zips/4.png" class title="Da4er"></p>
 
           
         
@@ -1569,7 +1666,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  323
+                  319
                 </span>
               
 
@@ -1608,39 +1705,14 @@
       
         
           
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<h3 id="Inlcude"><a href="#Inlcude" class="headerlink" title="Inlcude"></a>Inlcude</h3><p><strong>点进去tips发现是file=flag.php，想到php伪协议读取</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php</span><br></pre></td></tr></table></figure>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/1.png" class title="Da4er">
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/2.png" class title="Da4er">
-<p><strong>base64解码后得到flag</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/3.png" class title="Da4er">
-
+            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+<h3 id="Inlcude"><a href="#Inlcude" class="headerlink" title="Inlcude"></a>Inlcude</h3><p><strong>点进去tips发现是file=flag.php，想到php伪协议读取</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php</span><br></pre></td></tr></table></figure><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/1.png" class title="Da4er"><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/2.png" class title="Da4er"><br><strong>base64解码后得到flag</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/3.png" class title="Da4er"></p>
 <hr>
-<h3 id="BackupFile"><a href="#BackupFile" class="headerlink" title="BackupFile"></a>BackupFile</h3><p><strong>根据题目提示找到备份文件：index.php.bak</strong><br><strong>开始审计这段代码</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/4.png" class title="Da4er">
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/5.png" class title="Da4er">
-<p>发现用了is_numeric函数，但是php版本是7.3，无法使用数组绕过<br>接着看发现是弱类型比较(==)，并且 <strong>$str在==后面</strong> ，所以整个逻辑就很清楚了。<br>首先传个参数key，检测key是否为数字，然后用intval函数取得key的整数部分，在把str变量和key比较，<strong>这里逻辑要清楚是str变量和key比较，所以str在比较前转换成数字’123’。</strong><br>所以直接让key=123即可</p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/6.png" class title="Da4er">
-
+<h3 id="BackupFile"><a href="#BackupFile" class="headerlink" title="BackupFile"></a>BackupFile</h3><p><strong>根据题目提示找到备份文件：index.php.bak</strong><br><strong>开始审计这段代码</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/4.png" class title="Da4er"><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/5.png" class title="Da4er"><br>发现用了is_numeric函数，但是php版本是7.3，无法使用数组绕过<br>接着看发现是弱类型比较(==)，并且 <strong>$str在==后面</strong> ，所以整个逻辑就很清楚了。<br>首先传个参数key，检测key是否为数字，然后用intval函数取得key的整数部分，在把str变量和key比较，<strong>这里逻辑要清楚是str变量和key比较，所以str在比较前转换成数字’123’。</strong><br>所以直接让key=123即可<br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/6.png" class title="Da4er"></p>
 <hr>
-<h3 id="Exec"><a href="#Exec" class="headerlink" title="Exec"></a>Exec</h3><p><strong>打开网页发现是命令执行（SSRF）</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/7.png" class title="Da4er">
-<p><strong>并且没有过滤||等关键字</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/8.png" class title="Da4er">
-<p><strong>直接查看根目录下面的文件</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/9.png" class title="Da4er">
-<p><strong>看到有个flag文件，cat出来</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/10.png" class title="Da4er">
-
+<h3 id="Exec"><a href="#Exec" class="headerlink" title="Exec"></a>Exec</h3><p><strong>打开网页发现是命令执行（SSRF）</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/7.png" class title="Da4er"><br><strong>并且没有过滤||等关键字</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/8.png" class title="Da4er"><br><strong>直接查看根目录下面的文件</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/9.png" class title="Da4er"><br><strong>看到有个flag文件，cat出来</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/10.png" class title="Da4er"></p>
 <hr>
-<h3 id="Upload"><a href="#Upload" class="headerlink" title="Upload"></a>Upload</h3><p><strong>首先上传一个txt发现当点击submit时会返回chekfile页面</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/11.png" class title="Da4er">
-<p><strong>将这个js代码删除，再上传。通过试了很多上传方法，发现用大小写绕过，点号绕过，空格绕过但是都不解析。上传.htaccess文件被过滤。但是phtml文件没有被过滤，上传这个文件</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/12.png" class title="Da4er">
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/13.png" class title="Da4er">
-<p>成功解析<br>连接小马，得到flag。</p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/14.png" class title="Da4er">
+<h3 id="Upload"><a href="#Upload" class="headerlink" title="Upload"></a>Upload</h3><p><strong>首先上传一个txt发现当点击submit时会返回chekfile页面</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/11.png" class title="Da4er"><br><strong>将这个js代码删除，再上传。通过试了很多上传方法，发现用大小写绕过，点号绕过，空格绕过但是都不解析。上传.htaccess文件被过滤。但是phtml文件没有被过滤，上传这个文件</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/12.png" class title="Da4er"><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/13.png" class title="Da4er"><br>成功解析<br>连接小马，得到flag。<br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/14.png" class title="Da4er"></p>
 
           
         
@@ -1785,7 +1857,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  51
+                  49
                 </span>
               
 
@@ -1824,14 +1896,7 @@
       
         
           
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>用winhex打开，发现有个flag.exe</strong></p>
-<img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/1.png" class title="Da4er">
-<p><strong>foremost分离一下，找到flag.exe  strings命令查看一下</strong></p>
-<img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/2.png" class title="Da4er">
-<img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/3.png" class title="Da4er">
-<p><strong>有个Flag{，在windows下打开这个exe，发现会创建一个flag.txt，就可以得到flag</strong></p>
-<img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/4.png" class title="Da4er">
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>用winhex打开，发现有个flag.exe</strong><br><img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/1.png" class title="Da4er"><br><strong>foremost分离一下，找到flag.exe  strings命令查看一下</strong><br><img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/2.png" class title="Da4er"><br><img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/3.png" class title="Da4er"><br><strong>有个Flag{，在windows下打开这个exe，发现会创建一个flag.txt，就可以得到flag</strong><br><img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/4.png" class title="Da4er"></p>
 
           
         
@@ -2015,212 +2080,7 @@
       
         
           
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>用winhex打开，发现题目提示的0x220x44</strong></p>
-<img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/1.png" class title="Da4er">
-<p><strong>将”换成0，D换成1，转换成二进制后在转换成文本，出现乱码</strong></p>
-<img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/2.png" class title="Da4er">
-<img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/3.png" class title="Da4er">
-<p><strong>将转换成的二进制翻转后再解码</strong></p>
-<img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/4.png" class title="Da4er">
-<img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/5.png" class title="Da4er">
-<p><strong>得到一串字母和数字，提交发现flag不对，这时我们需要再将这串字符串再翻转一次。</strong></p>
-<img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/6.png" class title="Da4er">
-<p><strong>最后得到flag。</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://da4er.top/2-9-QCTF2018-picture.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Da4er's">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/3.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Da4er's Blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2-9-QCTF2018-picture.html" itemprop="url">2.9 [QCTF2018]picture</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-09T22:23:07+08:00">
-                2020-02-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index">
-                    <span itemprop="name">CTF</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2-9-QCTF2018-picture.html" class="leancloud_visitors" data-flag-title="2.9 [QCTF2018]picture">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  108
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>这道题收获就是得到一个des解密脚本。</strong><br><strong>首先winhex打开发现是png文件</strong></p>
-<img src="/2-9-QCTF2018-picture/1.png" class title="Da4er">
-<p><strong>经过了许多png隐写的尝试发现是lsb隐写</strong><br><strong>密码为图片中文字的首字母</strong></p>
-<img src="/2-9-QCTF2018-picture/2.png" class title="Da4er">
-<p><strong>得到一个python脚本，发现是des加密脚本</strong><br><strong>看了别的师傅写的wp发现了一个好用的des解密脚本,然后用这个脚本就可以得到flag</strong></p>
-<img src="/2-9-QCTF2018-picture/3.png" class title="Da4er">
-<p>解密脚本：<a href="https://github.com/liupengs/DES_Python/blob/master/des.py" target="_blank" rel="noopener">链接</a></p>
-<img src="/2-9-QCTF2018-picture/4.png" class title="Da4er">
-
-<img src="/2-9-QCTF2018-picture/5.png" class title="Da4er">
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>用winhex打开，发现题目提示的0x220x44</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/1.png" class title="Da4er"><br><strong>将”换成0，D换成1，转换成二进制后在转换成文本，出现乱码</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/2.png" class title="Da4er"><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/3.png" class title="Da4er"><br><strong>将转换成的二进制翻转后再解码</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/4.png" class title="Da4er"><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/5.png" class title="Da4er"><br><strong>得到一串字母和数字，提交发现flag不对，这时我们需要再将这串字符串再翻转一次。</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/6.png" class title="Da4er"><br><strong>最后得到flag。</strong></p>
 
           
         
@@ -2309,7 +2169,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2426,7 +2286,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">31.4k</span>
+    <span title="Site words total count">31.7k</span>
   
 </div>
 
@@ -2436,7 +2296,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共31.4k字</span>
+  <span class="post-count">博客全站共31.7k字</span>
 </div>
 
 
