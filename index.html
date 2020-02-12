@@ -253,6 +253,234 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://da4er.top/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Da4er's">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/3.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Da4er's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E.html" itemprop="url">2.12 浅谈SSI和SSTI漏洞</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-12T17:35:03+08:00">
+                2020-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E.html" class="leancloud_visitors" data-flag-title="2.12 浅谈SSI和SSTI漏洞">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+<h3 id="一-SSI漏洞解析"><a href="#一-SSI漏洞解析" class="headerlink" title="一.SSI漏洞解析"></a>一.SSI漏洞解析</h3><h4 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h4><p>现在大多数Web服务很少用到SSI，但是还是有有必要了解一下。<br><strong>SSI全称是Server Side Includes，即服务器端包含，是一种基于服务器端的网页制作技术。</strong></p>
+<p><strong>SSI是嵌入HTML页面中的指令，在页面被提供时由服务器进行运算，以对现有HTML页面增加动态生成的内容，而无须通过CGI程序提供其整个页面，或者使用其他动态技术。</strong></p>
+<p><strong>基本原理就是：SSI在HTML文件中，可以通过注释行调用命令或指针，即允许通过在HTML页面注入脚本或远程执行任意代码。</strong></p>
+<p>SSI漏洞存在于shtml，stm，shtm文件中，就是应用ssi技术的html文件，当我在这个页面加入ssi指令后，服务器开始解析，将文件图片包含或者远程执行命令。</p>
+<hr>
+<h4 id="2-开启ssi"><a href="#2-开启ssi" class="headerlink" title="2.开启ssi"></a>2.开启ssi</h4><h5 id="1-Nginx"><a href="#1-Nginx" class="headerlink" title="(1)Nginx"></a>(1)Nginx</h5><p>在配置文件中添加如下几项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssi on;</span><br><span class="line">ssi_silent_errors off;</span><br><span class="line">ssi_types text&#x2F;shtml;</span><br></pre></td></tr></table></figure></p>
+<h5 id="2-Apache"><a href="#2-Apache" class="headerlink" title="(2)Apache"></a>(2)Apache</h5><p>修改Apache配置文件httpd.conf：</p>
+<ul>
+<li>确认加载include.so模块，将注释去掉：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoadModule include_module libexec&#x2F;apache2&#x2F;mod_include.so</span><br></pre></td></tr></table></figure></li>
+<li><p>AddType部分去掉这两段注释：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">AddType text&#x2F;html .shtml</span><br><span class="line">AddOutputFilter INCLUDES .shtml</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Directory目录权限里面找到Options Indexes FollowSymLinks，并增加Includes修改为Options Indexes FollowSymLinks Includes；</p>
+</li>
+<li><p>重新启动Apache；</p>
+</li>
+</ul>
+<hr>
+<h4 id="3-SSI基本语法："><a href="#3-SSI基本语法：" class="headerlink" title="3.SSI基本语法："></a>3.SSI基本语法：</h4><p>其语法格式必须是以html的注释符 <strong>&lt;!–</strong> 开头、且后面紧接#符号和SSI命令，它们期间不能存在空格：</p>
+<ul>
+<li><p>显示服务器端环境变量 <strong>&lt;#echo&gt;</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">本文档名称：&lt;!--#echo var&#x3D;&quot;DOCUMENT_NAME&quot;--&gt;</span><br><span class="line">现在时间：&lt;!--#echo var&#x3D;&quot;DATE_LOCAL&quot;--&gt;</span><br><span class="line">显示IP地址：&lt;!--#echo var&#x3D;&quot;REMOTE_ADDR&quot;--&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将文本内容直接插入到文档中&lt;#include&gt;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--#include file&#x3D;&quot;文件名称&quot;--&gt;</span><br><span class="line">&lt;!--#include virtual&#x3D;&quot;index.html&quot; --&gt;</span><br><span class="line">&lt;!--#include virtual&#x3D;&quot;文件名称&quot;–&gt;</span><br><span class="line">&lt;!--#include virtual&#x3D;&quot;&#x2F;www&#x2F;footer.html&quot; --&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>注：file包含文件可以在同一级目录或其子目录中，但不能在上一级目录中，virtual包含文件可以是Web站点上的虚拟目录的完整路径。</strong></p>
+</li>
+<li><p>直接执行服务器上的各种程序&lt;#exec&gt;(如CGI或其他可执行程序)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--#exec cmd&#x3D;&quot;命令&quot;--&gt;</span><br><span class="line">&lt;!--#exec cmd&#x3D;&quot;cat &#x2F;etc&#x2F;passwd&quot;--&gt;</span><br><span class="line">&lt;!--#exec cgi&#x3D;&quot;文件名称&quot;--&gt;</span><br><span class="line">&lt;!--#exec cgi&#x3D;&quot;&#x2F;cgi-bin&#x2F;access_log.cgi&quot;--&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h4 id="4-SSI注入漏洞"><a href="#4-SSI注入漏洞" class="headerlink" title="4.SSI注入漏洞"></a>4.SSI注入漏洞</h4><h5 id="1-如何利用"><a href="#1-如何利用" class="headerlink" title="(1)如何利用"></a>(1)如何利用</h5><p><strong>简单点说就是攻击者可以通过外部输入SSI标签到Web页面（stm、shtm、shtml文件）来动态执行代码。<br>SSI注入允许远程在Web应用中注入脚本来执行代码。<br>简单点说就是攻击者可以通过外部输入SSI语句到Web页面来动态执行代码。</strong></p>
+<p><strong>一般地，在stm、shtm、shtml等文件中，存在XSS的页面，大概率是存在SSI注入漏洞的。<br>也就是说，用户输入的内容会显示在页面中的场景。<br>比如，一个存在反射型XSS漏洞的页面，如果输入的payload不是XSS代码而是SSI的标签，同时服务器又开启了对SSI的支持的话就会存在SSI注入漏洞。</strong></p>
+<hr>
+<h5 id="2-前提条件"><a href="#2-前提条件" class="headerlink" title="(2)前提条件"></a>(2)前提条件</h5><p>攻击者要想进行SSI注入、在Web服务器上运行任意命令，需要满足下列几点前提条件才能成功：<strong>Web服务器支持并开启了SSI；<br>Web应用程序在返回HTML页面时，嵌入了用户输入的内容；<br>外部输入的参数值未进行有效的过滤；</strong></p>
+<hr>
+<p><a href="https://www.mi1k7ea.com/2019/09/28/SSI%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/" target="_blank" rel="noopener">参考博客</a><br>例题：BUUCTF [BJDCTF2020]EasySearch，BWAPP靶场的SSI注入漏洞。</p>
+<hr>
+<h3 id="二-SSTI漏洞"><a href="#二-SSTI漏洞" class="headerlink" title="二.SSTI漏洞"></a>二.SSTI漏洞</h3><h4 id="1-原理-1"><a href="#1-原理-1" class="headerlink" title="(1)原理"></a>(1)原理</h4><p>服务端模板注入是服务端接收了用户的输入，将其作为 Web 应用模板内容的一部分，在进行目标编译渲染的过程中，执行了用户插入的恶意内容，因而可能导致了敏感信息泄露、代码执行、GetShell 等问题。其影响范围主要取决于模版引擎的复杂性。</p>
+<hr>
+<h4 id="2-利用"><a href="#2-利用" class="headerlink" title="(2)利用"></a>(2)利用</h4><p> 检测方法如下：<br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/1.png" class title="Da4er"><br> 当我们输入的内容，经过web模板解析后返回到html页面中，如果在web模板解析时没有进行很好的过滤就会出现SSTI模板注入漏洞。</p>
+<p>以BUU上[护网杯 2018]easy_tornado为例，当我们的filname和filehash不一样的时候会跳转到error页面。<br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/2.png" class title="Da4er"><br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/3.png" class title="Da4er"><br> 当我们输入2不会返回正常的1 * 2而是ORZ<br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/4.png" class title="Da4er"><br> 证明存在SSTI漏洞<br> 使用python web模板tornado中的handler.settings可以把cookie输出<br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/5.png" class title="Da4er"><br> 这就可以证明有SSTI模板漏洞，这个漏洞在很多语言的web模板中都存在，不光只有python，因为python tornado模板使用简单，所以造成的危害更大些。</p>
+<p> 也可以使用system函数执行系统命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;system(&#39;命令&#39;)&#125;&#125;</span><br></pre></td></tr></table></figure><br>例题：[BJDCTF2020]The mystery of ip<br>题目X-Forwarded-For可控，存在模板注入，可以使用system执行系统命令。<br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For &#123;&#123;system(&#39;cat &#x2F;flag&#39;)&#125;&#125;</span><br></pre></td></tr></table></figure><br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/6.png" class title="Da4er"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://da4er.top/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1932,195 +2160,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://da4er.top/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Da4er's">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/3.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Da4er's Blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC.html" itemprop="url">2.10 BUUCTF Misc_派大星的烦恼</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-10T10:28:57+08:00">
-                2020-02-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index">
-                    <span itemprop="name">CTF</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC.html" class="leancloud_visitors" data-flag-title="2.10 BUUCTF Misc_派大星的烦恼">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  89
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>用winhex打开，发现题目提示的0x220x44</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/1.png" class title="Da4er"><br><strong>将”换成0，D换成1，转换成二进制后在转换成文本，出现乱码</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/2.png" class title="Da4er"><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/3.png" class title="Da4er"><br><strong>将转换成的二进制翻转后再解码</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/4.png" class title="Da4er"><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/5.png" class title="Da4er"><br><strong>得到一串字母和数字，提交发现flag不对，这时我们需要再将这串字符串再翻转一次。</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/6.png" class title="Da4er"><br><strong>最后得到flag。</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-hand-o-right" aria-label="accessibility.next_page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-hand-o-right" aria-label="accessibility.next_page"></i></a>
   </nav>
 
 
@@ -2169,7 +2213,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2286,7 +2330,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">31.7k</span>
+    <span title="Site words total count">33k</span>
   
 </div>
 
@@ -2296,7 +2340,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共31.7k字</span>
+  <span class="post-count">博客全站共33k字</span>
 </div>
 
 
