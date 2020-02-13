@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://da4er.top/"/>
-  <updated>2020-02-12T09:38:52.428Z</updated>
+  <updated>2020-02-13T03:35:09.365Z</updated>
   <id>https://da4er.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2.13 BUUCTF Misc john-in-the-middle&amp;谁赢了比赛&amp;二维码&amp;小易的U盘&amp;黑客帝国&amp;真的很杂</title>
+    <link href="https://da4er.top/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82.html"/>
+    <id>https://da4er.top/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82.html</id>
+    <published>2020-02-13T03:31:57.000Z</published>
+    <updated>2020-02-13T03:35:09.365Z</updated>
+    
+    <content type="html"><![CDATA[<p><script type="text/javascript" src="/js/src/bai.js"></script></p><h3 id="john-in-the-middle"><a href="#john-in-the-middle" class="headerlink" title="john-in-the-middle"></a>john-in-the-middle</h3><hr><p>打开流量包发现全是tcp,http协议，直接导出http对象。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/1.png" class title="Da4er"><br>在http对象中有个logo.png，Stegsolve工具打开，分析颜色通道得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/2.png" class title="Da4er"></p><hr><h3 id="谁赢了比赛"><a href="#谁赢了比赛" class="headerlink" title="谁赢了比赛"></a>谁赢了比赛</h3><hr><p>binwalk分析一下发现里面有个压缩包，再用foremost分离出来，发现gif有秘密，爆破一下。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/3.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/4.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/5.png" class title="Da4er"><br>分析gif图片，在第310帧发现假的flag，再用Stegsolve工具分析各个颜色通道，得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/6.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/7.png" class title="Da4er"></p><hr><h3 id="二维码"><a href="#二维码" class="headerlink" title="二维码"></a>二维码</h3><p>二维码被撕碎了，只能用ps拼接，拼接完扫描得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/8.png" class title="Da4er"></p><hr><h3 id="小易的u盘"><a href="#小易的u盘" class="headerlink" title="小易的u盘"></a>小易的u盘</h3><p>binwalk分离出两个压缩包<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/9.png" class title="Da4er"><br>打开发现有很多exe文件，分析exe文件发现有个exe文件的创造时间不同，直接用ida反编译这个文件，便可得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/10.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/11.png" class title="Da4er"></p><hr><h3 id="黑客帝国"><a href="#黑客帝国" class="headerlink" title="黑客帝国"></a>黑客帝国</h3><p>题目是个txt文件，打开发现rar文件头，在winhex里直接hex转ascii查看。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/12.png" class title="Da4er"><br>保存为压缩包，有秘密爆破一下。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/13.png" class title="Da4er"><br>解压后发现一个损坏的png图片，查看一下16进制发现是jpg的图片，直接将png的文件头改成jpg文件头，便可得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/14.png" class title="Da4er"></p><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/15.png" class title="Da4er"><hr><h3 id="真的很杂"><a href="#真的很杂" class="headerlink" title="真的很杂"></a>真的很杂</h3><p>foremost出来一个压缩包，打开压缩包发现是apk文件，直接改后缀名，然后用jadx工具反编译一下，便可得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/16.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/17.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/18.png" class title="Da4er"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/bai.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;h3 id=&quot;john-in-the-middle&quot;&gt;&lt;a href=&quot;#john-in-the-middle&quot; class=&quot;header
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="https://da4er.top/categories/CTF/"/>
+    
+    
+      <category term="CTF" scheme="https://da4er.top/tags/CTF/"/>
+    
+  </entry>
   
   <entry>
     <title>2.12 浅谈SSI和SSTI漏洞</title>
@@ -505,32 +532,6 @@
       
         &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/bai.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 &lt;h3 id=&quot;Knife&quot;&gt;&lt;a href=&quot;#Knife&quot; class=&quot;headerlink&quot; title=&quot;Knife&quot;&gt;&lt;/a&gt;Kn
-      
-    
-    </summary>
-    
-    
-      <category term="CTF" scheme="https://da4er.top/categories/CTF/"/>
-    
-    
-      <category term="CTF" scheme="https://da4er.top/tags/CTF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[GXYCTF2019]gakki</title>
-    <link href="https://da4er.top/GXYCTF2019-gakki.html"/>
-    <id>https://da4er.top/GXYCTF2019-gakki.html</id>
-    <published>2020-02-07T13:03:42.000Z</published>
-    <updated>2020-02-07T13:07:22.989Z</updated>
-    
-    <content type="html"><![CDATA[<p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>先binwalk分离图片的压缩包：</strong><br><img src="/GXYCTF2019-gakki/1.png" class title="This is an test image"><br><strong>得到的压缩包有密码，尝试爆破。</strong><br><img src="/GXYCTF2019-gakki/2.png" class title="This is an test image"><br><strong>看到flag.txt有很多字符，想到字符频率，用脚本或者HxD查看都可以。</strong><br><img src="/GXYCTF2019-gakki/3.png" class title="This is an test image"><br><img src="/GXYCTF2019-gakki/4.png" class title="This is an test image"><br>附上解题脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">def processLine(line, CharacterCounts):</span><br><span class="line">    for character in line:</span><br><span class="line">        #if ord(character) in range(97, 123):</span><br><span class="line">        if ord(character) in range(32,126):</span><br><span class="line">            CharacterCounts[character] +&#x3D; 1</span><br><span class="line">  </span><br><span class="line">#创建字母字典</span><br><span class="line">def createCharacterCounts(CharacterCounts):</span><br><span class="line">    #for i in range(97, 123):</span><br><span class="line">    for i in range(32, 126):</span><br><span class="line">        CharacterCounts[chr(i)] &#x3D; 0</span><br><span class="line">  </span><br><span class="line">def main():</span><br><span class="line">    #用户输入一个文件名</span><br><span class="line">    # filename &#x3D; input(&quot;enter a filename:&quot;).strip()</span><br><span class="line">    filename &#x3D; &quot;flag.txt&quot;</span><br><span class="line">    infile &#x3D; open(filename, &quot;r&quot;)</span><br><span class="line">      </span><br><span class="line">    #建立用于计算词频的空字典</span><br><span class="line">    CharacterCounts &#x3D; &#123;&#125;</span><br><span class="line">    #初始化字典键值</span><br><span class="line">    createCharacterCounts(CharacterCounts)</span><br><span class="line">    for line in infile:</span><br><span class="line">        #processLine(line.lower(), CharacterCounts)</span><br><span class="line">        processLine(line, CharacterCounts)</span><br><span class="line">          </span><br><span class="line">    #从字典中获取数据对</span><br><span class="line">    pairs &#x3D; list(CharacterCounts.items())</span><br><span class="line">  </span><br><span class="line">    #列表中的数据对交换位置,数据对排序</span><br><span class="line">    items &#x3D; [[x,y] for (y,x) in pairs] </span><br><span class="line">    items.sort(reverse&#x3D;True)</span><br><span class="line">  </span><br><span class="line">    #输出count个数词频结果</span><br><span class="line">    for i in range(len(items)):</span><br><span class="line">        #print(items[i][1]+&quot;\t&quot;+str(items[i][0]))</span><br><span class="line">        print(items[i][1],end&#x3D;&#39;&#39;)</span><br><span class="line">          </span><br><span class="line">    infile.close()</span><br><span class="line">          </span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/bai.js&quot;&gt;&lt;/script&gt;&lt;br&gt;&lt;strong&gt;先binwalk分离图片的压缩包：&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;/GXYCTF2019-gakki/1.png&quot;
       
     
     </summary>
