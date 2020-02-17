@@ -81,12 +81,12 @@
 
 
 
-<meta name="description" content="先binwalk分离图片的压缩包：得到的压缩包有密码，尝试爆破。看到flag.txt有很多字符，想到字符频率，用脚本或者HxD查看都可以。附上解题脚本：12345678910111213141516171819202122232425262728293031323334353637383940414243# -*- coding: UTF-8 -*-def processLine(line, Ch">
+<meta name="description" content="先binwalk分离图片的压缩包：  得到的压缩包有密码，尝试爆破。  看到flag.txt有很多字符，想到字符频率，用脚本或者HxD查看都可以。   附上解题脚本： 12345678910111213141516171819202122232425262728293031323334353637383940414243# -*- coding: UTF-8 -*-def processLine">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[GXYCTF2019]gakki">
 <meta property="og:url" content="https://da4er.top/GXYCTF2019-gakki.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="先binwalk分离图片的压缩包：得到的压缩包有密码，尝试爆破。看到flag.txt有很多字符，想到字符频率，用脚本或者HxD查看都可以。附上解题脚本：12345678910111213141516171819202122232425262728293031323334353637383940414243# -*- coding: UTF-8 -*-def processLine(line, Ch">
+<meta property="og:description" content="先binwalk分离图片的压缩包：  得到的压缩包有密码，尝试爆破。  看到flag.txt有很多字符，想到字符频率，用脚本或者HxD查看都可以。   附上解题脚本： 12345678910111213141516171819202122232425262728293031323334353637383940414243# -*- coding: UTF-8 -*-def processLine">
 <meta property="og:image" content="https://da4er.top/GXYCTF2019-gakki/1.png">
 <meta property="og:image" content="https://da4er.top/GXYCTF2019-gakki/2.png">
 <meta property="og:image" content="https://da4er.top/GXYCTF2019-gakki/3.png">
@@ -390,8 +390,16 @@
       
 
       
-        <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>先binwalk分离图片的压缩包：</strong><br><img src="/GXYCTF2019-gakki/1.png" class title="This is an test image"><br><strong>得到的压缩包有密码，尝试爆破。</strong><br><img src="/GXYCTF2019-gakki/2.png" class title="This is an test image"><br><strong>看到flag.txt有很多字符，想到字符频率，用脚本或者HxD查看都可以。</strong><br><img src="/GXYCTF2019-gakki/3.png" class title="This is an test image"><br><img src="/GXYCTF2019-gakki/4.png" class title="This is an test image"><br>附上解题脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">def processLine(line, CharacterCounts):</span><br><span class="line">    for character in line:</span><br><span class="line">        #if ord(character) in range(97, 123):</span><br><span class="line">        if ord(character) in range(32,126):</span><br><span class="line">            CharacterCounts[character] +&#x3D; 1</span><br><span class="line">  </span><br><span class="line">#创建字母字典</span><br><span class="line">def createCharacterCounts(CharacterCounts):</span><br><span class="line">    #for i in range(97, 123):</span><br><span class="line">    for i in range(32, 126):</span><br><span class="line">        CharacterCounts[chr(i)] &#x3D; 0</span><br><span class="line">  </span><br><span class="line">def main():</span><br><span class="line">    #用户输入一个文件名</span><br><span class="line">    # filename &#x3D; input(&quot;enter a filename:&quot;).strip()</span><br><span class="line">    filename &#x3D; &quot;flag.txt&quot;</span><br><span class="line">    infile &#x3D; open(filename, &quot;r&quot;)</span><br><span class="line">      </span><br><span class="line">    #建立用于计算词频的空字典</span><br><span class="line">    CharacterCounts &#x3D; &#123;&#125;</span><br><span class="line">    #初始化字典键值</span><br><span class="line">    createCharacterCounts(CharacterCounts)</span><br><span class="line">    for line in infile:</span><br><span class="line">        #processLine(line.lower(), CharacterCounts)</span><br><span class="line">        processLine(line, CharacterCounts)</span><br><span class="line">          </span><br><span class="line">    #从字典中获取数据对</span><br><span class="line">    pairs &#x3D; list(CharacterCounts.items())</span><br><span class="line">  </span><br><span class="line">    #列表中的数据对交换位置,数据对排序</span><br><span class="line">    items &#x3D; [[x,y] for (y,x) in pairs] </span><br><span class="line">    items.sort(reverse&#x3D;True)</span><br><span class="line">  </span><br><span class="line">    #输出count个数词频结果</span><br><span class="line">    for i in range(len(items)):</span><br><span class="line">        #print(items[i][1]+&quot;\t&quot;+str(items[i][0]))</span><br><span class="line">        print(items[i][1],end&#x3D;&#39;&#39;)</span><br><span class="line">          </span><br><span class="line">    infile.close()</span><br><span class="line">          </span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
-
+        <script type="text/javascript" src="/js/src/bai.js"></script>
+<p><strong>先binwalk分离图片的压缩包：</strong></p>
+<img src="/GXYCTF2019-gakki/1.png" class title="This is an test image">
+<p><strong>得到的压缩包有密码，尝试爆破。</strong></p>
+<img src="/GXYCTF2019-gakki/2.png" class title="This is an test image">
+<p><strong>看到flag.txt有很多字符，想到字符频率，用脚本或者HxD查看都可以。</strong></p>
+<img src="/GXYCTF2019-gakki/3.png" class title="This is an test image">
+<img src="/GXYCTF2019-gakki/4.png" class title="This is an test image">
+<p>附上解题脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">def processLine(line, CharacterCounts):</span><br><span class="line">    for character in line:</span><br><span class="line">        #if ord(character) in range(97, 123):</span><br><span class="line">        if ord(character) in range(32,126):</span><br><span class="line">            CharacterCounts[character] +&#x3D; 1</span><br><span class="line">  </span><br><span class="line">#创建字母字典</span><br><span class="line">def createCharacterCounts(CharacterCounts):</span><br><span class="line">    #for i in range(97, 123):</span><br><span class="line">    for i in range(32, 126):</span><br><span class="line">        CharacterCounts[chr(i)] &#x3D; 0</span><br><span class="line">  </span><br><span class="line">def main():</span><br><span class="line">    #用户输入一个文件名</span><br><span class="line">    # filename &#x3D; input(&quot;enter a filename:&quot;).strip()</span><br><span class="line">    filename &#x3D; &quot;flag.txt&quot;</span><br><span class="line">    infile &#x3D; open(filename, &quot;r&quot;)</span><br><span class="line">      </span><br><span class="line">    #建立用于计算词频的空字典</span><br><span class="line">    CharacterCounts &#x3D; &#123;&#125;</span><br><span class="line">    #初始化字典键值</span><br><span class="line">    createCharacterCounts(CharacterCounts)</span><br><span class="line">    for line in infile:</span><br><span class="line">        #processLine(line.lower(), CharacterCounts)</span><br><span class="line">        processLine(line, CharacterCounts)</span><br><span class="line">          </span><br><span class="line">    #从字典中获取数据对</span><br><span class="line">    pairs &#x3D; list(CharacterCounts.items())</span><br><span class="line">  </span><br><span class="line">    #列表中的数据对交换位置,数据对排序</span><br><span class="line">    items &#x3D; [[x,y] for (y,x) in pairs] </span><br><span class="line">    items.sort(reverse&#x3D;True)</span><br><span class="line">  </span><br><span class="line">    #输出count个数词频结果</span><br><span class="line">    for i in range(len(items)):</span><br><span class="line">        #print(items[i][1]+&quot;\t&quot;+str(items[i][0]))</span><br><span class="line">        print(items[i][1],end&#x3D;&#39;&#39;)</span><br><span class="line">          </span><br><span class="line">    infile.close()</span><br><span class="line">          </span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -510,7 +518,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -627,7 +635,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">35.7k</span>
+    <span title="Site words total count">36.1k</span>
   
 </div>
 
@@ -637,7 +645,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共35.7k字</span>
+  <span class="post-count">博客全站共36.1k字</span>
 </div>
 
 
