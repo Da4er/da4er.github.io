@@ -81,12 +81,12 @@
 
 
 
-<meta name="description" content="首先拿到题目，有一个虚假的压缩包和真实的压缩包很明显虚假的压缩包是伪加密  打开压缩包后发现是解rsa  有n，e，c是个简单的rsa，直接脚本一把梭 1234567891011121314import libnumfrom Crypto.Util.number import long_to_bytesc &#x3D; 26n &#x3D; 33e &#x3D; 0x3q &#x3D; 11p">
+<meta name="description" content="首先拿到题目，有一个虚假的压缩包和真实的压缩包很明显虚假的压缩包是伪加密打开压缩包后发现是解rsa有n，e，c是个简单的rsa，直接脚本一把梭1234567891011121314import libnumfrom Crypto.Util.number import long_to_bytesc &#x3D; 26n &#x3D; 33e &#x3D; 0x3q &#x3D; 11p &#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2.11 [GUET-CTF2019]虚假的压缩包">
 <meta property="og:url" content="https://da4er.top/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="首先拿到题目，有一个虚假的压缩包和真实的压缩包很明显虚假的压缩包是伪加密  打开压缩包后发现是解rsa  有n，e，c是个简单的rsa，直接脚本一把梭 1234567891011121314import libnumfrom Crypto.Util.number import long_to_bytesc &#x3D; 26n &#x3D; 33e &#x3D; 0x3q &#x3D; 11p">
+<meta property="og:description" content="首先拿到题目，有一个虚假的压缩包和真实的压缩包很明显虚假的压缩包是伪加密打开压缩包后发现是解rsa有n，e，c是个简单的rsa，直接脚本一把梭1234567891011121314import libnumfrom Crypto.Util.number import long_to_bytesc &#x3D; 26n &#x3D; 33e &#x3D; 0x3q &#x3D; 11p &#x3D;">
 <meta property="og:image" content="https://da4er.top/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/1.png">
 <meta property="og:image" content="https://da4er.top/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/2.png">
 <meta property="og:image" content="https://da4er.top/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/3.png">
@@ -354,7 +354,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  293
+                  290
                 </span>
               
 
@@ -391,21 +391,8 @@
       
 
       
-        <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>首先拿到题目，有一个虚假的压缩包和真实的压缩包</strong><br><strong>很明显虚假的压缩包是伪加密</strong></p>
-<img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/1.png" class title="Da4er">
-<p><strong>打开压缩包后发现是解rsa</strong></p>
-<img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/2.png" class title="Da4er">
-<p><strong>有n，e，c是个简单的rsa，直接脚本一把梭</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import libnum</span><br><span class="line">from Crypto.Util.number import long_to_bytes</span><br><span class="line"></span><br><span class="line">c &#x3D; 26</span><br><span class="line">n &#x3D; 33</span><br><span class="line">e &#x3D; 0x3</span><br><span class="line">q &#x3D; 11</span><br><span class="line">p &#x3D; 13</span><br><span class="line"></span><br><span class="line">d &#x3D; libnum.invmod(e, (p - 1) * (q - 1))</span><br><span class="line">m &#x3D; pow(c, d, n)</span><br><span class="line">print &quot;m的值为:&quot;</span><br><span class="line">print m</span><br><span class="line">#print long_to_bytes(m)</span><br></pre></td></tr></table></figure>
-<p><strong>得到m为5，可是提示密码不对，这里有个脑洞要加上key.txt前面的”答案是”才是正确的密码，所以真实的压缩包密码为:答案是5。</strong><br><strong>解压后通过修改图片高度</strong></p>
-<img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/3.png" class title="Da4er">
-<p><strong>发现一个将另一个文件的所以和5进行异或</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;flag&quot;,&quot;r&quot;) as fp:</span><br><span class="line">    r&#x3D;fp.read()</span><br><span class="line">    with open(&quot;xor.txt&quot;,&quot;w&quot;) as fp1:</span><br><span class="line">        for i in r:</span><br><span class="line">            tmp&#x3D;int(i,16)^5</span><br><span class="line">            fp1.write(hex(tmp)[2:])</span><br></pre></td></tr></table></figure>
-<p><strong>得到的是以”504b0304”开头的，将他放到winhex里进行转换acii</strong></p>
-<img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/4.png" class title="Da4er">
-<p><strong>看到是word类型的压缩包，这里的一个知识点：word本身就是个压缩包。所以把zip后缀改成doc，再将字体颜色换成深色，得到flag。</strong></p>
-<img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/5.png" class title="Da4er">
+        <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>首先拿到题目，有一个虚假的压缩包和真实的压缩包</strong><br><strong>很明显虚假的压缩包是伪加密</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/1.png" class title="Da4er"><br><strong>打开压缩包后发现是解rsa</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/2.png" class title="Da4er"><br><strong>有n，e，c是个简单的rsa，直接脚本一把梭</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import libnum</span><br><span class="line">from Crypto.Util.number import long_to_bytes</span><br><span class="line"></span><br><span class="line">c &#x3D; 26</span><br><span class="line">n &#x3D; 33</span><br><span class="line">e &#x3D; 0x3</span><br><span class="line">q &#x3D; 11</span><br><span class="line">p &#x3D; 13</span><br><span class="line"></span><br><span class="line">d &#x3D; libnum.invmod(e, (p - 1) * (q - 1))</span><br><span class="line">m &#x3D; pow(c, d, n)</span><br><span class="line">print &quot;m的值为:&quot;</span><br><span class="line">print m</span><br><span class="line">#print long_to_bytes(m)</span><br></pre></td></tr></table></figure><br><strong>得到m为5，可是提示密码不对，这里有个脑洞要加上key.txt前面的”答案是”才是正确的密码，所以真实的压缩包密码为:答案是5。</strong><br><strong>解压后通过修改图片高度</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/3.png" class title="Da4er"><br><strong>发现一个将另一个文件的所以和5进行异或</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;flag&quot;,&quot;r&quot;) as fp:</span><br><span class="line">    r&#x3D;fp.read()</span><br><span class="line">    with open(&quot;xor.txt&quot;,&quot;w&quot;) as fp1:</span><br><span class="line">        for i in r:</span><br><span class="line">            tmp&#x3D;int(i,16)^5</span><br><span class="line">            fp1.write(hex(tmp)[2:])</span><br></pre></td></tr></table></figure><br><strong>得到的是以”504b0304”开头的，将他放到winhex里进行转换acii</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/4.png" class title="Da4er"><br><strong>看到是word类型的压缩包，这里的一个知识点：word本身就是个压缩包。所以把zip后缀改成doc，再将字体颜色换成深色，得到flag。</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/5.png" class title="Da4er"></p>
+
       
     </div>
     
@@ -524,7 +511,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -641,7 +628,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">36.1k</span>
+    <span title="Site words total count">36.7k</span>
   
 </div>
 
@@ -651,7 +638,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共36.1k字</span>
+  <span class="post-count">博客全站共36.7k字</span>
 </div>
 
 
