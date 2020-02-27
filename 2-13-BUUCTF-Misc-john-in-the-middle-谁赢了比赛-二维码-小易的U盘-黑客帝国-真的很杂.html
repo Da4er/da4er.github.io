@@ -83,12 +83,12 @@
 
 
 
-<meta name="description" content="john-in-the-middle 打开流量包发现全是tcp,http协议，直接导出http对象。在http对象中有个logo.png，Stegsolve工具打开，分析颜色通道得到flag。  谁赢了比赛 binwalk分析一下发现里面有个压缩包，再用foremost分离出来，发现gif有秘密，爆破一下。分析gif图片，在第310帧发现假的flag，再用Stegsolve工具分析各个颜色通道，">
+<meta name="description" content="john-in-the-middle 打开流量包发现全是tcp,http协议，直接导出http对象。  在http对象中有个logo.png，Stegsolve工具打开，分析颜色通道得到flag。    谁赢了比赛 binwalk分析一下发现里面有个压缩包，再用foremost分离出来，发现gif有秘密，爆破一下。    分析gif图片，在第310帧发现假的flag，再用Stegsolve工具分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2.13 BUUCTF Misc john-in-the-middle&amp;谁赢了比赛&amp;二维码&amp;小易的U盘&amp;黑客帝国&amp;真的很杂">
 <meta property="og:url" content="https://da4er.top/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="john-in-the-middle 打开流量包发现全是tcp,http协议，直接导出http对象。在http对象中有个logo.png，Stegsolve工具打开，分析颜色通道得到flag。  谁赢了比赛 binwalk分析一下发现里面有个压缩包，再用foremost分离出来，发现gif有秘密，爆破一下。分析gif图片，在第310帧发现假的flag，再用Stegsolve工具分析各个颜色通道，">
+<meta property="og:description" content="john-in-the-middle 打开流量包发现全是tcp,http协议，直接导出http对象。  在http对象中有个logo.png，Stegsolve工具打开，分析颜色通道得到flag。    谁赢了比赛 binwalk分析一下发现里面有个压缩包，再用foremost分离出来，发现gif有秘密，爆破一下。    分析gif图片，在第310帧发现假的flag，再用Stegsolve工具分">
 <meta property="og:image" content="https://da4er.top/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/1.png">
 <meta property="og:image" content="https://da4er.top/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/2.png">
 <meta property="og:image" content="https://da4er.top/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/3.png">
@@ -369,7 +369,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  320
+                  321
                 </span>
               
 
@@ -406,21 +406,48 @@
       
 
       
-        <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+        <script type="text/javascript" src="/js/src/bai.js"></script>
 <h3 id="john-in-the-middle"><a href="#john-in-the-middle" class="headerlink" title="john-in-the-middle"></a>john-in-the-middle</h3><hr>
-<p>打开流量包发现全是tcp,http协议，直接导出http对象。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/1.png" class title="Da4er"><br>在http对象中有个logo.png，Stegsolve工具打开，分析颜色通道得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/2.png" class title="Da4er"></p>
+<p>打开流量包发现全是tcp,http协议，直接导出http对象。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/1.png" class title="Da4er">
+<p>在http对象中有个logo.png，Stegsolve工具打开，分析颜色通道得到flag。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/2.png" class title="Da4er">
+
 <hr>
 <h3 id="谁赢了比赛"><a href="#谁赢了比赛" class="headerlink" title="谁赢了比赛"></a>谁赢了比赛</h3><hr>
-<p>binwalk分析一下发现里面有个压缩包，再用foremost分离出来，发现gif有秘密，爆破一下。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/3.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/4.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/5.png" class title="Da4er"><br>分析gif图片，在第310帧发现假的flag，再用Stegsolve工具分析各个颜色通道，得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/6.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/7.png" class title="Da4er"></p>
+<p>binwalk分析一下发现里面有个压缩包，再用foremost分离出来，发现gif有秘密，爆破一下。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/3.png" class title="Da4er">
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/4.png" class title="Da4er">
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/5.png" class title="Da4er">
+<p>分析gif图片，在第310帧发现假的flag，再用Stegsolve工具分析各个颜色通道，得到flag。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/6.png" class title="Da4er">
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/7.png" class title="Da4er">
+
+
 <hr>
-<h3 id="二维码"><a href="#二维码" class="headerlink" title="二维码"></a>二维码</h3><p>二维码被撕碎了，只能用ps拼接，拼接完扫描得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/8.png" class title="Da4er"></p>
+<h3 id="二维码"><a href="#二维码" class="headerlink" title="二维码"></a>二维码</h3><p>二维码被撕碎了，只能用ps拼接，拼接完扫描得到flag。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/8.png" class title="Da4er">
+
 <hr>
-<h3 id="小易的u盘"><a href="#小易的u盘" class="headerlink" title="小易的u盘"></a>小易的u盘</h3><p>binwalk分离出两个压缩包<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/9.png" class title="Da4er"><br>打开发现有很多exe文件，分析exe文件发现有个exe文件的创造时间不同，直接用ida反编译这个文件，便可得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/10.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/11.png" class title="Da4er"></p>
+<h3 id="小易的u盘"><a href="#小易的u盘" class="headerlink" title="小易的u盘"></a>小易的u盘</h3><p>binwalk分离出两个压缩包</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/9.png" class title="Da4er">
+<p>打开发现有很多exe文件，分析exe文件发现有个exe文件的创造时间不同，直接用ida反编译这个文件，便可得到flag。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/10.png" class title="Da4er">
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/11.png" class title="Da4er">
+
 <hr>
-<h3 id="黑客帝国"><a href="#黑客帝国" class="headerlink" title="黑客帝国"></a>黑客帝国</h3><p>题目是个txt文件，打开发现rar文件头，在winhex里直接hex转ascii查看。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/12.png" class title="Da4er"><br>保存为压缩包，有秘密爆破一下。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/13.png" class title="Da4er"><br>解压后发现一个损坏的png图片，查看一下16进制发现是jpg的图片，直接将png的文件头改成jpg文件头，便可得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/14.png" class title="Da4er"></p>
+<h3 id="黑客帝国"><a href="#黑客帝国" class="headerlink" title="黑客帝国"></a>黑客帝国</h3><p>题目是个txt文件，打开发现rar文件头，在winhex里直接hex转ascii查看。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/12.png" class title="Da4er">
+<p>保存为压缩包，有秘密爆破一下。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/13.png" class title="Da4er">
+<p>解压后发现一个损坏的png图片，查看一下16进制发现是jpg的图片，直接将png的文件头改成jpg文件头，便可得到flag。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/14.png" class title="Da4er">
 <img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/15.png" class title="Da4er">
 <hr>
-<h3 id="真的很杂"><a href="#真的很杂" class="headerlink" title="真的很杂"></a>真的很杂</h3><p>foremost出来一个压缩包，打开压缩包发现是apk文件，直接改后缀名，然后用jadx工具反编译一下，便可得到flag。<br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/16.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/17.png" class title="Da4er"><br><img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/18.png" class title="Da4er"></p>
+<h3 id="真的很杂"><a href="#真的很杂" class="headerlink" title="真的很杂"></a>真的很杂</h3><p>foremost出来一个压缩包，打开压缩包发现是apk文件，直接改后缀名，然后用jadx工具反编译一下，便可得到flag。</p>
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/16.png" class title="Da4er">
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/17.png" class title="Da4er">
+<img src="/2-13-BUUCTF-Misc-john-in-the-middle-%E8%B0%81%E8%B5%A2%E4%BA%86%E6%AF%94%E8%B5%9B-%E4%BA%8C%E7%BB%B4%E7%A0%81-%E5%B0%8F%E6%98%93%E7%9A%84U%E7%9B%98-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD-%E7%9C%9F%E7%9A%84%E5%BE%88%E6%9D%82/18.png" class title="Da4er">
 
       
     </div>
@@ -690,7 +717,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">41.1k</span>
+    <span title="Site words total count">40.1k</span>
   
 </div>
 
@@ -700,7 +727,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共41.1k字</span>
+  <span class="post-count">博客全站共40.1k字</span>
 </div>
 
 
