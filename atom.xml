@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://da4er.top/"/>
-  <updated>2020-03-02T03:41:18.847Z</updated>
+  <updated>2020-03-02T08:36:25.650Z</updated>
   <id>https://da4er.top/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于我</title>
+    <link href="https://da4er.top/%E5%85%B3%E4%BA%8E%E6%88%91.html"/>
+    <id>https://da4er.top/%E5%85%B3%E4%BA%8E%E6%88%91.html</id>
+    <published>2020-03-02T08:29:56.000Z</published>
+    <updated>2020-03-02T08:36:25.650Z</updated>
+    
+    <content type="html"><![CDATA[<p><script type="text/javascript" src="/js/src/bai.js"></script><br><img src="/%E5%85%B3%E4%BA%8E%E6%88%91/1.jpg" class><br>努力赶上大佬的安全小白；<br>励志做一个安全研究员的大学生；<br>三流CTFer。</p><hr><p>2020年计划：<br>用PHP开发一个MVC架构的项目；<br>用Python写一个Scrapy的分布式爬虫；<br>努力刷题，让自己在CTF小有成就。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/bai.js&quot;&gt;&lt;/script&gt;&lt;br&gt;&lt;img src=&quot;/%E5%85%B3%E4%BA%8E%E6%88%91/1.jpg&quot; class&gt;&lt;br&gt;努力赶上大佬的安全小白；&lt;br&gt;
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>2020_2月总结</title>
@@ -493,32 +515,6 @@
       
       
         &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/bai.js&quot;&gt;&lt;/script&gt;&lt;br&gt;&lt;strong&gt;首先打开页面，在输入框随便输入发现没有跳转，f12查看后台文件中发现hint&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;/2-
-      
-    
-    </summary>
-    
-    
-      <category term="CTF" scheme="https://da4er.top/categories/CTF/"/>
-    
-    
-      <category term="CTF" scheme="https://da4er.top/tags/CTF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2.11 [GUET-CTF2019]soul sipse</title>
-    <link href="https://da4er.top/2-11-GUET-CTF2019-soul-sipse.html"/>
-    <id>https://da4er.top/2-11-GUET-CTF2019-soul-sipse.html</id>
-    <published>2020-02-11T04:46:04.000Z</published>
-    <updated>2020-02-11T04:47:00.686Z</updated>
-    
-    <content type="html"><![CDATA[<p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>用Audacity打开在频谱图发现：</strong><br><img src="/2-11-GUET-CTF2019-soul-sipse/6.png" class title="Da4er"><br><strong>再用steghide将隐藏的文件找出来</strong><br><img src="/2-11-GUET-CTF2019-soul-sipse/7.png" class title="Da4er"><br><img src="/2-11-GUET-CTF2019-soul-sipse/8.png" class title="Da4er"><br><strong>最后unicode解码一下</strong><br><img src="/2-11-GUET-CTF2019-soul-sipse/9.png" class title="Da4er"><br><strong>得到flag{5304}</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/bai.js&quot;&gt;&lt;/script&gt;&lt;br&gt;&lt;strong&gt;用Audacity打开在频谱图发现：&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;/2-11-GUET-CTF2019-soul
       
     
     </summary>
