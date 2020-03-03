@@ -10,12 +10,12 @@
 <title>2.10 [ACTF2020 新生赛]Include&amp;BackupFile&amp;Exec&amp;Upload - Da4er&#39;s Blogs</title>
 
 
-    <meta name="description" content="Inlcude点进去tips发现是file&#x3D;flag.php，想到php伪协议读取 1php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php   base64解码后得到flag    BackupFile根据题目提示找到备份文件：index.php.bak开始审计这段代码   发现用了is_num">
+    <meta name="description" content="Inlcude点进去tips发现是file&#x3D;flag.php，想到php伪协议读取1php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.phpbase64解码后得到flag  BackupFile根据题目提示找到备份文件：index.php.bak开始审计这段代码发现用了is_numeric函数，但是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2.10 [ACTF2020 新生赛]Include&amp;BackupFile&amp;Exec&amp;Upload">
 <meta property="og:url" content="https://da4er.top/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="Inlcude点进去tips发现是file&#x3D;flag.php，想到php伪协议读取 1php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php   base64解码后得到flag    BackupFile根据题目提示找到备份文件：index.php.bak开始审计这段代码   发现用了is_num">
+<meta property="og:description" content="Inlcude点进去tips发现是file&#x3D;flag.php，想到php伪协议读取1php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.phpbase64解码后得到flag  BackupFile根据题目提示找到备份文件：index.php.bak开始审计这段代码发现用了is_numeric函数，但是">
 <meta property="og:image" content="https://da4er.top/images/og_image.png">
 <meta property="article:published_time" content="2020-02-10T04:32:46.000Z">
 <meta property="article:modified_time" content="2020-02-10T04:34:21.668Z">
@@ -120,7 +120,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Suche" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -149,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 421 words)
+                    3 minutes lesen (Über 421 Worte)
                 </span>
                 
                 
@@ -162,39 +162,14 @@
             
         </h1>
         <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<h3 id="Inlcude"><a href="#Inlcude" class="headerlink" title="Inlcude"></a>Inlcude</h3><p><strong>点进去tips发现是file=flag.php，想到php伪协议读取</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php</span><br></pre></td></tr></table></figure>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/1.png" class title="Da4er">
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/2.png" class title="Da4er">
-<p><strong>base64解码后得到flag</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/3.png" class title="Da4er">
-
+            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+<h3 id="Inlcude"><a href="#Inlcude" class="headerlink" title="Inlcude"></a>Inlcude</h3><p><strong>点进去tips发现是file=flag.php，想到php伪协议读取</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php</span><br></pre></td></tr></table></figure><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/1.png" class title="Da4er"><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/2.png" class title="Da4er"><br><strong>base64解码后得到flag</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/3.png" class title="Da4er"></p>
 <hr>
-<h3 id="BackupFile"><a href="#BackupFile" class="headerlink" title="BackupFile"></a>BackupFile</h3><p><strong>根据题目提示找到备份文件：index.php.bak</strong><br><strong>开始审计这段代码</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/4.png" class title="Da4er">
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/5.png" class title="Da4er">
-<p>发现用了is_numeric函数，但是php版本是7.3，无法使用数组绕过<br>接着看发现是弱类型比较(==)，并且 <strong>$str在==后面</strong> ，所以整个逻辑就很清楚了。<br>首先传个参数key，检测key是否为数字，然后用intval函数取得key的整数部分，在把str变量和key比较，<strong>这里逻辑要清楚是str变量和key比较，所以str在比较前转换成数字’123’。</strong><br>所以直接让key=123即可</p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/6.png" class title="Da4er">
-
+<h3 id="BackupFile"><a href="#BackupFile" class="headerlink" title="BackupFile"></a>BackupFile</h3><p><strong>根据题目提示找到备份文件：index.php.bak</strong><br><strong>开始审计这段代码</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/4.png" class title="Da4er"><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/5.png" class title="Da4er"><br>发现用了is_numeric函数，但是php版本是7.3，无法使用数组绕过<br>接着看发现是弱类型比较(==)，并且 <strong>$str在==后面</strong> ，所以整个逻辑就很清楚了。<br>首先传个参数key，检测key是否为数字，然后用intval函数取得key的整数部分，在把str变量和key比较，<strong>这里逻辑要清楚是str变量和key比较，所以str在比较前转换成数字’123’。</strong><br>所以直接让key=123即可<br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/6.png" class title="Da4er"></p>
 <hr>
-<h3 id="Exec"><a href="#Exec" class="headerlink" title="Exec"></a>Exec</h3><p><strong>打开网页发现是命令执行（SSRF）</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/7.png" class title="Da4er">
-<p><strong>并且没有过滤||等关键字</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/8.png" class title="Da4er">
-<p><strong>直接查看根目录下面的文件</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/9.png" class title="Da4er">
-<p><strong>看到有个flag文件，cat出来</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/10.png" class title="Da4er">
-
+<h3 id="Exec"><a href="#Exec" class="headerlink" title="Exec"></a>Exec</h3><p><strong>打开网页发现是命令执行（SSRF）</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/7.png" class title="Da4er"><br><strong>并且没有过滤||等关键字</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/8.png" class title="Da4er"><br><strong>直接查看根目录下面的文件</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/9.png" class title="Da4er"><br><strong>看到有个flag文件，cat出来</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/10.png" class title="Da4er"></p>
 <hr>
-<h3 id="Upload"><a href="#Upload" class="headerlink" title="Upload"></a>Upload</h3><p><strong>首先上传一个txt发现当点击submit时会返回chekfile页面</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/11.png" class title="Da4er">
-<p><strong>将这个js代码删除，再上传。通过试了很多上传方法，发现用大小写绕过，点号绕过，空格绕过但是都不解析。上传.htaccess文件被过滤。但是phtml文件没有被过滤，上传这个文件</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/12.png" class title="Da4er">
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/13.png" class title="Da4er">
-<p>成功解析<br>连接小马，得到flag。</p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/14.png" class title="Da4er">
+<h3 id="Upload"><a href="#Upload" class="headerlink" title="Upload"></a>Upload</h3><p><strong>首先上传一个txt发现当点击submit时会返回chekfile页面</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/11.png" class title="Da4er"><br><strong>将这个js代码删除，再上传。通过试了很多上传方法，发现用大小写绕过，点号绕过，空格绕过但是都不解析。上传.htaccess文件被过滤。但是phtml文件没有被过滤，上传这个文件</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/12.png" class title="Da4er"><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/13.png" class title="Da4er"><br>成功解析<br>连接小马，得到flag。<br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/14.png" class title="Da4er"></p>
 
         </div>
         
@@ -216,7 +191,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit</h3>
         <div class="buttons is-centered">
             
                 
@@ -321,7 +296,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Kategorien
             </h3>
             <ul class="menu-list">
             <li>
@@ -451,7 +426,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -476,7 +451,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -505,7 +480,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -610,7 +585,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -756,7 +731,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -781,7 +756,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -810,7 +785,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -915,7 +890,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -1142,7 +1117,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1166,7 +1141,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1179,10 +1154,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
                 TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                UNTITLED: '(Unbenannt)',
             },
             CONTENT_URL: '/content.json',
         };

