@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Kategorie: CTF - Da4er&#39;s Blogs</title>
+<title>Category: CTF - Da4er&#39;s Blogs</title>
 
 
     <meta name="description" content="学而专，专而精。">
@@ -118,7 +118,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Suche" href="javascript:;">
+                <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -134,7 +134,7 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">Kategorien</a></li>
+            <li><a href="/categories">Categories</a></li>
             
             <li class="is-active"><a href="#" aria-current="page">CTF</a></li>
         </ul>
@@ -159,7 +159,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes lesen (Über 746 Worte)
+                    5 minutes read (About 747 words)
                 </span>
                 
                 
@@ -175,21 +175,17 @@
             <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
 <h3 id="RoarCTF-2019-Easy-Calc"><a href="#RoarCTF-2019-Easy-Calc" class="headerlink" title="[RoarCTF 2019]Easy Calc"></a>[RoarCTF 2019]Easy Calc</h3><p><strong>知识点：PHP字符串的解析漏洞。</strong></p>
 <blockquote>
-<p>PHP将查询字符串（在URL或正文中）转换为内部$_GET或的关联数组$_POST。例如：/?foo=bar变成Array([foo] =&gt; “bar”)。值得注意的是，查询字符串在解析的过程中会将某些字符删除或用下划线代替，如下图：</p>
-</blockquote>
-<img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/1.png" class title="Da4er">
-<p>当我们传入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%20%20da4[er%00&#x3D;42&quot;+AND+1&#x3D;0–</span><br></pre></td></tr></table></figure><br>PHP在解析的时候会自动将不合法的字符转换，转换规则如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.删除空白符</span><br><span class="line"></span><br><span class="line">2.将某些字符转换为下划线（包括空格）</span><br></pre></td></tr></table></figure><br>所以上面的参数最后会变成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">da4_er&#x3D;42&quot; AND 1&#x3D;0–</span><br></pre></td></tr></table></figure><br>从而绕过一些waf的检测。<br><strong>解题：</strong><br>查看网页源代码发现题目存在waf，同时发现calc.php的后台处理程序。<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/2.png" class title="Da4er"><br>访问calc.php:<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/3.png" class title="Da4er"><br>当我们传入非int型的参数后，会被waf拦截：<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/4.png" class title="Da4er"><br>但是可以传入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">空格num</span><br></pre></td></tr></table></figure><br>绕过waf检测。<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/5.png" class title="Da4er"><br>绕过之后就是简单的代码执行，但是过滤了一些特殊字符，可以使用chr()函数绕过。<br>首先通过scandir扫描根目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var_dump(scandir(chr(47)));</span><br></pre></td></tr></table></figure><br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/6.png" class title="Da4er"><br>最后通过file_get_contents函数读取文件内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file_get_contents(chr(47).chr(102).chr(49).chr(97).chr(103).chr(103));</span><br></pre></td></tr></table></figure><br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/7.png" class title="Da4er"></p>
-<hr>
-<h3 id="SUCTF-2019-CheckIn"><a href="#SUCTF-2019-CheckIn" class="headerlink" title="[SUCTF 2019]CheckIn"></a>[SUCTF 2019]CheckIn</h3><p><strong>知识点：.user.ini创建隐藏后门。</strong></p>
-<blockquote>
-<p>.user.ini中设置php.ini中PHP_INI_PERDIR 和 PHP_INI_USER 模式的 INI 设置，而且只要是在使用 CGI／FastCGI 模式的服务器上都可以使用.user.ini。</p>
-</blockquote>
-<p>利用方法：.user.ini可以自定义php.ini，所以我们可以设置两个参<strong>auto_prepend_file和auto_append_file</strong><br>这两个参数的意思是：如果在上传的.user.ini目录下，有一个可执行的php文件，那么设置这两个参数后可以自动包含其他的php代码文件，如同：<strong>require和include作用一样。</strong></p>
-<p>唯一不一样的是：auto_prepend_file在文件前插入，auto_append_file在文件后插入。<br>所以我们在.user.ini文件中写入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auto_prepend_file&#x3D;da4er.jpg</span><br></pre></td></tr></table></figure><br>那么在该目录下的可执行php文件中，会自动包含：<strong>require(“./da4er.jpg”);</strong></p>
-<p><strong>解题：</strong><br>首先上传一个小马图片，这个题目作了三个限制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">不能上传ph或php结尾的，</span><br><span class="line">存在文件头过滤，需要添加图片文件的文件头</span><br><span class="line">文件的内容不能包含&lt;?，但可以上传&lt;script language&#x3D;&#39;php&#39;&gt;&lt;scirpt&gt;类型的图片马来绕过。</span><br></pre></td></tr></table></figure><br>上传后发现目录下还存在一个index.php，这就给利用.user.ini提供了条件<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/8.png" class title="Da4er"><br>所以直接上传.user.ini文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">auto_prepend_file&#x3D;script.jpg</span><br></pre></td></tr></table></figure><br>便可得到flag。<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/9.png" class title="Da4er"></p>
-
+<p>PHP将查询字符串（在URL或正文中）转换为内部$_GET或的关联数组$_POST。例如：/?foo=bar变成Array([foo] =&gt; “bar”)。值得注意的是，查询字符串在解析的过程中会将某些字符删除或用下划线代替，如下图：<br></p></blockquote>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -221,7 +217,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes lesen (Über 305 Worte)
+                    2 minutes read (About 305 words)
                 </span>
                 
                 
@@ -272,7 +268,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes lesen (Über 531 Worte)
+                    4 minutes read (About 531 words)
                 </span>
                 
                 
@@ -320,7 +316,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds lesen (Über 84 Worte)
+                    a few seconds read (About 84 words)
                 </span>
                 
                 
@@ -368,7 +364,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes lesen (Über 313 Worte)
+                    2 minutes read (About 313 words)
                 </span>
                 
                 
@@ -419,7 +415,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes lesen (Über 451 Worte)
+                    3 minutes read (About 451 words)
                 </span>
                 
                 
@@ -481,7 +477,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 minutes lesen (Über 1351 Worte)
+                    9 minutes read (About 1351 words)
                 </span>
                 
                 
@@ -573,7 +569,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes lesen (Über 504 Worte)
+                    3 minutes read (About 504 words)
                 </span>
                 
                 
@@ -624,7 +620,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes lesen (Über 552 Worte)
+                    4 minutes read (About 552 words)
                 </span>
                 
                 
@@ -674,7 +670,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds lesen (Über 53 Worte)
+                    a few seconds read (About 53 words)
                 </span>
                 
                 
@@ -710,10 +706,10 @@
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/CTF/page/0/">Zurück</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/CTF/page/0/">Previous</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/CTF/page/2/">Weiter</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/CTF/page/2/">Next</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -790,7 +786,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategorien
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -912,7 +908,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategorien
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -937,7 +933,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Folgen</a>
+                Follow</a>
         </div>
         
         
@@ -966,7 +962,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Letzte Einträge
+            Recent
         </h3>
         
         <article class="media">
@@ -1071,7 +1067,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archive
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1217,7 +1213,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategorien
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -1242,7 +1238,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Folgen</a>
+                Follow</a>
         </div>
         
         
@@ -1271,7 +1267,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Letzte Einträge
+            Recent
         </h3>
         
         <article class="media">
@@ -1376,7 +1372,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archive
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1603,7 +1599,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1627,7 +1623,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1640,10 +1636,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Seiten',
-                CATEGORIES: 'Kategorien',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
-                UNTITLED: '(Unbenannt)',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };
