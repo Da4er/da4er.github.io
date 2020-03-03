@@ -7,20 +7,18 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>爬虫实战_爬取豆瓣图书利用csv库存储 - Da4er&#39;s Blogs</title>
+<title>Kategorie: 开发 - Da4er&#39;s Blogs</title>
 
 
-    <meta name="description" content="读取csv文件通过csv.reader()和DictReader()两个函数reader()函数返回一个迭代器 会包含表头 通过next函数可以跳过，但是它只能通过下标访问数据；DictReader()函数返回一个字典，不包含表头，可以通过键名访问！！1234567891011import csv# with open(&#39;1 (2).csv&#39;,&#39;r&#39;) as fp">
-<meta property="og:type" content="article">
-<meta property="og:title" content="爬虫实战_爬取豆瓣图书利用csv库存储">
-<meta property="og:url" content="https://da4er.top/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E5%9B%BE%E4%B9%A6%E5%88%A9%E7%94%A8csv%E5%BA%93%E5%AD%98%E5%82%A8.html">
+    <meta name="description" content="学而专，专而精。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Da4er&#39;s Blogs">
+<meta property="og:url" content="https://da4er.top/categories/%E5%BC%80%E5%8F%91/index.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="读取csv文件通过csv.reader()和DictReader()两个函数reader()函数返回一个迭代器 会包含表头 通过next函数可以跳过，但是它只能通过下标访问数据；DictReader()函数返回一个字典，不包含表头，可以通过键名访问！！1234567891011import csv# with open(&#39;1 (2).csv&#39;,&#39;r&#39;) as fp">
+<meta property="og:description" content="学而专，专而精。">
 <meta property="og:image" content="https://da4er.top/images/og_image.png">
-<meta property="article:published_time" content="2020-02-16T11:06:31.000Z">
-<meta property="article:modified_time" content="2020-02-16T11:07:26.747Z">
 <meta property="article:author" content="Da4er&#39;s">
-<meta property="article:tag" content="Da4er">
+<meta property="article:tag" content="Web安全 代码审计">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://da4er.top/images/og_image.png">
 
@@ -83,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/3.jpg" alt="爬虫实战_爬取豆瓣图书利用csv库存储" height="28">
+                <img src="/images/3.jpg" alt="Da4er&#39;s Blogs" height="28">
             
             </a>
         </div>
@@ -132,24 +130,36 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">Kategorien</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">开发</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    
 <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-16T11:06:31.000Z">2020-02-16</time>
+                <time class="level-item has-text-grey" datetime="2020-03-03T12:59:59.000Z">2020-03-03</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a>
+                <a class="has-link-grey -link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes lesen (Über 529 Worte)
+                    3 minutes lesen (Über 495 Worte)
                 </span>
                 
                 
@@ -158,29 +168,23 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                爬虫实战_爬取豆瓣图书利用csv库存储
+                <a class="has-link-black-ter" href="/PHP%E7%95%99%E8%A8%80%E6%9D%BF%E5%BC%80%E5%8F%91.html">PHP留言板开发</a>
             
         </h1>
         <div class="content">
             <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
-<h3 id="读取csv文件"><a href="#读取csv文件" class="headerlink" title="读取csv文件"></a>读取csv文件</h3><p>通过csv.reader()和DictReader()两个函数<br>reader()函数返回一个迭代器 会包含表头 通过next函数可以跳过，但是它只能通过下标访问数据；<br>DictReader()函数返回一个字典，不包含表头，可以通过键名访问！！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import csv</span><br><span class="line"># with open(&#39;1 (2).csv&#39;,&#39;r&#39;) as fp:</span><br><span class="line">#     reader&#x3D;csv.reader(fp)</span><br><span class="line">#     # next(reader)</span><br><span class="line">#     for x in reader:</span><br><span class="line">#         print(x)</span><br><span class="line">with open(&#39;1 (2).csv&#39;,&#39;r&#39;) as fp:</span><br><span class="line">    reader&#x3D;csv.DictReader(fp)</span><br><span class="line">    for i in reader:</span><br><span class="line">        print(i[&#39;学生姓名&#39;])</span><br></pre></td></tr></table></figure></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>经过两天的奋斗，终于把一套简单的PHP留言板开发完成了。这套源码从前台到后台，最后到数据库都是一步一步来完成的，主要是为了熟悉一下PHP开发的基本流程和一些功能点的设计思路，为了接下来的代码审计做准备。</p>
 <hr>
-<h3 id="写入csv文件"><a href="#写入csv文件" class="headerlink" title="写入csv文件"></a>写入csv文件</h3><p>两个方法：<strong>一个通过writer()函数 一个通过Dictwriter()函数。</strong><br><strong>writerow() writerows()</strong><br>都是先将文件通过上面两个函数封装成对象，然后在对csv对象进行操作。<br><strong>注意Dictwriter()有两个参数一个是文件，另一个是表头(列表)，先调用writeheader()函数将表头写进去。</strong><br>这两个函数都可以写入，看给的数据：如果是元组用第一个函数；给的是字典用第二个函数。</p>
+<h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><p>首先设计前端页面，前端页面主要使用的boostraps框架(因为这个框架简单好用23333…)。自己也不会前端，所以用到什么就去Boostrap官网现找。<br>其次是设计数据库，数据库的话需要三张表：user表，comment表，admin表。<br>设计代码如下：<br>comment：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table comment(</span><br><span class="line">    id int unsigned not null auto_increment,</span><br><span class="line">    comment varchar(255) not null,</span><br><span class="line">    primary key(id)</span><br><span class="line">)engine&#x3D;MyISAM default charset&#x3D;utf8 comment &quot;评论表&quot;</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><p>项目说明：爬取豆瓣图片前十页，并用csv库存储下来。<br>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import csv</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">header&#x3D;&#123;</span><br><span class="line">    &quot;User-Agent&quot;:&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;80.0.3987.87 Safari&#x2F;537.36&quot;</span><br><span class="line">&#125;</span><br><span class="line">headers&#x3D;[&#39;书名&#39;,&#39;相关信息&#39;,&#39;评分&#39;]</span><br><span class="line">def spdier(url):</span><br><span class="line">    resp&#x3D;requests.get(url,headers&#x3D;header)</span><br><span class="line">    text&#x3D;resp.text</span><br><span class="line">    html&#x3D;BeautifulSoup(text,&quot;lxml&quot;)</span><br><span class="line">    # print(html.prettify())</span><br><span class="line">    alist&#x3D;html.find_all(&#39;a&#39;,class_&#x3D;&#39;title&#39;)</span><br><span class="line">    titles&#x3D;[]</span><br><span class="line">    for a in alist:</span><br><span class="line">        title&#x3D;list(a.stripped_strings)[0]</span><br><span class="line">        titles.append(title)</span><br><span class="line">    infolist&#x3D;html.find_all(&#39;div&#39;,class_&#x3D;&#39;desc&#39;)</span><br><span class="line">    infos&#x3D;[]</span><br><span class="line">    for info in infolist:</span><br><span class="line">        info1&#x3D;list(info.stripped_strings)[0]</span><br><span class="line">        infos.append(info1)</span><br><span class="line">    ratelist&#x3D;html.find_all(&#39;span&#39;,class_&#x3D;&#39;rating_nums&#39;)</span><br><span class="line">    rates&#x3D;[]</span><br><span class="line">    for i in ratelist:</span><br><span class="line">        rate&#x3D;list(i.stripped_strings)[0]</span><br><span class="line">        rates.append(rate)</span><br><span class="line">    books&#x3D;[]</span><br><span class="line">    for i in range(len(rates)):</span><br><span class="line">        book&#x3D;&#123;</span><br><span class="line">            &#39;书名&#39;:titles[i],</span><br><span class="line">            &#39;相关信息&#39;:infos[i],</span><br><span class="line">            &#39;评分&#39;:rates[i]</span><br><span class="line">        &#125;</span><br><span class="line">        books.append(book)</span><br><span class="line">    return books</span><br><span class="line">def csv_storage(list_books,filename):</span><br><span class="line">    with open(filename,&#39;w&#39;,encoding&#x3D;&#39;utf-8&#39;,newline&#x3D;&#39;&#39;) as fp:</span><br><span class="line">        writer&#x3D;csv.DictWriter(fp,headers)</span><br><span class="line">        writer.writeheader()</span><br><span class="line">        writer.writerows(list_books)</span><br><span class="line">def main():</span><br><span class="line">    base_url&#x3D;&quot;https:&#x2F;&#x2F;www.douban.com&#x2F;tag&#x2F;%E5%B0%8F%E8%AF%B4&#x2F;book?start&#x3D;&#123;&#125;&quot;</span><br><span class="line">    books&#x3D;[]</span><br><span class="line">    for i in range(0,136,15):</span><br><span class="line">        url&#x3D;base_url.format(i)</span><br><span class="line">        book&#x3D;spdier(url)</span><br><span class="line">        books +&#x3D;book</span><br><span class="line">    csv_storage(books,&#39;豆瓣图片.csv&#39;)</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>user表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create table user(</span><br><span class="line">    id int unsigned not null auto_increment,</span><br><span class="line">    username varchar(255) not null ,</span><br><span class="line">    password varchar(255) not null ,</span><br><span class="line">    email varchar(255) not null,</span><br><span class="line">    comment varchar(255) not nul ,</span><br><span class="line">    join_date date not null ,</span><br><span class="line">    primary key(id),</span><br><span class="line">    unique key(username),</span><br><span class="line">    unique key(password)</span><br><span class="line">)engine&#x3D;MyISAM default charset&#x3D;utf8;</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>今天学习了csv库存储爬取下来的数据，通过这个项目巩固了学习的内容。</p>
+<p>admin表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create table admin(</span><br><span class="line">    id int unsigned not null auto_increment,</span><br><span class="line">    username varchar(255) not null,</span><br><span class="line">    password varchar(255) not null,</span><br><span class="line">    primary key(id)</span><br><span class="line">)engine&#x3D;MyISAM default charset&#x3D;utf8</span><br><span class="line"></span><br><span class="line">insert into admin(username,password) values (&#39;admin&#39;,&#39;21232f297a57a5a743894a0e4a801fc3&#39;);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="功能点分析"><a href="#功能点分析" class="headerlink" title="功能点分析"></a>功能点分析</h3><p>在设计后台代码的时候，首先是分析功能点，这个很重要。<strong>因为大网站都是靠一个个小的功能点堆积起来的。</strong><br>这个留言板主要的功能为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">用户注册</span><br><span class="line">用户登录</span><br><span class="line">密码找回</span><br><span class="line">个人信息设置(信息更新 头像上传)</span><br><span class="line">留言发布</span><br><span class="line">留言展示</span><br><span class="line">前台留言分页展示</span><br><span class="line">搜索界面</span><br><span class="line">管理员后台登录</span><br><span class="line">后台用户管理</span><br><span class="line">后台留言管理</span><br></pre></td></tr></table></figure><br>所以在写的时候，要一个功能一个功能的去实现。</p>
+<hr>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>代码就不展示了，太多了23333….. 最后放几张效果图吧<br><img src="/PHP%E7%95%99%E8%A8%80%E6%9D%BF%E5%BC%80%E5%8F%91/1.png" class title="Da4er"><br><img src="/PHP%E7%95%99%E8%A8%80%E6%9D%BF%E5%BC%80%E5%8F%91/2.png" class title="Da4er"></p>
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a>
-                </div>
-            </div>
         </div>
         
         
@@ -190,47 +194,9 @@
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit</h3>
-        <div class="buttons is-centered">
-            
-                
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>Wechat</span>
-    <div class="qrcode"><img src="/images/1.png" alt="Wechat"></div>
-</a>
-
-                
-        </div>
-    </div>
-</div>
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/GXYCTF2019-BabyUpload.html">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">[GXYCTF2019]BabyUpload</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%8F%A4%E8%AF%97%E8%AF%8D%E7%BD%91%E4%B8%8E%E8%B1%86%E7%93%A3%E7%83%AD%E9%97%A8%E5%9B%BE%E4%B9%A6.html">
-                <span class="level-item">正则表达式_爬取中国古诗词网与豆瓣热门图书</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
 
 
 
@@ -993,7 +959,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/3.jpg" alt="爬虫实战_爬取豆瓣图书利用csv库存储" height="28">
+                    <img src="/images/3.jpg" alt="Da4er&#39;s Blogs" height="28">
                 
                 </a>
                 <p class="is-size-7">
