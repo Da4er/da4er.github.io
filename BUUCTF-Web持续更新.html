@@ -18,7 +18,7 @@
 <meta property="og:description" content="[RoarCTF 2019]Easy Calc知识点：PHP字符串的解析漏洞。  PHP将查询字符串（在URL或正文中）转换为内部$_GET或的关联数组$_POST。例如：&#x2F;?foo&#x3D;bar变成Array([foo] &#x3D;&gt; “bar”)。值得注意的是，查询字符串在解析的过程中会将某些字符删除或用下划线代替，如下图：">
 <meta property="og:image" content="https://da4er.top/images/og_image.png">
 <meta property="article:published_time" content="2020-03-03T02:47:54.000Z">
-<meta property="article:modified_time" content="2020-03-05T06:03:46.496Z">
+<meta property="article:modified_time" content="2020-03-05T09:09:48.763Z">
 <meta property="article:author" content="Da4er&#39;s">
 <meta property="article:tag" content="Da4er">
 <meta name="twitter:card" content="summary">
@@ -120,7 +120,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Pencarian" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -149,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 minutes read (About 2216 words)
+                    20 minutes membaca (Sekitar 2938 kata)
                 </span>
                 
                 
@@ -194,6 +194,13 @@
 <p>/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@app.route(&#39;&#x2F;&#39;)def index():</span><br><span class="line">    return open(&quot;code.txt&quot;,&quot;r&quot;).read()</span><br></pre></td></tr></table></figure><br>这个页面就是获取源代码的页面。</p>
 <hr>
 <p><strong>解题：</strong><br>这道题就是在Da1ta页面中传入如下参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">action&#x3D;readscan</span><br><span class="line">param&#x3D;flag.txt</span><br><span class="line">sign&#x3D;md5(secert_key+read+sign)</span><br></pre></td></tr></table></figure><br>在geneSign函数中可以获得到md5(secert_key+param+sign)的值，我们可以在这个页面传入param=flag.txtread 即可完成字符串的拼接。<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/15.png" class title="Da4er"><br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/16.png" class title="Da4er"></p>
+<hr>
+<h3 id="RoarCTF-2019-Easy-Java"><a href="#RoarCTF-2019-Easy-Java" class="headerlink" title="[RoarCTF 2019]Easy Java"></a>[RoarCTF 2019]Easy Java</h3><p><strong>知识点：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WEB-INF是Java的WEB应用的安全目录。如果想在页面中直接访问其中的文件，必须通过web.xml文件对要访问的文件进行相应映射才能访问。WEB-INF主要包含一下文件或目录。</span><br></pre></td></tr></table></figure><br>WEB-INF下面的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;WEB-INF&#x2F;web.xml：Web应用程序配置文件，描述了 servlet 和其他的应用组件配置及命名规则。  </span><br><span class="line">&#x2F;WEB-INF&#x2F;classes&#x2F;：含了站点所有用的 class 文件，包括 servlet class 和非servlet class，他们不能包含在 .jar文件中</span><br><span class="line"></span><br><span class="line">&#x2F;WEB-INF&#x2F;lib&#x2F;：存放web应用需要的各种JAR文件，放置仅在这个应用中要求使用的jar文件,如数据库驱动jar文件</span><br><span class="line"></span><br><span class="line">&#x2F;WEB-INF&#x2F;src&#x2F;：源码目录，按照包名结构放置各个java文件。</span><br><span class="line"></span><br><span class="line">&#x2F;WEB-INF&#x2F;database.properties：数据库配置文件</span><br></pre></td></tr></table></figure><br><strong>解题：</strong><br>打开help页面，发现是一个download页面，但是没有下载，需要使用post传参。<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/17.png" class title="Da4er"><br>然后访问WEB-INF/web.xml，找到flag所属的类<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/18.png" class title="Da4er"><br>所以直接访问这个class类的目录：<br>找到一段base64解码得到flag<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/19.png" class title="Da4er"><br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/20.png" class title="Da4er"></p>
+<hr>
+<h3 id="0CTF-2016-piapiapia"><a href="#0CTF-2016-piapiapia" class="headerlink" title="[0CTF 2016]piapiapia"></a>[0CTF 2016]piapiapia</h3><p><strong>知识点：</strong><br>1.<strong>数组绕过正则及相关</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">md5(Array()) &#x3D; null </span><br><span class="line">sha1(Array()) &#x3D; null </span><br><span class="line">ereg(pattern,Array()) &#x3D; null </span><br><span class="line">preg_match(pattern,Array()) &#x3D; false </span><br><span class="line">strcmp(Array(), &quot;abc&quot;) &#x3D; null </span><br><span class="line">strpos(Array(),&quot;abc&quot;) &#x3D; null </span><br><span class="line">strlen(Array()) &#x3D; null</span><br></pre></td></tr></table></figure><br>2.<strong>php反序列化长度变化尾部字符串逃逸</strong><br>假如有如下序列化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:4:&#123;s:5:&quot;phone&quot;;s:11:&quot;13587819970&quot;;s:5:&quot;email&quot;;s:32:&quot;44444545487956214698745621365478&quot;;s:8:&quot;nickname&quot;;s:10:&quot;12345hacke&quot;;s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;s:39:&quot;upload&#x2F;f47454d1d3644127f42070181a8b9afc&quot;;&#125;</span><br></pre></td></tr></table></figure><br>经反序列化之后：<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/21.png" class title="Da4er"><br>发现s:39之后的都没有被反序列化，但是正常输出了。</p>
+<hr>
+<p><strong>解题：</strong><br>扫描目录发现<a href="http://www.zip，打开审计代码，找到一处file_get_contents函数漏洞利用">www.zip，打开审计代码，找到一处file_get_contents函数漏洞利用</a><br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/22.png" class title="Da4er"><br>这个漏洞出现在用户更新数据页面，先经过反序列化，在进行赋值。跟进函数发现对profile有三处过滤：<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/23.png" class title="Da4er"><br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/24.png" class title="Da4er"><br>首先是正则匹配，可以使用数组绕过；在filter函数里有两处过滤，有一处是将where转换成hacker，5个字符换成了6个字符。<br>漏洞点是出现在上传图片的参数，这个时候就是要将s:5:”photo”;s:10:”config.php”;}塞到photo参数里，让它读取config.php下的flag。可以使用反序列化尾部字符串逃逸。</p>
+<p>在nickname上操作，payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nickname[]</span><br><span class="line">wherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewhere&quot;;&#125;s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;</span><br></pre></td></tr></table></figure><br>在nickname上输入34个where，每个where都会换成hacker，多增加一个字符，最后会把s:5:”photo”;s:10:”config.php”;}挤到photo参数上。<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/25.png" class title="Da4er"><br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/26.png" class title="Da4er"></p>
 
         </div>
         
@@ -215,7 +222,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">Suka dengan artikel ini? Bantu penulis dengan donasi melalui</h3>
         <div class="buttons is-centered">
             
                 
@@ -272,7 +279,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Links
+            Tautan
         </h3>
         <ul class="menu-list">
         
@@ -320,7 +327,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Kategori
             </h3>
             <ul class="menu-list">
             <li>
@@ -396,7 +403,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Awan tag
         </h3>
         <a href="/tags/CTF/" style="font-size: 20px;">CTF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 16.67px;">Web安全&渗透测试</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 13.33px;">代码审计</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.33px;">爬虫</a>
     </div>
@@ -438,7 +445,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Artikel
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
@@ -450,7 +457,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategori
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -462,7 +469,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Tag
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -475,7 +482,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                IKUTI</a>
         </div>
         
         
@@ -504,7 +511,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Terbaru
         </h3>
         
         <article class="media">
@@ -609,7 +616,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Arsip
         </h3>
         <ul class="menu-list">
         
@@ -655,7 +662,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Tag
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -743,7 +750,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Artikel
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
@@ -755,7 +762,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategori
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -767,7 +774,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Tag
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -780,7 +787,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                IKUTI</a>
         </div>
         
         
@@ -809,7 +816,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Terbaru
         </h3>
         
         <article class="media">
@@ -914,7 +921,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Arsip
         </h3>
         <ul class="menu-list">
         
@@ -960,7 +967,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Tag
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1141,7 +1148,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1165,7 +1172,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu.." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1177,11 +1184,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: 'Artikel',
+                PAGES: 'Halaman',
+                CATEGORIES: 'Kategori',
+                TAGS: 'Tag',
+                UNTITLED: 'Tanpa Judul',
             },
             CONTENT_URL: '/content.json',
         };
