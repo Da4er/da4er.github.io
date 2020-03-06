@@ -118,7 +118,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Pencarian" href="javascript:;">
+                <a class="navbar-item search" title="Buscar" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -138,6 +138,64 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-05T05:23:21.000Z">2020-02-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes leer (Acerca de 756 palabras)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98-%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E7%88%AC%E8%99%AB.html">爬虫实战_电影天堂爬虫</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><strong>近段时间一直在学习爬虫，昨天闲来无事做了一个简单的小爬虫来爬取电影天堂热门电影的前7页。本爬虫利用requests库和lxml库结合来解析得到的html代码，当然也可以使用BeautifulSoup库来解析，但我比较喜欢lxml库和XPATH语法相结合的解析。</strong></p>
+<hr>
+<p><strong>这个实战是爬取电影天堂热门电影前七页。分为三步：1.获取每个页面的电影详细页；2.解析每个电影详细页；3.将第一步和第二步结合，爬取前七页。</strong></p>
+<hr>
+<p>具体代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from lxml import etree</span><br><span class="line">BASE_DOMAIN&#x3D;&quot;https:&#x2F;&#x2F;www.dytt8.net&quot;</span><br><span class="line">HEADERS&#x3D;&#123;</span><br><span class="line">    &quot;User-Agent&quot;:&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;71.0.3578.98 Safari&#x2F;537.36&quot;</span><br><span class="line">&#125;</span><br><span class="line">def get_detail_url(url):</span><br><span class="line">    resp &#x3D; requests.get(url, headers&#x3D;HEADERS)</span><br><span class="line">    text &#x3D; resp.text</span><br><span class="line">    # print(text)</span><br><span class="line">    html &#x3D; etree.HTML(text)</span><br><span class="line">    detail_urls &#x3D; html.xpath(&quot;&#x2F;&#x2F;ul&#x2F;&#x2F;table[@class&#x3D;&#39;tbspan&#39;]&#x2F;&#x2F;a&#x2F;@href&quot;)</span><br><span class="line">    # def abc(url1):</span><br><span class="line">    #     return BASE_DOMAIN+url1</span><br><span class="line">    # index&#x3D;0</span><br><span class="line">    # for detail_url in detail_urls:</span><br><span class="line">    #         detail_url &#x3D; abc(detail_url)</span><br><span class="line">    #         detail_urls[index]&#x3D;detail_url</span><br><span class="line">    #         index &#x3D;index+1</span><br><span class="line">    detail_urls&#x3D;map(lambda url:BASE_DOMAIN+url,detail_urls)</span><br><span class="line">    return detail_urls</span><br><span class="line">def parse_detail_page(url):</span><br><span class="line">    resp&#x3D;requests.get(url,headers&#x3D;HEADERS)</span><br><span class="line">    text&#x3D;resp.content.decode(&quot;gbk&quot;)</span><br><span class="line">    movie&#x3D;&#123;&#125;</span><br><span class="line">    #print(text)</span><br><span class="line">    html&#x3D;etree.HTML(text)</span><br><span class="line">    #电影名称</span><br><span class="line">    title&#x3D;html.xpath(&quot;&#x2F;&#x2F;div[@class&#x3D;&#39;title_all&#39;]&#x2F;&#x2F;font[@color&#x3D;&#39;#07519a&#39;]&#x2F;&#x2F;text()&quot;)[0]</span><br><span class="line">    movie[&#39;title&#39;]&#x3D;title</span><br><span class="line">    #电影海报</span><br><span class="line">    img&#x3D;html.xpath(&quot;&#x2F;&#x2F;div[@id&#x3D;&#39;Zoom&#39;]&#x2F;&#x2F;img&#x2F;@src&quot;)</span><br><span class="line">    cover&#x3D;img</span><br><span class="line">    movie[&#39;cover&#39;]&#x3D;cover</span><br><span class="line">    #div下所有文本</span><br><span class="line">    infos&#x3D;html.xpath(&quot;&#x2F;&#x2F;div[@id&#x3D;&#39;Zoom&#39;]&#x2F;&#x2F;text()&quot;)</span><br><span class="line">    for index,info in enumerate(infos):</span><br><span class="line">        def page_info(info,rules):</span><br><span class="line">            info&#x3D;info.replace(rules,&quot;&quot;).strip()</span><br><span class="line">            return info</span><br><span class="line">        if info.startswith(&quot;◎年　　代&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎年　　代&quot;)</span><br><span class="line">            movie[&#39;year&#39;]&#x3D;info</span><br><span class="line">        elif info.startswith(&quot;◎产　　地&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎产　　地&quot;)</span><br><span class="line">            movie[&#39;country&#39;]&#x3D;info</span><br><span class="line">        elif info.startswith(&quot;◎类　　别&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎类　　别&quot;)</span><br><span class="line">            movie[&#39;类别&#39;]&#x3D;info</span><br><span class="line">        elif info.startswith(&quot;◎豆瓣评分&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎豆瓣评分&quot;)</span><br><span class="line">            movie[&#39;豆瓣评分&#39;]&#x3D;info</span><br><span class="line">        elif info.startswith(&quot;◎导　　演&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎导　　演&quot;)</span><br><span class="line">            dirctors&#x3D;[info]</span><br><span class="line">            for x in range(index+1,len(infos)):</span><br><span class="line">                dirctor&#x3D;infos[x].strip()</span><br><span class="line">                if dirctor.startswith(&quot;◎编　　剧&quot;):</span><br><span class="line">                    break</span><br><span class="line">                dirctors.append(dirctor)</span><br><span class="line">            movie[&#39;导演&#39;]&#x3D;dirctors</span><br><span class="line">        elif info.startswith(&quot;◎编　　剧&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎编　　剧&quot;)</span><br><span class="line">            movie[&quot;编剧&quot;]&#x3D;info</span><br><span class="line">        elif info.startswith(&quot;◎主　　演&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎主　　演&quot;)</span><br><span class="line">            actors&#x3D;[info]</span><br><span class="line">            for x in range(index+1,len(infos)):</span><br><span class="line">                actor&#x3D;infos[x].strip()</span><br><span class="line">                if(actor.startswith(&quot;◎标　　签&quot;)):</span><br><span class="line">                    break</span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[&#39;actors&#39;]&#x3D;actors</span><br><span class="line">        elif info.startswith(&quot;◎简　　介&quot;):</span><br><span class="line">            info&#x3D;page_info(info,&quot;◎简　　介&quot;)</span><br><span class="line">            for x in range(index+1,len(infos)):</span><br><span class="line">                detail&#x3D;infos[x].strip()</span><br><span class="line">                if(detail.startswith(&quot;◎获奖情况&quot;)):</span><br><span class="line">                    break</span><br><span class="line">                movie[&#39;detail&#39;]&#x3D;detail</span><br><span class="line">    download_url&#x3D;html.xpath(&quot;&#x2F;&#x2F;td[@bgcolor&#x3D;&#39;#fdfddf&#39;]&#x2F;&#x2F;a&#x2F;text()&quot;)</span><br><span class="line">    movie[&#39;download_url&#39;]&#x3D;download_url</span><br><span class="line">    return movie</span><br><span class="line">def spider():</span><br><span class="line">    #爬取前7页</span><br><span class="line">    base_url&#x3D;&quot;https:&#x2F;&#x2F;www.dytt8.net&#x2F;html&#x2F;gndy&#x2F;dyzz&#x2F;list_23_&#123;&#125;.html&quot;</span><br><span class="line">    movies&#x3D;[]</span><br><span class="line">    for x in range(1,8):</span><br><span class="line">        #第一个循环获取每个页面</span><br><span class="line">        url&#x3D;base_url.format(x)</span><br><span class="line">        detail_urls&#x3D;get_detail_url(url)</span><br><span class="line">        for detail_url in detail_urls:</span><br><span class="line">            #第二个循环获取每个网页电影的详细页</span><br><span class="line">            movie&#x3D;parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">        print(movies)</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h5 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h5><p><strong>获取每个网页的电影详细页：</strong><br><img src="/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98-%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E7%88%AC%E8%99%AB/1.png" class title="This is an test image"></p>
+<hr>
+<h5 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h5><p><strong>解析电影详细页：</strong><br><img src="/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98-%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E7%88%AC%E8%99%AB/2.png" class title="This is an test image"><br><img src="/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98-%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E7%88%AC%E8%99%AB/3.png" class title="This is an test image"></p>
+<hr>
+<h5 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h5><p><strong>爬取前七页：</strong><br><img src="/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98-%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E7%88%AC%E8%99%AB/4.png" class title="This is an test image"></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-02-05T05:13:09.000Z">2020-02-05</time>
                 
                 <div class="level-item">
@@ -148,7 +206,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds membaca (Sekitar 94 kata)
+                    a few seconds leer (Acerca de 94 palabras)
                 </span>
                 
                 
@@ -196,7 +254,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes membaca (Sekitar 257 kata)
+                    2 minutes leer (Acerca de 257 palabras)
                 </span>
                 
                 
@@ -244,7 +302,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 minutes membaca (Sekitar 2217 kata)
+                    15 minutes leer (Acerca de 2217 palabras)
                 </span>
                 
                 
@@ -309,7 +367,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    30 minutes membaca (Sekitar 4517 kata)
+                    30 minutes leer (Acerca de 4517 palabras)
                 </span>
                 
                 
@@ -398,7 +456,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes membaca (Sekitar 784 kata)
+                    5 minutes leer (Acerca de 784 palabras)
                 </span>
                 
                 
@@ -454,7 +512,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes membaca (Sekitar 709 kata)
+                    5 minutes leer (Acerca de 709 palabras)
                 </span>
                 
                 
@@ -505,7 +563,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    27 minutes membaca (Sekitar 4105 kata)
+                    27 minutes leer (Acerca de 4105 palabras)
                 </span>
                 
                 
@@ -590,7 +648,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes membaca (Sekitar 1868 kata)
+                    12 minutes leer (Acerca de 1868 palabras)
                 </span>
                 
                 
@@ -673,7 +731,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    an hour membaca (Sekitar 6935 kata)
+                    an hour leer (Acerca de 6935 palabras)
                 </span>
                 
                 
@@ -754,10 +812,10 @@
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/page/5/">Sebelumnya</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/5/">Anterior</a>
         </div>
         <div class="pagination-next is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/page/7/">Berikutnya</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/7/">Siguiente</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -786,7 +844,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Tautan
+            Enlaces
         </h3>
         <ul class="menu-list">
         
@@ -834,7 +892,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategori
+                Categorías
             </h3>
             <ul class="menu-list">
             <li>
@@ -851,7 +909,7 @@
                 <span class="level-item">Python</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
@@ -910,7 +968,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Awan tag
+            Nube de etiquetas
         </h3>
         <a href="/tags/CTF/" style="font-size: 20px;">CTF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 16.67px;">Web安全&渗透测试</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 13.33px;">代码审计</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.33px;">爬虫</a>
     </div>
@@ -952,11 +1010,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Artikel
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            59
+                            60
                         </p>
                     </a>
                 </div>
@@ -964,7 +1022,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategori
+                        Categorías
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -976,7 +1034,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tag
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -989,7 +1047,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                IKUTI</a>
+                SEGUIR</a>
         </div>
         
         
@@ -1018,8 +1076,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Python-sys%E6%A0%87%E5%87%86%E5%BA%93%E5%AD%A6%E4%B9%A0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python sys标准库学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T10:35:33.000Z">2020-03-06</time></div>
+                    <a href="/Python-sys%E6%A0%87%E5%87%86%E5%BA%93%E5%AD%A6%E4%B9%A0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python sys标准库学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1097,25 +1174,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020-2%E6%9C%88%E6%80%BB%E7%BB%93.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2020_2月总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-02T03:10:39.000Z">2020-03-02</time></div>
-                    <a href="/2020-2%E6%9C%88%E6%80%BB%E7%BB%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">2020_2月总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1123,7 +1181,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -1133,7 +1191,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -1169,7 +1227,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tag
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1257,11 +1315,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Artikel
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            59
+                            60
                         </p>
                     </a>
                 </div>
@@ -1269,7 +1327,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategori
+                        Categorías
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -1281,7 +1339,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tag
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -1294,7 +1352,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                IKUTI</a>
+                SEGUIR</a>
         </div>
         
         
@@ -1323,8 +1381,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Python-sys%E6%A0%87%E5%87%86%E5%BA%93%E5%AD%A6%E4%B9%A0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python sys标准库学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T10:35:33.000Z">2020-03-06</time></div>
+                    <a href="/Python-sys%E6%A0%87%E5%87%86%E5%BA%93%E5%AD%A6%E4%B9%A0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python sys标准库学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1402,25 +1479,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020-2%E6%9C%88%E6%80%BB%E7%BB%93.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2020_2月总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-02T03:10:39.000Z">2020-03-02</time></div>
-                    <a href="/2020-2%E6%9C%88%E6%80%BB%E7%BB%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">2020_2月总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1428,7 +1486,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -1438,7 +1496,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -1474,7 +1532,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tag
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1655,7 +1713,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1679,7 +1737,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu.." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Teclea algo..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1691,11 +1749,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Artikel',
-                PAGES: 'Halaman',
-                CATEGORIES: 'Kategori',
-                TAGS: 'Tag',
-                UNTITLED: 'Tanpa Judul',
+                POSTS: 'Entradas',
+                PAGES: 'Páginas',
+                CATEGORIES: 'Categorías',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Sin título)',
             },
             CONTENT_URL: '/content.json',
         };
