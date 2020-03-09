@@ -138,6 +138,58 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-24T14:34:23.000Z">2020-02-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">Web安全&渗透测试</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes leer (Acerca de 752 palabras)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95.html">SQL注入Fuzz记录</a>
+            
+        </h1>
+        <div class="content">
+            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>从今天开始学习各种fuzz测试，今天做了一道sql注入题，通过fuzz来判断过滤字符，从而构造payload进行绕过。</p>
+<hr>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>拿到题目进行简单的测试<br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/1.png" class title="This is an test image"><br>发现这题进行了一些sql关键字的过滤，我们通过burp的Intruder模块进行fuzz。<br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/2.png" class title="This is an test image"><br>字段长度为370的是被过滤的sql语句。<br><strong>进一步分析看看这题目到底过滤了哪些关键字，通过一个个分析知道过滤了：# –+等注释符，空格，%0a,%0b等绕过过滤空格的url编码，逗号(,)，包含and和or的字符。还有很多绕过过滤的关键字，发现没有过滤sleep()，尝试一下时间盲注。</strong><br>常规的时间盲注为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(条件,sleep(3),2)</span><br></pre></td></tr></table></figure><br>但是题目过滤了逗号，想到用case when替换：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">case when 条件 then sleep(2) else 1 end</span><br></pre></td></tr></table></figure><br>但是过滤了空格等分隔符，同时内联注释 注释符 %0a %0b %0d %a0也多被过滤，我们可以用括号来代替空格：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">case when(条件)then(sleep(2))else(1)end</span><br></pre></td></tr></table></figure><br>但是测试发现case和when中间是不能添加括号的，到这里时间盲注也是不可行的。</p>
+<p>可以尝试另类的布尔盲注:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &#39;admin&#39;&#x3D;&#39;admin&#39;+1 union select &#39;admin&#39;&#x3D;&#39;admin&#39;+0;</span><br></pre></td></tr></table></figure><br>在本地测试发现，第一个输出0，第二个输出1。<br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/3.png" class title="This is an test image"><br>这是mysql的一个特性：<strong>在第一个查询中，先进行右边的’admin’+1操作，这个时候会强制转换admin为数字，然后相加完在和等号左边的admin比较，这个时候也会强制转换，所以就会形成不相等的情况。</strong><br>上面就可以形成布尔逻辑判断了。<br>首先我们可以先判断一些admin账号的密码长度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;%2b(length(passwd)&#x3D;32)%2b&#39;</span><br></pre></td></tr></table></figure><br>%2b是+号，不能直接使用加号因为被过滤了，这里也可以使用-号，效果相同。<br>上面的逻辑是：如果passwd长度为32，则返回1，然后和admin作相加操作，这样就会形成逻辑上的差别。如下图：<br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/4.png" class title="This is an test image"><br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/5.png" class title="This is an test image"><br>这样就可以判断admin的密码是个32为的md5值。<br>然后在猜解每个字符，通过mid函数进行：<strong>但for被过滤！</strong><br>mid(xxx from 1)  第一位开始取剩下的所有字符<br><strong>ascii(mid(xxx from 1)) 发现截断 取第一个字符的ascii值。</strong><br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;%2b(ascii(mid((passwd)from(1)))&#x3D;48)%2b&#39;</span><br></pre></td></tr></table></figure><br>通过括号绕过空格过滤，通过mysql中的mid，ascii函数特性绕过for过滤。<br>最后通过burp爆破每一位的ascii值，就可以得到密码的md5值了。<br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/6.png" class title="This is an test image"></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-02-23T11:01:54.000Z">2020-02-23</time>
                 
                 <div class="level-item">
@@ -603,98 +655,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-12T09:35:03.000Z">2020-02-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 minutes leer (Acerca de 1351 palabras)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E.html">2.12 浅谈SSI和SSTI漏洞</a>
-            
-        </h1>
-        <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
-<h3 id="一-SSI漏洞解析"><a href="#一-SSI漏洞解析" class="headerlink" title="一.SSI漏洞解析"></a>一.SSI漏洞解析</h3><h4 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h4><p>现在大多数Web服务很少用到SSI，但是还是有有必要了解一下。<br><strong>SSI全称是Server Side Includes，即服务器端包含，是一种基于服务器端的网页制作技术。</strong></p>
-<p><strong>SSI是嵌入HTML页面中的指令，在页面被提供时由服务器进行运算，以对现有HTML页面增加动态生成的内容，而无须通过CGI程序提供其整个页面，或者使用其他动态技术。</strong></p>
-<p><strong>基本原理就是：SSI在HTML文件中，可以通过注释行调用命令或指针，即允许通过在HTML页面注入脚本或远程执行任意代码。</strong></p>
-<p>SSI漏洞存在于shtml，stm，shtm文件中，就是应用ssi技术的html文件，当我在这个页面加入ssi指令后，服务器开始解析，将文件图片包含或者远程执行命令。</p>
-<hr>
-<h4 id="2-开启ssi"><a href="#2-开启ssi" class="headerlink" title="2.开启ssi"></a>2.开启ssi</h4><h5 id="1-Nginx"><a href="#1-Nginx" class="headerlink" title="(1)Nginx"></a>(1)Nginx</h5><p>在配置文件中添加如下几项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssi on;</span><br><span class="line">ssi_silent_errors off;</span><br><span class="line">ssi_types text&#x2F;shtml;</span><br></pre></td></tr></table></figure></p>
-<h5 id="2-Apache"><a href="#2-Apache" class="headerlink" title="(2)Apache"></a>(2)Apache</h5><p>修改Apache配置文件httpd.conf：</p>
-<ul>
-<li>确认加载include.so模块，将注释去掉：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoadModule include_module libexec&#x2F;apache2&#x2F;mod_include.so</span><br></pre></td></tr></table></figure></li>
-<li><p>AddType部分去掉这两段注释：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">AddType text&#x2F;html .shtml</span><br><span class="line">AddOutputFilter INCLUDES .shtml</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Directory目录权限里面找到Options Indexes FollowSymLinks，并增加Includes修改为Options Indexes FollowSymLinks Includes；</p>
-</li>
-<li><p>重新启动Apache；</p>
-</li>
-</ul>
-<hr>
-<h4 id="3-SSI基本语法："><a href="#3-SSI基本语法：" class="headerlink" title="3.SSI基本语法："></a>3.SSI基本语法：</h4><p>其语法格式必须是以html的注释符 <strong>&lt;!–</strong> 开头、且后面紧接#符号和SSI命令，它们期间不能存在空格：</p>
-<ul>
-<li><p>显示服务器端环境变量 <strong>&lt;#echo&gt;</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">本文档名称：&lt;!--#echo var&#x3D;&quot;DOCUMENT_NAME&quot;--&gt;</span><br><span class="line">现在时间：&lt;!--#echo var&#x3D;&quot;DATE_LOCAL&quot;--&gt;</span><br><span class="line">显示IP地址：&lt;!--#echo var&#x3D;&quot;REMOTE_ADDR&quot;--&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将文本内容直接插入到文档中&lt;#include&gt;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--#include file&#x3D;&quot;文件名称&quot;--&gt;</span><br><span class="line">&lt;!--#include virtual&#x3D;&quot;index.html&quot; --&gt;</span><br><span class="line">&lt;!--#include virtual&#x3D;&quot;文件名称&quot;–&gt;</span><br><span class="line">&lt;!--#include virtual&#x3D;&quot;&#x2F;www&#x2F;footer.html&quot; --&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>注：file包含文件可以在同一级目录或其子目录中，但不能在上一级目录中，virtual包含文件可以是Web站点上的虚拟目录的完整路径。</strong></p>
-</li>
-<li><p>直接执行服务器上的各种程序&lt;#exec&gt;(如CGI或其他可执行程序)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--#exec cmd&#x3D;&quot;命令&quot;--&gt;</span><br><span class="line">&lt;!--#exec cmd&#x3D;&quot;cat &#x2F;etc&#x2F;passwd&quot;--&gt;</span><br><span class="line">&lt;!--#exec cgi&#x3D;&quot;文件名称&quot;--&gt;</span><br><span class="line">&lt;!--#exec cgi&#x3D;&quot;&#x2F;cgi-bin&#x2F;access_log.cgi&quot;--&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h4 id="4-SSI注入漏洞"><a href="#4-SSI注入漏洞" class="headerlink" title="4.SSI注入漏洞"></a>4.SSI注入漏洞</h4><h5 id="1-如何利用"><a href="#1-如何利用" class="headerlink" title="(1)如何利用"></a>(1)如何利用</h5><p><strong>简单点说就是攻击者可以通过外部输入SSI标签到Web页面（stm、shtm、shtml文件）来动态执行代码。<br>SSI注入允许远程在Web应用中注入脚本来执行代码。<br>简单点说就是攻击者可以通过外部输入SSI语句到Web页面来动态执行代码。</strong></p>
-<p><strong>一般地，在stm、shtm、shtml等文件中，存在XSS的页面，大概率是存在SSI注入漏洞的。<br>也就是说，用户输入的内容会显示在页面中的场景。<br>比如，一个存在反射型XSS漏洞的页面，如果输入的payload不是XSS代码而是SSI的标签，同时服务器又开启了对SSI的支持的话就会存在SSI注入漏洞。</strong></p>
-<hr>
-<h5 id="2-前提条件"><a href="#2-前提条件" class="headerlink" title="(2)前提条件"></a>(2)前提条件</h5><p>攻击者要想进行SSI注入、在Web服务器上运行任意命令，需要满足下列几点前提条件才能成功：<strong>Web服务器支持并开启了SSI；<br>Web应用程序在返回HTML页面时，嵌入了用户输入的内容；<br>外部输入的参数值未进行有效的过滤；</strong></p>
-<hr>
-<p><a href="https://www.mi1k7ea.com/2019/09/28/SSI%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/">参考博客</a><br>例题：BUUCTF [BJDCTF2020]EasySearch，BWAPP靶场的SSI注入漏洞。</p>
-<hr>
-<h3 id="二-SSTI漏洞"><a href="#二-SSTI漏洞" class="headerlink" title="二.SSTI漏洞"></a>二.SSTI漏洞</h3><h4 id="1-原理-1"><a href="#1-原理-1" class="headerlink" title="(1)原理"></a>(1)原理</h4><p>服务端模板注入是服务端接收了用户的输入，将其作为 Web 应用模板内容的一部分，在进行目标编译渲染的过程中，执行了用户插入的恶意内容，因而可能导致了敏感信息泄露、代码执行、GetShell 等问题。其影响范围主要取决于模版引擎的复杂性。</p>
-<hr>
-<h4 id="2-利用"><a href="#2-利用" class="headerlink" title="(2)利用"></a>(2)利用</h4><p> 检测方法如下：<br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/1.png" class title="Da4er"><br> 当我们输入的内容，经过web模板解析后返回到html页面中，如果在web模板解析时没有进行很好的过滤就会出现SSTI模板注入漏洞。</p>
-<p>以BUU上[护网杯 2018]easy_tornado为例，当我们的filname和filehash不一样的时候会跳转到error页面。<br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/2.png" class title="Da4er"><br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/3.png" class title="Da4er"><br> 当我们输入2不会返回正常的1 * 2而是ORZ<br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/4.png" class title="Da4er"><br> 证明存在SSTI漏洞<br> 使用python web模板tornado中的handler.settings可以把cookie输出<br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/5.png" class title="Da4er"><br> 这就可以证明有SSTI模板漏洞，这个漏洞在很多语言的web模板中都存在，不光只有python，因为python tornado模板使用简单，所以造成的危害更大些。</p>
-<p> 也可以使用system函数执行系统命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;system(&#39;命令&#39;)&#125;&#125;</span><br></pre></td></tr></table></figure><br>例题：[BJDCTF2020]The mystery of ip<br>题目X-Forwarded-For可控，存在模板注入，可以使用system执行系统命令。<br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For &#123;&#123;system(&#39;cat &#x2F;flag&#39;)&#125;&#125;</span><br></pre></td></tr></table></figure><br><img src="/2-12-%E6%B5%85%E8%B0%88SSI%E5%92%8CSSTI%E6%BC%8F%E6%B4%9E/6.png" class title="Da4er"></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -715,7 +675,7 @@
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/6/">6</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/7/">7</a></li>
             
         </ul>
     </nav>
@@ -799,7 +759,7 @@
                 <span class="level-item">Python</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
@@ -904,7 +864,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            60
+                            61
                         </p>
                     </a>
                 </div>
@@ -968,6 +928,25 @@
         <h3 class="menu-label">
             Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Python-os%E6%A0%87%E5%87%86%E5%BA%93.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python os标准库">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-09T10:15:53.000Z">2020-03-09</time></div>
+                    <a href="/Python-os%E6%A0%87%E5%87%86%E5%BA%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python os标准库</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1045,25 +1024,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/%E5%85%B3%E4%BA%8E%E6%88%91.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于我">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-02T08:29:56.000Z">2020-03-02</time></div>
-                    <a href="/%E5%85%B3%E4%BA%8E%E6%88%91.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于我</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1081,7 +1041,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -1209,7 +1169,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            60
+                            61
                         </p>
                     </a>
                 </div>
@@ -1273,6 +1233,25 @@
         <h3 class="menu-label">
             Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Python-os%E6%A0%87%E5%87%86%E5%BA%93.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python os标准库">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-09T10:15:53.000Z">2020-03-09</time></div>
+                    <a href="/Python-os%E6%A0%87%E5%87%86%E5%BA%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python os标准库</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1350,25 +1329,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/%E5%85%B3%E4%BA%8E%E6%88%91.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于我">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-02T08:29:56.000Z">2020-03-02</time></div>
-                    <a href="/%E5%85%B3%E4%BA%8E%E6%88%91.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于我</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1386,7 +1346,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -1603,7 +1563,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>

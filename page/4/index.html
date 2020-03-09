@@ -138,6 +138,54 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-10T02:28:57.000Z">2020-02-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute leer (Acerca de 127 palabras)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC.html">2.10 BUUCTF Misc_派大星的烦恼</a>
+            
+        </h1>
+        <div class="content">
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>用winhex打开，发现题目提示的0x220x44</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/1.png" class title="Da4er"><br><strong>将”换成0，D换成1，转换成二进制后在转换成文本，出现乱码</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/2.png" class title="Da4er"><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/3.png" class title="Da4er"><br><strong>将转换成的二进制翻转后再解码</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/4.png" class title="Da4er"><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/5.png" class title="Da4er"><br><strong>得到一串字母和数字，提交发现flag不对，这时我们需要再将这串字符串再翻转一次。</strong><br><img src="/2-10-BUUCTF-Misc-%E6%B4%BE%E5%A4%A7%E6%98%9F%E7%9A%84%E7%83%A6%E6%81%BC/6.png" class title="Da4er"><br><strong>最后得到flag。</strong></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-02-09T14:23:07.000Z">2020-02-09</time>
                 
                 <div class="level-item">
@@ -577,57 +625,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-07T12:45:22.000Z">2020-02-07</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a minute leer (Acerca de 177 palabras)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2-7-GXYCTF2019-Is-this-base.html">2.7 [GXYCTF2019]Is this base?</a>
-            
-        </h1>
-        <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>首先打开题目发现有很多行base64，想到base64隐写。所谓的base64隐写就是通过在base64最后几个字节中隐藏信息，所以要使用很多行来存储信息。看到有很多行base64首先要想到base64隐写！</strong></p>
-<hr>
-<img src="/2-7-GXYCTF2019-Is-this-base/1.png" class title="This is an test image">
-<p>使用脚本跑即可，附上脚本：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">b64chars = <span class="string">'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'1.txt'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        bin_str = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</span><br><span class="line">            stegb64 = <span class="string">''</span>.join(line.split())</span><br><span class="line">            rowb64 =  <span class="string">''</span>.join(stegb64.decode(<span class="string">'base64'</span>).encode(<span class="string">'base64'</span>).split())</span><br><span class="line">            offset = abs(b64chars.index(stegb64.replace(<span class="string">'='</span>,<span class="string">''</span>)[<span class="number">-1</span>])-b64chars.index(rowb64.replace(<span class="string">'='</span>,<span class="string">''</span>)[<span class="number">-1</span>]))</span><br><span class="line">            equalnum = stegb64.count(<span class="string">'='</span>) <span class="comment">#no equalnum no offset</span></span><br><span class="line">            <span class="keyword">if</span> equalnum:</span><br><span class="line">                bin_str += bin(offset)[<span class="number">2</span>:].zfill(equalnum * <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">print</span> <span class="string">''</span>.join([chr(int(bin_str[i:i + <span class="number">8</span>], <span class="number">2</span>)) <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">0</span>, len(bin_str), <span class="number">8</span>)])</span><br></pre></td></tr></table></figure><br><strong>得到flag</strong><br><img src="/2-7-GXYCTF2019-Is-this-base/2.png" class title="This is an test image"></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -651,6 +648,8 @@
             <li><a class="pagination-link has-text-black-ter" href="/page/5/">5</a></li>
             
             <li><a class="pagination-link has-text-black-ter" href="/page/6/">6</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/7/">7</a></li>
             
         </ul>
     </nav>
@@ -734,7 +733,7 @@
                 <span class="level-item">Python</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
@@ -839,7 +838,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            60
+                            61
                         </p>
                     </a>
                 </div>
@@ -903,6 +902,25 @@
         <h3 class="menu-label">
             Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Python-os%E6%A0%87%E5%87%86%E5%BA%93.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python os标准库">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-09T10:15:53.000Z">2020-03-09</time></div>
+                    <a href="/Python-os%E6%A0%87%E5%87%86%E5%BA%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python os标准库</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -980,25 +998,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/%E5%85%B3%E4%BA%8E%E6%88%91.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于我">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-02T08:29:56.000Z">2020-03-02</time></div>
-                    <a href="/%E5%85%B3%E4%BA%8E%E6%88%91.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于我</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1016,7 +1015,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -1144,7 +1143,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            60
+                            61
                         </p>
                     </a>
                 </div>
@@ -1208,6 +1207,25 @@
         <h3 class="menu-label">
             Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Python-os%E6%A0%87%E5%87%86%E5%BA%93.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python os标准库">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-09T10:15:53.000Z">2020-03-09</time></div>
+                    <a href="/Python-os%E6%A0%87%E5%87%86%E5%BA%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python os标准库</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1285,25 +1303,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/%E5%85%B3%E4%BA%8E%E6%88%91.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于我">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-02T08:29:56.000Z">2020-03-02</time></div>
-                    <a href="/%E5%85%B3%E4%BA%8E%E6%88%91.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于我</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1321,7 +1320,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -1538,7 +1537,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
