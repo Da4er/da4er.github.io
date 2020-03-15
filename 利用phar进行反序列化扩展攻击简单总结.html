@@ -10,15 +10,15 @@
 <title>利用phar进行反序列化扩展攻击简单总结 - Da4er&#39;s Blogs</title>
 
 
-    <meta name="description" content="前言一般的反序列化漏洞都是要通过unserialize函数，进行反序列化之后才能触发的。但是如果在没有unserialize函数触发前提下，那么该怎么利用反序列化漏洞呢？这里就需要使用phar:&#x2F;&#x2F;进行等效替代。 原理phar文件的组成phar:&#x2F;&#x2F;的官方解释如下：简单解释就是：通过phar:&#x2F;&#x2F;的处理可以把多个文件合成一个文件(类似压缩),但是php却可以不经过解压的方法，将多个文件解释执行">
+    <meta name="description" content="前言一般的反序列化漏洞都是要通过unserialize函数，进行反序列化之后才能触发的。但是如果在没有unserialize函数触发前提下，那么该怎么利用反序列化漏洞呢？这里就需要使用phar:&#x2F;&#x2F;进行等效替代。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用phar进行反序列化扩展攻击简单总结">
 <meta property="og:url" content="https://da4er.top/%E5%88%A9%E7%94%A8phar%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="前言一般的反序列化漏洞都是要通过unserialize函数，进行反序列化之后才能触发的。但是如果在没有unserialize函数触发前提下，那么该怎么利用反序列化漏洞呢？这里就需要使用phar:&#x2F;&#x2F;进行等效替代。 原理phar文件的组成phar:&#x2F;&#x2F;的官方解释如下：简单解释就是：通过phar:&#x2F;&#x2F;的处理可以把多个文件合成一个文件(类似压缩),但是php却可以不经过解压的方法，将多个文件解释执行">
+<meta property="og:description" content="前言一般的反序列化漏洞都是要通过unserialize函数，进行反序列化之后才能触发的。但是如果在没有unserialize函数触发前提下，那么该怎么利用反序列化漏洞呢？这里就需要使用phar:&#x2F;&#x2F;进行等效替代。">
 <meta property="og:image" content="https://da4er.top/images/og_image.png">
 <meta property="article:published_time" content="2020-03-15T03:59:09.000Z">
-<meta property="article:modified_time" content="2020-03-15T04:01:06.963Z">
+<meta property="article:modified_time" content="2020-03-15T04:08:29.047Z">
 <meta property="article:author" content="Da4er&#39;s">
 <meta property="article:tag" content="Da4er">
 <meta name="twitter:card" content="summary">
@@ -149,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 minutes read (About 1183 words)
+                    8 minutes read (About 1184 words)
                 </span>
                 
                 
@@ -165,6 +165,7 @@
             <script type="text/javascript" src="/js/src/bai.js"></script>
 
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一般的反序列化漏洞都是要通过unserialize函数，进行反序列化之后才能触发的。但是如果在没有unserialize函数触发前提下，那么该怎么利用反序列化漏洞呢？这里就需要使用phar://进行等效替代。</p>
+<a id="more"></a>
 <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><h4 id="phar文件的组成"><a href="#phar文件的组成" class="headerlink" title="phar文件的组成"></a>phar文件的组成</h4><p>phar://的官方解释如下：<br><img src="/%E5%88%A9%E7%94%A8phar%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/1.png" class title="This is an test image"><br>简单解释就是：通过phar://的处理可以把多个文件合成一个文件(类似压缩),但是php却可以不经过解压的方法，将多个文件解释执行。</p>
 <p>phar文件结构分为四个部分组成：stub(文件标志)，meta-data，压缩文件内容，签名。<br>一. <strong>stub  文件标志</strong><br>格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxxx&lt;?php xxxxx;__HALT_COMPILER();?&gt;</span><br></pre></td></tr></table></figure><br>二.<strong>meta-data</strong><br>每个被压缩的文件的权限，属性等信息都放在这里，这部分会以<strong>序列化</strong>的方式存储到phar文件的meta-data部分。<br><strong>这个部分是触发反序化的关键。</strong><br>三.<strong>压缩文件内容</strong><br>被压缩的文件的内容。<br>四.<strong>签名，放在文件末尾，格式如下</strong>：<br><img src="/%E5%88%A9%E7%94%A8phar%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/2.png" class title="This is an test image"><br>在PHP中我们不需要手动去写phar文件，因为php提供了一个phar类直接调用其中的方法即可。<br>一个小的demo文件：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Da4er</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        var_dump(<span class="string">"https://da4er.top"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//如果存在phar文件先删除</span></span><br><span class="line">@unlink(<span class="string">"da4er.phar"</span>);</span><br><span class="line">$phar = <span class="keyword">new</span> Phar(<span class="string">"da4er1.phar"</span>);</span><br><span class="line"><span class="comment">//开始生成phar文件</span></span><br><span class="line">$phar-&gt;startBuffering();</span><br><span class="line"><span class="comment">//设置phar文件标志</span></span><br><span class="line">$phar-&gt;setStub(<span class="string">"GIF89"</span>.<span class="string">"&lt;?php __HALT_COMPILER(); ?&gt;"</span>);</span><br><span class="line"><span class="comment">//自定义的meta-data文件</span></span><br><span class="line">$o = <span class="keyword">new</span> Da4er();</span><br><span class="line">$phar-&gt;setMetadata($o);<span class="comment">//将自定义的meta-data文件存入phar文件</span></span><br><span class="line">$phar-&gt;addFromString(<span class="string">"test.txt"</span>,<span class="string">"test"</span>);</span><br><span class="line"><span class="comment">//在停止写入phar文件，自动生成签名</span></span><br><span class="line">$phar-&gt;stopBuffering();</span><br></pre></td></tr></table></figure>
@@ -237,7 +238,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Liens
+            Links
         </h3>
         <ul class="menu-list">
         
@@ -285,7 +286,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -361,7 +362,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nuage de tags
+            Tag Cloud
         </h3>
         <a href="/tags/CTF/" style="font-size: 20px;">CTF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 16.67px;">Web安全&渗透测试</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 13.33px;">代码审计</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.33px;">爬虫</a>
     </div>
@@ -403,7 +404,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
@@ -415,7 +416,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -440,7 +441,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -469,7 +470,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
         
         <article class="media">
@@ -708,7 +709,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
@@ -720,7 +721,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -745,7 +746,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -774,7 +775,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
         
         <article class="media">
@@ -1142,9 +1143,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
