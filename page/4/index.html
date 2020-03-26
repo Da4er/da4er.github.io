@@ -118,7 +118,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Suche" href="javascript:;">
+                <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -138,6 +138,56 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-11T07:11:05.000Z">2020-02-11</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 552 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat.html">2.11 [BJDCTF2020]Easy MD5&amp;Mark loves cat</a>
+            
+        </h1>
+        <div class="content">
+            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>首先打开页面，在输入框随便输入发现没有跳转，f12查看后台文件中发现hint</strong><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/1.png" class title="Da4er"><br><strong>md5($pass,true)第二个参数默认是false<br>FALSE - 默认 32 字符十六进制数<br>TRUE -  原始 16 字符二进制格式。<br>所以当输入特殊字符串时在经md5加密后可能出现注入语句。<br>在上网百度后发现两个特殊字符：’ffifdyop’，’129581926211651571912466741651878684928’。<br>ffifdyop：T0Do#’or’8<br>129581926211651571912466741651878684928：’or’6]!r,b。<br>所以直接输入ffifdyop，转到第二页面。</strong><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/2.png" class title="Da4er"><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/3.png" class title="Da4er"><br><strong>查看源代码后发现是md5弱类型比较。下面给出的字符串随便找两个传参即可：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">找md5以oe开头的</span><br><span class="line">常用的md5：</span><br><span class="line">QNKCDZO</span><br><span class="line">0e830400451993494058024219903391</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1184209335a</span><br><span class="line">0e072485820392773389523109082030</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s532378020a</span><br><span class="line">0e220463095855511507588041205815</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line"></span><br><span class="line">s1502113478a</span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br><span class="line"></span><br><span class="line">s1836677006a</span><br><span class="line">0e481036490867661113260034900752</span><br><span class="line"></span><br><span class="line">s1665632922a</span><br><span class="line">0e731198061491163073197128363787</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br></pre></td></tr></table></figure><br><strong>传参后跳转最后一个页面：</strong><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/4.png" class title="Da4er"><br><strong>发现是===完全等于，可以利用[]数组绕过，利用error=error原理，得到flag。</strong><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/5.png" class title="Da4er"></p>
+<hr>
+<p><strong>打开网站随便看看，发现没有什么特别，用dirsearch扫描一下，发现/.git目录，用githack获取一下源码。</strong><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/6.png" class title="Da4er"><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/7.png" class title="Da4er"><br><strong>分析得到的源码：</strong><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/8.png" class title="Da4er"><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/9.png" class title="Da4er"><br><strong>看到使用的$$会导致变量覆盖漏洞，看一下代码逻辑：forsearch一下post传参的参数键名和值：如果传入$flag=flag，则会导致$$flag=$flag；同理get参数：传入yds=flag，则会导致$yds=$flag，所以yds的值就是flag变量的值。在没有设置flag参数的时候会直接exit出yds的值。</strong><br>根据上面的逻辑可以直接构造：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get传参：?yds&#x3D;flag</span><br></pre></td></tr></table></figure><br><img src="/2-11-BJDCTF2020-Easy-MD5-Mark-loves-cat/10.png" class title="Da4er"></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-02-11T04:46:04.000Z">2020-02-11</time>
                 
                 <div class="level-item">
@@ -148,7 +198,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds lesen (Über 53 Worte)
+                    a few seconds read (About 53 words)
                 </span>
                 
                 
@@ -196,7 +246,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes lesen (Über 317 Worte)
+                    2 minutes read (About 317 words)
                 </span>
                 
                 
@@ -244,7 +294,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute lesen (Über 135 Worte)
+                    a minute read (About 135 words)
                 </span>
                 
                 
@@ -292,7 +342,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes lesen (Über 421 Worte)
+                    3 minutes read (About 421 words)
                 </span>
                 
                 
@@ -347,7 +397,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds lesen (Über 77 Worte)
+                    a few seconds read (About 77 words)
                 </span>
                 
                 
@@ -395,7 +445,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute lesen (Über 127 Worte)
+                    a minute read (About 127 words)
                 </span>
                 
                 
@@ -443,7 +493,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute lesen (Über 150 Worte)
+                    a minute read (About 150 words)
                 </span>
                 
                 
@@ -492,7 +542,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes lesen (Über 226 Worte)
+                    2 minutes read (About 226 words)
                 </span>
                 
                 
@@ -541,7 +591,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes lesen (Über 232 Worte)
+                    2 minutes read (About 232 words)
                 </span>
                 
                 
@@ -575,63 +625,15 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-08T13:08:55.000Z">2020-02-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a few seconds lesen (Über 86 Worte)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2-8-SUCTF2018-followme.html">2.8 [SUCTF2018]followme</a>
-            
-        </h1>
-        <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>查看流量包：发现数据包有很多http协议，直接导出http对象。</strong><br><img src="/2-8-SUCTF2018-followme/1.png" class title="Da4er"><br><img src="/2-8-SUCTF2018-followme/2.png" class title="Da4er"><br><strong>仔细分析后发现：这个是爆破admin密码的流量，找到爆破密码的地方，一个一个查看password字段的值，得到flag</strong><br><img src="/2-8-SUCTF2018-followme/3.png" class title="Da4er"></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/page/3/">Zurück</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/3/">Previous</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/5/">Weiter</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/5/">Next</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -714,7 +716,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategorien
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -779,7 +781,7 @@
                 <span class="level-item">随笔</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li>
             </ul>
@@ -836,7 +838,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            66
+                            67
                         </p>
                     </a>
                 </div>
@@ -844,7 +846,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategorien
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -869,7 +871,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Folgen</a>
+                Follow</a>
         </div>
         
         
@@ -898,8 +900,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Letzte Einträge
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020-3%E6%9C%88%E6%80%BB%E7%BB%93.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2020_3月总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-26T13:23:30.000Z">2020-03-26</time></div>
+                    <a href="/2020-3%E6%9C%88%E6%80%BB%E7%BB%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">2020_3月总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -977,25 +998,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/PHP%E4%B8%AD%E7%9A%84PDO%E9%A2%84%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="PHP中的PDO预处理机制">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-09T15:19:41.000Z">2020-03-09</time></div>
-                    <a href="/PHP%E4%B8%AD%E7%9A%84PDO%E9%A2%84%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">PHP中的PDO预处理机制</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1003,7 +1005,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archive
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1013,7 +1015,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">12</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>
@@ -1141,7 +1143,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            66
+                            67
                         </p>
                     </a>
                 </div>
@@ -1149,7 +1151,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategorien
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -1174,7 +1176,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Folgen</a>
+                Follow</a>
         </div>
         
         
@@ -1203,8 +1205,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Letzte Einträge
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020-3%E6%9C%88%E6%80%BB%E7%BB%93.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2020_3月总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-26T13:23:30.000Z">2020-03-26</time></div>
+                    <a href="/2020-3%E6%9C%88%E6%80%BB%E7%BB%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">2020_3月总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1282,25 +1303,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/PHP%E4%B8%AD%E7%9A%84PDO%E9%A2%84%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="PHP中的PDO预处理机制">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-09T15:19:41.000Z">2020-03-09</time></div>
-                    <a href="/PHP%E4%B8%AD%E7%9A%84PDO%E9%A2%84%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">PHP中的PDO预处理机制</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1308,7 +1310,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archive
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1318,7 +1320,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">12</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>
@@ -1535,7 +1537,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1559,7 +1561,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1572,10 +1574,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Seiten',
-                CATEGORIES: 'Kategorien',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
-                UNTITLED: '(Unbenannt)',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

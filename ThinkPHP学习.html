@@ -18,7 +18,7 @@
 <meta property="og:description" content="第一部分框架概述 框架就是一些代码类、方法（函数）、变量、常量的集合，这些代码是功能结构性的代码（并非业务代码）。业务代码其实就是具体的一些模块的增删改查逻辑代码。使用框架开发项目，有便于代码重用、开发效率高、代码规范好、便于功能扩展等优点。  一般框架都是基于MVC架构。">
 <meta property="og:image" content="https://da4er.top/images/og_image.png">
 <meta property="article:published_time" content="2020-03-26T12:58:08.000Z">
-<meta property="article:modified_time" content="2020-03-26T13:03:23.291Z">
+<meta property="article:modified_time" content="2020-03-26T13:24:32.316Z">
 <meta property="article:author" content="Da4er&#39;s">
 <meta property="article:tag" content="Web安全 代码审计">
 <meta name="twitter:card" content="summary">
@@ -120,7 +120,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Suche" href="javascript:;">
+                <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    20 minutes lesen (Über 2996 Worte)
+                    20 minutes read (About 2994 words)
                 </span>
                 
                 
@@ -158,8 +158,7 @@
             
         </h1>
         <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-
+            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
 <h3 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h3><h4 id="框架概述"><a href="#框架概述" class="headerlink" title="框架概述"></a>框架概述</h4><blockquote>
 <p>框架就是一些代码类、方法（函数）、变量、常量的集合，这些代码是功能结构性的代码（并非业务代码）。业务代码其实就是具体的一些模块的增删改查逻辑代码。使用框架开发项目，有便于代码重用、开发效率高、代码规范好、便于功能扩展等优点。</p>
 </blockquote>
@@ -216,9 +215,9 @@
 <h4 id="模板渲染"><a href="#模板渲染" class="headerlink" title="模板渲染"></a>模板渲染</h4><p>在控制器方法中渲染有两种方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第一种：使用assign方法进行模板赋值，使用fetch方法进行模板渲染。</span><br><span class="line">第二种：使用助手函数view(), 进行模板渲染并赋值。</span><br></pre></td></tr></table></figure><br><img src="/ThinkPHP%E5%AD%A6%E4%B9%A0/26.png" class title="This is an test image"></p>
 <h4 id="整合模板和框架"><a href="#整合模板和框架" class="headerlink" title="整合模板和框架"></a>整合模板和框架</h4><p>模板整合思路：</p>
 <p>①确定页面的访问路径（模块、控制器、方法）<br>②新建对应的控制器方法，在方法中调用模板<br>③将模板页面移动到对应的视图目录下（创建子目录）<br>④将静态资源文件移动到public/static/admin目录下<br>⑤修改模板文件中静态资源路径</p>
-<h5 id="模板布局"><a href="#模板布局" class="headerlink" title="模板布局"></a>模板布局</h5><p>这个比较特殊。使用模板布局，就是把多个模板页面都有的公共代码给抽取出来，放到一个公共位置开发维护。<br>好处：相同的代码只维护一份，减少代码工作量。<br><strong>全局布局设置步骤：</strong><br>1.application/模块名/config.php,加入以下设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#39;template&#39;  &#x3D;&gt;  [</span><br><span class="line">    &#39;layout_on&#39;     &#x3D;&gt;  true,&#x2F;&#x2F;开启布局</span><br><span class="line">    &#39;layout_name&#39;   &#x3D;&gt;  &#39;layout&#39;,&#x2F;&#x2F;布局文件名称</span><br><span class="line">]</span><br></pre></td></tr></table></figure><br>我们在view下创建一个layout.html就会自动调用这个html文件<br><img src="/ThinkPHP%E5%AD%A6%E4%B9%A0/27.png" class title="This is an test image"><br>调用顺序：当启用layout时，不管是否定义了别的模板，layout.html先被调用，其会覆盖掉别的定义模板。<br>在layout.html中使用，自定义的模板，可以使用CONTENT关键字。<br>用法</p>
+<h5 id="模板布局"><a href="#模板布局" class="headerlink" title="模板布局"></a>模板布局</h5><p>这个比较特殊。使用模板布局，就是把多个模板页面都有的公共代码给抽取出来，放到一个公共位置开发维护。<br>好处：相同的代码只维护一份，减少代码工作量。<br><strong>全局布局设置步骤：</strong><br>1.application/模块名/config.php,加入以下设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#39;template&#39;  &#x3D;&gt;  [</span><br><span class="line">    &#39;layout_on&#39;     &#x3D;&gt;  true,&#x2F;&#x2F;开启布局</span><br><span class="line">    &#39;layout_name&#39;   &#x3D;&gt;  &#39;layout&#39;,&#x2F;&#x2F;布局文件名称</span><br><span class="line">]</span><br></pre></td></tr></table></figure><br>我们在view下创建一个layout.html就会自动调用这个html文件<br><img src="/ThinkPHP%E5%AD%A6%E4%B9%A0/27.png" class title="This is an test image"><br>调用顺序：当启用layout时，不管是否定义了别的模板，layout.html先被调用，其会覆盖掉别的定义模板。<br>在layout.html中使用自定义的模板，可以使用CONTENT关键字。<br>用法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;__CONTENT__&#125;</span><br></pre></td></tr></table></figure>
-<p>不临时关闭layout可以使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$this-&gt;view-&gt;engine-&gt;layout(false);</span><br></pre></td></tr></table></figure><br>注：也可以使用<strong>STATIC</strong> 代替静态资源路径中的/static</p>
+<p>临时关闭layout可以使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$this-&gt;view-&gt;engine-&gt;layout(false);</span><br></pre></td></tr></table></figure><br>注：也可以使用<strong>STATIC</strong> 代替静态资源路径中的/static</p>
 <hr>
 
         </div>
@@ -232,7 +231,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit</h3>
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
         <div class="buttons is-centered">
             
                 
@@ -253,6 +252,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020-3%E6%9C%88%E6%80%BB%E7%BB%93.html">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">2020_3月总结</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -330,7 +336,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategorien
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -395,7 +401,7 @@
                 <span class="level-item">随笔</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li>
             </ul>
@@ -452,7 +458,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            66
+                            67
                         </p>
                     </a>
                 </div>
@@ -460,7 +466,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategorien
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -485,7 +491,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Folgen</a>
+                Follow</a>
         </div>
         
         
@@ -514,8 +520,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Letzte Einträge
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020-3%E6%9C%88%E6%80%BB%E7%BB%93.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2020_3月总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-26T13:23:30.000Z">2020-03-26</time></div>
+                    <a href="/2020-3%E6%9C%88%E6%80%BB%E7%BB%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">2020_3月总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -593,25 +618,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/PHP%E4%B8%AD%E7%9A%84PDO%E9%A2%84%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="PHP中的PDO预处理机制">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-09T15:19:41.000Z">2020-03-09</time></div>
-                    <a href="/PHP%E4%B8%AD%E7%9A%84PDO%E9%A2%84%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">PHP中的PDO预处理机制</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -619,7 +625,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archive
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -629,7 +635,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">12</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>
@@ -757,7 +763,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            66
+                            67
                         </p>
                     </a>
                 </div>
@@ -765,7 +771,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategorien
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -790,7 +796,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Folgen</a>
+                Follow</a>
         </div>
         
         
@@ -819,8 +825,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Letzte Einträge
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020-3%E6%9C%88%E6%80%BB%E7%BB%93.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2020_3月总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-26T13:23:30.000Z">2020-03-26</time></div>
+                    <a href="/2020-3%E6%9C%88%E6%80%BB%E7%BB%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">2020_3月总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -898,25 +923,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/PHP%E4%B8%AD%E7%9A%84PDO%E9%A2%84%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="PHP中的PDO预处理机制">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-09T15:19:41.000Z">2020-03-09</time></div>
-                    <a href="/PHP%E4%B8%AD%E7%9A%84PDO%E9%A2%84%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">PHP中的PDO预处理机制</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -924,7 +930,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archive
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -934,7 +940,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">12</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>
@@ -1151,7 +1157,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1175,7 +1181,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1188,10 +1194,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Seiten',
-                CATEGORIES: 'Kategorien',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
-                UNTITLED: '(Unbenannt)',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };
