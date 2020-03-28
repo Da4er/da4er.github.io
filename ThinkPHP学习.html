@@ -18,7 +18,7 @@
 <meta property="og:description" content="第一部分框架概述 框架就是一些代码类、方法（函数）、变量、常量的集合，这些代码是功能结构性的代码（并非业务代码）。业务代码其实就是具体的一些模块的增删改查逻辑代码。使用框架开发项目，有便于代码重用、开发效率高、代码规范好、便于功能扩展等优点。  一般框架都是基于MVC架构。">
 <meta property="og:image" content="https://da4er.top/images/og_image.png">
 <meta property="article:published_time" content="2020-03-26T12:58:08.000Z">
-<meta property="article:modified_time" content="2020-03-26T13:24:32.316Z">
+<meta property="article:modified_time" content="2020-03-28T10:12:39.166Z">
 <meta property="article:author" content="Da4er&#39;s">
 <meta property="article:tag" content="Web安全 代码审计">
 <meta name="twitter:card" content="summary">
@@ -120,7 +120,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Suche" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    20 minutes read (About 2994 words)
+                    23 minutes lesen (Über 3469 Worte)
                 </span>
                 
                 
@@ -219,6 +219,18 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;__CONTENT__&#125;</span><br></pre></td></tr></table></figure>
 <p>临时关闭layout可以使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$this-&gt;view-&gt;engine-&gt;layout(false);</span><br></pre></td></tr></table></figure><br>注：也可以使用<strong>STATIC</strong> 代替静态资源路径中的/static</p>
 <hr>
+<h3 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h3><h4 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h4><p>在application/database.php中配置数据库信息<br><img src="/ThinkPHP%E5%AD%A6%E4%B9%A0/28.png" class title="This is an test image"></p>
+<h5 id="特殊表名处理"><a href="#特殊表名处理" class="headerlink" title="特殊表名处理"></a>特殊表名处理</h5><img src="/ThinkPHP%E5%AD%A6%E4%B9%A0/29.png" class title="This is an test image">
+<h5 id="查询多个数据"><a href="#查询多个数据" class="headerlink" title="查询多个数据"></a>查询多个数据</h5><p>有很多方法，这里写我喜欢用的一种<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$goods &#x3D; new GoodsModel();</span><br><span class="line">$data &#x3D; $goods -&gt;select();</span><br><span class="line">$data &#x3D; (new \think\Collection())-&gt;toArrary();</span><br></pre></td></tr></table></figure><br><strong>动态调用select方法来获取数据，最后通过collection类整合成标准的二维数组</strong><br>后台商品展示实例：<br><img src="/ThinkPHP%E5%AD%A6%E4%B9%A0/30.png" class title="This is an test image"></p>
+<h5 id="查询一条数据"><a href="#查询一条数据" class="headerlink" title="查询一条数据"></a>查询一条数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$good &#x3D; new GoodsModel();</span><br><span class="line">$data &#x3D; $good-&gt;find($id);</span><br><span class="line"></span><br><span class="line">where(&#39;字段名&#39;,&#39;表达式&#39;，&#39;查询条件&#39;)</span><br><span class="line">$good &#x3D; new GoodsModel();</span><br><span class="line">$data &#x3D; $good-&gt;where(&#39;id&#39;,&#39;&#x3D;&#39;,$id);</span><br></pre></td></tr></table></figure>
+<img src="/ThinkPHP%E5%AD%A6%E4%B9%A0/31.png" class title="This is an test image">
+<h5 id="连贯查询"><a href="#连贯查询" class="headerlink" title="连贯查询"></a>连贯查询</h5><p>原理：中间调用的方法，返回值是对象，可以继续调用对象的其他方法。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$model = <span class="keyword">new</span> Address();</span><br><span class="line"></span><br><span class="line">$model-&gt;field(<span class="string">'id,name'</span>)-&gt;select(); <span class="comment">//指定要查询的字段，原生sql中select后面的字段</span></span><br><span class="line"></span><br><span class="line">$model-&gt;order(<span class="string">'id desc,time desc'</span>)-&gt;select(); <span class="comment">//相当于原生sql中的order by</span></span><br><span class="line"></span><br><span class="line">$model-&gt;limit(<span class="number">3</span>)-&gt;select(); <span class="comment">//相当于原生sql中的limit条件</span></span><br><span class="line"></span><br><span class="line">$model-&gt;limit(<span class="number">0</span>,<span class="number">3</span>)-&gt;select(); </span><br><span class="line"></span><br><span class="line">$model-&gt;limit(<span class="string">'0,3'</span>)-&gt;select(); </span><br><span class="line"></span><br><span class="line">$model-&gt;group(<span class="string">'cate_id'</span>)-&gt;select();  <span class="comment">//相当于原生sql中的group by</span></span><br><span class="line"></span><br><span class="line">$model-&gt;having(<span class="string">'id&gt;3'</span>)-&gt;select();  <span class="comment">//相当于原生sql中的having条件</span></span><br><span class="line"></span><br><span class="line">$model-&gt;alias(<span class="string">'a'</span>)-&gt;join(<span class="string">'think_user_type t'</span>,<span class="string">'a.id=t.user_id'</span>, <span class="string">'left'</span>)-&gt;select(); <span class="comment">//alias方法设置别名，join方法连表查询</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Address::alias('a')-&gt;join('tpshop_user u','a.user_id = u.id', 'left')-&gt;select();</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="字段数据查询"><a href="#字段数据查询" class="headerlink" title="字段数据查询"></a>字段数据查询</h5><p>有两种方法，一种使用find()查询后，用索引的方式调用。另一种就是调用value方法<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$good = <span class="keyword">new</span> GoodModel();</span><br><span class="line">$data = $good-&gt;find($id)-&gt;value(<span class="string">'goods_name'</span>);</span><br><span class="line"></span><br><span class="line">-------------</span><br><span class="line"></span><br><span class="line">$data = $good-&gt;find($id);</span><br><span class="line">$content = $data[<span class="string">'goods_name'</span>];</span><br></pre></td></tr></table></figure></p>
+<h5 id="系统变量"><a href="#系统变量" class="headerlink" title="系统变量"></a>系统变量</h5><img src="/ThinkPHP%E5%AD%A6%E4%B9%A0/32.png" class title="This is an test image">
+<h6 id="查询数据-一条"><a href="#查询数据-一条" class="headerlink" title="查询数据(一条)"></a>查询数据(一条)</h6><p>save()<br><img src="/ThinkPHP%E5%AD%A6%E4%B9%A0/33.png" class title="This is an test image"></p>
+<h6 id="查询数据-多条"><a href="#查询数据-多条" class="headerlink" title="查询数据(多条)"></a>查询数据(多条)</h6><p>saveAll()<br><img src="/ThinkPHP%E5%AD%A6%E4%B9%A0/34.png" class title="This is an test image"></p>
+<h6 id="过滤非数据表字段"><a href="#过滤非数据表字段" class="headerlink" title="过滤非数据表字段"></a>过滤非数据表字段</h6><img src="/ThinkPHP%E5%AD%A6%E4%B9%A0/35.png" class title="This is an test image">
+<h5 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h5><p>使用tp给的一个类:<strong>new \think\Validate()</strong><br><img src="/ThinkPHP%E5%AD%A6%E4%B9%A0/36.png" class title="This is an test image"></p>
 
         </div>
         
@@ -231,7 +243,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit</h3>
         <div class="buttons is-centered">
             
                 
@@ -336,7 +348,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Kategorien
             </h3>
             <ul class="menu-list">
             <li>
@@ -466,7 +478,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -491,7 +503,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -520,7 +532,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -625,7 +637,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -771,7 +783,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -796,7 +808,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -825,7 +837,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -930,7 +942,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -1157,7 +1169,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1181,7 +1193,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1194,10 +1206,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
                 TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                UNTITLED: '(Unbenannt)',
             },
             CONTENT_URL: '/content.json',
         };
