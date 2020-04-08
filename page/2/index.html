@@ -138,6 +138,56 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-09T15:19:41.000Z">2020-03-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes lesen (Über 358 Worte)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/PHP%E4%B8%AD%E7%9A%84PDO%E9%A2%84%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6.html">PHP中的PDO预处理机制</a>
+            
+        </h1>
+        <div class="content">
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+
+<p>具体代码如下，PDO预处理机制主要用于数据库交互。<br>代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create By Da4er.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//使用pdo连接数据库</span></span><br><span class="line">$dsn = <span class="string">"mysql:host=127.0.0.1;port=3306;dbname=pikachu;charset=utf8"</span>;</span><br><span class="line">$username = <span class="string">"root"</span>;</span><br><span class="line">$pasword =<span class="string">"123"</span>;</span><br><span class="line">$PDOObject =<span class="keyword">new</span> PDO($dsn, $username, $pasword);</span><br><span class="line">var_dump($PDOObject);</span><br><span class="line"><span class="comment">//对象常用方法</span></span><br><span class="line"><span class="comment">//exec()函数 执行sql语句，返回影响的行数</span></span><br><span class="line"><span class="comment">//$sql = "insert into users(id,username,password) values (null,'admin','345')";</span></span><br><span class="line"><span class="comment">//$count = $PDOObject-&gt;exec($sql);</span></span><br><span class="line"><span class="comment">//echo "影响的行数为:&#123;$count&#125;";</span></span><br><span class="line"><span class="comment">//query()函数，执行一个sql语句 返回一个结果集</span></span><br><span class="line"><span class="comment">//$sql = "select * from users";</span></span><br><span class="line"><span class="comment">//$result = $PDOObject-&gt;query($sql);</span></span><br><span class="line"><span class="comment">//var_dump($result);</span></span><br><span class="line"><span class="comment">//lastInsertId() 返回最后插入行的id或序列值(string类型)</span></span><br><span class="line"><span class="comment">//$sql = "insert into users(id,username,password) values (null,'admin','345')";</span></span><br><span class="line"><span class="comment">//$count = $PDOObject-&gt;exec($sql);</span></span><br><span class="line"><span class="comment">//echo "影响的行数为:&#123;$count&#125;";</span></span><br><span class="line"><span class="comment">//$id = $PDOObject-&gt;lastInsertId();</span></span><br><span class="line"><span class="comment">//echo $id;</span></span><br><span class="line"><span class="comment">//setAttribute()设置pdo的一些通用属性 看手册</span></span><br><span class="line"><span class="comment">//PDOStatement对象常用方法</span></span><br><span class="line"><span class="comment">// fetch()从结果集中获取一行，并向下移动指针</span></span><br><span class="line">$sql = <span class="string">"select * from users"</span>;</span><br><span class="line"><span class="comment">//$result = $PDOObject-&gt;query($sql);</span></span><br><span class="line"><span class="comment">//while($arr=$result-&gt;fetch(PDO::FETCH_ASSOC))&#123;</span></span><br><span class="line"><span class="comment">//    print_r($arr);</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"><span class="comment">//fetchALL()返回一个包含结果集中所有行的数组</span></span><br><span class="line">$result = $PDOObject-&gt;query($sql);</span><br><span class="line">$arr = $result-&gt;fetchAll(PDO::FETCH_ASSOC);</span><br><span class="line"><span class="comment">//foreach ($arr as $key=&gt;$value)&#123;</span></span><br><span class="line"><span class="comment">//    foreach ($value as $key2=&gt;$value2)&#123;</span></span><br><span class="line"><span class="comment">//        echo $key2."=&gt;".$value2."\r\n";</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"><span class="comment">//rowCount()返回影响行数</span></span><br><span class="line">$count = $result-&gt;rowCount();</span><br><span class="line"><span class="keyword">echo</span> $count;</span><br><span class="line"><span class="comment">//PDO预处理 important</span></span><br><span class="line"><span class="comment">//使用问号占位符</span></span><br><span class="line">$sql = <span class="string">"insert into users(id,username,password) values (?,?,?)"</span>;</span><br><span class="line">$result = $PDOObject-&gt;prepare($sql);</span><br><span class="line">$result-&gt;bindValue(<span class="number">1</span>,<span class="number">12</span>);</span><br><span class="line">$result-&gt;bindValue(<span class="number">2</span>,<span class="string">"da4er"</span>);</span><br><span class="line">$result-&gt;bindValue(<span class="number">3</span>,<span class="string">"qweasdzxc"</span>);</span><br><span class="line">$result-&gt;execute();</span><br><span class="line"><span class="comment">//使用值占位符</span></span><br><span class="line">$sql = <span class="string">"insert into users(id,username,password) values (:id,:username,:password)"</span>;</span><br><span class="line">$result = $PDOObject-&gt;prepare($sql);</span><br><span class="line">$result-&gt;bindValue(<span class="string">":id"</span>,<span class="number">13</span>);</span><br><span class="line">$result-&gt;bindValue(<span class="string">":username"</span>,<span class="string">"admin888"</span>);</span><br><span class="line">$result-&gt;bindValue(<span class="string">":password"</span>,<span class="string">"888"</span>);</span><br><span class="line">$result-&gt;execute();</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-03-09T10:15:53.000Z">2020-03-09</time>
                 
                 <div class="level-item">
@@ -640,80 +690,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-24T14:34:23.000Z">2020-02-24</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">Web安全&渗透测试</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes lesen (Über 752 Worte)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95.html">SQL注入Fuzz记录</a>
-            
-        </h1>
-        <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>从今天开始学习各种fuzz测试，今天做了一道sql注入题，通过fuzz来判断过滤字符，从而构造payload进行绕过。</p>
-<hr>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>拿到题目进行简单的测试</p>
-<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/1.png" class title="This is an test image">
-<p>发现这题进行了一些sql关键字的过滤，我们通过burp的Intruder模块进行fuzz。</p>
-<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/2.png" class title="This is an test image">
-<p>字段长度为370的是被过滤的sql语句。<br><strong>进一步分析看看这题目到底过滤了哪些关键字，通过一个个分析知道过滤了：# –+等注释符，空格，%0a,%0b等绕过过滤空格的url编码，逗号(,)，包含and和or的字符。还有很多绕过过滤的关键字，发现没有过滤sleep()，尝试一下时间盲注。</strong><br>常规的时间盲注为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(条件,sleep(3),2)</span><br></pre></td></tr></table></figure>
-<p>但是题目过滤了逗号，想到用case when替换：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">case when 条件 then sleep(2) else 1 end</span><br></pre></td></tr></table></figure>
-<p>但是过滤了空格等分隔符，同时内联注释 注释符 %0a %0b %0d %a0也多被过滤，我们可以用括号来代替空格：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">case when(条件)then(sleep(2))else(1)end</span><br></pre></td></tr></table></figure>
-<p>但是测试发现case和when中间是不能添加括号的，到这里时间盲注也是不可行的。</p>
-<p>可以尝试另类的布尔盲注:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &#39;admin&#39;&#x3D;&#39;admin&#39;+1 union select &#39;admin&#39;&#x3D;&#39;admin&#39;+0;</span><br></pre></td></tr></table></figure>
-<p>在本地测试发现，第一个输出0，第二个输出1。</p>
-<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/3.png" class title="This is an test image">
-<p>这是mysql的一个特性：<strong>在第一个查询中，先进行右边的’admin’+1操作，这个时候会强制转换admin为数字，然后相加完在和等号左边的admin比较，这个时候也会强制转换，所以就会形成不相等的情况。</strong><br>上面就可以形成布尔逻辑判断了。<br>首先我们可以先判断一些admin账号的密码长度</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;%2b(length(passwd)&#x3D;32)%2b&#39;</span><br></pre></td></tr></table></figure>
-<p>%2b是+号，不能直接使用加号因为被过滤了，这里也可以使用-号，效果相同。<br>上面的逻辑是：如果passwd长度为32，则返回1，然后和admin作相加操作，这样就会形成逻辑上的差别。如下图：</p>
-<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/4.png" class title="This is an test image">
-<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/5.png" class title="This is an test image">
-<p>这样就可以判断admin的密码是个32为的md5值。<br>然后在猜解每个字符，通过mid函数进行：<strong>但for被过滤！</strong><br>mid(xxx from 1)  第一位开始取剩下的所有字符<br><strong>ascii(mid(xxx from 1)) 发现截断 取第一个字符的ascii值。</strong><br>payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;%2b(ascii(mid((passwd)from(1)))&#x3D;48)%2b&#39;</span><br></pre></td></tr></table></figure>
-<p>通过括号绕过空格过滤，通过mysql中的mid，ascii函数特性绕过for过滤。<br>最后通过burp爆破每一位的ascii值，就可以得到密码的md5值了。</p>
-<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/6.png" class title="This is an test image">
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -734,7 +710,7 @@
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/7/">7</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/8/">8</a></li>
             
         </ul>
     </nav>
@@ -923,7 +899,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            70
+                            71
                         </p>
                     </a>
                 </div>
@@ -987,6 +963,25 @@
         <h3 class="menu-label">
             Letzte Einträge
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Web%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Web中间件漏洞笔记(持续更新....)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-08T10:08:21.000Z">2020-04-08</time></div>
+                    <a href="/Web%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Web中间件漏洞笔记(持续更新....)</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1064,25 +1059,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/ThinkPHP%E5%AD%A6%E4%B9%A0.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ThinkPHP学习">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-26T12:58:08.000Z">2020-03-26</time></div>
-                    <a href="/ThinkPHP%E5%AD%A6%E4%B9%A0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">ThinkPHP学习</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1100,7 +1076,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1239,7 +1215,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            70
+                            71
                         </p>
                     </a>
                 </div>
@@ -1303,6 +1279,25 @@
         <h3 class="menu-label">
             Letzte Einträge
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Web%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Web中间件漏洞笔记(持续更新....)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-08T10:08:21.000Z">2020-04-08</time></div>
+                    <a href="/Web%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Web中间件漏洞笔记(持续更新....)</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1380,25 +1375,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/ThinkPHP%E5%AD%A6%E4%B9%A0.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ThinkPHP学习">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-26T12:58:08.000Z">2020-03-26</time></div>
-                    <a href="/ThinkPHP%E5%AD%A6%E4%B9%A0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">ThinkPHP学习</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1416,7 +1392,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
