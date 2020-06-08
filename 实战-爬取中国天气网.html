@@ -165,14 +165,8 @@
             <h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>将中国天气网所有城市的最低气温爬取下来，将最低气温的前十名可视化显示出来。<br><strong>这个爬虫比较简单没有做反爬处理，所以对于获取html代码比较简单，关键在于如何解析得到的html代码。</strong></p>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">from pyecharts.charts.bar import Bar</span><br><span class="line">ALL_DATA&#x3D;[]</span><br><span class="line">def parse_page(url):</span><br><span class="line">    headers&#x3D;&#123;</span><br><span class="line">        &quot;User-Agent&quot;:&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;71.0.3578.98 Safari&#x2F;537.36&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    resp&#x3D;requests.get(url,headers&#x3D;headers)</span><br><span class="line">    #print(resp.text)</span><br><span class="line">    text&#x3D;resp.content.decode(&quot;utf-8&quot;)</span><br><span class="line">    # print(text)</span><br><span class="line">    #这里使用的解析器是html5lib，因为在使用常用的lxml解析器容错率不好，港澳台天气这个页面html书写不规范，从而无法正常爬取。</span><br><span class="line">    #pip install html5lib</span><br><span class="line">    soup&#x3D;BeautifulSoup(text,&quot;html5lib&quot;)</span><br><span class="line">    divs&#x3D;soup.find(&quot;div&quot;,class_&#x3D;&quot;conMidtab&quot;) #获取第一个div标签</span><br><span class="line">    tables&#x3D;divs.find_all(&quot;table&quot;)</span><br><span class="line">    for table in tables:</span><br><span class="line">        trs&#x3D;table.find_all(&quot;tr&quot;)[2:]</span><br><span class="line">        for index,tr in enumerate(trs):</span><br><span class="line">            # print(tr)</span><br><span class="line">            # print(&quot;&#x3D;&quot;*30)</span><br><span class="line">            tds&#x3D;tr.find_all(&quot;td&quot;)</span><br><span class="line">            if(index&#x3D;&#x3D;0):</span><br><span class="line">                city_td&#x3D;tds[1]</span><br><span class="line">            else:</span><br><span class="line">                city_td&#x3D;tds[0]</span><br><span class="line">            city&#x3D;list(city_td.stripped_strings)[0]</span><br><span class="line">            # print(city)</span><br><span class="line">            temp_td&#x3D;tds[-2]</span><br><span class="line">            temp&#x3D;list(temp_td.stripped_strings)[0]</span><br><span class="line">            # print(&#123;&#39;city&#39;:city,&#39;temp&#39;:temp&#125;)</span><br><span class="line">            data&#x3D;&#123;&#39;city&#39;:city,&#39;temp&#39;:int(temp)&#125;</span><br><span class="line">            ALL_DATA.append(data)</span><br><span class="line">def spider():</span><br><span class="line">    base_url&#x3D;&quot;http:&#x2F;&#x2F;www.weather.com.cn&#x2F;textFC&#x2F;&#123;&#125;.shtml&quot;</span><br><span class="line">    params&#x3D;[&quot;hb&quot;,&quot;db&quot;,&quot;hd&quot;,&quot;hz&quot;,&quot;hn&quot;,&quot;xb&quot;,&quot;xn&quot;,&quot;gat&quot;]</span><br><span class="line">    for param in params:</span><br><span class="line">        url&#x3D;base_url.format(param)</span><br><span class="line">        parse_page(url)</span><br><span class="line">    ALL_DATA.sort(key&#x3D;lambda x:x[&#39;temp&#39;])</span><br><span class="line">    # print(ALL_DATA)</span><br><span class="line">    data&#x3D;ALL_DATA[0:10]</span><br><span class="line">    cicties&#x3D;list(map(lambda x:x[&#39;city&#39;],data))</span><br><span class="line">    temps&#x3D;list(map(lambda x:x[&#39;temp&#39;],data))</span><br><span class="line">    chart&#x3D;Bar(&quot;中国天气排行榜&quot;)</span><br><span class="line">    chart.add(&quot;&quot;,cicties,temps)</span><br><span class="line">    chart.render(&#39;temp.html&#39;)</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure>
-
 <hr>
-<h4 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h4><p>这里使用的是beautifulsoup库，用的解析器是html5lib；因为在爬取港澳台地区的天气时，这个页面的html代码写的不规范。如果我们使用常用的lxml解析器的话会无法正常爬取。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install html5lib</span><br></pre></td></tr></table></figure>
-<img src="/%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/1.png" class title="This is an test image">
-<p><strong>这里是这段代码比较重要的部分，通过sort函数对得到的数据进行排序，’key=’参数指定按什么关键字排序。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALL_DATA.sort(key&#x3D;lambda x:x[&#39;temp&#39;])</span><br></pre></td></tr></table></figure>
-<p>这里是按照字典中的temp参数进行排序</p>
+<h4 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h4><p>这里使用的是beautifulsoup库，用的解析器是html5lib；因为在爬取港澳台地区的天气时，这个页面的html代码写的不规范。如果我们使用常用的lxml解析器的话会无法正常爬取。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install html5lib</span><br></pre></td></tr></table></figure><br><img src="/%E5%AE%9E%E6%88%98-%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E5%A4%A9%E6%B0%94%E7%BD%91/1.png" class title="This is an test image"><br><strong>这里是这段代码比较重要的部分，通过sort函数对得到的数据进行排序，’key=’参数指定按什么关键字排序。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALL_DATA.sort(key&#x3D;lambda x:x[&#39;temp&#39;])</span><br></pre></td></tr></table></figure><br>这里是按照字典中的temp参数进行排序</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cicties&#x3D;list(map(lambda x:x[&#39;city&#39;],data))</span><br><span class="line">temps&#x3D;list(map(lambda x:x[&#39;temp&#39;],data))</span><br></pre></td></tr></table></figure>
 <p>这段代码是通过lambda和map()将城市和对应的最低温度形成单个的列表</p>
 <hr>
@@ -329,7 +323,7 @@
                 <span class="level-item">Web安全&渗透测试</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">10</span>
+                <span class="level-item tag">11</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
@@ -426,7 +420,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            74
+                            75
                         </p>
                     </a>
                 </div>
@@ -490,6 +484,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Vulnhub-DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vulnhub DC-1靶机渗透学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-08T08:09:30.000Z">2020-06-08</time></div>
+                    <a href="/Vulnhub-DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vulnhub DC-1靶机渗透学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">Web安全&渗透测试</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -567,25 +580,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="文件上传Trick(持续更新...)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-08T01:07:14.000Z">2020-04-08</time></div>
-                    <a href="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">文件上传Trick(持续更新...)</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -596,6 +590,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
@@ -742,7 +747,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            74
+                            75
                         </p>
                     </a>
                 </div>
@@ -806,6 +811,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Vulnhub-DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vulnhub DC-1靶机渗透学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-08T08:09:30.000Z">2020-06-08</time></div>
+                    <a href="/Vulnhub-DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vulnhub DC-1靶机渗透学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">Web安全&渗透测试</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -883,25 +907,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="文件上传Trick(持续更新...)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-08T01:07:14.000Z">2020-04-08</time></div>
-                    <a href="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">文件上传Trick(持续更新...)</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -912,6 +917,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">

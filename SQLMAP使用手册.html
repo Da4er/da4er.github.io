@@ -162,7 +162,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>sqlmap是sql注入中使用的神器，也是渗透测试人员必须掌握的工具。因为最近在学习sql注入的专题，所以写下笔记来记录学习。<br><img src="/1.jpg" alt></p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>sqlmap是sql注入中使用的神器，也是渗透测试人员必须掌握的工具。因为最近在学习sql注入的专题，所以写下笔记来记录学习。<br><img src data-echo="SQLMAP使用手册/1.jpg" alt></p>
 <h2 id="sqlmap使用"><a href="#sqlmap使用" class="headerlink" title="sqlmap使用"></a>sqlmap使用</h2><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-h, --help 显示基本帮助信息</span><br><span class="line">-hh 显示高级帮助信息</span><br><span class="line">--version 显示程序版本号</span><br><span class="line">-v VERBOSE  赘言级别：0-6(默认 1)</span><br></pre></td></tr></table></figure>
 <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-d DIRECT 直接连接到数据库</span><br><span class="line">-u URL, --url&#x3D;URL 目标URL(e.g. &quot;www.target.com&#x2F;vuln.php?id&#x3D;1&quot;)</span><br><span class="line">-l LOGFILE 从Burp 或 WebScarab 日志中解析目标</span><br><span class="line">-m BULKFILE 在给定的文本文件中读取多个扫描目标</span><br><span class="line">-g GOOGLEDORK  将Google dork 结果作为目标URL</span><br><span class="line">-r REQUESTFILE  从文件中读取HTTP 请求</span><br><span class="line">-c CONFIGFILE 从INI 配置文件中读取配置选项</span><br></pre></td></tr></table></figure>
 <h3 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">--data&#x3D;DATA 通过POST 方法提交的数据字符串</span><br><span class="line">--param-del&#x3D;PDEL 用于分割参数值的字符</span><br><span class="line">--cookie&#x3D;COOKIE HTTP Cookie 头</span><br><span class="line">--cookie-del&#x3D;CDEL 用于分割cookie 值的字符</span><br><span class="line">--load-cookies&#x3D;L.. 包含cookies 的Netscape&#x2F;wget 格式文件</span><br><span class="line">--drop-set-cookie 忽略响应中的Set-Cookie 头</span><br><span class="line">--user-agent&#x3D;AGENT  HTTP User-Agent 头</span><br><span class="line">--random-agent 使用随机选择的HTTP User-Agent 头</span><br><span class="line">--host&#x3D;HOST HTTP Host 头</span><br><span class="line">--referer&#x3D;REFERER HTTP Referer 头</span><br><span class="line">--headers&#x3D;HEADERS Extra 头(e.g. &quot;Accept-Language: fr\nETag: 123&quot;)</span><br><span class="line">--auth-type&#x3D;AUTH.. HTTP 认证方式(Basic, Digest, NTLM 或 PKI)</span><br><span class="line">--auth-cred&#x3D;AUTH.. HTTP 认证证书(name:password)</span><br><span class="line">--auth-private&#x3D;A.. HTTP 认证PEM 私钥文件</span><br><span class="line">--proxy&#x3D;PROXY 使用代理连接目标URL</span><br><span class="line">--proxy-cred&#x3D;PRO.. 代理认证证书(name:password)</span><br><span class="line">--proxy-file&#x3D;PRO.. 从文件读取代理列表</span><br><span class="line">--ignore-proxy 接受系统默认代理设置</span><br><span class="line">--tor 使用Tor 匿名网络</span><br><span class="line">--tor-port&#x3D;TORPORT 设置默认以外的Tor 代理端口</span><br><span class="line">--tor-type&#x3D;TORTYPE 设置 Tor 代理方式(HTTP( 默认), SOCKS4 或SOCKS5)</span><br><span class="line">--check-tor 检查Tor 是否正确使用</span><br><span class="line">--delay&#x3D;DELAY 每个HTTP 请求之间延迟的秒数</span><br><span class="line">--timeout&#x3D;TIMEOUT 认定连接超时的秒数(默认 30)</span><br><span class="line">--retries&#x3D;RETRIES 超时重试的次数(默认 3)</span><br><span class="line">--randomize&#x3D;RPARAM 随机改变给定参数的值</span><br><span class="line">--safe-url&#x3D;SAFURL 设置一个安全链接供系统经常访问</span><br><span class="line">--safe-freq&#x3D;SAFREQ 设置一个安全连接供系统在两次测试之间访问</span><br><span class="line">--skip-urlencode 不对攻击载荷数据进行URL 编码</span><br><span class="line">--force-ssl   强制使用SSL&#x2F;HTTPS</span><br><span class="line">--hpp 使用HTTP 参数污染</span><br><span class="line">--eval&#x3D;EVALCODE 供提交请求之前评估参数的 Python 代码(e.g. &quot;import hashlib;id2&#x3D;hashlib.md5(id).hexdigest()&quot;)</span><br></pre></td></tr></table></figure>
@@ -331,7 +331,7 @@
                 <span class="level-item">Web安全&渗透测试</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">10</span>
+                <span class="level-item tag">11</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
@@ -428,7 +428,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            74
+                            75
                         </p>
                     </a>
                 </div>
@@ -492,6 +492,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Vulnhub-DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vulnhub DC-1靶机渗透学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-08T08:09:30.000Z">2020-06-08</time></div>
+                    <a href="/Vulnhub-DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vulnhub DC-1靶机渗透学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">Web安全&渗透测试</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -569,25 +588,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="文件上传Trick(持续更新...)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-08T01:07:14.000Z">2020-04-08</time></div>
-                    <a href="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">文件上传Trick(持续更新...)</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -598,6 +598,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
@@ -744,7 +755,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            74
+                            75
                         </p>
                     </a>
                 </div>
@@ -808,6 +819,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Vulnhub-DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vulnhub DC-1靶机渗透学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-08T08:09:30.000Z">2020-06-08</time></div>
+                    <a href="/Vulnhub-DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vulnhub DC-1靶机渗透学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">Web安全&渗透测试</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -885,25 +915,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="文件上传Trick(持续更新...)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-08T01:07:14.000Z">2020-04-08</time></div>
-                    <a href="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">文件上传Trick(持续更新...)</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -914,6 +925,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">

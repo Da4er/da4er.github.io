@@ -10,12 +10,12 @@
 <title>2.12 [BJDCTF2020]EasySearch&amp;The mystery of ip - Da4er&#39;s Blogs</title>
 
 
-    <meta name="description" content="EasySearch打开题目先随便输入，发现会弹框。在扫描一下目录，发现.swp备份文件。  打开index.php.swp页面：  阅读这段源码：首先是随机获取文件名的一个函数，最关键的是让password前6个字符的md5加密值等于6d0bc1，然后会在public目录下创建一个shtml文件，再将post传参的username字段写入这个shtml文件中。首先写个脚本让password前6">
+    <meta name="description" content="EasySearch打开题目先随便输入，发现会弹框。在扫描一下目录，发现.swp备份文件。打开index.php.swp页面：阅读这段源码：首先是随机获取文件名的一个函数，最关键的是让password前6个字符的md5加密值等于6d0bc1，然后会在public目录下创建一个shtml文件，再将post传参的username字段写入这个shtml文件中。首先写个脚本让password前6个字符的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2.12 [BJDCTF2020]EasySearch&amp;The mystery of ip">
 <meta property="og:url" content="https://da4er.top/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="EasySearch打开题目先随便输入，发现会弹框。在扫描一下目录，发现.swp备份文件。  打开index.php.swp页面：  阅读这段源码：首先是随机获取文件名的一个函数，最关键的是让password前6个字符的md5加密值等于6d0bc1，然后会在public目录下创建一个shtml文件，再将post传参的username字段写入这个shtml文件中。首先写个脚本让password前6">
+<meta property="og:description" content="EasySearch打开题目先随便输入，发现会弹框。在扫描一下目录，发现.swp备份文件。打开index.php.swp页面：阅读这段源码：首先是随机获取文件名的一个函数，最关键的是让password前6个字符的md5加密值等于6d0bc1，然后会在public目录下创建一个shtml文件，再将post传参的username字段写入这个shtml文件中。首先写个脚本让password前6个字符的">
 <meta property="og:image" content="https://da4er.top/images/og_image.png">
 <meta property="article:published_time" content="2020-02-12T08:18:45.000Z">
 <meta property="article:modified_time" content="2020-02-12T08:20:32.913Z">
@@ -162,30 +162,10 @@
             
         </h1>
         <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
-<h3 id="EasySearch"><a href="#EasySearch" class="headerlink" title="EasySearch"></a>EasySearch</h3><p>打开题目先随便输入，发现会弹框。在扫描一下目录，发现.swp备份文件。</p>
-<img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/1.png" class title="Da4er">
-<p>打开index.php.swp页面：</p>
-<img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/2.png" class title="Da4er">
-<p>阅读这段源码：<strong>首先是随机获取文件名的一个函数，最关键的是让password前6个字符的md5加密值等于6d0bc1，然后会在public目录下创建一个shtml文件，再将post传参的username字段写入这个shtml文件中。</strong><br>首先写个脚本让password前6个字符的md5值等于6d0bc1：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line"></span><br><span class="line">a&#x3D; &quot;0123456789&quot;</span><br><span class="line">for o in a:</span><br><span class="line">    for p in a:</span><br><span class="line">        for q in a:</span><br><span class="line">            for r in a:</span><br><span class="line">                for s in a:</span><br><span class="line">                    for t in a:</span><br><span class="line">                        for u in a:</span><br><span class="line">                            b &#x3D; str(o)+str(p)+str(q)+str(r)+str(s)+str(t)+str(u)</span><br><span class="line">                            md5 &#x3D; hashlib.md5(b.encode(&#39;utf-8&#39;)).hexdigest()</span><br><span class="line">                            if ((md5[0:6])&#x3D;&#x3D;&#39;6d0bc1&#39;):</span><br><span class="line">                                print b</span><br></pre></td></tr></table></figure>
-<p>可以爆破出很多，我拿<strong>2020666来进行传参。</strong></p>
-<img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/3.png" class title="Da4er">
-<p>成功利用，然后就是访问这个新建的shtml文件了，<strong>抓包发现在响应包中有这个文件的路径</strong>：</p>
-<img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/4.png" class title="Da4er">
-<img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/5.png" class title="Da4er">
-<p>到这利用了SSI注入漏洞，所以我们可以在username变量中传入ssi语句来远程执行系统命令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--#exec cmd&#x3D;&quot;命令&quot;--&gt;</span><br></pre></td></tr></table></figure>
-<p>首先ls一下当前目录：</p>
-<img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/6.png" class title="Da4er">
-<p>发现成功利用，没有进行任何过滤。<br>然后我们在ls一下上一级目录：</p>
-<img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/7.png" class title="Da4er">
-<p>发现了 <strong>‘flag_990c66bf85a09c664f0b6741840499b2’</strong> 文件，最后我们把这个文件cat出来，遍得到flag。</p>
-<img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/8.png" class title="Da4er">
+            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
+<h3 id="EasySearch"><a href="#EasySearch" class="headerlink" title="EasySearch"></a>EasySearch</h3><p>打开题目先随便输入，发现会弹框。在扫描一下目录，发现.swp备份文件。<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/1.png" class title="Da4er"><br>打开index.php.swp页面：<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/2.png" class title="Da4er"><br>阅读这段源码：<strong>首先是随机获取文件名的一个函数，最关键的是让password前6个字符的md5加密值等于6d0bc1，然后会在public目录下创建一个shtml文件，再将post传参的username字段写入这个shtml文件中。</strong><br>首先写个脚本让password前6个字符的md5值等于6d0bc1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line"></span><br><span class="line">a&#x3D; &quot;0123456789&quot;</span><br><span class="line">for o in a:</span><br><span class="line">    for p in a:</span><br><span class="line">        for q in a:</span><br><span class="line">            for r in a:</span><br><span class="line">                for s in a:</span><br><span class="line">                    for t in a:</span><br><span class="line">                        for u in a:</span><br><span class="line">                            b &#x3D; str(o)+str(p)+str(q)+str(r)+str(s)+str(t)+str(u)</span><br><span class="line">                            md5 &#x3D; hashlib.md5(b.encode(&#39;utf-8&#39;)).hexdigest()</span><br><span class="line">                            if ((md5[0:6])&#x3D;&#x3D;&#39;6d0bc1&#39;):</span><br><span class="line">                                print b</span><br></pre></td></tr></table></figure><br>可以爆破出很多，我拿<strong>2020666来进行传参。</strong><br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/3.png" class title="Da4er"><br>成功利用，然后就是访问这个新建的shtml文件了，<strong>抓包发现在响应包中有这个文件的路径</strong>：<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/4.png" class title="Da4er"><br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/5.png" class title="Da4er"><br>到这利用了SSI注入漏洞，所以我们可以在username变量中传入ssi语句来远程执行系统命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--#exec cmd&#x3D;&quot;命令&quot;--&gt;</span><br></pre></td></tr></table></figure><br>首先ls一下当前目录：<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/6.png" class title="Da4er"><br>发现成功利用，没有进行任何过滤。<br>然后我们在ls一下上一级目录：<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/7.png" class title="Da4er"><br>发现了 <strong>‘flag_990c66bf85a09c664f0b6741840499b2’</strong> 文件，最后我们把这个文件cat出来，遍得到flag。<br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/8.png" class title="Da4er"></p>
 <hr>
-<h3 id="The-mystery-of-ip"><a href="#The-mystery-of-ip" class="headerlink" title="The mystery of ip"></a>The mystery of ip</h3><p>这道题我在做的时候试了好多方法，虽然扫描目录的时候发现了.ds_store文件但是没有权限。这个思路行不通，最后还是看了别的师傅的博客，原来是X-Forwarded-For参数可控，使用的是ssti模板注入2333….<br>payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For:&#123;&#123;system(&#39;cat .&#x2F;flag&#39;)&#125;&#125;</span><br></pre></td></tr></table></figure>
-<img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/9.png" class title="Da4er">
+<h3 id="The-mystery-of-ip"><a href="#The-mystery-of-ip" class="headerlink" title="The mystery of ip"></a>The mystery of ip</h3><p>这道题我在做的时候试了好多方法，虽然扫描目录的时候发现了.ds_store文件但是没有权限。这个思路行不通，最后还是看了别的师傅的博客，原来是X-Forwarded-For参数可控，使用的是ssti模板注入2333….<br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For:&#123;&#123;system(&#39;cat .&#x2F;flag&#39;)&#125;&#125;</span><br></pre></td></tr></table></figure><br><img src="/2-12-BJDCTF2020-EasySearch-The-mystery-of-ip/9.png" class title="Da4er"></p>
 
         </div>
         
@@ -337,7 +317,7 @@
                 <span class="level-item">Web安全&渗透测试</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">10</span>
+                <span class="level-item tag">11</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
@@ -434,7 +414,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            74
+                            75
                         </p>
                     </a>
                 </div>
@@ -498,6 +478,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Vulnhub-DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vulnhub DC-1靶机渗透学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-08T08:09:30.000Z">2020-06-08</time></div>
+                    <a href="/Vulnhub-DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vulnhub DC-1靶机渗透学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">Web安全&渗透测试</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -575,25 +574,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="文件上传Trick(持续更新...)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-08T01:07:14.000Z">2020-04-08</time></div>
-                    <a href="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">文件上传Trick(持续更新...)</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -604,6 +584,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
@@ -750,7 +741,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            74
+                            75
                         </p>
                     </a>
                 </div>
@@ -814,6 +805,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/Vulnhub-DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vulnhub DC-1靶机渗透学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-08T08:09:30.000Z">2020-06-08</time></div>
+                    <a href="/Vulnhub-DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vulnhub DC-1靶机渗透学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Web%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">Web安全&渗透测试</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -891,25 +901,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="文件上传Trick(持续更新...)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-08T01:07:14.000Z">2020-04-08</time></div>
-                    <a href="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">文件上传Trick(持续更新...)</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -920,6 +911,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
