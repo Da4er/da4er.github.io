@@ -10,12 +10,12 @@
 <title>SQL注入Fuzz记录 - Da4er&#39;s Blogs</title>
 
 
-    <meta name="description" content="前言从今天开始学习各种fuzz测试，今天做了一道sql注入题，通过fuzz来判断过滤字符，从而构造payload进行绕过。  正文拿到题目进行简单的测试  发现这题进行了一些sql关键字的过滤，我们通过burp的Intruder模块进行fuzz。  字段长度为370的是被过滤的sql语句。进一步分析看看这题目到底过滤了哪些关键字，通过一个个分析知道过滤了：# –+等注释符，空格，%0a,%0b等">
+    <meta name="description" content="前言从今天开始学习各种fuzz测试，今天做了一道sql注入题，通过fuzz来判断过滤字符，从而构造payload进行绕过。  正文拿到题目进行简单的测试发现这题进行了一些sql关键字的过滤，我们通过burp的Intruder模块进行fuzz。字段长度为370的是被过滤的sql语句。进一步分析看看这题目到底过滤了哪些关键字，通过一个个分析知道过滤了：# –+等注释符，空格，%0a,%0b等绕过过滤">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL注入Fuzz记录">
 <meta property="og:url" content="https://da4er.top/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="前言从今天开始学习各种fuzz测试，今天做了一道sql注入题，通过fuzz来判断过滤字符，从而构造payload进行绕过。  正文拿到题目进行简单的测试  发现这题进行了一些sql关键字的过滤，我们通过burp的Intruder模块进行fuzz。  字段长度为370的是被过滤的sql语句。进一步分析看看这题目到底过滤了哪些关键字，通过一个个分析知道过滤了：# –+等注释符，空格，%0a,%0b等">
+<meta property="og:description" content="前言从今天开始学习各种fuzz测试，今天做了一道sql注入题，通过fuzz来判断过滤字符，从而构造payload进行绕过。  正文拿到题目进行简单的测试发现这题进行了一些sql关键字的过滤，我们通过burp的Intruder模块进行fuzz。字段长度为370的是被过滤的sql语句。进一步分析看看这题目到底过滤了哪些关键字，通过一个个分析知道过滤了：# –+等注释符，空格，%0a,%0b等绕过过滤">
 <meta property="og:image" content="https://da4er.top/images/og_image.png">
 <meta property="article:published_time" content="2020-02-24T14:34:23.000Z">
 <meta property="article:modified_time" content="2020-02-24T14:38:23.366Z">
@@ -162,33 +162,11 @@
             
         </h1>
         <div class="content">
-            <script type="text/javascript" src="/js/src/bai.js"></script>
+            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>从今天开始学习各种fuzz测试，今天做了一道sql注入题，通过fuzz来判断过滤字符，从而构造payload进行绕过。</p>
 <hr>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>拿到题目进行简单的测试</p>
-<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/1.png" class title="This is an test image">
-<p>发现这题进行了一些sql关键字的过滤，我们通过burp的Intruder模块进行fuzz。</p>
-<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/2.png" class title="This is an test image">
-<p>字段长度为370的是被过滤的sql语句。<br><strong>进一步分析看看这题目到底过滤了哪些关键字，通过一个个分析知道过滤了：# –+等注释符，空格，%0a,%0b等绕过过滤空格的url编码，逗号(,)，包含and和or的字符。还有很多绕过过滤的关键字，发现没有过滤sleep()，尝试一下时间盲注。</strong><br>常规的时间盲注为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(条件,sleep(3),2)</span><br></pre></td></tr></table></figure>
-<p>但是题目过滤了逗号，想到用case when替换：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">case when 条件 then sleep(2) else 1 end</span><br></pre></td></tr></table></figure>
-<p>但是过滤了空格等分隔符，同时内联注释 注释符 %0a %0b %0d %a0也多被过滤，我们可以用括号来代替空格：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">case when(条件)then(sleep(2))else(1)end</span><br></pre></td></tr></table></figure>
-<p>但是测试发现case和when中间是不能添加括号的，到这里时间盲注也是不可行的。</p>
-<p>可以尝试另类的布尔盲注:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &#39;admin&#39;&#x3D;&#39;admin&#39;+1 union select &#39;admin&#39;&#x3D;&#39;admin&#39;+0;</span><br></pre></td></tr></table></figure>
-<p>在本地测试发现，第一个输出0，第二个输出1。</p>
-<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/3.png" class title="This is an test image">
-<p>这是mysql的一个特性：<strong>在第一个查询中，先进行右边的’admin’+1操作，这个时候会强制转换admin为数字，然后相加完在和等号左边的admin比较，这个时候也会强制转换，所以就会形成不相等的情况。</strong><br>上面就可以形成布尔逻辑判断了。<br>首先我们可以先判断一些admin账号的密码长度</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;%2b(length(passwd)&#x3D;32)%2b&#39;</span><br></pre></td></tr></table></figure>
-<p>%2b是+号，不能直接使用加号因为被过滤了，这里也可以使用-号，效果相同。<br>上面的逻辑是：如果passwd长度为32，则返回1，然后和admin作相加操作，这样就会形成逻辑上的差别。如下图：</p>
-<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/4.png" class title="This is an test image">
-<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/5.png" class title="This is an test image">
-<p>这样就可以判断admin的密码是个32为的md5值。<br>然后在猜解每个字符，通过mid函数进行：<strong>但for被过滤！</strong><br>mid(xxx from 1)  第一位开始取剩下的所有字符<br><strong>ascii(mid(xxx from 1)) 发现截断 取第一个字符的ascii值。</strong><br>payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;%2b(ascii(mid((passwd)from(1)))&#x3D;48)%2b&#39;</span><br></pre></td></tr></table></figure>
-<p>通过括号绕过空格过滤，通过mysql中的mid，ascii函数特性绕过for过滤。<br>最后通过burp爆破每一位的ascii值，就可以得到密码的md5值了。</p>
-<img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/6.png" class title="This is an test image">
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>拿到题目进行简单的测试<br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/1.png" class title="This is an test image"><br>发现这题进行了一些sql关键字的过滤，我们通过burp的Intruder模块进行fuzz。<br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/2.png" class title="This is an test image"><br>字段长度为370的是被过滤的sql语句。<br><strong>进一步分析看看这题目到底过滤了哪些关键字，通过一个个分析知道过滤了：# –+等注释符，空格，%0a,%0b等绕过过滤空格的url编码，逗号(,)，包含and和or的字符。还有很多绕过过滤的关键字，发现没有过滤sleep()，尝试一下时间盲注。</strong><br>常规的时间盲注为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(条件,sleep(3),2)</span><br></pre></td></tr></table></figure><br>但是题目过滤了逗号，想到用case when替换：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">case when 条件 then sleep(2) else 1 end</span><br></pre></td></tr></table></figure><br>但是过滤了空格等分隔符，同时内联注释 注释符 %0a %0b %0d %a0也多被过滤，我们可以用括号来代替空格：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">case when(条件)then(sleep(2))else(1)end</span><br></pre></td></tr></table></figure><br>但是测试发现case和when中间是不能添加括号的，到这里时间盲注也是不可行的。</p>
+<p>可以尝试另类的布尔盲注:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &#39;admin&#39;&#x3D;&#39;admin&#39;+1 union select &#39;admin&#39;&#x3D;&#39;admin&#39;+0;</span><br></pre></td></tr></table></figure><br>在本地测试发现，第一个输出0，第二个输出1。<br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/3.png" class title="This is an test image"><br>这是mysql的一个特性：<strong>在第一个查询中，先进行右边的’admin’+1操作，这个时候会强制转换admin为数字，然后相加完在和等号左边的admin比较，这个时候也会强制转换，所以就会形成不相等的情况。</strong><br>上面就可以形成布尔逻辑判断了。<br>首先我们可以先判断一些admin账号的密码长度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;%2b(length(passwd)&#x3D;32)%2b&#39;</span><br></pre></td></tr></table></figure><br>%2b是+号，不能直接使用加号因为被过滤了，这里也可以使用-号，效果相同。<br>上面的逻辑是：如果passwd长度为32，则返回1，然后和admin作相加操作，这样就会形成逻辑上的差别。如下图：<br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/4.png" class title="This is an test image"><br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/5.png" class title="This is an test image"><br>这样就可以判断admin的密码是个32为的md5值。<br>然后在猜解每个字符，通过mid函数进行：<strong>但for被过滤！</strong><br>mid(xxx from 1)  第一位开始取剩下的所有字符<br><strong>ascii(mid(xxx from 1)) 发现截断 取第一个字符的ascii值。</strong><br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;%2b(ascii(mid((passwd)from(1)))&#x3D;48)%2b&#39;</span><br></pre></td></tr></table></figure><br>通过括号绕过空格过滤，通过mysql中的mid，ascii函数特性绕过for过滤。<br>最后通过burp爆破每一位的ascii值，就可以得到密码的md5值了。<br><img src="/SQL%E6%B3%A8%E5%85%A5Fuzz%E8%AE%B0%E5%BD%95/6.png" class title="This is an test image"></p>
 
         </div>
         
