@@ -10,12 +10,12 @@
 <title>SQL语句Trick... - Da4er&#39;s Blogs</title>
 
 
-    <meta name="description" content="sql语句对大小写不敏感。 show语句show语句用于展示当前所有数据库或者数据表12show databases;show tables;">
+    <meta name="description" content="sql语句对大小写不敏感。 show语句show语句用于展示当前所有数据库或者数据表 12show databases;show tables;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL语句Trick...">
 <meta property="og:url" content="https://da4er.top/SQL%E8%AF%AD%E5%8F%A5Trick.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="sql语句对大小写不敏感。 show语句show语句用于展示当前所有数据库或者数据表12show databases;show tables;">
+<meta property="og:description" content="sql语句对大小写不敏感。 show语句show语句用于展示当前所有数据库或者数据表 12show databases;show tables;">
 <meta property="og:image" content="https://da4er.top/images/og_image.png">
 <meta property="article:published_time" content="2020-04-12T12:18:35.000Z">
 <meta property="article:modified_time" content="2020-04-12T12:23:31.137Z">
@@ -120,7 +120,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Suche" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    19 minutes read (About 2899 words)
+                    19 minutes lesen (Über 2899 Worte)
                 </span>
                 
                 
@@ -161,10 +161,21 @@
             <script type="text/javascript" src="/js/src/bai.js"></script>
 
 <p>sql语句对大小写不敏感。</p>
-<h3 id="show语句"><a href="#show语句" class="headerlink" title="show语句"></a>show语句</h3><p>show语句用于展示当前所有数据库或者数据表<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">databases</span>;</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">tables</span>;</span><br></pre></td></tr></table></figure><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/1.png" class title="This is an test image"><br><a id="more"></a></p>
-<h3 id="SELECT语句"><a href="#SELECT语句" class="headerlink" title="SELECT语句"></a>SELECT语句</h3><p>语法：<br><code>SELECT 列名称 FROM 表名称</code><br><code>SELECT * FORM 表名称</code><br>星号（*）是选取所有列的快捷方式。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span>;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,username <span class="keyword">from</span> <span class="keyword">users</span>;</span><br></pre></td></tr></table></figure><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/2.png" class title="This is an test image"></p>
-<h3 id="SELECT-DISTINCT语句"><a href="#SELECT-DISTINCT语句" class="headerlink" title="SELECT DISTINCT语句"></a>SELECT DISTINCT语句</h3><p>语法：<br><code>SELECT DISTINCT 列名称 FROM 表名称</code><br>关键字distinct 意思是去除查询中的重复值。<br>注意点：只能查询单个列才能去除重复值，如下图：<br>当查询id，username两个列名的时候是没有去除的，当只查询username的时候才去除成功。<br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/3.png" class title="This is an test image"><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/4.png" class title="This is an test image"></p>
-<h3 id="WHERE子句"><a href="#WHERE子句" class="headerlink" title="WHERE子句"></a>WHERE子句</h3><p>WHERE子句用于规定选择的标准。<br>如需有条件地从表中选取数据，可将 WHERE 子句添加到 SELECT 语句。<br>语法：<br><code>select 列名称 from 表名称 where 列名称 运算符 值</code><br>下面的运算符可在where子句中使用：<br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/5.png" class title="This is an test image"><br>在某些版本的 SQL 中，操作符 &lt;&gt; 可以写为 !=。</p>
+<h3 id="show语句"><a href="#show语句" class="headerlink" title="show语句"></a>show语句</h3><p>show语句用于展示当前所有数据库或者数据表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">databases</span>;</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">tables</span>;</span><br></pre></td></tr></table></figure>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/1.png" class title="This is an test image">
+<a id="more"></a>
+
+<h3 id="SELECT语句"><a href="#SELECT语句" class="headerlink" title="SELECT语句"></a>SELECT语句</h3><p>语法：<br><code>SELECT 列名称 FROM 表名称</code><br><code>SELECT * FORM 表名称</code><br>星号（*）是选取所有列的快捷方式。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span>;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,username <span class="keyword">from</span> <span class="keyword">users</span>;</span><br></pre></td></tr></table></figure>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/2.png" class title="This is an test image">
+<h3 id="SELECT-DISTINCT语句"><a href="#SELECT-DISTINCT语句" class="headerlink" title="SELECT DISTINCT语句"></a>SELECT DISTINCT语句</h3><p>语法：<br><code>SELECT DISTINCT 列名称 FROM 表名称</code><br>关键字distinct 意思是去除查询中的重复值。<br>注意点：只能查询单个列才能去除重复值，如下图：<br>当查询id，username两个列名的时候是没有去除的，当只查询username的时候才去除成功。</p>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/3.png" class title="This is an test image">
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/4.png" class title="This is an test image">
+
+<h3 id="WHERE子句"><a href="#WHERE子句" class="headerlink" title="WHERE子句"></a>WHERE子句</h3><p>WHERE子句用于规定选择的标准。<br>如需有条件地从表中选取数据，可将 WHERE 子句添加到 SELECT 语句。<br>语法：<br><code>select 列名称 from 表名称 where 列名称 运算符 值</code><br>下面的运算符可在where子句中使用：</p>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/5.png" class title="This is an test image">
+<p>在某些版本的 SQL 中，操作符 &lt;&gt; 可以写为 !=。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">5</span></span><br></pre></td></tr></table></figure>
 <img src="/SQL%E8%AF%AD%E5%8F%A5Trick/6.png" class title="This is an test image">
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">id</span> != <span class="number">5</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">id</span> &lt;&gt; <span class="number">5</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username &lt;&gt; <span class="string">'admin'</span></span><br></pre></td></tr></table></figure>
@@ -173,24 +184,40 @@
 <img src="/SQL%E8%AF%AD%E5%8F%A5Trick/8.png" class title="This is an test image">
 <p>这里就有个注意点：字符串比较的时候是逐位比较的，如一下语句：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username &gt;<span class="string">'adc'</span>;</span><br></pre></td></tr></table></figure>
-<p>这个语句会将username列的所有字段和abc逐个比较，例如：<br>字段内容admin和abc的比较顺序：<br>admin的第一位先和abc的第一个比较，如果符合比较的条件，继续往后移位比较。<br>如果第一位不满足就退出比较，不再往后进行。<br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/9.png" class title="This is an test image"><br><strong>比较是按ascii的顺序进行的。</strong><br>但是我们发现上图中的结果中出现了’Admin’ A的ascii码小于a的ascii码，应该不会出现在结果集中。这是因为sql语句比较也属于弱类型的比较，所以再比较的时候会将A转换成a。<br>注意点：<br><strong>1.进行比较的支持16进制，需要在在16进制数前面加上0x，这个时候就比较就不按照ascii了，而是按照16进制的顺序进行比较的。<br>2.如果将字符串和数字进行比较，则字符串是不参与比较的，也不会显示结果集中。</strong><br>如下图：</p>
+<p>这个语句会将username列的所有字段和abc逐个比较，例如：<br>字段内容admin和abc的比较顺序：<br>admin的第一位先和abc的第一个比较，如果符合比较的条件，继续往后移位比较。<br>如果第一位不满足就退出比较，不再往后进行。</p>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/9.png" class title="This is an test image">
+<p><strong>比较是按ascii的顺序进行的。</strong><br>但是我们发现上图中的结果中出现了’Admin’ A的ascii码小于a的ascii码，应该不会出现在结果集中。这是因为sql语句比较也属于弱类型的比较，所以再比较的时候会将A转换成a。<br>注意点：<br><strong>1.进行比较的支持16进制，需要在在16进制数前面加上0x，这个时候就比较就不按照ascii了，而是按照16进制的顺序进行比较的。<br>2.如果将字符串和数字进行比较，则字符串是不参与比较的，也不会显示结果集中。</strong><br>如下图：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username &gt; <span class="number">0x61</span>;</span><br><span class="line">// 0x61='a'</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username &gt; <span class="number">0x6165</span></span><br><span class="line">// <span class="number">0x6165</span> = <span class="string">'ad'</span></span><br></pre></td></tr></table></figure>
 <img src="/SQL%E8%AF%AD%E5%8F%A5Trick/10.png" class title="This is an test image">
-<p>注意一点：<strong>如果比较字符和字段内容相等的时候，会继续向后比较，等到大于或小于的时候，才会停止,如下图所示</strong><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/11.png" class title="This is an test image"><br>我们看到当和’ad’比较的时候，前几个字段前两个字符和ad相等，会继续向后比较，当比较到m的时候，’ad’就没有了字符，相当于最小的ascii码，所以就会返回admin这个字段内容。<br>而当和’admin’这个字段比较的时候，前几个字段都和admin相等，而且都比较到了尾部，所以不会返回。</p>
+<p>注意一点：<strong>如果比较字符和字段内容相等的时候，会继续向后比较，等到大于或小于的时候，才会停止,如下图所示</strong></p>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/11.png" class title="This is an test image">
+<p>我们看到当和’ad’比较的时候，前几个字段前两个字符和ad相等，会继续向后比较，当比较到m的时候，’ad’就没有了字符，相当于最小的ascii码，所以就会返回admin这个字段内容。<br>而当和’admin’这个字段比较的时候，前几个字段都和admin相等，而且都比较到了尾部，所以不会返回。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username <span class="keyword">between</span> <span class="string">'admin'</span> <span class="keyword">and</span> <span class="string">'da4er'</span>;</span><br></pre></td></tr></table></figure>
 <img src="/SQL%E8%AF%AD%E5%8F%A5Trick/12.png" class title="This is an test image">
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username <span class="keyword">like</span> <span class="string">'adm%'</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username regexp <span class="string">'^admin$'</span>;</span><br></pre></td></tr></table></figure>
-<p>like和regexp相当于模糊匹配的功能<br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/13.png" class title="This is an test image"></p>
+<p>like和regexp相当于模糊匹配的功能</p>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/13.png" class title="This is an test image">
+
 <h3 id="引号的使用"><a href="#引号的使用" class="headerlink" title="引号的使用"></a>引号的使用</h3><p>SQL 使用单引号来环绕文本值（大部分数据库系统也接受双引号）。如果是数值，请不要使用引号。<br>数值使用引号引起来，就表示这个数值的ascii。                                                             <strong>文本值可以使用16进制代替，这就不需要使用引号。</strong></p>
 <h3 id="AND-amp-OR"><a href="#AND-amp-OR" class="headerlink" title="AND&amp;OR"></a>AND&amp;OR</h3><p><strong>AND 和 OR 运算符用于基于一个以上的条件对记录进行过滤。</strong></p>
 <blockquote>
-<p>AND 和 OR 可在 WHERE 子语句中把两个或多个条件结合起来。<br>如果第一个条件和第二个条件都成立，则 AND 运算符显示一条记录。<br>如果第一个条件和第二个条件中只要有一个成立，则 OR 运算符显示一条记录。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username=<span class="string">'admin'</span><span class="keyword">and</span> <span class="keyword">id</span>&gt;<span class="number">7</span> ;</span><br><span class="line"> <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username=<span class="string">'admin'</span><span class="keyword">or</span> <span class="keyword">id</span>&gt;<span class="number">7</span> ;</span><br></pre></td></tr></table></figure><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/14.png" class title="This is an test image"></p>
+<p>AND 和 OR 可在 WHERE 子语句中把两个或多个条件结合起来。<br>如果第一个条件和第二个条件都成立，则 AND 运算符显示一条记录。<br>如果第一个条件和第二个条件中只要有一个成立，则 OR 运算符显示一条记录。</p>
 </blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username=<span class="string">'admin'</span><span class="keyword">and</span> <span class="keyword">id</span>&gt;<span class="number">7</span> ;</span><br><span class="line"> <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username=<span class="string">'admin'</span><span class="keyword">or</span> <span class="keyword">id</span>&gt;<span class="number">7</span> ;</span><br></pre></td></tr></table></figure>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/14.png" class title="This is an test image">
+
 <h3 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h3><p>ORDER BY 语句用于对结果集进行排序。</p>
 <p>ORDER BY 语句用于根据指定的列对结果集进行排序。</p>
 <p>ORDER BY 语句默认按照升序对记录进行排序。</p>
-<p>如果您希望按照降序对记录进行排序，可以使用 DESC 关键字。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> username,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">order</span> <span class="keyword">by</span> username <span class="keyword">asc</span>; //默认升序</span><br><span class="line"><span class="keyword">select</span> username,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">order</span> <span class="keyword">by</span> username <span class="keyword">desc</span>; //逆序</span><br></pre></td></tr></table></figure><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/15.png" class title="This is an test image"></p>
-<h3 id="INSERT语句"><a href="#INSERT语句" class="headerlink" title="INSERT语句"></a>INSERT语句</h3><p>INSERT INTO 语句用于向表格中插入新的行。<br>语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名称 <span class="keyword">VALUES</span> (值<span class="number">1</span>, 值<span class="number">2</span>,....)</span><br><span class="line"></span><br><span class="line">也可以指定所要插入数据的列：</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name (列<span class="number">1</span>, 列<span class="number">2</span>,...) <span class="keyword">VALUES</span> (值<span class="number">1</span>, 值<span class="number">2</span>,....)</span><br></pre></td></tr></table></figure><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">users</span>(username) <span class="keyword">values</span>(<span class="string">'zzzz'</span>);</span><br></pre></td></tr></table></figure><br>指定列名的话就不需要将所有列名都要赋值。<br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/16.png" class title="This is an test image"></p>
+<p>如果您希望按照降序对记录进行排序，可以使用 DESC 关键字。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> username,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">order</span> <span class="keyword">by</span> username <span class="keyword">asc</span>; //默认升序</span><br><span class="line"><span class="keyword">select</span> username,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">order</span> <span class="keyword">by</span> username <span class="keyword">desc</span>; //逆序</span><br></pre></td></tr></table></figure>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/15.png" class title="This is an test image">
+<h3 id="INSERT语句"><a href="#INSERT语句" class="headerlink" title="INSERT语句"></a>INSERT语句</h3><p>INSERT INTO 语句用于向表格中插入新的行。<br>语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名称 <span class="keyword">VALUES</span> (值<span class="number">1</span>, 值<span class="number">2</span>,....)</span><br><span class="line"></span><br><span class="line">也可以指定所要插入数据的列：</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name (列<span class="number">1</span>, 列<span class="number">2</span>,...) <span class="keyword">VALUES</span> (值<span class="number">1</span>, 值<span class="number">2</span>,....)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">users</span>(username) <span class="keyword">values</span>(<span class="string">'zzzz'</span>);</span><br></pre></td></tr></table></figure>
+<p>指定列名的话就不需要将所有列名都要赋值。</p>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/16.png" class title="This is an test image">
+
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">users</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'fff'</span>,<span class="string">'https://da4er.top'</span>,<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
 <img src="/SQL%E8%AF%AD%E5%8F%A5Trick/17.png" class title="This is an test image">
 <p>不知道列名就要对全部列都要指定值。</p>
@@ -199,42 +226,98 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> 表名 <span class="keyword">set</span> 列名称=新值 <span class="keyword">where</span> 列名称=旧值</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update users set username&#x3D;&#39;http:&#x2F;&#x2F;da4er.top&#39; where username&#x3D;&#39;111&#39;;</span><br></pre></td></tr></table></figure>
 <p>上面这条语句就会把username=111的更新为<a href="http://da4er.top">http://da4er.top</a></p>
-<h3 id="DELETE语句"><a href="#DELETE语句" class="headerlink" title="DELETE语句"></a>DELETE语句</h3><p>DELETE 语句用于删除表中的行。<br>语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名称 <span class="keyword">where</span> 列名称=值 //删除某一行</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table_name</span><br><span class="line"><span class="keyword">delete</span> * <span class="keyword">from</span> table_name</span><br><span class="line">//删除所有行</span><br></pre></td></tr></table></figure></p>
-<h3 id="TOP语句"><a href="#TOP语句" class="headerlink" title="TOP语句"></a>TOP语句</h3><p>top语句用于规定要返回的记录的数目。<br>并非所有的数据库都支持top子句。<br>sql server语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TOP <span class="built_in">number</span>|<span class="keyword">percent</span> column_name(s)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br></pre></td></tr></table></figure><br>mysql语法：<br>mysql中使用limit代替top<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> column_name(s)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="built_in">number</span></span><br></pre></td></tr></table></figure><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">limit</span> <span class="number">5</span>;</span><br></pre></td></tr></table></figure><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/18.png" class title="This is an test image"><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">5</span>;</span><br></pre></td></tr></table></figure><br>意思是从第一位开始读取连续的五位<br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/19.png" class title="This is an test image"></p>
-<p>oracle语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name(s)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">ROWNUM</span> &lt;= <span class="built_in">number</span></span><br></pre></td></tr></table></figure><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> Persons</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">ROWNUM</span> &lt;= <span class="number">5</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="LIKE语句"><a href="#LIKE语句" class="headerlink" title="LIKE语句"></a>LIKE语句</h3><p>LIKE 操作符用于在 WHERE 子句中搜索列中的指定模式。<br>语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name(s)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> column_name <span class="keyword">LIKE</span> pattern</span><br></pre></td></tr></table></figure><br>例子：<br>选取以a开头的字段：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username <span class="keyword">like</span> <span class="string">'a%'</span>;</span><br></pre></td></tr></table></figure><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/20.png" class title="This is an test image"></p>
+<h3 id="DELETE语句"><a href="#DELETE语句" class="headerlink" title="DELETE语句"></a>DELETE语句</h3><p>DELETE 语句用于删除表中的行。<br>语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名称 <span class="keyword">where</span> 列名称=值 //删除某一行</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table_name</span><br><span class="line"><span class="keyword">delete</span> * <span class="keyword">from</span> table_name</span><br><span class="line">//删除所有行</span><br></pre></td></tr></table></figure>
+<h3 id="TOP语句"><a href="#TOP语句" class="headerlink" title="TOP语句"></a>TOP语句</h3><p>top语句用于规定要返回的记录的数目。<br>并非所有的数据库都支持top子句。<br>sql server语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TOP <span class="built_in">number</span>|<span class="keyword">percent</span> column_name(s)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br></pre></td></tr></table></figure>
+<p>mysql语法：<br>mysql中使用limit代替top</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> column_name(s)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="built_in">number</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">limit</span> <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/18.png" class title="This is an test image">
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+<p>意思是从第一位开始读取连续的五位</p>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/19.png" class title="This is an test image">
+
+<p>oracle语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name(s)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">ROWNUM</span> &lt;= <span class="built_in">number</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> Persons</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">ROWNUM</span> &lt;= <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<h3 id="LIKE语句"><a href="#LIKE语句" class="headerlink" title="LIKE语句"></a>LIKE语句</h3><p>LIKE 操作符用于在 WHERE 子句中搜索列中的指定模式。<br>语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name(s)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> column_name <span class="keyword">LIKE</span> pattern</span><br></pre></td></tr></table></figure>
+<p>例子：<br>选取以a开头的字段：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username <span class="keyword">like</span> <span class="string">'a%'</span>;</span><br></pre></td></tr></table></figure>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/20.png" class title="This is an test image">
+
 <p><strong>提示：”%” 可用于定义通配符（模式中缺少的字母）</strong></p>
-<p>选取以n结尾的字段：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username <span class="keyword">like</span> <span class="string">'%n'</span>;</span><br></pre></td></tr></table></figure><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/21.png" class title="This is an test image"></p>
-<p>选取字段中包含min的字段：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username <span class="keyword">like</span> <span class="string">'%min%'</span>;</span><br></pre></td></tr></table></figure><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/22.png" class title="This is an test image"></p>
-<h3 id="IN语句"><a href="#IN语句" class="headerlink" title="IN语句"></a>IN语句</h3><p>IN 操作符允许我们在 WHERE 子句中规定多个值。<br>语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name(s)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> column_name <span class="keyword">IN</span> (value1,value2,...)</span><br></pre></td></tr></table></figure><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username <span class="keyword">in</span>(<span class="string">'admin'</span>);</span><br></pre></td></tr></table></figure><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/23.png" class title="This is an test image"><br>注入语句：<br>如果sql注入过滤了&gt;&lt;=%,regexp则可以使用in操作符。</p>
+<p>选取以n结尾的字段：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username <span class="keyword">like</span> <span class="string">'%n'</span>;</span><br></pre></td></tr></table></figure>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/21.png" class title="This is an test image">
+
+<p>选取字段中包含min的字段：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username <span class="keyword">like</span> <span class="string">'%min%'</span>;</span><br></pre></td></tr></table></figure>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/22.png" class title="This is an test image">
+<h3 id="IN语句"><a href="#IN语句" class="headerlink" title="IN语句"></a>IN语句</h3><p>IN 操作符允许我们在 WHERE 子句中规定多个值。<br>语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name(s)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> column_name <span class="keyword">IN</span> (value1,value2,...)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username <span class="keyword">in</span>(<span class="string">'admin'</span>);</span><br></pre></td></tr></table></figure>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/23.png" class title="This is an test image">
+<p>注入语句：<br>如果sql注入过滤了&gt;&lt;=%,regexp则可以使用in操作符。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username = <span class="string">'admin'</span> <span class="keyword">and</span> <span class="keyword">mid</span>(<span class="keyword">user</span>(),<span class="number">1</span>,<span class="number">1</span>) <span class="keyword">in</span> (<span class="string">'r'</span>)</span><br></pre></td></tr></table></figure>
 <img src="/SQL%E8%AF%AD%E5%8F%A5Trick/24.png" class title="This is an test image">
-<h3 id="BETWEEN语句"><a href="#BETWEEN语句" class="headerlink" title="BETWEEN语句"></a>BETWEEN语句</h3><p>操作符 BETWEEN … AND 会选取介于两个值之间的数据范围。这些值可以是数值、文本或者日期。SQL BETWEEN 语法<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name(s)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> column_name</span><br><span class="line"><span class="keyword">BETWEEN</span> value1 <span class="keyword">AND</span> value2</span><br></pre></td></tr></table></figure><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username  <span class="keyword">between</span> <span class="string">'admin'</span> <span class="keyword">and</span> <span class="string">'da4er'</span>;</span><br></pre></td></tr></table></figure><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/25.png" class title="This is an test image"><br>注入语法：<br>between…and… 语法必须两个值都得满足，即两个值都要在字段中存在。</p>
+
+<h3 id="BETWEEN语句"><a href="#BETWEEN语句" class="headerlink" title="BETWEEN语句"></a>BETWEEN语句</h3><p>操作符 BETWEEN … AND 会选取介于两个值之间的数据范围。这些值可以是数值、文本或者日期。SQL BETWEEN 语法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name(s)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> column_name</span><br><span class="line"><span class="keyword">BETWEEN</span> value1 <span class="keyword">AND</span> value2</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username  <span class="keyword">between</span> <span class="string">'admin'</span> <span class="keyword">and</span> <span class="string">'da4er'</span>;</span><br></pre></td></tr></table></figure>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/25.png" class title="This is an test image">
+<p>注入语法：<br>between…and… 语法必须两个值都得满足，即两个值都要在字段中存在。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">mid</span>(<span class="keyword">user</span>(),<span class="number">1</span>,<span class="number">1</span>) <span class="keyword">between</span> <span class="string">'r'</span> <span class="keyword">and</span> <span class="string">'r'</span>;</span><br></pre></td></tr></table></figure>
 <img src="/SQL%E8%AF%AD%E5%8F%A5Trick/26.png" class title="This is an test image">
 <h3 id="AS语法"><a href="#AS语法" class="headerlink" title="AS语法"></a>AS语法</h3><p>通过使用 SQL，可以为列名称和表名称指定别名（Alias）。</p>
-<p>表名的as语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s) <span class="keyword">from</span> table_name <span class="keyword">as</span> alias_name</span><br></pre></td></tr></table></figure><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.username <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">as</span> a;</span><br></pre></td></tr></table></figure><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/27.png" class title="This is an test image"><br>列名的as语法:</p>
+<p>表名的as语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s) <span class="keyword">from</span> table_name <span class="keyword">as</span> alias_name</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.username <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">as</span> a;</span><br></pre></td></tr></table></figure>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/27.png" class title="This is an test image">
+<p>列名的as语法:</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name <span class="keyword">as</span> alias_name <span class="keyword">from</span> table_name</span><br></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> username <span class="keyword">as</span> a <span class="keyword">from</span> <span class="keyword">users</span>;</span><br></pre></td></tr></table></figure>
 <img src="/SQL%E8%AF%AD%E5%8F%A5Trick/28.png" class title="This is an test image">
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> p.username,a.username <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">as</span> p,<span class="keyword">member</span> <span class="keyword">as</span> a;</span><br></pre></td></tr></table></figure>
-<p>将users取别名p，member取别名a 查询p和a的username字段。<br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/29.png" class title="This is an test image"></p>
-<h3 id="JOIN语句"><a href="#JOIN语句" class="headerlink" title="JOIN语句"></a>JOIN语句</h3><p>SQL join 用于根据两个或多个表中的列之间的关系，从这些表中查询数据。<br><strong>join语句分为:join， inner join， left join， right join。</strong><br>mysql默认join是inner join 内连接的方式。<br>内连接：寻找连接建共同的字段显示出来。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> users.password,member.address <span class="keyword">from</span> <span class="keyword">users</span>  <span class="keyword">join</span> <span class="keyword">member</span> <span class="keyword">on</span> users.username=member.username;</span><br></pre></td></tr></table></figure><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/30.png" class title="This is an test image"><br>左连接：以join左边的表为基础，显示左边表的全部字段，右边与左边连接键值相等也把左边的字段显示，没有就显示null。<br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/31.png" class title="This is an test image"><br>右连接：以join右边的为基础<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> users.password,member.address <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">right</span> <span class="keyword">join</span> <span class="keyword">member</span> <span class="keyword">on</span> users.username=member.username;</span><br></pre></td></tr></table></figure><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/32.png" class title="This is an test image"></p>
+<p>将users取别名p，member取别名a 查询p和a的username字段。</p>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/29.png" class title="This is an test image">
+
+<h3 id="JOIN语句"><a href="#JOIN语句" class="headerlink" title="JOIN语句"></a>JOIN语句</h3><p>SQL join 用于根据两个或多个表中的列之间的关系，从这些表中查询数据。<br><strong>join语句分为:join， inner join， left join， right join。</strong><br>mysql默认join是inner join 内连接的方式。<br>内连接：寻找连接建共同的字段显示出来。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> users.password,member.address <span class="keyword">from</span> <span class="keyword">users</span>  <span class="keyword">join</span> <span class="keyword">member</span> <span class="keyword">on</span> users.username=member.username;</span><br></pre></td></tr></table></figure>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/30.png" class title="This is an test image">
+<p>左连接：以join左边的表为基础，显示左边表的全部字段，右边与左边连接键值相等也把左边的字段显示，没有就显示null。</p>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/31.png" class title="This is an test image">
+<p>右连接：以join右边的为基础</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> users.password,member.address <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">right</span> <span class="keyword">join</span> <span class="keyword">member</span> <span class="keyword">on</span> users.username=member.username;</span><br></pre></td></tr></table></figure>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/32.png" class title="This is an test image">
 <h3 id="UNION语句"><a href="#UNION语句" class="headerlink" title="UNION语句"></a>UNION语句</h3><p>UNION 操作符用于<strong>合并两个或多个 SELECT 语句的结果集</strong>。<br>请注意，<strong>UNION 内部的 SELECT 语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每条 SELECT 语句中的列的顺序必须相同。</strong></p>
-<p>注释：<strong>默认地，UNION 操作符选取不同的值。如果允许重复的值，请使用 UNION ALL。</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username=<span class="string">'admin'</span><span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>;</span><br></pre></td></tr></table></figure><br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/33.png" class title="This is an test image"><br>这里有个特性：<strong>如果union 前面没有就不会显示出来。</strong></p>
+<p>注释：<strong>默认地，UNION 操作符选取不同的值。如果允许重复的值，请使用 UNION ALL。</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username=<span class="string">'admin'</span><span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>;</span><br></pre></td></tr></table></figure>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/33.png" class title="This is an test image">
+<p>这里有个特性：<strong>如果union 前面没有就不会显示出来。</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username=<span class="string">'1'</span><span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>;</span><br></pre></td></tr></table></figure>
 <img src="/SQL%E8%AF%AD%E5%8F%A5Trick/34.png" class title="This is an test image">
 <h3 id="Create语句"><a href="#Create语句" class="headerlink" title="Create语句"></a>Create语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">创建数据库</span><br><span class="line"><span class="keyword">Create</span> <span class="keyword">database</span> database_name</span><br><span class="line">创建表</span><br><span class="line"><span class="keyword">Create</span> <span class="keyword">table</span> table_name(</span><br><span class="line">    列名称<span class="number">1</span> 数据类型,</span><br><span class="line">    列名称<span class="number">2</span> 数据类型,</span><br><span class="line">    列名称<span class="number">3</span> 数据类型,</span><br><span class="line">    ......</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <img src="/SQL%E8%AF%AD%E5%8F%A5Trick/35.png" class title="This is an test image">
-<h3 id="SQL约束"><a href="#SQL约束" class="headerlink" title="SQL约束"></a>SQL约束</h3><p>1.NOT NULL约束<br>NOT NULL 约束强制字段始终包含值。这意味着，如果不向字段添加值，就无法插入新记录或者更新记录。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Persons</span><br><span class="line">(</span><br><span class="line">Id_P <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">LastName <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">FirstName <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">Address <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">City <span class="built_in">varchar</span>(<span class="number">255</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure><br>2.UNIQUE约束<br>UNIQUE 约束唯一标识数据库表中的每条记录。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Persons</span><br><span class="line">(</span><br><span class="line">Id_P <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">LastName <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">FirstName <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">Address <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">City <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line"><span class="keyword">UNIQUE</span> (Id_P)</span><br><span class="line">)</span><br></pre></td></tr></table></figure><br>3.PRIMARY KEY 约束</p>
-<p><strong>PRIMARY KEY 约束唯一标识数据库表中的每条记录。</strong><br>主键必须包含唯一的值。<br>主键列不能包含 NULL 值。<br>每个表都应该有一个主键，并且<strong>每个表只能有一个主键</strong>。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Persons</span><br><span class="line">(</span><br><span class="line">Id_P <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">LastName <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">FirstName <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">Address <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">City <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (Id_P)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<h3 id="SQL约束"><a href="#SQL约束" class="headerlink" title="SQL约束"></a>SQL约束</h3><p>1.NOT NULL约束<br>NOT NULL 约束强制字段始终包含值。这意味着，如果不向字段添加值，就无法插入新记录或者更新记录。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Persons</span><br><span class="line">(</span><br><span class="line">Id_P <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">LastName <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">FirstName <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">Address <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">City <span class="built_in">varchar</span>(<span class="number">255</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>2.UNIQUE约束<br>UNIQUE 约束唯一标识数据库表中的每条记录。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Persons</span><br><span class="line">(</span><br><span class="line">Id_P <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">LastName <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">FirstName <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">Address <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">City <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line"><span class="keyword">UNIQUE</span> (Id_P)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>3.PRIMARY KEY 约束</p>
+<p><strong>PRIMARY KEY 约束唯一标识数据库表中的每条记录。</strong><br>主键必须包含唯一的值。<br>主键列不能包含 NULL 值。<br>每个表都应该有一个主键，并且<strong>每个表只能有一个主键</strong>。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Persons</span><br><span class="line">(</span><br><span class="line">Id_P <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">LastName <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">FirstName <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">Address <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">City <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (Id_P)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <h3 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h3><p>1.<code>count(*)</code></p>
-<p>COUNT() 函数返回匹配指定条件的行数。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> <span class="keyword">users</span>;</span><br></pre></td></tr></table></figure><br><code>count(*)</code>返回表中的记录数<br><img src="/SQL%E8%AF%AD%E5%8F%A5Trick/36.png" class title="This is an test image"></p>
+<p>COUNT() 函数返回匹配指定条件的行数。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> <span class="keyword">users</span>;</span><br></pre></td></tr></table></figure>
+<p><code>count(*)</code>返回表中的记录数</p>
+<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/36.png" class title="This is an test image">
+
 <ol start="2">
 <li>group by 分组查询<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">password</span>;</span><br></pre></td></tr></table></figure>
 <img src="/SQL%E8%AF%AD%E5%8F%A5Trick/37.png" class title="This is an test image">
-group by 和 order by区别：<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/38.png" class title="This is an test image">
-3.having<br>增加 HAVING 子句原因是，WHERE 关键字无法与合计函数一起使用。</li>
+group by 和 order by区别：<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/38.png" class title="This is an test image"></li>
+<li>having<br>增加 HAVING 子句原因是，WHERE 关键字无法与合计函数一起使用。</li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">id</span> <span class="keyword">having</span> <span class="keyword">id</span> &gt; <span class="number">11</span>;</span><br></pre></td></tr></table></figure>
 <img src="/SQL%E8%AF%AD%E5%8F%A5Trick/39.png" class title="This is an test image">
@@ -249,7 +332,7 @@ group by 和 order by区别：<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/38.png" clas
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit</h3>
         <div class="buttons is-centered">
             
                 
@@ -354,7 +437,7 @@ group by 和 order by区别：<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/38.png" clas
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Kategorien
             </h3>
             <ul class="menu-list">
             <li>
@@ -484,7 +567,7 @@ group by 和 order by区别：<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/38.png" clas
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -509,7 +592,7 @@ group by 和 order by区别：<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/38.png" clas
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -538,7 +621,7 @@ group by 和 order by区别：<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/38.png" clas
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -643,7 +726,7 @@ group by 和 order by区别：<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/38.png" clas
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -811,7 +894,7 @@ group by 和 order by区别：<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/38.png" clas
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -836,7 +919,7 @@ group by 和 order by区别：<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/38.png" clas
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -865,7 +948,7 @@ group by 和 order by区别：<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/38.png" clas
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -970,7 +1053,7 @@ group by 和 order by区别：<img src="/SQL%E8%AF%AD%E5%8F%A5Trick/38.png" clas
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -1219,7 +1302,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1243,7 +1326,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1256,10 +1339,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
                 TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                UNTITLED: '(Unbenannt)',
             },
             CONTENT_URL: '/content.json',
         };

