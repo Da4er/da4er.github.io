@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://da4er.top/"/>
-  <updated>2020-06-08T08:14:35.122Z</updated>
+  <updated>2020-09-21T13:14:21.184Z</updated>
   <id>https://da4er.top/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>省赛刷题之旅(持续更新...)</title>
+    <link href="https://da4er.top/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html"/>
+    <id>https://da4er.top/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.html</id>
+    <published>2020-09-21T13:05:09.000Z</published>
+    <updated>2020-09-21T13:14:21.184Z</updated>
+    
+    <content type="html"><![CDATA[<script type="text/javascript" src="/js/src/bai.js"></script><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本篇只记录有<strong>质量的题目</strong>或者自己以前<strong>没有做过</strong>的题目。</p><a id="more"></a><h3 id="安洵-Attack"><a href="#安洵-Attack" class="headerlink" title="安洵_Attack"></a>安洵_Attack</h3><p>首先追踪TCP流 在第820个包中找到上传的一句话木马文件。</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/1.png" class title="Da4er"><p>查看下一个流，发现发包是base64编码，回包是rot13编码。</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/2.png" class title="Da4er"><p>将回包解码：</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/3.png" class title="Da4er"><p>在第824个流中找到一个压缩包，提取出来需要密码：</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/4.png" class title="Da4er"><p>发现提示：</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/5.png" class title="Da4er"><p>需要找到administrator的密码。<br>查看http对象，发现lsass.dmp文件：</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/6.png" class title="Da4er"><p> 可以使用mimikatz工具进行爆破：<br> <img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/7.png" class title="Da4er"><br> 得到administrator密码，解压得到flag。</p><hr><h3 id="ACTF新生赛2020-music"><a href="#ACTF新生赛2020-music" class="headerlink" title="[ACTF新生赛2020]music"></a>[ACTF新生赛2020]music</h3><p> 首先拿到一个m4a文件，打开发现错误。用winhex打开发现都是A1，想到文件和A1异或。<br> 010Editor进行异或：<br> <img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/8.png" class title="Da4er"><br> 得到正常文件，然后打开就能得到flag。</p><hr><h3 id="湖南省赛2019-Findme"><a href="#湖南省赛2019-Findme" class="headerlink" title="[湖南省赛2019]Findme"></a>[湖南省赛2019]Findme</h3><p>题目给出了5张图片。<br>第一张：<br>是一种半损坏的图片，首先想到改宽高。现用脚本把图片真实宽高算出来：</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/9.png" class title="Da4er"><p>改完如图:</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/10.png" class title="Da4er"><p>看到图片还是无法正常显示，继续摸索还存在哪个问题。<br>用010editor进行分析：发现是IDA块的问题。<br>在chunk[2]和chunk[3]中ida块标识没有：</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/11.png" class title="Da4er"><p>所有我们把IDA块的标识符(49444154)添上即可。<br>得到的图片是lsb隐写，在低位发现二维码，扫描得到第一段密文：</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/12.png" class title="Da4er"><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/13.png" class title="Da4er"><p>第二张：<br>010editor分析发现在chunk[7]以后是7z文件头：</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/14.png" class title="Da4er"><p>仔细发现是PK改成7z文件头，所以把7z全部改成PK即可：</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/15.png" class title="Da4er"><p>在第618个txt文件中找到第二段密文：</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/16.png" class title="Da4er"><p>第三张：<br>分析发现从chunk[0]到chunk[6]的每个uint32 crc中都要一个16进制数。所以</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/17.png" class title="Da4er"><p>用脚本将16进制转换城ascii，得到第三段密文。</p><p>第四张，第五张：<br>用010editor查看最后即可得到密文</p><p>最后得到的五段密文如下：</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/18.png" class title="Da4er"><p><strong>排序为：1-5-4-2-3</strong></p><p>最后解得flag：</p><img src="/%E7%9C%81%E8%B5%9B%E5%88%B7%E9%A2%98%E4%B9%8B%E6%97%85-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/19.png" class title="Da4er">]]></content>
+    
+    <summary type="html">
+    
+      &lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/bai.js&quot;&gt;&lt;/script&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;本篇只记录有&lt;strong&gt;质量的题目&lt;/strong&gt;或者自己以前&lt;strong&gt;没有做过&lt;/strong&gt;的题目。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Vulnhub DC-1靶机渗透学习</title>
@@ -436,28 +456,6 @@
     
     
       <category term="CTF" scheme="https://da4er.top/tags/CTF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于我</title>
-    <link href="https://da4er.top/%E5%85%B3%E4%BA%8E%E6%88%91.html"/>
-    <id>https://da4er.top/%E5%85%B3%E4%BA%8E%E6%88%91.html</id>
-    <published>2020-03-02T08:29:56.000Z</published>
-    <updated>2020-06-08T08:24:38.463Z</updated>
-    
-    <content type="html"><![CDATA[<p><script type="text/javascript" src="/js/src/bai.js"></script><br><img src="/%E5%85%B3%E4%BA%8E%E6%88%91/1.jpg" class><br>努力赶上大佬的安全小白；</p><hr><p>2020年计划：<br>开发一个MVC架构的项目 √</p><p>用Python写一个Scrapy的分布式爬虫 √</p><p>用Python写一个简单的扫描器；</p><p>努力刷题，让自己在CTF小有成就；</p><p>挖掘漏洞，今年提交10个有质量的漏洞；</p><p>Java Web 基础学习。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/bai.js&quot;&gt;&lt;/script&gt;&lt;br&gt;&lt;img src=&quot;/%E5%85%B3%E4%BA%8E%E6%88%91/1.jpg&quot; class&gt;&lt;br&gt;努力赶上大佬的安全小白；&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
     
   </entry>
   
